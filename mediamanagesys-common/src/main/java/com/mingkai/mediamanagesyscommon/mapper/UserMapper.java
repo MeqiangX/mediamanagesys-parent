@@ -22,7 +22,7 @@ public interface UserMapper extends BaseMapper<UserDO> {
      * @param password
      * @return
      */
-    @Select("select * from mesys_user where (phone = #{account} or email = #{account}) and user_password = #{password} and status = 0 and id_deleted = 0")
+    @Select("select * from mesys_user where (user_name = #{account} or phone = #{account} or email = #{account}) and user_password = #{password} and status = 0 and is_deleted = 0")
     UserDO login(@Param("account") String account, @Param("password") String password);
 
 

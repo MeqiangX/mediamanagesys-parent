@@ -1,9 +1,7 @@
 package com.mingkai.mediamanagesysuc.manager;
 
-import com.dtstack.plat.lang.exception.BizException;
 import com.mingkai.mediamanagesysuc.commonUtil.RedisUtil;
 import com.mingkai.mediamanagesysuc.constant.time.TimeConstant;
-import com.mingkai.mediamanagesysuc.mapper.UserMapper;
 import com.mingkai.mediamanagesysuc.model.MailModel;
 import com.mingkai.mediamanagesysuc.pojo.po.MessagePo;
 import com.mingkai.mediamanagesysuc.service.SenderService;

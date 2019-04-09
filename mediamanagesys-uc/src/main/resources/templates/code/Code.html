@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>${title}</title>
@@ -126,15 +126,15 @@
         }
     </style>
     <div class="contaner">
-        <div class="title">${title}</div>
+        <div class="title"><span th:text="${title}"></span></div>
         <div class="content">
             <p class="biaoti"><b>亲爱的用户，你好！</b><span th:text="${message}"></span></p>
             <b class="xtop"><b class="xb1"></b><b class="xb2"></b><b class="xb3"></b><b class="xb4"></b></b>
             <div class="xboxcontent">
                 <div class="neirong">
                     <!--<p><b>请核对你的用户名：</b><span id="userName" class="font_darkblue">$(userName)</span></p>-->
-                    <p><b>您的的验证码：</b><span class="font_lightblue"><span id="yzm" th:text="${code}",data="${code}" onclick="return false;" t="7" style="border-bottom: 1px dashed rgb(204, 204, 204); z-index: 1; position: static;">${code}</span></span><br><span class="font_gray">(请尽快输入该验证码完成${type}，验证码30分钟内有效！)</span></p>
-                    <div class="line">如果你未申请<span>${type}</span>服务，请忽略该邮件。</div>
+                    <p><b>您的的验证码：</b><span class="font_lightblue"><span id="yzm" th:text="${code}",data="${code}" onclick="return false;" t="7" style="border-bottom: 1px dashed rgb(204, 204, 204); z-index: 1; position: static;">${code}</span></span><br><span class="font_gray">(请尽快输入该验证码完成<span th:text="${type}"></span>，验证码30分钟内有效！)</span></p>
+                    <div class="line">如果你未申请<span th:text="${type}"></span>服务，请忽略该邮件。</div>
                 </div>
             </div>
             <b class="xbottom"><b class="xb4"></b><b class="xb3"></b><b class="xb2"></b><b class="xb1"></b></b>

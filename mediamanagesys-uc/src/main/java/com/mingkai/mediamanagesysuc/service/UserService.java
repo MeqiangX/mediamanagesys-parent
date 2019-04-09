@@ -1,5 +1,6 @@
 package com.mingkai.mediamanagesysuc.service;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.dtstack.plat.lang.exception.BizException;
 import com.google.common.base.Optional;
 import com.google.common.collect.Maps;
@@ -12,10 +13,14 @@ import com.mingkai.mediamanagesysuc.manager.UserManager;
 import com.mingkai.mediamanagesysuc.model.MailModel;
 import com.mingkai.mediamanagesysuc.pojo.po.LoginPo;
 import com.mingkai.mediamanagesysuc.pojo.po.MessagePo;
+import com.mingkai.mediamanagesysuc.pojo.po.RegisterPo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 
 /**
@@ -36,6 +41,8 @@ public class UserService {
 
     @Autowired
     private ThymeleafService thymeleafService;
+
+
     /**
      * 登录service
      * @param loginPo
@@ -64,11 +71,11 @@ public class UserService {
 
             Object code = redisUtil.get(MessageEnum.LOGIN_PHONE.getVal() + "+" + loginPo.getAccount());
 
-            Optional<Object> codeOptional = Optional.fromNullable(code);
-
-            if (codeOptional.isPresent()){
+            if (Objects.nonNull(code)){
                 // 非空 和当前输入的验证码 比较
-                if (codeOptional.get().toString().equals(loginPo.getCode())){
+                if (code.toString().equals(loginPo.getCode())){
+                    // 清除验证码
+                    redisUtil.del(MessageEnum.LOGIN_PHONE.getVal() + "+" + loginPo.getAccount());
                     return true;
                 }
             }
@@ -78,11 +85,86 @@ public class UserService {
         if (loginPo.getLoginOption().equals(MessageEnum.LOGIN_EMAIL.getVal())){
             // 邮箱登录
 
-            return false;
+            // 对比当前邮箱 和 验证码
+            Object rightCode = redisUtil.get(loginPo.getLoginOption() + "+" + loginPo.getAccount());
 
+            if (Objects.nonNull(rightCode)){
+                if (rightCode.equals(loginPo.getCode())){
+                    //清除redis
+                    redisUtil.del(loginPo.getLoginOption() + "+" + loginPo.getAccount());
+                    return true;
+                }
+            }
+
+            throw new BizException("验证码错误");
         }
 
         throw new BizException("错误代码");
+    }
+
+
+    /**
+     * 注冊
+     * @param registerPo
+     * @return
+     */
+    @Transactional
+    public Boolean register(RegisterPo registerPo){
+
+        // 手机注册
+        String key = registerPo.getRegisterOption() + "+" +
+                (registerPo.getRegisterOption().equals(MessageEnum.REGISTER_PHONE.getVal()) ? registerPo.getPhone()
+                : registerPo.getEmail());
+
+        if (registerPo.getRegisterOption().equals(MessageEnum.REGISTER_PHONE.getVal())){
+
+            if (registedPhone(registerPo.getPhone())){
+                throw new BizException("手机号已经被注册过!");
+            }
+
+            Object rightCode = redisUtil.get(registerPo.getRegisterOption() + "+" + registerPo.getPhone());
+
+            if (Objects.isNull(rightCode) || !rightCode.toString().equals(registerPo.getCode())){
+                throw new BizException("验证码不正确");
+            }
+        }
+
+        // 邮箱注册
+        if (registerPo.getRegisterOption().equals(MessageEnum.REGISTER_EMAIL.getVal())){
+
+            if (registedEmail(registerPo.getEmail())){
+                throw new BizException("邮箱已经被注册过!");
+            }
+
+            Object rightCode = redisUtil.get(registerPo.getRegisterOption() + "+" + registerPo.getEmail());
+
+            if (Objects.isNull(rightCode) || !rightCode.toString().equals(registerPo.getCode())){
+                throw new BizException("验证码不正确");
+            }
+        }
+
+
+        //验证过验证码  再验证名称是否重复 --> 完成注册
+        if (repeatName(registerPo.getUserName())){
+            throw new BizException("名称重复!");
+        }
+
+        // 完成注册
+        UserDO userDO = new UserDO();
+        userDO.setUserName(registerPo.getUserName());
+        userDO.setUserPassword(registerPo.getPassword());
+        userDO.setEmail(registerPo.getEmail());
+        userDO.setPhone(registerPo.getPhone());
+        userDO.setStatus(0);
+
+        Boolean success = 1 == userMapper.insert(userDO);
+
+        if (success){
+            // 清除redis 的 验证信息
+            redisUtil.del(key);
+        }
+
+        return success;
     }
 
     /**
@@ -119,5 +201,56 @@ public class UserService {
 
     public Boolean sendMessage(MessagePo messagePo){
         return userManager.sendMessage(messagePo);
+    }
+
+
+    /**
+     * 注册手机验证
+     * @param phone
+     * @return
+     */
+    public Boolean registedPhone(String phone){
+        List<UserDO> userDOS = userMapper.selectList(new QueryWrapper<UserDO>()
+                .eq("status", 0)
+                .eq("phone", phone));
+
+        if (Objects.nonNull(userDOS) && userDOS.size() != 0){
+            return true;
+        }
+
+        return false;
+    }
+
+    /**
+     * 注册邮箱验证
+     * @param email
+     * @return
+     */
+    public Boolean registedEmail(String email){
+        List<UserDO> userDOS = userMapper.selectList(new QueryWrapper<UserDO>()
+                .eq("status", 0)
+                .eq("email", email));
+
+        if (Objects.nonNull(userDOS) && userDOS.size() != 0){
+            return true;
+        }
+
+        return false;
+    }
+
+    /**
+     * 重名校验
+     * @return
+     */
+    public Boolean repeatName(String userName){
+
+        List<UserDO> userDOS = userMapper.selectList(new QueryWrapper<UserDO>()
+                .eq("status", 0)
+                .eq("user_name", userName));
+
+        if (Objects.nonNull(userDOS) && userDOS.size() != 0){
+            return true;
+        }
+        return false;
     }
 }
