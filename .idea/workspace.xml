@@ -1,0 +1,1000 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="2eca2e12-4f08-4c3b-bb3c-a9ef02423428" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
+    <ignored path="$PROJECT_DIR$/out/" />
+    <ignored path="$PROJECT_DIR$/target/" />
+    <ignored path="$PROJECT_DIR$/mediamanagesys-portal/target/" />
+    <ignored path="$PROJECT_DIR$/mediamanagesys-common/target/" />
+    <ignored path="$PROJECT_DIR$/mediamanagesys-backend/target/" />
+    <ignored path="$PROJECT_DIR$/mediamanagesys-uc/target/" />
+    <ignored path="$PROJECT_DIR$/mediamanagesys-schdule/target/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeInsightWorkspaceSettings">
+    <option name="optimizeImportsOnTheFly" value="true" />
+  </component>
+  <component name="FUSProjectUsageTrigger">
+    <session id="-1451395706">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.closed" value="9" />
+          <entry key="project.open.time.1" value="1" />
+          <entry key="project.open.time.100" value="1" />
+          <entry key="project.open.time.114" value="1" />
+          <entry key="project.open.time.123" value="1" />
+          <entry key="project.open.time.2" value="2" />
+          <entry key="project.open.time.201" value="1" />
+          <entry key="project.open.time.3" value="1" />
+          <entry key="project.open.time.6" value="1" />
+          <entry key="project.open.time.82" value="1" />
+          <entry key="project.open.time.93" value="1" />
+          <entry key="project.opened" value="11" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="CLASS" value="26" />
+          <entry key="HTML" value="5" />
+          <entry key="JAVA" value="271" />
+          <entry key="Properties" value="3" />
+          <entry key="XML" value="37" />
+          <entry key="YAML" value="29" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="HTML" value="178" />
+          <entry key="JAVA" value="37888" />
+          <entry key="PLAIN_TEXT" value="13" />
+          <entry key="Properties" value="1" />
+          <entry key="SQL" value="6" />
+          <entry key="XML" value="2101" />
+          <entry key="YAML" value="528" />
+        </counts>
+      </usages-collector>
+    </session>
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/mediamanagesys-uc/src/main/java/com/mingkai/mediamanagesysuc/controller/UserController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2070">
+              <caret line="131" column="13" selection-start-line="131" selection-start-column="13" selection-end-line="131" selection-end-column="13" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/mediamanagesys-common/src/main/java/com/mingkai/mediamanagesyscommon/model/Do/uc/UserDO.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="198">
+              <caret line="13" column="32" selection-start-line="13" selection-start-column="32" selection-end-line="13" selection-end-column="32" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/mediamanagesys-uc/src/main/java/com/mingkai/mediamanagesysuc/controller/RoleController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2376">
+              <caret line="147" column="38" selection-start-line="147" selection-start-column="38" selection-end-line="147" selection-end-column="38" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/mediamanagesys-uc/src/main/java/com/mingkai/mediamanagesysuc/service/RoleService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="216">
+              <caret line="207" column="22" selection-start-line="207" selection-start-column="22" selection-end-line="207" selection-end-column="22" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/mediamanagesys-common/src/main/java/com/mingkai/mediamanagesyscommon/model/Po/uc/PermRoleAddPo.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret column="51" selection-start-column="51" selection-end-column="51" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/mediamanagesys-common/src/main/java/com/mingkai/mediamanagesyscommon/model/Po/uc/RoleAddPo.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="306">
+              <caret line="19" selection-start-line="19" selection-end-line="19" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Enum" />
+        <option value="HTML File" />
+        <option value="Mybatis Mapper" />
+        <option value="FxmlFile" />
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>spring-boot</find>
+      <find>(</find>
+      <find>actor</find>
+      <find>writer</find>
+      <find>dura</find>
+      <find>exclusion</find>
+      <find>druid</find>
+      <find>save</find>
+      <find>RoleDo</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>writer</replace>
+      <replace>director</replace>
+    </replaceStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/mediamanagesys-common/src/main/resources/com/mingkai/mediamanagesyscommon/mapper/ScreenSeatMapper.xml" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/mediamanagesys-common/pom.xml" />
+        <option value="$PROJECT_DIR$/mediamanagesys-common/src/test/java/com/mingkai/mediamanagesyscommon/MediamanagesysCommonApplicationTests.java" />
+        <option value="$PROJECT_DIR$/mediamanagesys-common/src/main/resources/mapper/ScreenSeatMapper.xml" />
+        <option value="$PROJECT_DIR$/mediamanagesys-common/src/main/resources/application.yml" />
+        <option value="$PROJECT_DIR$/mediamanagesys-backend/src/main/resources/application.yml" />
+        <option value="$PROJECT_DIR$/mediamanagesys-backend/src/main/java/com/mingkai/mediamanagesysbackend/conf/MyBatisConfig.java" />
+        <option value="$PROJECT_DIR$/mediamanagesys-common/src/main/java/com/mingkai/mediamanagesyscommon/mapper/ScreenSeatMapper.java" />
+        <option value="$PROJECT_DIR$/mediamanagesys-common/src/main/java/com/mingkai/mediamanagesyscommon/MediamanagesysCommonApplication.java" />
+        <option value="$PROJECT_DIR$/mediamanagesys-common/src/main/java/com/mingkai/mediamanagesyscommon/manager/ScreenSeatManager.java" />
+        <option value="$PROJECT_DIR$/mediamanagesys-backend/src/main/java/com/mingkai/mediamanagesysbackend/model/PO/ScreenArrangePo.java" />
+        <option value="$PROJECT_DIR$/mediamanagesys-common/src/main/java/com/mingkai/mediamanagesyscommon/model/movie/Do/screen/ScreenArrangeDo.java" />
+        <option value="$PROJECT_DIR$/mediamanagesys-backend/src/main/java/com/mingkai/mediamanagesysbackend/service/screen/ScreenService.java" />
+        <option value="$PROJECT_DIR$/mediamanagesys-backend/src/main/java/com/mingkai/mediamanagesysbackend/MediamanagesysBackendApplication.java" />
+        <option value="$PROJECT_DIR$/mediamanagesys-uc/src/main/java/com/mingkai/mediamanagesysuc/pojo/DO/UserDO.java" />
+        <option value="$PROJECT_DIR$/mediamanagesys-uc/src/main/java/com/mingkai/mediamanagesysuc/MediamanagesysUcApplication.java" />
+        <option value="$PROJECT_DIR$/mediamanagesys-uc/src/main/java/com/mingkai/mediamanagesysuc/pojo/DO/RoleDo.java" />
+        <option value="$PROJECT_DIR$/mediamanagesys-uc/src/main/java/com/mingkai/mediamanagesysuc/mapper/RoleMapper.java" />
+        <option value="$PROJECT_DIR$/mediamanagesys-common/src/main/java/com/mingkai/mediamanagesyscommon/model/movie/Do/uc/RoleDo.java" />
+        <option value="$PROJECT_DIR$/mediamanagesys-common/src/main/java/com/mingkai/mediamanagesyscommon/mapper/UserMapper.java" />
+        <option value="$PROJECT_DIR$/mediamanagesys-common/src/main/java/com/mingkai/mediamanagesyscommon/mapper/RoleMapper.java" />
+        <option value="$PROJECT_DIR$/mediamanagesys-uc/src/main/java/com/mingkai/mediamanagesysuc/service/UserService.java" />
+        <option value="$PROJECT_DIR$/mediamanagesys-uc/src/main/java/com/mingkai/mediamanagesysuc/controller/UserController.java" />
+        <option value="$PROJECT_DIR$/mediamanagesys-uc/src/main/java/com/mingkai/mediamanagesysuc/config/Swagger2Config.java" />
+        <option value="$PROJECT_DIR$/mediamanagesys-common/src/main/java/com/mingkai/mediamanagesyscommon/model/Po/base/PageParam.java" />
+        <option value="$PROJECT_DIR$/mediamanagesys-common/src/main/java/com/mingkai/mediamanagesyscommon/manager/RoleManager.java" />
+        <option value="$PROJECT_DIR$/mediamanagesys-uc/src/main/java/com/mingkai/mediamanagesysuc/config/MyBatisConfig.java" />
+        <option value="$PROJECT_DIR$/mediamanagesys-common/src/main/java/com/mingkai/mediamanagesyscommon/model/Do/uc/RoleDo.java" />
+        <option value="$PROJECT_DIR$/mediamanagesys-common/src/main/java/com/mingkai/mediamanagesyscommon/model/Vo/base/BaseVo.java" />
+        <option value="$PROJECT_DIR$/mediamanagesys-common/src/main/java/com/mingkai/mediamanagesyscommon/model/Vo/uc/RoleVo.java" />
+        <option value="$PROJECT_DIR$/mediamanagesys-common/src/main/java/com/mingkai/mediamanagesyscommon/model/Do/uc/PermisionDo.java" />
+        <option value="$PROJECT_DIR$/mediamanagesys-common/src/main/java/com/mingkai/mediamanagesyscommon/model/Do/uc/RolePermRelDo.java" />
+        <option value="$PROJECT_DIR$/mediamanagesys-common/src/main/java/com/mingkai/mediamanagesyscommon/mapper/PermisionMapper.java" />
+        <option value="$PROJECT_DIR$/mediamanagesys-common/src/main/java/com/mingkai/mediamanagesyscommon/mapper/RolePermRelMapper.java" />
+        <option value="$PROJECT_DIR$/mediamanagesys-common/src/main/java/com/mingkai/mediamanagesyscommon/manager/PermisionManager.java" />
+        <option value="$PROJECT_DIR$/mediamanagesys-common/src/main/java/com/mingkai/mediamanagesyscommon/manager/RolePermRelManager.java" />
+        <option value="$PROJECT_DIR$/mediamanagesys-common/src/main/java/com/mingkai/mediamanagesyscommon/model/Vo/uc/PermisionVo.java" />
+        <option value="$PROJECT_DIR$/mediamanagesys-uc/src/main/resources/application.yml" />
+        <option value="$PROJECT_DIR$/mediamanagesys-common/src/main/java/com/mingkai/mediamanagesyscommon/config/MyBatisConfig.java" />
+        <option value="$PROJECT_DIR$/mediamanagesys-common/src/main/java/com/mingkai/mediamanagesyscommon/model/Do/base/BaseDo.java" />
+        <option value="$PROJECT_DIR$/mediamanagesys-common/src/main/java/com/mingkai/mediamanagesyscommon/utils/page/PageUtils.java" />
+        <option value="$PROJECT_DIR$/mediamanagesys-common/src/main/java/com/mingkai/mediamanagesyscommon/common/API.java" />
+        <option value="$PROJECT_DIR$/mediamanagesys-common/src/main/java/com/mingkai/mediamanagesyscommon/model/Po/uc/PermAddPo.java" />
+        <option value="$PROJECT_DIR$/mediamanagesys-uc/src/main/java/com/mingkai/mediamanagesysuc/controller/PermisionController.java" />
+        <option value="$PROJECT_DIR$/mediamanagesys-common/src/main/java/com/mingkai/mediamanagesyscommon/model/Po/uc/PermisionPagePo.java" />
+        <option value="$PROJECT_DIR$/mediamanagesys-common/src/main/java/com/mingkai/mediamanagesyscommon/model/Po/uc/PermRoleAddPo.java" />
+        <option value="$PROJECT_DIR$/mediamanagesys-uc/src/main/java/com/mingkai/mediamanagesysuc/service/PermisionService.java" />
+        <option value="$PROJECT_DIR$/mediamanagesys-common/src/main/java/com/mingkai/mediamanagesyscommon/model/Po/uc/RolePo.java" />
+        <option value="$PROJECT_DIR$/mediamanagesys-uc/src/main/java/com/mingkai/mediamanagesysuc/controller/RoleController.java" />
+        <option value="$PROJECT_DIR$/mediamanagesys-uc/src/main/java/com/mingkai/mediamanagesysuc/service/RoleService.java" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="localRepository" value="E:\Coder\repository" />
+        <option name="userSettingsFile" value="E:\Coder\apache-maven-3.3.9\conf\settings.xml" />
+      </MavenGeneralSettings>
+    </option>
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="importAutomatically" value="true" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="MavenProjectNavigator">
+    <treeState>
+      <expand />
+      <select />
+    </treeState>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="26" />
+    <option name="y" value="27" />
+    <option name="width" value="1221" />
+    <option name="height" value="673" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <hideEmptyPackages ProjectPane="false" />
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="mediamanagesys-parent" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mediamanagesys-parent" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1554779230398" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/mediamanagesys-common/src/main/resources/com.mingkai.mediamanagesyscommon.mapper" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.21264368" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.import" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.mingkai.mediamanagesysbackend" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\xq\Downloads\mediamanagesys-parent\mediamanagesys-common\src\main\java\com\mingkai\mediamanagesyscommon\model\movie\Do\uc" />
+      <recent name="C:\Users\xq\Downloads\mediamanagesys-parent\mediamanagesys-common\src\main\java\com\mingkai\mediamanagesyscommon\mapper" />
+      <recent name="C:\Users\xq\Downloads\mediamanagesys-parent\mediamanagesys-common\src\main\java\com\mingkai\mediamanagesyscommon" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.mingkai.mediamanagesysuc.config" />
+      <recent name="com.mingkai.mediamanagesyscommon.config" />
+      <recent name="com.mingkai.mediamanagesyscommon.utils.convert.convertInterfaces" />
+      <recent name="com.mingkai.mediamanagesysbackend.conf" />
+      <recent name="com.mingkai.mediamanagesysportal.conf" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\xq\Downloads\mediamanagesys-parent\mediamanagesys-common\src\main\resources\mapper" />
+      <recent name="C:\Users\xq\Downloads\mediamanagesys-parent\mediamanagesys-common\src\main\resources\com\mingkai\mediamanagesyscommon\mapper" />
+      <recent name="C:\Users\xq\Downloads\mediamanagesys-parent\mediamanagesys-uc\src\main\resources\templates\code" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Spring Boot.MediamanagesysUcApplication">
+    <configuration name="MediamanagesysCommonApplicationTests.contextLoads" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="mediamanagesys-common" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.mingkai.mediamanagesyscommon.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.mingkai.mediamanagesyscommon" />
+      <option name="MAIN_CLASS_NAME" value="com.mingkai.mediamanagesyscommon.MediamanagesysCommonApplicationTests" />
+      <option name="METHOD_NAME" value="contextLoads" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MediamanagesysBackendApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="mediamanagesys-backend" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.mingkai.mediamanagesysbackend.MediamanagesysBackendApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MediamanagesysCommonApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="mediamanagesys-common" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.mingkai.mediamanagesyscommon.MediamanagesysCommonApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MediamanagesysPortalApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="mediamanagesys-portal" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.mingkai.mediamanagesysportal.MediamanagesysPortalApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MediamanagesysSchduleApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="mediamanagesys-schdule" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.mingkai.mediamanagesysschdule.MediamanagesysSchduleApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MediamanagesysUcApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="mediamanagesys-uc" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.mingkai.mediamanagesysuc.MediamanagesysUcApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Spring Boot.MediamanagesysPortalApplication" />
+      <item itemvalue="Spring Boot.MediamanagesysBackendApplication" />
+      <item itemvalue="Spring Boot.MediamanagesysUcApplication" />
+      <item itemvalue="Spring Boot.MediamanagesysCommonApplication" />
+      <item itemvalue="Spring Boot.MediamanagesysSchduleApplication" />
+      <item itemvalue="JUnit.MediamanagesysCommonApplicationTests.contextLoads" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.MediamanagesysCommonApplicationTests.contextLoads" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="2eca2e12-4f08-4c3b-bb3c-a9ef02423428" name="Default Changelist" comment="" />
+      <created>1553917987076</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1553917987076</updated>
+      <workItem from="1553917994560" duration="11182000" />
+      <workItem from="1553946732012" duration="6853000" />
+      <workItem from="1553996661529" duration="29297000" />
+      <workItem from="1554043367498" duration="1294000" />
+      <workItem from="1554085161802" duration="12713000" />
+      <workItem from="1554171302215" duration="23907000" />
+      <workItem from="1554269063661" duration="16911000" />
+      <workItem from="1554343915175" duration="26079000" />
+      <workItem from="1554433787287" duration="2566000" />
+      <workItem from="1554699487218" duration="22901000" />
+      <workItem from="1554774700603" duration="2535000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TestHistory">
+    <history-entry file="MediamanagesysCommonApplicationTests_contextLoads - 2019.04.04 at 11h 09m 02s.xml">
+      <configuration name="MediamanagesysCommonApplicationTests.contextLoads" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="MediamanagesysCommonApplicationTests_contextLoads - 2019.04.04 at 11h 10m 44s.xml">
+      <configuration name="MediamanagesysCommonApplicationTests.contextLoads" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="MediamanagesysCommonApplicationTests_contextLoads - 2019.04.04 at 11h 12m 05s.xml">
+      <configuration name="MediamanagesysCommonApplicationTests.contextLoads" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="MediamanagesysCommonApplicationTests_contextLoads - 2019.04.04 at 11h 15m 41s.xml">
+      <configuration name="MediamanagesysCommonApplicationTests.contextLoads" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="MediamanagesysCommonApplicationTests_contextLoads - 2019.04.04 at 11h 16m 55s.xml">
+      <configuration name="MediamanagesysCommonApplicationTests.contextLoads" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="MediamanagesysCommonApplicationTests_contextLoads - 2019.04.04 at 11h 17m 17s.xml">
+      <configuration name="MediamanagesysCommonApplicationTests.contextLoads" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="MediamanagesysCommonApplicationTests_contextLoads - 2019.04.04 at 11h 34m 44s.xml">
+      <configuration name="MediamanagesysCommonApplicationTests.contextLoads" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="MediamanagesysCommonApplicationTests_contextLoads - 2019.04.04 at 11h 35m 40s.xml">
+      <configuration name="MediamanagesysCommonApplicationTests.contextLoads" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="MediamanagesysCommonApplicationTests_contextLoads - 2019.04.08 at 14h 53m 10s.xml">
+      <configuration name="MediamanagesysCommonApplicationTests.contextLoads" configurationId="JUnit" />
+    </history-entry>
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="156238000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49223948" visible="true" weight="0.19591528" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Designer" order="2" />
+      <window_info id="JRebel" order="3" sideWeight="0.5077605" side_tool="true" weight="0.18986385" />
+      <window_info id="Image Layers" order="4" />
+      <window_info id="UI Designer" order="5" />
+      <window_info id="Favorites" order="6" side_tool="true" />
+      <window_info id="Capture Tool" order="7" />
+      <window_info id="Web" order="8" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32935154" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.84114975" weight="0.3993174" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.7919818" weight="0.3883495" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.32935154" />
+      <window_info anchor="bottom" id="Messages" order="7" sideWeight="0.54689866" weight="0.22866894" />
+      <window_info anchor="bottom" id="Spring" order="8" weight="0.32935154" />
+      <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.8449319" weight="0.29863483" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.28214827" side_tool="true" weight="0.278157" />
+      <window_info anchor="bottom" id="Statistic" order="11" weight="0.32935154" />
+      <window_info anchor="bottom" id="Database Changes" order="12" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="13" show_stripe_button="false" />
+      <window_info anchor="bottom" id="JRebel Executor" order="14" />
+      <window_info anchor="bottom" id="JRebel Console" order="15" sideWeight="0.20801815" side_tool="true" weight="0.31740615" />
+      <window_info anchor="bottom" id="Java Enterprise" order="16" weight="0.32935154" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="right" id="Capture Analysis" order="4" />
+      <window_info anchor="right" id="Maven Projects" order="5" visible="true" weight="0.1709531" />
+      <window_info anchor="right" id="Database" order="6" />
+      <window_info anchor="right" id="Palette&#9;" order="7" />
+      <window_info anchor="right" id="Theme Preview" order="8" />
+      <window_info anchor="right" id="Bean Validation" order="9" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="debuggerHistoryManager">
+    <expressions id="evaluateExpression">
+      <expression>
+        <expression-string>Objects.isNull(repeatNames)</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>durationsBetween.toMinutes()</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>map.get(&quot;durations&quot;)</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>map</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>map.get(&quot;subjects&quot;)</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>loginPo.getCode()</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>codeOptional.get().toString()</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>codeOptional.toString().equals(loginPo.getCode())</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>codeOptional.toString()</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+    </expressions>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/mediamanagesys-backend/src/main/java/com/mingkai/mediamanagesysbackend/MediamanagesysBackendApplication.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mediamanagesys-uc/src/main/java/com/mingkai/mediamanagesysuc/pojo/DO/UserDO.java" />
+    <entry file="file://$PROJECT_DIR$/mediamanagesys-uc/src/main/java/com/mingkai/mediamanagesysuc/pojo/po/MessagePo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="22" selection-start-line="22" selection-end-line="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mediamanagesys-uc/src/main/java/com/mingkai/mediamanagesysuc/pojo/DO/RoleDo.java" />
+    <entry file="file://$PROJECT_DIR$/mediamanagesys-uc/src/main/java/com/mingkai/mediamanagesysuc/mapper/RoleMapper.java" />
+    <entry file="file://$PROJECT_DIR$/mediamanagesys-uc/src/main/java/com/mingkai/mediamanagesysuc/mapper/UserMapper.java" />
+    <entry file="file://$PROJECT_DIR$/mediamanagesys-uc/src/main/java/com/mingkai/mediamanagesysuc/config/Swagger2Config.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="39" column="25" lean-forward="true" selection-start-line="39" selection-start-column="25" selection-end-line="39" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mediamanagesys-uc/src/main/java/com/mingkai/mediamanagesysuc/MediamanagesysUcApplication.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mediamanagesys-uc/src/main/java/com/mingkai/mediamanagesysuc/service/UserService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-948">
+          <caret line="49" column="22" selection-start-line="49" selection-start-column="22" selection-end-line="49" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mediamanagesys-common/src/main/java/com/mingkai/mediamanagesyscommon/mapper/UserMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="4" column="65" selection-start-line="4" selection-start-column="65" selection-end-line="4" selection-end-column="65" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mediamanagesys-common/src/main/java/com/mingkai/mediamanagesyscommon/model/Vo/screen/ScreenRoomVo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="142">
+          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mediamanagesys-common/src/main/java/com/mingkai/mediamanagesyscommon/model/Po/base/PageParam.java" />
+    <entry file="file://$PROJECT_DIR$/mediamanagesys-common/src/main/java/com/mingkai/mediamanagesyscommon/mapper/RoleMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="44" lean-forward="true" selection-start-column="44" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mediamanagesys-common/src/main/java/com/mingkai/mediamanagesyscommon/manager/ScreenSeatManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="11" column="8" lean-forward="true" selection-start-line="11" selection-start-column="8" selection-end-line="11" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/com/dtstack/plat/dt-lang/2.0.0-SNAPSHOT/dt-lang-2.0.0-20190114.133326-57.jar!/com/dtstack/plat/lang/web/Pager.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mediamanagesys-uc/src/main/java/com/mingkai/mediamanagesysuc/config/MyBatisConfig.java" />
+    <entry file="file://$PROJECT_DIR$/mediamanagesys-common/src/main/java/com/mingkai/mediamanagesyscommon/manager/RoleManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="12" column="62" selection-start-line="12" selection-start-column="62" selection-end-line="12" selection-end-column="62" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/com/dtstack/plat/dt-lang/2.0.0-SNAPSHOT/dt-lang-2.0.0-20190114.133326-57.jar!/com/dtstack/plat/lang/web/param/PageParam.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="9" column="19" selection-start-line="9" selection-start-column="19" selection-end-line="9" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mediamanagesys-common/src/main/java/com/mingkai/mediamanagesyscommon/model/Vo/base/BaseVo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="157">
+          <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mediamanagesys-common/src/main/java/com/mingkai/mediamanagesyscommon/model/Vo/uc/RoleVo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="12" column="20" lean-forward="true" selection-start-line="12" selection-start-column="20" selection-end-line="12" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mediamanagesys-common/src/main/java/com/mingkai/mediamanagesyscommon/utils/convert/ConvertUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="80">
+          <caret line="28" column="5" lean-forward="true" selection-start-line="28" selection-start-column="5" selection-end-line="28" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mediamanagesys-common/src/main/java/com/mingkai/mediamanagesyscommon/model/Do/uc/RoleDo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="16" column="31" lean-forward="true" selection-start-line="13" selection-end-line="16" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mediamanagesys-common/src/main/java/com/mingkai/mediamanagesyscommon/manager/RolePermRelManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="13" column="1" lean-forward="true" selection-start-line="13" selection-start-column="1" selection-end-line="13" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mediamanagesys-common/src/main/java/com/mingkai/mediamanagesyscommon/manager/PermisionManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="13" column="1" lean-forward="true" selection-start-line="13" selection-start-column="1" selection-end-line="13" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mediamanagesys-common/src/main/java/com/mingkai/mediamanagesyscommon/mapper/RolePermRelMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="14" column="1" lean-forward="true" selection-start-line="14" selection-start-column="1" selection-end-line="14" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mediamanagesys-common/src/main/java/com/mingkai/mediamanagesyscommon/mapper/PermisionMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="14" column="1" lean-forward="true" selection-start-line="14" selection-start-column="1" selection-end-line="14" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mediamanagesys-common/src/main/java/com/mingkai/mediamanagesyscommon/model/Do/uc/RolePermRelDo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="16" column="32" selection-start-line="16" selection-start-column="32" selection-end-line="16" selection-end-column="32" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mediamanagesys-common/src/main/java/com/mingkai/mediamanagesyscommon/model/Do/uc/PermisionDo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="324">
+          <caret line="18" lean-forward="true" selection-start-line="14" selection-end-line="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mediamanagesys-common/src/main/java/com/mingkai/mediamanagesyscommon/config/MyBatisConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="60" column="22" selection-start-line="60" selection-start-column="22" selection-end-line="60" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mediamanagesys-uc/src/main/resources/application.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="55" column="47" selection-start-line="55" selection-start-column="47" selection-end-line="55" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/com/baomidou/mybatis-plus-extension/3.1.0/mybatis-plus-extension-3.1.0.jar!/com/baomidou/mybatisplus/extension/plugins/pagination/Page.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="28">
+          <caret line="30" column="5" lean-forward="true" selection-start-line="30" selection-start-column="5" selection-end-line="30" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mediamanagesys-common/src/main/java/com/mingkai/mediamanagesyscommon/utils/page/PageUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="166">
+          <caret line="24" column="41" selection-start-line="24" selection-start-column="41" selection-end-line="24" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/com/baomidou/mybatis-plus-core/3.1.0/mybatis-plus-core-3.1.0.jar!/com/baomidou/mybatisplus/core/mapper/BaseMapper.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="134">
+          <caret line="32" column="12" selection-start-line="32" selection-start-column="12" selection-end-line="32" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://E:/Coder/Java/jdk1.8.0_171/src.zip!/java/lang/Number.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="54" column="22" selection-start-line="54" selection-start-column="22" selection-end-line="54" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://E:/Coder/Java/jdk1.8.0_171/src.zip!/java/lang/Integer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="51" column="37" lean-forward="true" selection-start-line="51" selection-start-column="37" selection-end-line="51" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mediamanagesys-common/src/main/java/com/mingkai/mediamanagesyscommon/model/Vo/uc/PermisionVo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="11" selection-start-line="11" selection-end-line="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mediamanagesys-common/src/main/java/com/mingkai/mediamanagesyscommon/common/API.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="236">
+          <caret line="50" column="34" selection-start-line="50" selection-start-column="34" selection-end-line="50" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/com/baomidou/mybatis-plus-extension/3.1.0/mybatis-plus-extension-3.1.0.jar!/com/baomidou/mybatisplus/extension/service/impl/ServiceImpl.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="247" column="13" selection-start-line="247" selection-start-column="13" selection-end-line="247" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mediamanagesys-common/src/main/java/com/mingkai/mediamanagesyscommon/model/Po/uc/PermAddPo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="15" column="31" lean-forward="true" selection-start-line="15" selection-start-column="31" selection-end-line="15" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mediamanagesys-common/src/main/java/com/mingkai/mediamanagesyscommon/model/Po/uc/PermisionPagePo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="51" lean-forward="true" selection-start-column="51" selection-end-column="51" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/com/dtstack/plat/dt-lang/2.0.0-SNAPSHOT/dt-lang-2.0.0-20190114.133326-57.jar!/com/dtstack/plat/lang/base/Validates.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="79">
+          <caret line="22" column="39" lean-forward="true" selection-start-line="22" selection-start-column="39" selection-end-line="22" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mediamanagesys-uc/src/main/java/com/mingkai/mediamanagesysuc/service/PermisionService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="434">
+          <caret line="37" lean-forward="true" selection-start-line="37" selection-end-line="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mediamanagesys-uc/src/main/java/com/mingkai/mediamanagesysuc/controller/PermisionController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="41" selection-start-column="41" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mediamanagesys-common/src/main/java/com/mingkai/mediamanagesyscommon/model/Do/base/BaseDo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/com/dtstack/plat/dt-lang/2.0.0-SNAPSHOT/dt-lang-2.0.0-20190114.133326-57.jar!/com/dtstack/plat/lang/base/Checks.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="349">
+          <caret line="76" column="29" selection-start-line="76" selection-start-column="29" selection-end-line="76" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mediamanagesys-uc/src/main/java/com/mingkai/mediamanagesysuc/controller/UserController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2070">
+          <caret line="131" column="13" selection-start-line="131" selection-start-column="13" selection-end-line="131" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mediamanagesys-common/src/main/java/com/mingkai/mediamanagesyscommon/model/Do/uc/UserDO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="13" column="32" selection-start-line="13" selection-start-column="32" selection-end-line="13" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mediamanagesys-uc/src/main/java/com/mingkai/mediamanagesysuc/controller/RoleController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2376">
+          <caret line="147" column="38" selection-start-line="147" selection-start-column="38" selection-end-line="147" selection-end-column="38" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mediamanagesys-common/src/main/java/com/mingkai/mediamanagesyscommon/model/Po/uc/PermRoleAddPo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="51" selection-start-column="51" selection-end-column="51" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mediamanagesys-common/src/main/java/com/mingkai/mediamanagesyscommon/model/Po/uc/RoleAddPo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="19" selection-start-line="19" selection-end-line="19" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mediamanagesys-uc/src/main/java/com/mingkai/mediamanagesysuc/service/RoleService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="207" column="22" selection-start-line="207" selection-start-column="22" selection-end-line="207" selection-end-column="22" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <last-edited>JRebel</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.21264368" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <last-edited>mediamanagesys-common</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.21264368" />
+                <option value="0.6" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectJDKs.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <last-edited>Maven: ch.qos.logback:logback-classic:1.2.3</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.21264368" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>

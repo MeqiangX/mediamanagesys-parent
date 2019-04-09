@@ -1,0 +1,66 @@
+#port
+server:
+  port: 8084
+#mysql
+spring:
+  datasource: #数据源
+    url: jdbc:mysql://localhost:3306/mediamanagesys?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf-8
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+#jackson
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+  #redis
+  redis:
+    database: 0
+    host: 127.0.0.1
+    port: 6379
+    password: 123456
+    timeout: 0
+#mail
+  mail:
+    host: smtp.qq.com
+    username: 674064975@qq.com
+    password: hzrheipmyokbbdcj
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+            required: true
+    default-encoding: UTF-8
+    protocol: smtp
+#thymeleaf
+  thymeleaf:
+    enabled: true
+    mode: HTML5
+    encoding: UTF-8
+    prefix: classpath:/templates/ # 模板存放在资源目录的 templates/ 文件下
+    suffix: .html # 模板后缀
+    check-template-location: true
+    check-template: false
+    cache: false # 调试时关闭缓存
+    servlet:
+      content-type: text/html
+#mybatisPlus
+mybatis-plus:
+  type-aliases-package: com.mingkai.mediamanagesysuc.pojo  #别名包扫描路径
+  ##configuration-properties:  classpath:mybatis/config.properties  #指定外部化Mybatis Properties配置,用这个配置可以抽离配置，实现不同环境的配置部署 （test or dev）
+  global-config:
+    db-config:
+      logic-delete-value: 1 # 逻辑已删除值(默认为 1)
+      logic-not-delete-value: 0 # 逻辑未删除值(默认为 0)
+## 原生的Mybatis 配置 因为MybatisPlus 是向下兼容Mybatis的 所以也可以用Mybatis的配置
+# configuration 原生Mybatis 所支持的配置
+configuration:
+  map-underscore-to-camel-case: true #是否开启自动驼峰命名规则映射，即从经典数据库列名A_COLUMN 到 aColumn的自动映射
+  aggressive-lazy-loading: true #字段是否懒加载 当为true的时候 懒加载的对象可能被任何懒属性加载，否则，每个属性按需加载，需要和lazyLoadingEnabled 一起使用
+  cache-enabled: true #全局开启或关闭配置文件中所有映射器已经配置的任何缓存，默认为true
+  call-setters-on-nulls: false #指定当结果集中值为null时是否调用映射对象的setter方法，解决当查询列值为null时造成的空指针异常
+
+
+

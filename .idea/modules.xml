@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/mediamanagesys-backend/mediamanagesys-backend.iml" filepath="$PROJECT_DIR$/mediamanagesys-backend/mediamanagesys-backend.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mediamanagesys-common/mediamanagesys-common.iml" filepath="$PROJECT_DIR$/mediamanagesys-common/mediamanagesys-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mediamanagesys-parent.iml" filepath="$PROJECT_DIR$/mediamanagesys-parent.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mediamanagesys-portal/mediamanagesys-portal.iml" filepath="$PROJECT_DIR$/mediamanagesys-portal/mediamanagesys-portal.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mediamanagesys-schdule/mediamanagesys-schdule.iml" filepath="$PROJECT_DIR$/mediamanagesys-schdule/mediamanagesys-schdule.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mediamanagesys-uc/mediamanagesys-uc.iml" filepath="$PROJECT_DIR$/mediamanagesys-uc/mediamanagesys-uc.iml" />
+    </modules>
+  </component>
+</project>

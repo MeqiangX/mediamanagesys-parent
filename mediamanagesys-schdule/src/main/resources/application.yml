@@ -1,0 +1,11 @@
+#port
+server:
+  port: 8083
+#mysql
+spring:
+  datasource: #数据源
+    url: jdbc:mysql://localhost:3306/mediamanagesys?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf-8
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
