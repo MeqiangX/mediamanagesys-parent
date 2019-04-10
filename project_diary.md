@@ -8,10 +8,9 @@
 
 
 | 计划  | 模块  | 详细 | 计划时间 | 进度 |
-| :------------ |:---------------:| -----:|
-| col 3 is      | some wordy text | $1600 |
-| col 2 is      | centered        |   $12 |
-| zebra stripes | are neat        |    $1 |
+| :------------ |:---------------:|:---------------:|:---------------:|-----:|
+| 电影详情 | 前台 | 电影详情 | 4/11 | 0% |
+
 
 
 ![](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTMg8zQZzTq4qfHMHn7tWuuZvRSNMlxN01gVgVzS6AmtU9bwfSkHQ)
