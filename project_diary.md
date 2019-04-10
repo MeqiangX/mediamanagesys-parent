@@ -6,7 +6,15 @@
 > 今日主要学习了SpringSecurity 在uc模块中整合，但是不太顺利，有点卡主，目前可以拦截认证以及权限拦截，算是一个开始，现在暂时想不出来
 ，打算明天先将前台模块接口先完善
 
----
+
+| Left-Aligned  | Center Aligned  | Right Aligned |
+| :------------ |:---------------:| -----:|
+| col 3 is      | some wordy text | $1600 |
+| col 2 is      | centered        |   $12 |
+| zebra stripes | are neat        |    $1 |
+
+
+![](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTMg8zQZzTq4qfHMHn7tWuuZvRSNMlxN01gVgVzS6AmtU9bwfSkHQ)
 
 
 | 计划 | 模块 | 详细 | 计划时间 | 进度 |  
@@ -24,6 +32,3 @@
 | 购票功能 | 前台 | 选场次购票 | 4/14 | 0% |
 
 | 待定 | 待定 | 待定 | 待定 | 待定 | 
-
-
-![](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTMg8zQZzTq4qfHMHn7tWuuZvRSNMlxN01gVgVzS6AmtU9bwfSkHQ)
