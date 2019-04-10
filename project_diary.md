@@ -7,7 +7,7 @@
 ，打算明天先将前台模块接口先完善
 
 
-| Left-Aligned  | Center Aligned  | Right Aligned |
+| 计划  | 模块  | 详细 | 计划时间 | 进度 |
 | :------------ |:---------------:| -----:|
 | col 3 is      | some wordy text | $1600 |
 | col 2 is      | centered        |   $12 |
