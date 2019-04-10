@@ -31,6 +31,14 @@ public interface API {
 
     String API_SCREEN = "api/backend/screen";
 
+
+
+    // -------- portal
+
+        // movie
+    String API_MOVIE = "api/portal/movie";
+
+
     /**
      * swagger2 tags
      */
@@ -49,6 +57,12 @@ public interface API {
     // ---------- backend
 
     String BACKEND_SCREEN = "后台-放映厅相关";
+
+
+    // ---------- portal
+
+    String PROTAL = "前台";
+    String PROTAL_MOVIE = "前台-电影相关";
 
 
 }

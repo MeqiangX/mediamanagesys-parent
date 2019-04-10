@@ -3,9 +3,15 @@ package com.mingkai.mediamanagesysuc.service;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.dtstack.plat.lang.exception.BizException;
 import com.google.common.base.Optional;
+import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
+import com.mingkai.mediamanagesyscommon.manager.RoleManager;
+import com.mingkai.mediamanagesyscommon.manager.UserRoleRelManager;
 import com.mingkai.mediamanagesyscommon.mapper.UserMapper;
+import com.mingkai.mediamanagesyscommon.model.Do.uc.RoleDo;
 import com.mingkai.mediamanagesyscommon.model.Do.uc.UserDO;
+import com.mingkai.mediamanagesyscommon.model.Do.uc.UserRoleRelDo;
+import com.mingkai.mediamanagesyscommon.model.Po.uc.UserRoleAddPo;
 import com.mingkai.mediamanagesysuc.commonUtil.CodeUtil;
 import com.mingkai.mediamanagesysuc.commonUtil.RedisUtil;
 import com.mingkai.mediamanagesysuc.enums.MessageEnum;
@@ -14,6 +20,7 @@ import com.mingkai.mediamanagesysuc.model.MailModel;
 import com.mingkai.mediamanagesysuc.pojo.po.LoginPo;
 import com.mingkai.mediamanagesysuc.pojo.po.MessagePo;
 import com.mingkai.mediamanagesysuc.pojo.po.RegisterPo;
+import org.apache.logging.log4j.util.Strings;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -35,6 +42,12 @@ public class UserService {
 
     @Autowired
     private UserMapper userMapper;
+
+    @Autowired
+    private RoleManager roleManager;
+
+    @Autowired
+    private UserRoleRelManager userRoleRelManager;
 
     @Autowired
     private RedisUtil redisUtil;
@@ -252,5 +265,69 @@ public class UserService {
             return true;
         }
         return false;
+    }
+
+
+    /**
+     * 给用户赋予角色
+     * @param userRoleAddPo
+     * @return
+     */
+    @Transactional
+    public Boolean addRoleToUser(UserRoleAddPo userRoleAddPo){
+
+        // 检查角色
+        UserDO userDO = userMapper.selectById(userRoleAddPo.getUserId());
+        if (Objects.isNull(userDO)){
+            throw new BizException("用户不存在");
+        }
+        // 不存在角色
+        List<RoleDo> roleDos = (List<RoleDo>)roleManager.listByIds(userRoleAddPo.getRoleIds());
+        List<Integer> notContainId = Lists.newArrayList();
+        if (roleDos.size() < userRoleAddPo.getRoleIds().size()){
+            for (Integer roleId : userRoleAddPo.getRoleIds()) {
+                if (!roleDos.contains(roleId)){
+                    notContainId.add(roleId);
+                }
+            }
+
+            throw new BizException("存在无效的角色信息：" + Strings.join(notContainId,','));
+        }
+
+        // 重复角色
+
+        // 查找用户已经有的角色
+        List<UserRoleRelDo> userRoleRelDoList = userRoleRelManager.list(new QueryWrapper<UserRoleRelDo>()
+                .eq("user_id", userRoleAddPo.getUserId()));
+
+        List<Integer> repeatRoles = Lists.newArrayList();
+
+        for (UserRoleRelDo userRoleRelDo : userRoleRelDoList) {
+            if (userRoleAddPo.getRoleIds().contains(userRoleRelDo.getRoleId())){
+                repeatRoles.add(userRoleRelDo.getRoleId());
+            }
+        }
+
+        if (Objects.nonNull(repeatRoles) && repeatRoles.size() > 0){
+            throw new BizException("含有重复角色：" + Strings.join(repeatRoles,','));
+        }
+
+        // 插入记录
+
+        List<UserRoleRelDo> insertList = Lists.newArrayList();
+
+        for (Integer roleId : userRoleAddPo.getRoleIds()) {
+
+            UserRoleRelDo userRoleRelDo = new UserRoleRelDo();
+            userRoleRelDo.setUserId(userRoleAddPo.getUserId());
+            userRoleRelDo.setRoleId(roleId);
+            insertList.add(userRoleRelDo);
+        }
+
+
+        // 执行插入
+        return userRoleRelManager.saveBatch(insertList);
+
+
     }
 }

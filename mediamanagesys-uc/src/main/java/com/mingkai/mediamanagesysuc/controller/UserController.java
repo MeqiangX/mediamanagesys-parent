@@ -5,6 +5,7 @@ import com.dtstack.plat.lang.exception.BizException;
 import com.dtstack.plat.lang.web.R;
 import com.dtstack.plat.lang.web.template.APITemplate;
 import com.mingkai.mediamanagesyscommon.common.API;
+import com.mingkai.mediamanagesyscommon.model.Po.uc.UserRoleAddPo;
 import com.mingkai.mediamanagesysuc.model.MailModel;
 import com.mingkai.mediamanagesysuc.pojo.po.LoginPo;
 import com.mingkai.mediamanagesysuc.pojo.po.MessagePo;
@@ -142,6 +143,24 @@ public class UserController {
             @Override
             protected Boolean process() throws BizException {
                 return userService.repeatName(userName);
+            }
+        }.execute();
+    }
+
+
+    @ApiOperation("给用户赋予角色")
+    @PostMapping("user-role-add")
+   // @PreAuthorize("hasPermission('front_user_default','测试权限') or hasRole('main_admin')")
+    public R<Boolean> addRoleToUser(UserRoleAddPo userRoleAddPo){
+        return new APITemplate<Boolean>() {
+            @Override
+            protected void checkParams() throws IllegalArgumentException {
+
+            }
+
+            @Override
+            protected Boolean process() throws BizException {
+                return userService.addRoleToUser(userRoleAddPo);
             }
         }.execute();
     }
