@@ -20,6 +20,8 @@
       (#{seat.screenArrangeId},#{seat.screeningHallX},#{seat.screeningHallY},#{seat.status},#{seat.isPurchased})
      </foreach>
 
+
+
     </insert>
 
 

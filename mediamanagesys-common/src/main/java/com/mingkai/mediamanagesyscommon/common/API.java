@@ -10,6 +10,10 @@ public interface API {
      * mapping
      */
 
+    // ------- common
+    String API_COMMON = "api/common";
+
+
     // ------- uc
 
 
@@ -43,7 +47,13 @@ public interface API {
      * swagger2 tags
      */
 
+    // ---------test
+
     String TEST = "接口测试";
+
+
+    // ----------common
+    String COMMON = "通用组";
 
     // ---------- uc
 

@@ -1,20 +1,15 @@
 package com.mingkai.mediamanagesyscommon.manager;
 
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.mingkai.mediamanagesyscommon.mapper.MovieDetailMapper;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import com.mingkai.mediamanagesyscommon.model.Do.movie.MovieDetailDo;
+import org.springframework.stereotype.Repository;
 
 /**
  * @description:
  * @author: Created by 云风 on 2019-04-03 15:41
  */
-@Component
-public class MovieDetailManager {
+@Repository
+public class MovieDetailManager extends ServiceImpl<MovieDetailMapper, MovieDetailDo> {
 
-    @Autowired
-    private MovieDetailMapper movieDetailMapper;
-
-    public MovieDetailMapper getMovieDetailMapper() {
-        return movieDetailMapper;
-    }
 }

@@ -38,6 +38,9 @@ public class SendDoubanRequestService {
     @Autowired
     private MovieTrailerMapper movieTrailerMapper;
 
+    @Autowired
+    private MovieRankMapper movieRankMapper;
+
     /**
      * 豆瓣电影本周口碑榜
      */
@@ -74,6 +77,97 @@ public class SendDoubanRequestService {
         Map map=restTemplate.getForObject(url,Map.class);
         return map;
     }
+
+
+    /**
+     * 清空表数据
+     * @param tableName
+     * @return
+     */
+    public Boolean clearData(String tableName){
+       return movieRankMapper.dynamicSqlExcute(tableName);
+    }
+
+    /**
+     * 保存到榜单
+     * @param tableName
+     * @param movieId
+     * @return
+     */
+    public Boolean saveRank(String tableName,String movieId){
+
+        //先要 插入到详情表
+        MovieDetailDo movie = getModelFromApi(movieId);
+
+        save(movieId,movie);
+
+        // 然后插入到tableName
+
+        // 跑个定时任务 每日将6个榜单的数据清空
+
+        //这个插入的 定时任务在 清空之后跑
+
+        return  movieRankMapper.insertIntoTable(tableName,movie);
+
+    }
+
+
+    /**
+     * 周榜查询ids
+     * @return
+     */
+    public List<String> weekRankQuery(){
+        List<String> weekRankMovieIds = Lists.newArrayList();
+
+        Map weekRankMap = this.sentHttpRequest(this.WeekRankUrl);
+
+        List<Map> weekRankList = ((List)weekRankMap.get("subjects"));
+
+        for (Map map : weekRankList) {
+            weekRankMovieIds.add(((Map)map.get("subject")).get("id").toString());
+        }
+
+        return weekRankMovieIds;
+    }
+
+
+    /**
+     * 北美票房榜
+     * @return
+     */
+    public List<String> northAmericaRankQuery(){
+        List<String> northAmericaRankMovieIds = Lists.newArrayList();
+
+        Map northAmericaRankMap = this.sentHttpRequest(this.NorthAmericaRankUrl);
+
+        List<Map> northAmericaRankList = (List<Map>) northAmericaRankMap.get("subjects");
+
+        for (Map map : northAmericaRankList) {
+            northAmericaRankMovieIds.add(((Map)map.get("subject")).get("id").toString());
+        }
+
+        return northAmericaRankMovieIds;
+    }
+
+
+    /**
+     * 新片榜
+     * @return
+     */
+    public List<String> newRankQuery(){
+        List<String> newRankMovieIds = Lists.newArrayList();
+
+        Map newRankMap = this.sentHttpRequest(this.NewRankUrl);
+
+        List<Map> newRankList = (List<Map>) newRankMap.get("subjects");
+
+        for (Map map : newRankList) {
+            newRankMovieIds.add(map.get("id").toString());
+        }
+
+        return newRankMovieIds;
+    }
+
 
     /**
      * 不带城市的 查询
@@ -135,6 +229,70 @@ public class SendDoubanRequestService {
 
         return Lists.newArrayList(noRepeatIds);
 
+    }
+
+
+    /**
+     * 正在热映
+     * @param city
+     * @param start
+     * @param count
+     * @return
+     */
+    public List<String> nowRankQuery(String city,int start,int count){
+        List<String> nowRankMovieIds = Lists.newArrayList();
+
+        Map nowRankMap = this.sentHttpRequest(nowRankUrl + "&city=" + city + "&start=" + start + "&count=" + count);
+
+        List<Map> nowRankList = ((List)nowRankMap.get("subjects"));
+
+        for (Map map : nowRankList) {
+            nowRankMovieIds.add((map.get("id")).toString());
+        }
+
+        return nowRankMovieIds;
+    }
+
+    /**
+     * 即将上映
+     * @param city
+     * @param start
+     * @param count
+     * @return
+     */
+    public List<String> comingRankQuery(String city,int start,int count){
+        List<String> comingRankMovieIds = Lists.newArrayList();
+
+        Map comingRankMap = this.sentHttpRequest(ComingRankUrl + "&city=" + city + "&start=" + start + "&count=" + count);
+
+        List<Map> comingRankList = (List<Map>) comingRankMap.get("subjects");
+
+        for (Map map : comingRankList) {
+            comingRankMovieIds.add((map.get("id")).toString());
+        }
+
+        return comingRankMovieIds;
+    }
+
+    /**
+     * TOP250
+     * @param city
+     * @param start
+     * @param count
+     * @return
+     */
+    public List<String> top250RankQuery(String city,int start,int count){
+        List<String> top250MovieIds = Lists.newArrayList();
+
+        Map top250Map = this.sentHttpRequest(Top250Url + "&city=" + city + "&start=" + start + "&count=" + count);
+
+        List<Map> top250List = (List<Map>) top250Map.get("subjects");
+
+        for (Map map : top250List) {
+            top250MovieIds.add(map.get("id").toString());
+        }
+
+        return top250MovieIds;
     }
 
     /**
@@ -238,7 +396,7 @@ public class SendDoubanRequestService {
             ArrayList<String> noRepeatList = Lists.newArrayList(noRepeatSet);
 
             for (String id : noRepeatList) {
-                save(id);
+                save(id,getModelFromApi(id));
             }
         }catch (Exception e){
             throw new BizException("未知错误",e);
@@ -254,11 +412,9 @@ public class SendDoubanRequestService {
      * @param movieId
      * @return
      */
-    public Boolean save(String movieId){
-        Map map = sentHttpRequest("https://api.douban.com/v2/movie/subject/"+movieId+"?apikey=0b2bdeda43b5688921839c8ecb20399b");
+    public Boolean save(String movieId,MovieDetailDo movieDetailDo){
 
         // id 首先去查找 电影详情表中是否已经存在 当前记录
-
         MovieDetailDo movieDetail = movieDetailMapper.selectOne(new QueryWrapper<MovieDetailDo>()
         .eq("movie_id",movieId));
 
@@ -267,9 +423,16 @@ public class SendDoubanRequestService {
             return false;
         }
 
+        return 1 == movieDetailMapper.insert(movieDetailDo);
+    }
+
+
+    public MovieDetailDo getModelFromApi(String movieId){
+
+        Map map = sentHttpRequest("https://api.douban.com/v2/movie/subject/"+movieId+"?apikey=0b2bdeda43b5688921839c8ecb20399b");
 
         // 否则  插入
-        movieDetail = new MovieDetailDo();
+        MovieDetailDo movieDetail = new MovieDetailDo();
         movieDetail.setMovieId(movieId);
         // 根据key 来取值 eg : rating -> 下面也是一个LinkedHashMap  取 average 为评分
 
@@ -496,10 +659,7 @@ public class SendDoubanRequestService {
         List<String> akaList = (List)map.get("aka");
         movieDetail.setAnotherName(String.join(",",akaList));
 
-        //插入记录
-        movieDetailMapper.insert(movieDetail);
-
-        return true;
+        return movieDetail;
     }
 
 }
