@@ -1,6 +1,5 @@
 package com.mingkai.mediamanagesyscommon.model.Do.movie;
 
-import com.baomidou.mybatisplus.annotation.TableName;
 import com.mingkai.mediamanagesyscommon.model.Do.base.BaseDo;
 import lombok.Data;
 
@@ -9,7 +8,6 @@ import lombok.Data;
  * @author: Created by 云风 on 2019-04-11 11:14
  */
 @Data
-@TableName("mesys_movie_hot_rank")
 public class MovieRankDo extends BaseDo {
 
     private String movieId;

@@ -1,9 +1,14 @@
 package com.mingkai.mediamanagesysportal.service;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.dtstack.plat.lang.exception.BizException;
+import com.mingkai.mediamanagesyscommon.common.MovieRankEnum;
 import com.mingkai.mediamanagesyscommon.manager.MovieDetailManager;
+import com.mingkai.mediamanagesyscommon.mapper.MovieRankMapper;
 import com.mingkai.mediamanagesyscommon.model.Do.movie.MovieDetailDo;
+import com.mingkai.mediamanagesyscommon.model.Do.movie.MovieRankDo;
+import com.mingkai.mediamanagesyscommon.model.Po.movie.MovieRankPagePo;
 import com.mingkai.mediamanagesyscommon.model.Vo.movie.MovieVo;
 import com.mingkai.mediamanagesyscommon.utils.convert.ConvertUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +26,9 @@ public class MovieService {
     @Autowired
     private MovieDetailManager movieDetailManager;
 
+    @Autowired
+    private MovieRankMapper movieRankMapper;
+
     /**
      * 通过movieId 查找电影详情
      * @param id
@@ -36,6 +44,22 @@ public class MovieService {
         }
 
         return ConvertUtil.convert(movieDo,MovieVo.class);
+    }
+
+    /**
+     *  查询榜单  分页 条件 排序
+     * @param movieRankPagePo
+     * @return
+     */
+    public Page<MovieVo> movieRank(MovieRankPagePo movieRankPagePo){
+
+        //表名
+        movieRankPagePo.setTableName(MovieRankEnum.getMovieRankEnum(movieRankPagePo.getRankType()).getTableName());
+
+        Page<MovieRankDo> movieDetailDos = movieRankMapper.selectMovieRanksByPage(movieRankPagePo);
+
+        return ConvertUtil.pageConvert(movieDetailDos,MovieVo.class);
+
     }
 
 }

@@ -1,12 +1,11 @@
 package com.mingkai.mediamanagesyscommon.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.mingkai.mediamanagesyscommon.model.Do.movie.MovieDetailDo;
 import com.mingkai.mediamanagesyscommon.model.Do.movie.MovieRankDo;
-import org.apache.ibatis.annotations.Delete;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
+import com.mingkai.mediamanagesyscommon.model.Po.movie.MovieRankPagePo;
+import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -39,6 +38,16 @@ public interface MovieRankMapper extends BaseMapper<MovieRankDo> {
             "#{movieDetailDo.anotherName},#{movieDetailDo.pubdates},#{movieDetailDo.languages}," +
             "#{movieDetailDo.writers},#{movieDetailDo.tags},#{movieDetailDo.duration})")
     Boolean insertIntoTable(@Param("tableName") String tableName, @Param("movieDetailDo") MovieDetailDo movieDetailDo);
+
+
+    // 针对非baseMapper 无法自动分页的 情况 无需 这里 只有有Page 就会自动分页
+/*
+    @Select("select count(1) from ${movieRankPagePo.tableName}")
+    Integer selectMovieRankCount(@Param("movieRankPagePo") MovieRankPagePo movieRankPagePo);*/
+
+
+    //@Select("select * from ${movieRankPagePo.tableName}")
+    Page<MovieRankDo> selectMovieRanksByPage(@Param("movieRankPagePo") MovieRankPagePo movieRankPagePo);
 
 
 }

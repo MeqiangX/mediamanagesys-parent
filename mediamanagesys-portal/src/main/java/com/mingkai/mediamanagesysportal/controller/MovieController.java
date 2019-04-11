@@ -1,16 +1,21 @@
 package com.mingkai.mediamanagesysportal.controller;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.dtstack.plat.lang.base.Checks;
 import com.dtstack.plat.lang.exception.BizException;
 import com.dtstack.plat.lang.web.R;
 import com.dtstack.plat.lang.web.template.APITemplate;
 import com.mingkai.mediamanagesyscommon.common.API;
+import com.mingkai.mediamanagesyscommon.model.Po.movie.MovieRankPagePo;
 import com.mingkai.mediamanagesyscommon.model.Vo.movie.MovieVo;
 import com.mingkai.mediamanagesysportal.service.MovieService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  * @description:
@@ -56,6 +61,22 @@ public class MovieController {
         }.execute();
     }
 
+
+    @ApiOperation("电影榜单")
+    @GetMapping("movie-rank")
+    public R<Page<MovieVo>> movieRank(MovieRankPagePo movieRankPagePo){
+        return new APITemplate<Page<MovieVo>>() {
+            @Override
+            protected void checkParams() throws IllegalArgumentException {
+
+            }
+
+            @Override
+            protected Page<MovieVo> process() throws BizException {
+                return movieService.movieRank(movieRankPagePo);
+            }
+        }.execute();
+    }
 
 
 }

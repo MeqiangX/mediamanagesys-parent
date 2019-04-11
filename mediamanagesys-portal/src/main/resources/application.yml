@@ -11,3 +11,14 @@ spring:
   jackson:
     date-format: yyyy-MM-dd HH:mm:ss
     time-zone: GMT+8
+#log
+logging:
+  level:
+    com:
+      mingkai:
+        mediamanagesyscommon:
+          mapper: debug
+mybatis-plus:
+  mapper-locations: classpath*:/mapper/*Mapper.xml
+  configuration:
+    map-underscore-to-camel-case: false
