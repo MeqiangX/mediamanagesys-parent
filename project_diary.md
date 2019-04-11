@@ -33,5 +33,4 @@
 | 购票功能 | 前台 | 选场次购票 | 4/14 | 0% |
 | 待定 | 待定 | 待定 | 待定 | 待定 |
 
-![]()
-<img src="http://wx4.sinaimg.cn/large/7280659bgy1ffyvv5vlk2j20hs0hs406.jpg" width=100 height=100/>
+<img src="http://wx4.sinaimg.cn/large/7280659bgy1ffyvv5vlk2j20hs0hs406.jpg" width=300 height=200/>
