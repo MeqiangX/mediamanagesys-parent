@@ -24,6 +24,10 @@
             <artifactId>mediamanagesys-common</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>white.fisher</groupId>
+            <artifactId>alipay-starter</artifactId>
+        </dependency>
     </dependencies>
 
     <build>

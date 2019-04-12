@@ -46,6 +46,8 @@ public interface API {
 
     String API_ORDER = "api/portal/order";
 
+    String API_ALIPAY = "api/protal/alipay";
+
     /**
      * swagger2 tags
      */
@@ -77,6 +79,7 @@ public interface API {
     String PROTAL = "前台";
     String PROTAL_MOVIE = "前台-电影相关";
     String PROTAL_ORDER = "前台-订单相关";
+    String PROTAL_ALIPAY = "前台-支付";
 
 
 }

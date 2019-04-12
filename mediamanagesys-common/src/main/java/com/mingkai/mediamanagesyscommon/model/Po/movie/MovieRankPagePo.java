@@ -19,4 +19,9 @@ public class MovieRankPagePo extends Page {
     @ApiModelProperty(name = "rankType",value = "榜单类型(详情见MovieRankEnum)")
     private String rankType;
 
+
+    // 排序 按出版时间 按热门  按评分 按时长
+
+    // 筛选条件：  类型 区域 年代
+
 }
