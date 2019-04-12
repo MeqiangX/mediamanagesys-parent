@@ -12,10 +12,16 @@ import java.math.BigDecimal;
  */
 @ApiModel("排片PO")
 @Data
-public class ScreenArrangePo {
+public class MovieArrangePo {
 
-    @ApiModelProperty(name = "screenHallId",value = "放映厅Id")
+    @ApiModelProperty(name = "cinemaId",value = "影院id",example = "1")
+    private Integer cinemaId;
+
+    @ApiModelProperty(name = "screenHallId",value = "放映厅id",example = "1")
     private Integer screenHallId;
+
+    @ApiModelProperty(name = "cinemaScreenId",value = "影院放映厅relId",example = "1",hidden = true)
+    private Integer cinemaScreenId;
 
     @ApiModelProperty(name = "date",value = "日期")
     private String date;

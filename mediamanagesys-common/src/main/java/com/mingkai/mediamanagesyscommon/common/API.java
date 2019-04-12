@@ -35,6 +35,8 @@ public interface API {
 
     String API_SCREEN = "api/backend/screen";
 
+    String API_CINEMA = "api/backend/cinema";
+
 
 
     // -------- portal
@@ -67,7 +69,7 @@ public interface API {
     // ---------- backend
 
     String BACKEND_SCREEN = "后台-放映厅相关";
-
+    String BACKEND_CINEMA = "后台-影院相关";
 
     // ---------- portal
 

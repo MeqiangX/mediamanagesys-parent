@@ -77,6 +77,7 @@ public interface AreaMapper {
     List<City> selectCitysByName(@Param("fatherId") Integer fatherId,@Param("cityName") String cityName);
 
 
+
     // ---------------area
 
     /**
@@ -108,5 +109,7 @@ public interface AreaMapper {
             "</if>" +
             "</script>")
     List<Area> selectAreasByName(@Param("fatherId") Integer fatherId,@Param("areaName") String areaName);
+
+
 
 }

@@ -3,7 +3,6 @@ package com.mingkai.mediamanagesysbackend.controller.screen;
 import com.dtstack.plat.lang.exception.BizException;
 import com.dtstack.plat.lang.web.R;
 import com.dtstack.plat.lang.web.template.APITemplate;
-import com.mingkai.mediamanagesysbackend.model.PO.ScreenArrangePo;
 import com.mingkai.mediamanagesysbackend.model.PO.ScreenRoomAddPo;
 import com.mingkai.mediamanagesysbackend.service.screen.ScreenService;
 import com.mingkai.mediamanagesyscommon.common.API;
@@ -41,7 +40,7 @@ public class ScreenHallController {
         }.execute();
     }
 
-    @ApiOperation("测试添加放映厅")
+    @ApiOperation("添加放映厅")
     @PostMapping("add-screen-room")
     public R<Boolean> addScreenRoom(@RequestBody ScreenRoomAddPo screenRoomAddPo){
         return new APITemplate<Boolean>() {
@@ -57,21 +56,5 @@ public class ScreenHallController {
         }.execute();
     }
 
-    @ApiOperation("测试排片")
-    @PostMapping("arrange-movie")
-    public R<Boolean> arrangeMovie(@RequestBody ScreenArrangePo screenArrangePo){
-        return new APITemplate<Boolean>() {
-            @Override
-            protected void checkParams() throws IllegalArgumentException {
-
-            }
-
-            @Override
-            protected Boolean process() throws BizException {
-                return screenService.arrangeMovie(screenArrangePo);
-            }
-        }.execute();
-
-    }
 
 }

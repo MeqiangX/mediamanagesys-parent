@@ -31,7 +31,7 @@ public class Swagger2Config {
 
     private ApiInfo apiInfo(){
         return new ApiInfoBuilder()
-                .title("SpringBoot整合Swagger2 来实现RestFul Apis")
+                .title("后台 RestFul Apis")
                 .description("整合测试 调试接口")
                 .termsOfServiceUrl("www.baidu.com")
                 .contact("Meqiang")

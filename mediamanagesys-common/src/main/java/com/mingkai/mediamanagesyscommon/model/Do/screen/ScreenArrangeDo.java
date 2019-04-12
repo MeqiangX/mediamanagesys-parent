@@ -14,7 +14,7 @@ import java.math.BigDecimal;
 @TableName("mesys_screen_arrange")
 public class ScreenArrangeDo extends BaseDo {
 
-    private Integer screeningHallId;
+    private Integer cinemaScreenId;
 
     private String movieId;
 

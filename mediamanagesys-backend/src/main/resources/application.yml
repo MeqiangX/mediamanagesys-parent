@@ -11,3 +11,11 @@ spring:
 #mybatis
 mybatis-plus:
   mapper-locations: classpath*:/mapper/*Mapper.xml
+
+#logging
+logging:
+  level:
+    com:
+      mingkai:
+        mediamanagesyscommon:
+          mapper: debug
