@@ -44,6 +44,7 @@ public interface API {
         // movie
     String API_MOVIE = "api/portal/movie";
 
+    String API_ORDER = "api/portal/order";
 
     /**
      * swagger2 tags
@@ -75,6 +76,7 @@ public interface API {
 
     String PROTAL = "前台";
     String PROTAL_MOVIE = "前台-电影相关";
+    String PROTAL_ORDER = "前台-订单相关";
 
 
 }

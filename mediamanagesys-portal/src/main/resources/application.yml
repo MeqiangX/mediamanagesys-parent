@@ -21,4 +21,4 @@ logging:
 mybatis-plus:
   mapper-locations: classpath*:/mapper/*Mapper.xml
   configuration:
-    map-underscore-to-camel-case: false
+    map-underscore-to-camel-case: true

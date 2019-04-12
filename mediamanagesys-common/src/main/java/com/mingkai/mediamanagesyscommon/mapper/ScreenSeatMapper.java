@@ -18,6 +18,5 @@ public interface ScreenSeatMapper extends BaseMapper<ScreenSeatDo> {
 
     Integer insertBatch(@Param("seatList") List<ScreenSeatDo> seatList);
 
-    Integer selectTest();
 
 }

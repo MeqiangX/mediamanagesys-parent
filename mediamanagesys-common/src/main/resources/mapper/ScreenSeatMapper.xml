@@ -20,14 +20,6 @@
       (#{seat.screenArrangeId},#{seat.screeningHallX},#{seat.screeningHallY},#{seat.status},#{seat.isPurchased})
      </foreach>
 
-
-
     </insert>
-
-
-    <select id="selectTest" resultType="java.lang.Integer">
-      select count(1) from
-      <include refid="bast_table"/>
-    </select>
 
 </mapper>
