@@ -21,6 +21,11 @@ public class MovieRankPagePo extends Page {
 
 
     // 排序 按出版时间 按热门  按评分 按时长
+    @ApiModelProperty(name = "orderColumn",value = "排序字段",example = "create_time")
+    private String orderColumn;
+
+    @ApiModelProperty(name = "orderType",value = "排序类型ASC/DESC",example = "DESC")
+    private String orderType;
 
     // 筛选条件：  类型 区域 年代
 

@@ -1,4 +1,4 @@
-package com.mingkai.mediamanagesysbackend.controller;
+package com.mingkai.mediamanagesysbackend.controller.user;
 
 import com.dtstack.plat.lang.exception.BizException;
 import com.dtstack.plat.lang.web.R;
@@ -11,17 +11,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * @description:
- * @author: Created by 云风 on 2019-04-03 16:15
+ * @description: 后台-用户管理
+ * @author: Created by 云风 on 2019-04-15 10:06
  */
 @RestController
-@RequestMapping(API.API_TEST)
-@Api(tags = API.TEST)
-public class TestController {
+@RequestMapping(API.API_USERMANAGE)
+@Api(tags = API.BACKEND_USER)
+public class UserManageController {
 
-    @ApiOperation("接口测试")
-    @GetMapping("test")
-    public R<Boolean> test(){
+    @ApiOperation("后台-用户测试")
+    @GetMapping("backend-user")
+    public R<Boolean> backendUser(){
         return new APITemplate<Boolean>() {
             @Override
             protected void checkParams() throws IllegalArgumentException {
@@ -30,7 +30,7 @@ public class TestController {
 
             @Override
             protected Boolean process() throws BizException {
-                return new Boolean(true);
+                return Boolean.TRUE;
             }
         }.execute();
     }

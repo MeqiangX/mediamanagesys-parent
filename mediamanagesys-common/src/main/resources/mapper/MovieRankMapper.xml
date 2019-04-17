@@ -9,5 +9,8 @@
     <select id="selectMovieRanksByPage"
             resultType="com.mingkai.mediamanagesyscommon.model.Do.movie.MovieRankDo">
         select * from ${movieRankPagePo.tableName}
+            <if test="movieRankPagePo.orderColumn != null and movieRankPagePo.orderColumn != '' and movieRankPagePo.orderType != null and movieRankPagePo.orderType != ''">
+                order by ${movieRankPagePo.orderColumn} ${movieRankPagePo.orderType}
+            </if>
     </select>
 </mapper>

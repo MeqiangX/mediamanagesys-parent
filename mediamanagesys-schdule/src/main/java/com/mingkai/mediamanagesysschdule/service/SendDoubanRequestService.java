@@ -370,7 +370,7 @@ public class SendDoubanRequestService {
          * 1 正在热映
          * https://api.douban.com/v2/movie/in_theaters?apikey=0b2bdeda43b5688921839c8ecb20399b&city=%E5%8C%97%E4%BA%AC&start=0&count=100&client=&udid=
          *
-         * 2 即将上映
+         * 2 即将上
          * https://api.douban.com/v2/movie/coming_soon?apikey=0b2bdeda43b5688921839c8ecb20399b&city=%E5%8C%97%E4%BA%AC&start=0&count=100&client=&udid=
          *
          * 3 TOP250

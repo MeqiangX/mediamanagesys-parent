@@ -37,7 +37,9 @@ public interface API {
 
     String API_CINEMA = "api/backend/cinema";
 
+    String API_USERMANAGE = "api/backend/usermanage";
 
+    String API_ORDERMANAGE = "api/backend/ordermanage";
 
     // -------- portal
 
@@ -73,6 +75,8 @@ public interface API {
 
     String BACKEND_SCREEN = "后台-放映厅相关";
     String BACKEND_CINEMA = "后台-影院相关";
+    String BACKEND_USER = "后台-用户管理";
+    String BACKEND_ORDER = "后台-订单管理";
 
     // ---------- portal
 
