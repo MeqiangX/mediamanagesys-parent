@@ -1,9 +1,14 @@
 package com.mingkai.mediamanagesyscommon.model.Vo.movie;
 
+import com.mingkai.mediamanagesyscommon.model.Do.movie.MovieCastDo;
+import com.mingkai.mediamanagesyscommon.model.Do.movie.MovieDirectorDo;
+import com.mingkai.mediamanagesyscommon.model.Do.movie.MovieWriterDo;
 import com.mingkai.mediamanagesyscommon.model.Vo.base.BaseVo;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
+
+import java.util.List;
 
 /**
  * @description:
@@ -37,8 +42,15 @@ public class MovieVo extends BaseVo {
     @ApiModelProperty(name = "directors",value = "导演")
     private String directors;
 
+    @ApiModelProperty(name = "directorList",value = "导演List")
+    private List<MovieDirectorDo> directorList;
+
+
     @ApiModelProperty(name = "casts",value = "主演")
     private String casts;
+
+    @ApiModelProperty(name = "castList",value = "主演List")
+    private List<MovieCastDo> castList;
 
     @ApiModelProperty(name = "year",value = "上映年份")
     private String year;
@@ -60,6 +72,9 @@ public class MovieVo extends BaseVo {
 
     @ApiModelProperty(name = "writers",value = "编剧")
     private String writers;
+
+    @ApiModelProperty(name = "writerList",value = "编剧List")
+    private List<MovieWriterDo> writerList;
 
     @ApiModelProperty(name = "tags",value = "标签")
     private String tags;
