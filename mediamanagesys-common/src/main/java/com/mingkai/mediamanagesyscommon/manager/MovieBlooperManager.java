@@ -1,7 +1,8 @@
 package com.mingkai.mediamanagesyscommon.manager;
 
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.mingkai.mediamanagesyscommon.mapper.MovieBlooperMapper;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.mingkai.mediamanagesyscommon.model.Do.movie.MovieBlooperDo;
 import org.springframework.stereotype.Component;
 
 /**
@@ -9,12 +10,6 @@ import org.springframework.stereotype.Component;
  * @author: Created by 云风 on 2019-04-03 15:38
  */
 @Component
-public class MovieBlooperManager {
+public class MovieBlooperManager extends ServiceImpl<MovieBlooperMapper, MovieBlooperDo> {
 
-    @Autowired
-    private MovieBlooperMapper movieBlooperMapper;
-
-    public MovieBlooperMapper getMovieBlooperMapper() {
-        return movieBlooperMapper;
-    }
 }

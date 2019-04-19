@@ -6,7 +6,10 @@ import com.dtstack.plat.lang.exception.BizException;
 import com.dtstack.plat.lang.web.R;
 import com.dtstack.plat.lang.web.template.APITemplate;
 import com.mingkai.mediamanagesyscommon.common.API;
+import com.mingkai.mediamanagesyscommon.model.Po.movie.MoviePagePo;
 import com.mingkai.mediamanagesyscommon.model.Po.movie.MovieRankPagePo;
+import com.mingkai.mediamanagesyscommon.model.Vo.movie.MovieBlooperVo;
+import com.mingkai.mediamanagesyscommon.model.Vo.movie.MovieTrailerVo;
 import com.mingkai.mediamanagesyscommon.model.Vo.movie.MovieVo;
 import com.mingkai.mediamanagesysportal.service.MovieService;
 import io.swagger.annotations.Api;
@@ -16,6 +19,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 /**
  * @description:
@@ -78,5 +83,53 @@ public class MovieController {
         }.execute();
     }
 
+    @ApiOperation("电影页")
+    @GetMapping("movie-page")
+    public R<Page<MovieVo>> moviePage(MoviePagePo moviePagePo){
+        return new APITemplate<Page<MovieVo>>() {
+            @Override
+            protected void checkParams() throws IllegalArgumentException {
+
+            }
+
+            @Override
+            protected Page<MovieVo> process() throws BizException {
+                return movieService.moviePage(moviePagePo);
+            }
+        }.execute();
+    }
+
+
+    @ApiOperation("得到电影的预告片")
+    @GetMapping("movie-trailers/{movieId}")
+    public R<List<MovieTrailerVo>> movieTrailers(@PathVariable String movieId){
+        return new APITemplate<List<MovieTrailerVo>>() {
+            @Override
+            protected void checkParams() throws IllegalArgumentException {
+
+            }
+
+            @Override
+            protected List<MovieTrailerVo> process() throws BizException {
+                return movieService.movieTrailers(movieId);
+            }
+        }.execute();
+    }
+
+    @ApiOperation("得到电影的花絮")
+    @GetMapping("movie-bloopers/{movieId}")
+    public R<List<MovieBlooperVo>> movieBloopers(@PathVariable String movieId){
+        return new APITemplate<List<MovieBlooperVo>>() {
+            @Override
+            protected void checkParams() throws IllegalArgumentException {
+
+            }
+
+            @Override
+            protected List<MovieBlooperVo> process() throws BizException {
+                return movieService.movieBloopers(movieId);
+            }
+        }.execute();
+    }
 
 }

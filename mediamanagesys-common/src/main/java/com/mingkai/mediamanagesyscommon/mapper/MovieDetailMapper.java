@@ -2,7 +2,9 @@ package com.mingkai.mediamanagesyscommon.mapper;
 
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.mingkai.mediamanagesyscommon.model.Do.movie.MovieDetailDo;
+import com.mingkai.mediamanagesyscommon.model.Po.movie.MoviePagePo;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
@@ -29,5 +31,8 @@ public interface MovieDetailMapper extends BaseMapper<MovieDetailDo> {
 
     @Select("select * from mesys_movie_detail where is_deleted = 0 and movie_id = #{movieId}")
     MovieDetailDo selectByMovieId(@Param("movieId") String movieId);
+
+
+    Page<MovieDetailDo> moviePage(@Param("moviePagePo") MoviePagePo moviePagePo);
 
 }

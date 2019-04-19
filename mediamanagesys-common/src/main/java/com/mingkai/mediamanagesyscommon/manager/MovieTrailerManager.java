@@ -1,7 +1,8 @@
 package com.mingkai.mediamanagesyscommon.manager;
 
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.mingkai.mediamanagesyscommon.mapper.MovieTrailerMapper;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.mingkai.mediamanagesyscommon.model.Do.movie.MovieTrailerDo;
 import org.springframework.stereotype.Component;
 
 /**
@@ -9,12 +10,6 @@ import org.springframework.stereotype.Component;
  * @author: Created by 云风 on 2019-04-03 15:43
  */
 @Component
-public class MovieTrailerManager {
+public class MovieTrailerManager extends ServiceImpl<MovieTrailerMapper, MovieTrailerDo> {
 
-    @Autowired
-    private MovieTrailerMapper movieTrailerMapper;
-
-    public MovieTrailerMapper getMovieTrailerMapper() {
-        return movieTrailerMapper;
-    }
 }

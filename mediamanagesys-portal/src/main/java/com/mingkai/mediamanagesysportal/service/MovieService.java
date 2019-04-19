@@ -4,13 +4,13 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.dtstack.plat.lang.exception.BizException;
 import com.mingkai.mediamanagesyscommon.common.MovieRankEnum;
-import com.mingkai.mediamanagesyscommon.manager.MovieCastManager;
-import com.mingkai.mediamanagesyscommon.manager.MovieDetailManager;
-import com.mingkai.mediamanagesyscommon.manager.MovieDirectorManager;
-import com.mingkai.mediamanagesyscommon.manager.MovieWriterManager;
+import com.mingkai.mediamanagesyscommon.manager.*;
 import com.mingkai.mediamanagesyscommon.mapper.MovieRankMapper;
 import com.mingkai.mediamanagesyscommon.model.Do.movie.*;
+import com.mingkai.mediamanagesyscommon.model.Po.movie.MoviePagePo;
 import com.mingkai.mediamanagesyscommon.model.Po.movie.MovieRankPagePo;
+import com.mingkai.mediamanagesyscommon.model.Vo.movie.MovieBlooperVo;
+import com.mingkai.mediamanagesyscommon.model.Vo.movie.MovieTrailerVo;
 import com.mingkai.mediamanagesyscommon.model.Vo.movie.MovieVo;
 import com.mingkai.mediamanagesyscommon.utils.convert.ConvertUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,6 +40,12 @@ public class MovieService {
 
     @Autowired
     private MovieCastManager movieCastManager;
+
+    @Autowired
+    private MovieTrailerManager movieTrailerManager;
+
+    @Autowired
+    private MovieBlooperManager movieBlooperManager;
 
     /**
      * 通过movieId 查找电影详情
@@ -95,11 +101,45 @@ public class MovieService {
     }
 
 
+    /**
+     * 电影预告片
+     * @param movieId
+     * @return
+     */
+    public List<MovieTrailerVo> movieTrailers(String movieId){
+
+        List<MovieTrailerDo> movieTrailerDoList = movieTrailerManager.list(new QueryWrapper<MovieTrailerDo>()
+                .eq("movie_id", movieId));
+
+        return ConvertUtil.listConvert(movieTrailerDoList,MovieTrailerVo.class);
+
+    }
 
 
+    /**
+     * 电影花絮
+     * @param movieId
+     * @return
+     */
+    public List<MovieBlooperVo> movieBloopers(String movieId){
+        List<MovieBlooperDo> movieBlooperDos = movieBlooperManager.list(new QueryWrapper<MovieBlooperDo>()
+                .eq("movie_id", movieId));
+        return ConvertUtil.listConvert(movieBlooperDos,MovieBlooperVo.class);
+    }
 
 
+    /**
+     * 电影页
+     * @param moviePagePo
+     * @return
+     */
+    public Page<MovieVo> moviePage(MoviePagePo moviePagePo){
 
+        Page<MovieDetailDo> movieDetailDoPage = movieDetailManager.getBaseMapper().moviePage(moviePagePo);
+
+        return ConvertUtil.pageConvert(movieDetailDoPage,MovieVo.class);
+
+    }
 
 
 }
