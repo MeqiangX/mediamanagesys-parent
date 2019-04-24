@@ -4,9 +4,11 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.dtstack.plat.lang.exception.BizException;
 import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
 import com.mingkai.mediamanagesysbackend.model.PO.MovieArrangePo;
 import com.mingkai.mediamanagesyscommon.manager.CinemaManager;
 import com.mingkai.mediamanagesyscommon.manager.CinemaScreenManager;
+import com.mingkai.mediamanagesyscommon.manager.MovieCastManager;
 import com.mingkai.mediamanagesyscommon.manager.ScreenSeatManager;
 import com.mingkai.mediamanagesyscommon.mapper.MovieDetailMapper;
 import com.mingkai.mediamanagesyscommon.mapper.ScreenArrangeMapper;
@@ -14,6 +16,7 @@ import com.mingkai.mediamanagesyscommon.mapper.ScreenRoomMapper;
 import com.mingkai.mediamanagesyscommon.mapper.common.AreaMapper;
 import com.mingkai.mediamanagesyscommon.model.Do.cinema.CinemaDo;
 import com.mingkai.mediamanagesyscommon.model.Do.cinema.CinemaScreenDo;
+import com.mingkai.mediamanagesyscommon.model.Do.movie.MovieCastDo;
 import com.mingkai.mediamanagesyscommon.model.Do.movie.MovieDetailDo;
 import com.mingkai.mediamanagesyscommon.model.Do.screen.ScreenArrangeDo;
 import com.mingkai.mediamanagesyscommon.model.Do.screen.ScreenRoomDo;
@@ -21,12 +24,16 @@ import com.mingkai.mediamanagesyscommon.model.Do.screen.ScreenSeatDo;
 import com.mingkai.mediamanagesyscommon.model.Po.cinema.CinemaAddPo;
 import com.mingkai.mediamanagesyscommon.model.Po.cinema.CinemaPagePo;
 import com.mingkai.mediamanagesyscommon.model.Po.cinema.CinemaScreenUpdatePo;
+import com.mingkai.mediamanagesyscommon.model.Po.cinema.CinemaSearchPo;
 import com.mingkai.mediamanagesyscommon.model.Vo.cinema.CinemaVo;
+import com.mingkai.mediamanagesyscommon.model.Vo.cinema.MovieArgUnderCinemaVo;
+import com.mingkai.mediamanagesyscommon.model.Vo.cinema.MovieArrangeVo;
 import com.mingkai.mediamanagesyscommon.model.common.Area;
 import com.mingkai.mediamanagesyscommon.model.common.City;
 import com.mingkai.mediamanagesyscommon.model.common.Province;
 import com.mingkai.mediamanagesyscommon.utils.convert.ConvertUtil;
 import com.mingkai.mediamanagesyscommon.utils.time.LocalDateTimeUtils;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.logging.log4j.util.Strings;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -34,6 +41,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
@@ -42,6 +50,7 @@ import java.util.stream.Collectors;
  * @author: Created by 云风 on 2019-04-12 9:31
  */
 @Service
+@Slf4j
 public class CinemaService {
 
     @Autowired
@@ -54,6 +63,9 @@ public class CinemaService {
     private AreaMapper areaMapper;
 
     @Autowired
+    private MovieCastManager movieCastManager;
+
+    @Autowired
     private ScreenRoomMapper screenRoomMapper;
 
     @Autowired
@@ -64,6 +76,22 @@ public class CinemaService {
 
     @Autowired
     private ScreenSeatManager screenSeatManager;
+
+    /**
+     *  查找影院 by id
+     * @param cinemaId
+     * @return
+     */
+    public CinemaVo searchCinemaById(String cinemaId){
+
+        CinemaDo cinemaDo = cinemaManager.getById(cinemaId);
+
+        if (Objects.isNull(cinemaDo)){
+            log.info("未找到对应id 下的 影院：-- " + cinemaId);
+        }
+
+        return ConvertUtil.convert(cinemaDo,CinemaVo.class);
+    }
 
     /**
      * 查询影院by 电影
@@ -336,5 +364,129 @@ public class CinemaService {
         boolean saveBatch = screenSeatManager.saveBatch(seatList);
 
         return insert == 1 && saveBatch ? true : false;
+    }
+
+
+    /**
+     *   搜索影院 by  areaId
+     * @param cinemaSearchPo
+     * @return
+     */
+    public Page<CinemaVo> findCinemaByAreaId(CinemaSearchPo cinemaSearchPo){
+        Page<CinemaDo> cinemaDoPage =
+                (Page<CinemaDo>)cinemaManager.page(cinemaSearchPo,new QueryWrapper<CinemaDo>()
+        .eq("cinema_area_id",cinemaSearchPo.getAreaId()));
+
+        if (cinemaDoPage != null && cinemaDoPage.getRecords() != null){
+            return ConvertUtil.pageConvert(cinemaDoPage,CinemaVo.class);
+        }
+
+        return new Page<>();
+    }
+
+
+    /**
+     * 查找排片电影记录 by cinemaId   重新定义返回的
+     * @param cinemaId
+     * @return
+     */
+    public List<MovieArgUnderCinemaVo> cinemaUnderMovies(String cinemaId){
+
+        // 先查找 对应的 cinema+screen 的 ids
+        List<CinemaScreenDo> cinemaScreenDoList = cinemaScreenManager.list(new QueryWrapper<CinemaScreenDo>()
+                .eq("cinema_id", cinemaId));
+
+        if (Objects.isNull(cinemaScreenDoList) || cinemaScreenDoList.size() == 0){
+            return Lists.newArrayList();
+        }
+
+        // 得到 排片id 对应的 放映厅id --> 得到放映厅名称
+        Map<Integer, Integer> ArrangeIdAndScreenIdMap = cinemaScreenDoList.stream().collect(Collectors.toMap(e -> e.getId(), e -> e.getScreenHallId()));
+
+        // 得到放映厅ids
+        List<Integer> screenHallIds = cinemaScreenDoList.stream().map(CinemaScreenDo::getScreenHallId).distinct().collect(Collectors.toList());
+
+        //得到放映厅 名称map
+        List<ScreenRoomDo> screenRoomDoList = screenRoomMapper.selectList(new QueryWrapper<ScreenRoomDo>()
+                .in("id", screenHallIds));
+
+        Map<Integer, String> idAndNameMaps = screenRoomDoList.stream().collect(Collectors.toMap(e -> e.getId(), e -> e.getScreeningHallName()));
+
+        // 最终得到的 id --> 放映厅名称Maps
+        Map<Integer,String> screenNameMaps = Maps.newHashMap();
+
+        //得到 排片id --> 放映厅名称
+        for (Map.Entry<Integer, Integer> entry : ArrangeIdAndScreenIdMap.entrySet()) {
+            screenNameMaps.put(entry.getKey(),idAndNameMaps.get(entry.getValue()));
+        }
+
+        // 得到 排片的id
+        List<Integer> cinemaScreenIds = cinemaScreenDoList.stream().map(e -> e.getId()).collect(Collectors.toList());
+
+        //  查找对应的排片的记录
+        List<ScreenArrangeDo> movieArranges = screenArrangeMapper.selectList(new QueryWrapper<ScreenArrangeDo>()
+                .in("cinema_screen_id", cinemaScreenIds));
+
+        if (Objects.isNull(movieArranges) || movieArranges.size() == 0){
+            return Lists.newArrayList();
+        }
+
+
+        // 记录排片信息，相同的movie_id 放入一起
+        Map<String,List<ScreenArrangeDo>> movieArrangeMaps = Maps.newHashMap();
+
+        movieArranges.stream()
+                .forEach(e -> {
+
+                    if (Objects.isNull(movieArrangeMaps.get(e.getMovieId()))){
+                        movieArrangeMaps.put(e.getMovieId(),Lists.newArrayList());
+                    }
+                    movieArrangeMaps.get(e.getMovieId()).add(e);
+                });
+
+        List<String> movieIds = movieArranges.stream().map(ScreenArrangeDo::getMovieId).distinct().collect(Collectors.toList());
+
+
+        // 查找所有的 movieIds 的 电影信息
+        List<MovieDetailDo> movieInfos = movieDetailMapper.selectList(new QueryWrapper<MovieDetailDo>()
+                .in("movie_id", movieIds));
+
+
+        Map<String, MovieDetailDo> movieInfoMaps = movieInfos.stream().collect(Collectors.toMap(MovieDetailDo::getMovieId, e -> e));
+
+
+
+        //根据排片记录 来补足返回的信息
+        List<MovieArgUnderCinemaVo> result = Lists.newArrayList();
+
+        for (Map.Entry<String, List<ScreenArrangeDo>> entry : movieArrangeMaps.entrySet()) {
+
+            // 电影基本信息
+            MovieArgUnderCinemaVo movieArgUnderCinemaVo = ConvertUtil.convert(movieInfoMaps.get(entry.getKey()), MovieArgUnderCinemaVo.class);
+
+            // 根据主演ids 查找主演名称
+            String[] casts = movieArgUnderCinemaVo.getCasts().split(",");
+
+            List<MovieCastDo> castDoList = movieCastManager.list(new QueryWrapper<MovieCastDo>()
+                    .in("actor_id", casts));
+
+            movieArgUnderCinemaVo.setCastList(castDoList);
+
+            movieArgUnderCinemaVo.setMovieArrangeList(Lists.newArrayList());
+
+            // 场次信息
+            for (ScreenArrangeDo screenArrangeDo : entry.getValue()) {
+
+                MovieArrangeVo movieArrangeVo = ConvertUtil.convert(screenArrangeDo, MovieArrangeVo.class);
+                // 找 放映厅名称
+                movieArrangeVo.setScreeningHallName(screenNameMaps.get(movieArrangeVo.getCinemaScreenId()));
+
+                movieArgUnderCinemaVo.getMovieArrangeList().add(movieArrangeVo);
+            }
+
+            result.add(movieArgUnderCinemaVo);
+        }
+
+        return result;
     }
 }

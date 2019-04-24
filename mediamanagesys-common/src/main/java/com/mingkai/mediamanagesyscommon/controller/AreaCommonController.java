@@ -4,10 +4,7 @@ import com.dtstack.plat.lang.exception.BizException;
 import com.dtstack.plat.lang.web.R;
 import com.dtstack.plat.lang.web.template.APITemplate;
 import com.mingkai.mediamanagesyscommon.common.API;
-import com.mingkai.mediamanagesyscommon.model.common.Area;
-import com.mingkai.mediamanagesyscommon.model.common.City;
-import com.mingkai.mediamanagesyscommon.model.common.LocationModel;
-import com.mingkai.mediamanagesyscommon.model.common.Province;
+import com.mingkai.mediamanagesyscommon.model.common.*;
 import com.mingkai.mediamanagesyscommon.service.AreaService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -91,6 +88,23 @@ public class AreaCommonController {
             @Override
             protected List<Area> process() throws BizException {
                 return areaService.searchArea(fatherId,areaName);
+            }
+        }.execute();
+    }
+
+
+    @ApiOperation("初始化城市下拉框")
+    @GetMapping("init-select-area")
+    public R<List<AreaSelectItem>> initSelectArea(){
+        return new APITemplate<List<AreaSelectItem>>() {
+            @Override
+            protected void checkParams() throws IllegalArgumentException {
+
+            }
+
+            @Override
+            protected List<AreaSelectItem> process() throws BizException {
+                return areaService.initSelectArea();
             }
         }.execute();
     }

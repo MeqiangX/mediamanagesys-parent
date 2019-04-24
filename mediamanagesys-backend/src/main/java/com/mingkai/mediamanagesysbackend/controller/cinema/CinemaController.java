@@ -10,7 +10,9 @@ import com.mingkai.mediamanagesyscommon.common.API;
 import com.mingkai.mediamanagesyscommon.model.Po.cinema.CinemaAddPo;
 import com.mingkai.mediamanagesyscommon.model.Po.cinema.CinemaPagePo;
 import com.mingkai.mediamanagesyscommon.model.Po.cinema.CinemaScreenUpdatePo;
+import com.mingkai.mediamanagesyscommon.model.Po.cinema.CinemaSearchPo;
 import com.mingkai.mediamanagesyscommon.model.Vo.cinema.CinemaVo;
+import com.mingkai.mediamanagesyscommon.model.Vo.cinema.MovieArgUnderCinemaVo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +20,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 /**
  * @description: 后台影院Controller
@@ -43,6 +47,22 @@ public class CinemaController {
             @Override
             protected Boolean process() throws BizException {
                 return Boolean.TRUE;
+            }
+        }.execute();
+    }
+
+    @ApiOperation("查询影院by id")
+    @GetMapping("search-cinema-by-id")
+    public R<CinemaVo> searchCinemaById(String cinemaId){
+        return new APITemplate<CinemaVo>() {
+            @Override
+            protected void checkParams() throws IllegalArgumentException {
+
+            }
+
+            @Override
+            protected CinemaVo process() throws BizException {
+                return cinemaService.searchCinemaById(cinemaId);
             }
         }.execute();
     }
@@ -112,4 +132,42 @@ public class CinemaController {
             }
         }.execute();
     }
+
+
+    @ApiOperation("根据地域id来查找影院")
+    @GetMapping("find-cinema-by-areaId")
+    public R<Page<CinemaVo>> findCinemaByAreaId(CinemaSearchPo cinemaSearchPo){
+        return new APITemplate<Page<CinemaVo>>() {
+            @Override
+            protected void checkParams() throws IllegalArgumentException {
+
+            }
+
+            @Override
+            protected Page<CinemaVo> process() throws BizException {
+                return cinemaService.findCinemaByAreaId(cinemaSearchPo);
+            }
+        }.execute();
+    }
+
+
+    // 影院下的排片记录
+    @ApiOperation("查找影院下排片信息")
+    @GetMapping("cinema-under-movies")
+    public R<List<MovieArgUnderCinemaVo>> cinemaUnderMovies(String cinemaId){
+        return new APITemplate<List<MovieArgUnderCinemaVo>>() {
+            @Override
+            protected void checkParams() throws IllegalArgumentException {
+
+            }
+
+            @Override
+            protected List<MovieArgUnderCinemaVo> process() throws BizException {
+                return cinemaService.cinemaUnderMovies(cinemaId);
+            }
+        }.execute();
+    }
+
+
+
 }

@@ -26,7 +26,6 @@ public class MovieRankPagePo extends Page {
 
     @ApiModelProperty(name = "orderType",value = "排序类型ASC/DESC",example = "DESC")
     private String orderType;
-
     // 筛选条件：  类型 区域 年代
 
 }

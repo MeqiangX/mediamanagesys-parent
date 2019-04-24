@@ -20,4 +20,8 @@ public class CinemaDo extends BaseDo {
 
     private String cinemaFullAddress;
 
+    private String phone;
+
+    private String image;
+
 }

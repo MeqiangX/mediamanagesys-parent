@@ -1,4 +1,4 @@
-package com.mingkai.mediamanagesysportal.conf;
+package com.mingkai.mediamanagesyscommon.config;
 
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;

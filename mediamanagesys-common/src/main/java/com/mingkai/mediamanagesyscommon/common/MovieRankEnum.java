@@ -16,7 +16,7 @@ public enum MovieRankEnum {
 
     TOP_250_RANK("4","top250榜单","mesys_movie_top250_rank"),
 
-    WEEK_RANK("5","本周口碑榜","mesys_movie_top250_rank");
+    WEEK_RANK("5","本周口碑榜","mesys_movie_week_rank");
 
 
     private String code;

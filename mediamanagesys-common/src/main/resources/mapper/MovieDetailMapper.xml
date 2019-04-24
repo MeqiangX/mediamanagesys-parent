@@ -13,13 +13,11 @@
                 and countries like CONCAT('%',#{moviePagePo.area},'%')
             </if>
             <if test="moviePagePo.year != null and moviePagePo.year != ''">
-                and year = #{moviePagePo.year}
+                and year ${moviePagePo.year}
             </if>
-
         </where>
-            <if test="moviePagePo.sortType != null and moviePagePo.sortType != ''">
-                order by #{moviePagePo.sortType} desc
-            </if>
-
+        <if test="moviePagePo.sortType != null and moviePagePo.sortType != ''">
+            order by ${moviePagePo.sortType} desc
+        </if>
     </select>
 </mapper>

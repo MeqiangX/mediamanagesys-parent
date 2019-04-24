@@ -111,5 +111,11 @@ public interface AreaMapper {
     List<Area> selectAreasByName(@Param("fatherId") Integer fatherId,@Param("areaName") String areaName);
 
 
+    /**
+     *  查找所有的地区  除了 县、市辖区
+     * @return
+     */
+    @Select("select * from area where area != '县' and area != '市辖区'")
+    List<Area> selectAreas();
 
 }

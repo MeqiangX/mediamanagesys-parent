@@ -8,6 +8,7 @@ import com.dtstack.plat.lang.web.template.APITemplate;
 import com.mingkai.mediamanagesyscommon.common.API;
 import com.mingkai.mediamanagesyscommon.model.Po.movie.MoviePagePo;
 import com.mingkai.mediamanagesyscommon.model.Po.movie.MovieRankPagePo;
+import com.mingkai.mediamanagesyscommon.model.Po.movie.MovieSearchPo;
 import com.mingkai.mediamanagesyscommon.model.Vo.movie.MovieBlooperVo;
 import com.mingkai.mediamanagesyscommon.model.Vo.movie.MovieTrailerVo;
 import com.mingkai.mediamanagesyscommon.model.Vo.movie.MovieVo;
@@ -128,6 +129,23 @@ public class MovieController {
             @Override
             protected List<MovieBlooperVo> process() throws BizException {
                 return movieService.movieBloopers(movieId);
+            }
+        }.execute();
+    }
+
+
+    @ApiOperation("模糊搜索电影(电影名，演员，导演)")
+    @GetMapping("search-movies")
+    public R<Page<MovieVo>> searchMovies(MovieSearchPo movieSearchPo){
+        return new APITemplate<Page<MovieVo>>() {
+            @Override
+            protected void checkParams() throws IllegalArgumentException {
+
+            }
+
+            @Override
+            protected Page<MovieVo> process() throws BizException {
+                return movieService.searchMovies(movieSearchPo);
             }
         }.execute();
     }

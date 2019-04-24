@@ -25,4 +25,9 @@ public class CinemaVo extends BaseVo {
     @ApiModelProperty(name = "cinemaFullAddress",value = "详细地址(不包括省市区)")
     private String cinemaFullAddress;
 
+    @ApiModelProperty(name = "phone",value = "联系方式")
+    private String phone;
+
+    @ApiModelProperty(name = "image",value = "图片")
+    private String image;
 }

@@ -1,23 +1,28 @@
 package com.mingkai.mediamanagesyscommon.service;
 
 import com.alibaba.fastjson.JSONObject;
+import com.github.stuxuhai.jpinyin.PinyinException;
+import com.github.stuxuhai.jpinyin.PinyinHelper;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
 import com.mingkai.mediamanagesyscommon.mapper.common.AreaMapper;
-import com.mingkai.mediamanagesyscommon.model.common.Area;
-import com.mingkai.mediamanagesyscommon.model.common.City;
-import com.mingkai.mediamanagesyscommon.model.common.LocationModel;
-import com.mingkai.mediamanagesyscommon.model.common.Province;
+import com.mingkai.mediamanagesyscommon.model.common.*;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.*;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
+import java.util.Map;
+import java.util.Objects;
 
 /**
  * @description:
  * @author: Created by 云风 on 2019-04-11 16:26
  */
 @Service
+@Slf4j
 public class AreaService {
 
     @Autowired
@@ -77,5 +82,48 @@ public class AreaService {
      */
     public List<Area> searchArea(Integer fatherId,String areaName){
         return areaMapper.selectAreasByName(fatherId,areaName);
+    }
+
+
+    /**
+     *  地域下拉框初始化
+     * @return
+     */
+    public List<AreaSelectItem> initSelectArea(){
+
+        // 查找所有地域的信息 除了 县、市辖区
+        List<Area> areas = areaMapper.selectAreas();
+
+        // 分组成 26个字母
+
+        Map<String,List<Area>> areaInitialMap = Maps.newHashMap();
+
+        for (Area area:areas){
+
+            try {
+                String shortPinyin = PinyinHelper.getShortPinyin(area.getArea().substring(0, 1));
+
+                if (Objects.isNull(areaInitialMap.get(shortPinyin.toUpperCase()))){
+                    areaInitialMap.put(shortPinyin.toUpperCase(), Lists.newArrayList());
+                }
+                areaInitialMap.get(shortPinyin.toUpperCase()).add(area);
+            } catch (PinyinException e) {
+                log.info("转化拼音失败： " + e);
+            }
+
+        }
+
+
+        List<AreaSelectItem> result = Lists.newArrayList();
+        for (int i = 65; i <= 90;++i){
+            AreaSelectItem areaSelectItem = new AreaSelectItem();
+            areaSelectItem.setInitials(""+(char)i);
+            areaSelectItem.setAreas(areaInitialMap.get(""+(char)i));
+            result.add(areaSelectItem);
+        }
+        // 返回
+
+        return result;
+
     }
 }

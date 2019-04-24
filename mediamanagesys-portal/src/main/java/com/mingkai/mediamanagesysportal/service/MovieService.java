@@ -9,6 +9,7 @@ import com.mingkai.mediamanagesyscommon.mapper.MovieRankMapper;
 import com.mingkai.mediamanagesyscommon.model.Do.movie.*;
 import com.mingkai.mediamanagesyscommon.model.Po.movie.MoviePagePo;
 import com.mingkai.mediamanagesyscommon.model.Po.movie.MovieRankPagePo;
+import com.mingkai.mediamanagesyscommon.model.Po.movie.MovieSearchPo;
 import com.mingkai.mediamanagesyscommon.model.Vo.movie.MovieBlooperVo;
 import com.mingkai.mediamanagesyscommon.model.Vo.movie.MovieTrailerVo;
 import com.mingkai.mediamanagesyscommon.model.Vo.movie.MovieVo;
@@ -96,7 +97,21 @@ public class MovieService {
 
         Page<MovieRankDo> movieDetailDos = movieRankMapper.selectMovieRanksByPage(movieRankPagePo);
 
-        return ConvertUtil.pageConvert(movieDetailDos,MovieVo.class);
+        Page<MovieVo> movieVoPage = ConvertUtil.pageConvert(movieDetailDos, MovieVo.class);
+
+
+        for (MovieVo record : movieVoPage.getRecords()) {
+
+            // 根据 电影关联的 演员ids 查询 演员list
+            String[] castIds = record.getCasts().split(",");
+            List<MovieCastDo> actorDoList = movieCastManager.list(new QueryWrapper<MovieCastDo>()
+                    .in("actor_id", castIds));
+
+            record.setCastList(actorDoList);
+        }
+
+
+        return movieVoPage;
 
     }
 
@@ -138,6 +153,32 @@ public class MovieService {
         Page<MovieDetailDo> movieDetailDoPage = movieDetailManager.getBaseMapper().moviePage(moviePagePo);
 
         return ConvertUtil.pageConvert(movieDetailDoPage,MovieVo.class);
+
+    }
+
+
+    /**
+     *  搜索电影
+     * @param movieSearchPo
+     * @return
+     */
+    public Page<MovieVo> searchMovies(MovieSearchPo movieSearchPo){
+
+        // 如果search 不为空
+
+        //  查找 演员的ids
+
+        //  查找导演的ids
+
+        // 电影名 中文/英文/别名
+
+        String search = movieSearchPo.getSearch();
+        Page<MovieDetailDo> page = (Page<MovieDetailDo>)movieDetailManager.page(movieSearchPo, new QueryWrapper<MovieDetailDo>()
+                .like("movie_name", null == search ? "":search)
+                .or().like("original_name", null == search ? "":search));
+
+        return ConvertUtil.pageConvert(page,MovieVo.class);
+
 
     }
 

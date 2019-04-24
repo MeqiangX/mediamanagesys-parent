@@ -1,4 +1,4 @@
-package com.mingkai.mediamanagesysbackend.conf;
+package com.mingkai.mediamanagesyscommon.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -16,14 +16,14 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
  */
 @Configuration
 @EnableSwagger2  //swagger2 启动注解
-public class Swagger2Config {
+public class Swagger2CommonConfig {
 
     @Bean
     public Docket createRestApi(){
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo())  //构建swagger-ui 基本信息
                 .select() //返回一个ApiSelectorBuilder实例来控制哪些接口暴露给swagger来展现
-                .apis(RequestHandlerSelectors.basePackage("com.mingkai.mediamanagesysbackend.controller"))
+                .apis(RequestHandlerSelectors.basePackage("com.mingkai"))
                 .paths(PathSelectors.any())
                 .build();
     }
@@ -31,7 +31,7 @@ public class Swagger2Config {
 
     private ApiInfo apiInfo(){
         return new ApiInfoBuilder()
-                .title("后台 RestFul Apis")
+                .title("电影院管理系统 前台模块 RestFul Apis")
                 .description("整合测试 调试接口")
                 .termsOfServiceUrl("www.baidu.com")
                 .contact("Meqiang")
