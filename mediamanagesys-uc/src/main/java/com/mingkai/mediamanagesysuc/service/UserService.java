@@ -57,6 +57,25 @@ public class UserService {
 
 
     /**
+     * 得到验证码
+     * @param messagePo
+     * @return
+     */
+    public String getCode(MessagePo messagePo){
+
+        Object code = redisUtil.get(messagePo.getSendType() + "+" + messagePo.getReceverPhone());
+
+        if (Objects.isNull(code)){
+            throw new BizException("验证码已失效");
+        }
+
+        return code.toString();
+
+    }
+
+
+
+    /**
      * 登录service
      * @param loginPo
      * @return

@@ -26,4 +26,6 @@ public class ScreenArrangeDo extends BaseDo {
 
     private BigDecimal price;
 
+    private String language;
+
 }

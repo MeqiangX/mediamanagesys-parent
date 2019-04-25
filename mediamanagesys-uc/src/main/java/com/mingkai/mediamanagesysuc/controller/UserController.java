@@ -31,7 +31,7 @@ public class UserController {
 
     @ApiOperation("邮件发送接口")
     @PostMapping("/sendEmail")
-    public R<Boolean> sendEmail(@RequestBody MailModel mailModel){
+    public R<Boolean> sendEmail(MailModel mailModel){
 
         return new APITemplate<Boolean>() {
             @Override
@@ -50,7 +50,7 @@ public class UserController {
 
     @ApiOperation("短信发送接口")
     @PostMapping("/sendMessage")
-    public R<Boolean> sendMessage(@RequestBody MessagePo messagePo){
+    public R<Boolean> sendMessage(MessagePo messagePo){
         return new APITemplate<Boolean>() {
             @Override
             protected void checkParams() throws IllegalArgumentException {
@@ -65,9 +65,27 @@ public class UserController {
     }
 
 
+    @ApiOperation("得到验证码")
+    @PostMapping("/getCode")
+    public R<String> getCode(MessagePo messagePo){
+        return new APITemplate<String>() {
+            @Override
+            protected void checkParams() throws IllegalArgumentException {
+
+            }
+
+            @Override
+            protected String process() throws BizException {
+                return userService.getCode(messagePo);
+            }
+        }.execute();
+    }
+
+
+
     @ApiOperation("登录")
     @PostMapping("/login")
-    public R<Boolean> phoneLogin(@RequestBody LoginPo loginPo){
+    public R<Boolean> phoneLogin(LoginPo loginPo){
         return new APITemplate<Boolean>() {
             @Override
             protected void checkParams() throws IllegalArgumentException {
@@ -84,7 +102,7 @@ public class UserController {
 
     @ApiOperation("邮箱/手机注册")
     @PostMapping("/register")
-    public R<Boolean> register(@RequestBody RegisterPo registerPo){
+    public R<Boolean> register(RegisterPo registerPo){
         return new APITemplate<Boolean>() {
             @Override
             protected void checkParams() throws IllegalArgumentException {

@@ -9,7 +9,7 @@
 
     <sql id="base_column">
         id,cinema_screen_id,movie_id,arrange_date,
-        time_scope_start,time_scope_end,price,
+        time_scope_start,time_scope_end,price,language,
         create_time,update_time,creator,updator,
         is_deleted
     </sql>

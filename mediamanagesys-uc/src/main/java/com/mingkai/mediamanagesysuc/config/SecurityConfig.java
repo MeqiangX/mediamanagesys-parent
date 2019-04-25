@@ -1,3 +1,4 @@
+/*
 package com.mingkai.mediamanagesysuc.config;
 
 import org.springframework.context.annotation.Configuration;
@@ -5,10 +6,12 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
+*/
 /**
  * @description:
  * @author: Created by 云风 on 2019-04-10 17:19
- */
+ *//*
+
 @EnableWebSecurity
 public class SecurityConfig {
 
@@ -32,3 +35,4 @@ public class SecurityConfig {
     }
 
 }
+*/

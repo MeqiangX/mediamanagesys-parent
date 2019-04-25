@@ -35,4 +35,7 @@ public class MovieArrangeVo {
     @ApiModelProperty(name = "price",value = "价格")
     private BigDecimal price;
 
+    @ApiModelProperty(name = "language",value = "语言版本")
+    private String language;
+
 }
