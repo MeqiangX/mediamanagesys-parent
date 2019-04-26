@@ -2,7 +2,6 @@ package com.mingkai.mediamanagesysuc.interfaces;
 
 import com.mingkai.mediamanagesysuc.model.MailModel;
 import com.mingkai.mediamanagesysuc.pojo.po.MessagePo;
-import sun.plugin2.message.Message;
 
 /**
  * @description:  发送抽象接口

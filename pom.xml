@@ -25,6 +25,7 @@
         <module>mediamanagesys-common</module>
         <module>mediamanagesys-portal</module>
         <module>mediamanagesys-uc</module>
+        <module>mediamanagesys-schdule</module>
     </modules>
 
     <!-- 版本控制 并未导入 可以在这儿对所有用到的依赖进行版本控制 就完成了整个项目的依赖版本控制 而如果要在某个项目中单独选择版本 则只需要加上version即可 就近原则-->
@@ -296,10 +297,7 @@
     <build>
         <finalName>mediamanagesys-parent</finalName>
         <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
+
             <!-- 全部在父工程中 引入 插件 都会在子模块中生效 emmm 貌似不行？-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
