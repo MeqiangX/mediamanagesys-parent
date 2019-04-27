@@ -1,7 +1,5 @@
 package com.mingkai.mediamanagesysuc.enums;
 
-import lombok.Data;
-
 /**
  * @description: 发送消息目的枚举
  * @author: Created by 云风 on 2019-03-31 20:14
@@ -16,7 +14,9 @@ public enum MessageEnum {
 
     REGISTER_PHONE("phone_register","3"),
 
-    REGISTER_EMAIL("email_register","4");
+    REGISTER_EMAIL("email_register","4"),
+
+    UPDATEPWD_PHONE("phone_updatepwd","5");
 
     private String key;
     private String val;

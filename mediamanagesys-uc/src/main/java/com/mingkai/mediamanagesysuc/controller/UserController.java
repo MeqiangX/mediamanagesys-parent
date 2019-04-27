@@ -9,6 +9,7 @@ import com.mingkai.mediamanagesyscommon.model.Po.uc.UserRoleAddPo;
 import com.mingkai.mediamanagesysuc.model.MailModel;
 import com.mingkai.mediamanagesysuc.pojo.po.LoginPo;
 import com.mingkai.mediamanagesysuc.pojo.po.MessagePo;
+import com.mingkai.mediamanagesysuc.pojo.po.PwdUpdatePo;
 import com.mingkai.mediamanagesysuc.pojo.po.RegisterPo;
 import com.mingkai.mediamanagesysuc.service.UserService;
 import io.swagger.annotations.Api;
@@ -161,6 +162,23 @@ public class UserController {
             @Override
             protected Boolean process() throws BizException {
                 return userService.repeatName(userName);
+            }
+        }.execute();
+    }
+
+
+    @ApiOperation("修改密码")
+    @PostMapping("/update-pwd")
+    public R<Boolean> updatePwd(PwdUpdatePo pwdUpdatePo){
+        return new APITemplate<Boolean>() {
+            @Override
+            protected void checkParams() throws IllegalArgumentException {
+
+            }
+
+            @Override
+            protected Boolean process() throws BizException {
+                return userService.updatePwd(pwdUpdatePo);
             }
         }.execute();
     }

@@ -1,6 +1,7 @@
 package com.mingkai.mediamanagesysuc.service;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.dtstack.plat.lang.exception.BizException;
 import com.google.common.base.Optional;
 import com.google.common.collect.Lists;
@@ -19,6 +20,7 @@ import com.mingkai.mediamanagesysuc.manager.UserManager;
 import com.mingkai.mediamanagesysuc.model.MailModel;
 import com.mingkai.mediamanagesysuc.pojo.po.LoginPo;
 import com.mingkai.mediamanagesysuc.pojo.po.MessagePo;
+import com.mingkai.mediamanagesysuc.pojo.po.PwdUpdatePo;
 import com.mingkai.mediamanagesysuc.pojo.po.RegisterPo;
 import org.apache.logging.log4j.util.Strings;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -74,6 +76,21 @@ public class UserService {
     }
 
 
+    /**
+     * 修改密码
+     * @param pwdUpdatePo
+     * @return
+     */
+    public Boolean updatePwd(PwdUpdatePo pwdUpdatePo){
+        UserDO userDO = new UserDO();
+        userDO.setPhone(pwdUpdatePo.getPhone());
+        userDO.setUserPassword(pwdUpdatePo.getNewPwd());
+        int updateCount = userMapper.update(userDO, new UpdateWrapper<UserDO>()
+                .eq("phone", userDO.getPhone())
+                .eq("status",0));
+
+        return updateCount == 1;
+    }
 
     /**
      * 登录service
