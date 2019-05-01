@@ -2,17 +2,27 @@ package com.mingkai.mediamanagesysportal.service;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.dtstack.plat.lang.exception.BizException;
-import com.mingkai.mediamanagesyscommon.manager.ClassDicManager;
-import com.mingkai.mediamanagesyscommon.manager.ClassUserRelManager;
-import com.mingkai.mediamanagesyscommon.manager.ScreenSeatManager;
-import com.mingkai.mediamanagesyscommon.manager.TicketDetailManager;
+import com.google.common.collect.Lists;
+import com.mingkai.mediamanagesyscommon.common.TimeConstant;
+import com.mingkai.mediamanagesyscommon.manager.*;
 import com.mingkai.mediamanagesyscommon.mapper.ScreenArrangeMapper;
+import com.mingkai.mediamanagesyscommon.mapper.ScreenRoomMapper;
+import com.mingkai.mediamanagesyscommon.model.Do.cinema.CinemaDo;
+import com.mingkai.mediamanagesyscommon.model.Do.cinema.CinemaScreenDo;
+import com.mingkai.mediamanagesyscommon.model.Do.movie.MovieDetailDo;
 import com.mingkai.mediamanagesyscommon.model.Do.order.ClassDicDo;
 import com.mingkai.mediamanagesyscommon.model.Do.order.ClassUserRelDo;
 import com.mingkai.mediamanagesyscommon.model.Do.order.TicketDetailDo;
 import com.mingkai.mediamanagesyscommon.model.Do.screen.ScreenArrangeDo;
+import com.mingkai.mediamanagesyscommon.model.Do.screen.ScreenRoomDo;
 import com.mingkai.mediamanagesyscommon.model.Do.screen.ScreenSeatDo;
+import com.mingkai.mediamanagesyscommon.model.Po.order.OrderPagePo;
+import com.mingkai.mediamanagesyscommon.model.Vo.order.OrderSimpleVo;
+import com.mingkai.mediamanagesyscommon.utils.convert.ConvertUtil;
+import com.mingkai.mediamanagesyscommon.utils.page.PageUtils;
+import com.mingkai.mediamanagesyscommon.utils.redis.RedisUtil;
 import com.mingkai.mediamanagesyscommon.utils.string.onlyID.SnowFlakeUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +30,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 /**
  * @description:
@@ -45,45 +58,115 @@ public class OrderService {
     @Autowired
     private TicketDetailManager ticketDetailManager;
 
+    @Autowired
+    private MovieDetailManager movieDetailManager;
+
+    @Autowired
+    private CinemaScreenManager cinemaScreenManager;
+
+    @Autowired
+    private CinemaManager cinemaManager;
+
+    @Autowired
+    private ScreenRoomMapper screenRoomMapper;
+
+    @Autowired
+    private RedisUtil redisUtil;
+
     /**
-     * 购票
-     * @param seatId
+     * 分页查询用户订单
+     * @param orderPagePo
+     * @return
+     */
+    public Page<OrderSimpleVo> userOrders(OrderPagePo orderPagePo){
+
+        // 根据用户id 去查询 分页订单
+        Page<TicketDetailDo> ticketDetailDoPage = (Page)ticketDetailManager.page(orderPagePo, new QueryWrapper<TicketDetailDo>()
+                .eq("user_id", orderPagePo.getUserId()));
+
+        if (Objects.isNull(ticketDetailDoPage) || ticketDetailDoPage.getRecords().size() == 0){
+            return PageUtils.emptyPage(orderPagePo,new Page());
+        }
+
+        List<TicketDetailDo> records = ticketDetailDoPage.getRecords();
+
+        List<OrderSimpleVo> resultList = Lists.newArrayList();
+
+        for (TicketDetailDo record : records) {
+
+            OrderSimpleVo orderSimpleVo = orderDetail(record.getOrderId());
+            resultList.add(orderSimpleVo);
+        }
+
+
+        return PageUtils.page(resultList,orderPagePo);
+
+    }
+
+
+    /**
+     * 购票  有个支付 时间 将订购完成 还未支付的 订单放入redis 同时创建订单 状态为未支付， 未支付的订单 应该在redis 中存储记录
+     * 如果没有，则说明 这个订单 已经超时 失效了， 关闭
+     * @param seatIds
      * @return
      */
     @Transactional
-    public Boolean seatBooking(Integer seatId,Integer userId){
+    public Boolean seatBooking(List<Integer> seatIds, Integer userId){
 
         // 查看当前的座位状态是否可用 是否已经被购买
-        ScreenSeatDo screenSeat = screenSeatManager.getById(seatId);
+        List<ScreenSeatDo> screenSeatLists = screenSeatManager.list(new QueryWrapper<ScreenSeatDo>()
+                .in("id", seatIds)
+        .eq("is_purchased",0));
 
-        if (Objects.isNull(screenSeat)){
-            throw new BizException("该坐席不存在："+ seatId);
+
+        if (Objects.isNull(screenSeatLists)){
+            throw new BizException("该坐席不存在："+ seatIds);
         }
 
-        // 查看状态
-        if (screenSeat.getStatus().equals(Integer.valueOf(1))){
-            throw new BizException("该座位已损坏，请重新选择");
+        if (screenSeatLists.size() != seatIds.size()){
+
+            List<Integer> noList = Lists.newArrayList();
+
+            List<Integer> idLists = screenSeatLists.stream().map(e -> e.getId()).collect(Collectors.toList());
+
+            for (Integer seatId : seatIds) {
+
+                if (!idLists.contains(seatId)){
+                    noList.add(seatId);
+                }
+
+            }
+
+            throw new BizException("以下坐席id没有记录或者已经被预定 -->  " + noList);
+
         }
 
-        if (screenSeat.getIsPurchased().equals(Integer.valueOf(1))){
-            throw new BizException("该座位已经被预定，请重新选择");
-        }
+
 
         // 正常预定  mybatisPlus 自带的wrapper 的跟新会默认忽视 null 刚好符合
         boolean update = screenSeatManager.update(new UpdateWrapper<ScreenSeatDo>()
-                .eq("id", seatId)
+                .in("id", seatIds)
                 .set("is_purchased", 1));
 
-        // 成功之后  生成订单信息  订单id 用户id  座位id 会员等级 折扣价格
+        // 成功之后  生成订单信息  订单id 用户id  座位ids 会员等级 折扣价格
         TicketDetailDo ticketDetailDo = new TicketDetailDo();
         ticketDetailDo.setOrderId(SnowFlakeUtil.getId());
         ticketDetailDo.setUserId(userId);
-        ticketDetailDo.setSeatId(seatId);
+
+        //seatIds  转换成,分割的坐席ids
+
+        String ids = seatIds.stream().map(String::valueOf).collect(Collectors.joining(","));
+
+        ticketDetailDo.setSeatIds(ids);
+
 
         ClassUserRelDo classUserRel = classUserRelManager.getOne(new QueryWrapper<ClassUserRelDo>()
                 .eq("user_id", userId));
 
         //通过seatId 拿到 Price
+
+        ScreenSeatDo screenSeat = screenSeatManager.getById(seatIds.get(0));
+
         ScreenArrangeDo screenArrangeDo = screenArrangeMapper.selectById(screenSeat.getScreenArrangeId());
 
 
@@ -107,7 +190,146 @@ public class OrderService {
         }
 
         // 插入表中
-        return ticketDetailManager.save(ticketDetailDo);
+        boolean saveData = ticketDetailManager.save(ticketDetailDo);
+        // 订购成功插入表中的同时 插入到Redis 并设置过期时间 15分钟
+        redisUtil.set(""+ticketDetailDo.getOrderId(),""+userId, TimeConstant.EXPIRE_TIME_ORDER);
+        return saveData;
     }
+
+
+    /**
+     * 支付界面的未支付订单  by 订单id
+     * @param orderId
+     * @return
+     */
+    public OrderSimpleVo orderDetail(String orderId){
+
+        // 根据订单id 去查找
+        TicketDetailDo ticketDetailDo = ticketDetailManager.getOne(new QueryWrapper<TicketDetailDo>()
+                .eq("order_id", orderId));
+
+        if (Objects.isNull(ticketDetailDo)){
+            throw new BizException("订单不存在 - " + orderId);
+        }
+
+        OrderSimpleVo orderSimpleVo = ConvertUtil.convert(ticketDetailDo,OrderSimpleVo.class);
+
+
+        // 查找电影名 开始时间 影院 放映厅 座位
+
+        String seatIds = ticketDetailDo.getSeatIds();
+
+        String[] seatIdsArray = seatIds.split(",");
+
+
+        // 通过座位id 来找 排片id  但是同时要找座位  所以一起找
+        List<ScreenSeatDo> screenSeatDos = (List)screenSeatManager.listByIds(Arrays.asList(seatIdsArray));
+
+
+        // 座位有了
+
+        //找影院和放映厅 以及电影
+        ScreenArrangeDo screenArrangeDo = screenArrangeMapper.selectById(screenSeatDos.get(0).getScreenArrangeId());
+
+
+        //电影
+        MovieDetailDo movie = movieDetailManager.getOne(new QueryWrapper<MovieDetailDo>()
+                .eq("movie_id", screenArrangeDo.getMovieId()));
+
+        // 影院 放映厅
+
+
+        CinemaScreenDo cinemaAndScreenDo = cinemaScreenManager.getById(screenArrangeDo.getCinemaScreenId());
+
+
+        // 影院
+        CinemaDo cinema = cinemaManager.getById(cinemaAndScreenDo.getCinemaId());
+
+        //放映厅
+        ScreenRoomDo screenRoomDo = screenRoomMapper.selectById(cinemaAndScreenDo.getScreenHallId());
+
+
+        orderSimpleVo.setCinemaName(cinema.getCinemaName());
+        orderSimpleVo.setScreeningHallName(screenRoomDo.getScreeningHallName());
+
+        orderSimpleVo.setMovieName(movie.getMovieName());
+        orderSimpleVo.setTimeScopeStart(screenArrangeDo.getTimeScopeStart());
+
+        // 座位
+        List<String> seats = Lists.newArrayList();
+        for (ScreenSeatDo screenSeatDo : screenSeatDos) {
+            seats.add(screenSeatDo.getScreeningHallX() + "排" + screenSeatDo.getScreeningHallY() + "座");
+        }
+
+        orderSimpleVo.setSeats(seats);
+
+        return orderSimpleVo;
+    }
+
+
+    /**
+     * 得到未支付订单的剩余支付时间
+     * @param orderId
+     * @return
+     */
+    public Long getUnPayOrderTime(String orderId){
+
+        Object restTime = redisUtil.get(orderId);
+
+        if (Objects.isNull(restTime)){
+            return 0L;
+        }
+
+        return  redisUtil.getExpire(orderId);
+
+    }
+
+
+    /**
+     * 超时订单的处理
+     * @param orderId
+     * @return
+     */
+    @Transactional
+    public Boolean timeoutOrderCheck(String orderId){
+
+        // 删除订单
+        Long unPayOrderTime = getUnPayOrderTime(orderId);
+        if (0 == unPayOrderTime){
+
+            // 查找订单相关的座位记录
+            TicketDetailDo ticketDetailDo = ticketDetailManager.getOne(new QueryWrapper<TicketDetailDo>()
+                    .eq("order_id", orderId));
+
+            String seatIds = ticketDetailDo.getSeatIds();
+
+            boolean delOrder = ticketDetailManager.remove(new QueryWrapper<TicketDetailDo>()
+                    .eq("order_id", orderId));
+
+            if (!delOrder){
+                throw new BizException("删除订单异常");
+            }
+
+            // 正常删除订单 将订单相关的座位记录 重置为可购买状态
+
+            String[] seats = seatIds.split(",");
+
+            boolean update = screenSeatManager.update(new UpdateWrapper<ScreenSeatDo>()
+                    .in("id", seats)
+                    .set("is_purchased", 0));
+
+            if (update){
+                return Boolean.TRUE;
+            }
+
+            throw new BizException("座位重置异常");
+
+        }
+        // 将订单关联的座位的状态is_purchased 更改为0
+
+        throw new BizException("当前订单剩余时间还有 - " + unPayOrderTime + "秒 无法删除");
+
+    }
+
 
 }

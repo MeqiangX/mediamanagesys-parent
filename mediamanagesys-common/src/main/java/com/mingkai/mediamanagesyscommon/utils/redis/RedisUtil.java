@@ -1,13 +1,11 @@
-package com.mingkai.mediamanagesysuc.commonUtil;
+package com.mingkai.mediamanagesyscommon.utils.redis;
 
 import com.dtstack.plat.lang.exception.BizException;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
-import java.io.Serializable;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -88,6 +86,7 @@ public class RedisUtil {
         return result;
     }
 
+
     /**
      * 删除对应的Key
      * @param key
@@ -96,5 +95,16 @@ public class RedisUtil {
         if (exist(key)){
             redisTemplate.delete(key);
         }
+    }
+
+
+    /**
+     * 得到Key 的过期时间
+     * @param key
+     * @return
+     */
+    public Long getExpire(final String key){
+        Long expire = redisTemplate.getExpire(key);
+        return expire;
     }
 }

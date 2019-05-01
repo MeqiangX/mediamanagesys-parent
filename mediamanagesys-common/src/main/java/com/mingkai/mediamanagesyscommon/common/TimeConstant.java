@@ -1,4 +1,4 @@
-package com.mingkai.mediamanagesysuc.constant.time;
+package com.mingkai.mediamanagesyscommon.common;
 
 /**
  * @description: 时间相关的常量

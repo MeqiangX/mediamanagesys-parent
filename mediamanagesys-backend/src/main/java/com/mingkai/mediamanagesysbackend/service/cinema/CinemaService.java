@@ -25,9 +25,7 @@ import com.mingkai.mediamanagesyscommon.model.Po.cinema.CinemaAddPo;
 import com.mingkai.mediamanagesyscommon.model.Po.cinema.CinemaPagePo;
 import com.mingkai.mediamanagesyscommon.model.Po.cinema.CinemaScreenUpdatePo;
 import com.mingkai.mediamanagesyscommon.model.Po.cinema.CinemaSearchPo;
-import com.mingkai.mediamanagesyscommon.model.Vo.cinema.CinemaVo;
-import com.mingkai.mediamanagesyscommon.model.Vo.cinema.MovieArgUnderCinemaVo;
-import com.mingkai.mediamanagesyscommon.model.Vo.cinema.MovieArrangeVo;
+import com.mingkai.mediamanagesyscommon.model.Vo.cinema.*;
 import com.mingkai.mediamanagesyscommon.model.common.Area;
 import com.mingkai.mediamanagesyscommon.model.common.City;
 import com.mingkai.mediamanagesyscommon.model.common.Province;
@@ -40,6 +38,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -488,5 +487,110 @@ public class CinemaService {
         }
 
         return result;
+    }
+
+
+    /**
+     * 排片的详细信息 电影 影院 放映厅 等
+     * @param arrangeId
+     * @return
+     */
+    public MovieArrangeDetailVo arrangeDetails(String arrangeId){
+
+        // 排片记录
+        ScreenArrangeDo screenArrangeRecord = screenArrangeMapper.selectOne(new QueryWrapper<ScreenArrangeDo>()
+                .eq("id", arrangeId));
+
+        if (Objects.isNull(screenArrangeRecord)){
+            log.info("没有找到对应场次的排片记录 - " + arrangeId);
+            throw new BizException("没有找到排片记录");
+        }
+
+
+        // 电影信息
+        MovieDetailDo movieRecord = movieDetailMapper.selectOne(new QueryWrapper<MovieDetailDo>()
+                .eq("movie_id", screenArrangeRecord.getMovieId()));
+
+
+        // 影院信息 放映厅信息
+        CinemaScreenDo cinemaScreenRecord = cinemaScreenManager.getOne(new QueryWrapper<CinemaScreenDo>()
+                .eq("id", screenArrangeRecord.getCinemaScreenId()));
+
+        CinemaDo cinemaRecord = cinemaManager.getOne(new QueryWrapper<CinemaDo>()
+                .eq("id", cinemaScreenRecord.getCinemaId()));
+
+        ScreenRoomDo screenRecord = screenRoomMapper.selectOne(new QueryWrapper<ScreenRoomDo>()
+                .eq("id", cinemaScreenRecord.getScreenHallId()));
+
+        // 语言 场次 单价
+
+
+        MovieArrangeDetailVo movieArrangeDetailVo = new MovieArrangeDetailVo();
+        movieArrangeDetailVo.setLanguage(screenArrangeRecord.getLanguage());
+        movieArrangeDetailVo.setTimeScopeStart(screenArrangeRecord.getTimeScopeStart());
+        movieArrangeDetailVo.setPrice(screenArrangeRecord.getPrice());
+
+        movieArrangeDetailVo.setCinemaName(cinemaRecord.getCinemaName());
+        movieArrangeDetailVo.setScreeningHallName(screenRecord.getScreeningHallName());
+
+        movieArrangeDetailVo.setMovieId(movieRecord.getMovieId());
+        movieArrangeDetailVo.setMovieName(movieRecord.getMovieName());
+        movieArrangeDetailVo.setImage(movieRecord.getImage());
+        movieArrangeDetailVo.setGenres(movieRecord.getGenres());
+        movieArrangeDetailVo.setDuration(movieRecord.getDuration());
+
+        movieArrangeDetailVo.setId(Integer.valueOf(arrangeId));
+
+
+        return movieArrangeDetailVo;
+    }
+
+
+    /**
+     * 排片的座位信息
+     * @param arrangeId
+     * @return
+     */
+    public List<ScreenSeatMapVo>  seatsInfo(String arrangeId){
+
+        List<ScreenSeatDo> screenSeatDos = screenSeatManager.list(new QueryWrapper<ScreenSeatDo>()
+                .eq("screen_arrange_id", arrangeId));
+
+
+        if (Objects.isNull(screenSeatDos)){
+            return Lists.newArrayList();
+        }
+
+        List<ScreenSeatVo> screenSeatVos = ConvertUtil.listConvert(screenSeatDos, ScreenSeatVo.class);
+
+        // 转换成map
+        Map<Integer,List<ScreenSeatVo>> seatsMaps = Maps.newHashMap();
+
+        for (ScreenSeatVo screenSeatVo : screenSeatVos) {
+            if (Objects.isNull(seatsMaps.get(screenSeatVo.getScreeningHallX()))){
+                seatsMaps.put(screenSeatVo.getScreeningHallX(),Lists.newArrayList());
+            }
+            seatsMaps.get(screenSeatVo.getScreeningHallX()).add(screenSeatVo);
+        }
+
+        List<ScreenSeatMapVo> result = Lists.newArrayList();
+
+
+        for (Map.Entry<Integer, List<ScreenSeatVo>> integerListEntry : seatsMaps.entrySet()) {
+
+            ScreenSeatMapVo screenSeatMapVo = new ScreenSeatMapVo();
+
+            screenSeatMapVo.setScreeningHallX(integerListEntry.getKey());
+            screenSeatMapVo.setSeatRowList(integerListEntry.getValue());
+
+            result.add(screenSeatMapVo);
+        }
+
+        //排序
+
+        return result
+                .stream()
+                .sorted(Comparator.comparing(ScreenSeatMapVo::getScreeningHallX))
+                .collect(Collectors.toList());
     }
 }

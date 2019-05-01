@@ -10,25 +10,19 @@ import com.aliyuncs.exceptions.ServerException;
 import com.aliyuncs.http.MethodType;
 import com.aliyuncs.profile.DefaultProfile;
 import com.dtstack.plat.lang.exception.BizException;
+import com.mingkai.mediamanagesyscommon.utils.redis.RedisUtil;
 import com.mingkai.mediamanagesysuc.commonUtil.CodeUtil;
-import com.mingkai.mediamanagesysuc.commonUtil.RedisUtil;
-import com.mingkai.mediamanagesysuc.constant.time.TimeConstant;
 import com.mingkai.mediamanagesysuc.interfaces.Sender;
 import com.mingkai.mediamanagesysuc.model.MailModel;
 import com.mingkai.mediamanagesysuc.pojo.po.MessagePo;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.i18n.LocaleContextHolder;
-import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
-import org.thymeleaf.context.Context;
-import org.thymeleaf.spring5.SpringTemplateEngine;
 
 import javax.mail.internet.MimeMessage;
-import java.util.Map;
 
 /**
  * @description: SenderService

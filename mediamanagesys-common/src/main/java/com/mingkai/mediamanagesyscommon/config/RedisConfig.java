@@ -1,4 +1,4 @@
-package com.mingkai.mediamanagesysuc.config;
+package com.mingkai.mediamanagesyscommon.config;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cache.annotation.EnableCaching;
@@ -10,8 +10,6 @@ import org.springframework.data.redis.serializer.RedisSerializer;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
 
 
-
-
 /**
  * @description:  Redis配置类
  * @author: Created by 云风 on 2019-03-31 18:05
@@ -19,7 +17,7 @@ import org.springframework.data.redis.serializer.StringRedisSerializer;
 @Configuration
 @EnableCaching
 @Slf4j
-public class RedisConfig{
+public class RedisConfig {
 
 /*
 

@@ -2,7 +2,6 @@ package com.mingkai.mediamanagesyscommon.utils.page;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.dtstack.plat.lang.exception.BizException;
-import lombok.extern.log4j.Log4j;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.List;
@@ -45,4 +44,22 @@ public class PageUtils {
         return returnPage;
     }
 
+
+    /**
+     *  查询结果为空的分页结果
+     * @param po
+     * @param page
+     * @param <T>
+     * @return
+     */
+    public static <T> Page<T> emptyPage(Page<T> po,Page page){
+
+        page.setTotal(po.getTotal());
+        page.setRecords(po.getRecords());
+        page.setSize(po.getSize());
+        page.setCurrent(po.getCurrent());
+
+        return page;
+
+    }
 }

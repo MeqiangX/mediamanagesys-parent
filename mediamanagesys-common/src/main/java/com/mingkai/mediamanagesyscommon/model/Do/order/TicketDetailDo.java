@@ -18,8 +18,10 @@ public class TicketDetailDo extends BaseDo {
 
     private Integer userId;
 
-    private Integer seatId;
+    private String seatIds;
 
     private BigDecimal price;
+
+    private Integer status;
 
 }

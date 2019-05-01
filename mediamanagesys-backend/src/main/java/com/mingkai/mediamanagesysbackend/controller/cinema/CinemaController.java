@@ -13,13 +13,12 @@ import com.mingkai.mediamanagesyscommon.model.Po.cinema.CinemaScreenUpdatePo;
 import com.mingkai.mediamanagesyscommon.model.Po.cinema.CinemaSearchPo;
 import com.mingkai.mediamanagesyscommon.model.Vo.cinema.CinemaVo;
 import com.mingkai.mediamanagesyscommon.model.Vo.cinema.MovieArgUnderCinemaVo;
+import com.mingkai.mediamanagesyscommon.model.Vo.cinema.MovieArrangeDetailVo;
+import com.mingkai.mediamanagesyscommon.model.Vo.cinema.ScreenSeatMapVo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -169,5 +168,37 @@ public class CinemaController {
     }
 
 
+    @ApiOperation("根据排片id查找对应的信息(选座)")
+    @GetMapping("arrange-details/{arrangeId}")
+    public R<MovieArrangeDetailVo> arrangeDetails(@PathVariable String arrangeId){
+        return new APITemplate<MovieArrangeDetailVo>() {
+            @Override
+            protected void checkParams() throws IllegalArgumentException {
+
+            }
+
+            @Override
+            protected MovieArrangeDetailVo process() throws BizException {
+                return cinemaService.arrangeDetails(arrangeId);
+            }
+        }.execute();
+    }
+
+
+    @ApiOperation("根据排片id 查找对应的座位信息")
+    @GetMapping("saets-info/{arrangeId}")
+    public R<List<ScreenSeatMapVo>> seatsInfo(@PathVariable String arrangeId){
+        return new APITemplate<List<ScreenSeatMapVo>>() {
+            @Override
+            protected void checkParams() throws IllegalArgumentException {
+
+            }
+
+            @Override
+            protected List<ScreenSeatMapVo> process() throws BizException {
+                return cinemaService.seatsInfo(arrangeId);
+            }
+        }.execute();
+    }
 
 }
