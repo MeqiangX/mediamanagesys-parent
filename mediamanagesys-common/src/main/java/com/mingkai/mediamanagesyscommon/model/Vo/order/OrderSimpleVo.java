@@ -31,6 +31,10 @@ public class OrderSimpleVo extends BaseVo {
 
     private String cinemaName;
 
+    private String cinemaAddr;
+
+    private String cinemaPhone;
+
     private String screeningHallName;
 
     private List<String> seats;

@@ -22,6 +22,7 @@ import com.mingkai.mediamanagesysuc.pojo.po.LoginPo;
 import com.mingkai.mediamanagesysuc.pojo.po.MessagePo;
 import com.mingkai.mediamanagesysuc.pojo.po.PwdUpdatePo;
 import com.mingkai.mediamanagesysuc.pojo.po.RegisterPo;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.logging.log4j.util.Strings;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -37,6 +38,7 @@ import java.util.Objects;
  * @author: Created by 云风 on 2019-03-30 21:02
  */
 @Service
+@Slf4j
 public class UserService {
 
     @Autowired
@@ -56,6 +58,37 @@ public class UserService {
 
     @Autowired
     private ThymeleafService thymeleafService;
+
+    @Autowired
+    private SessionService sessionService;
+
+
+
+    /**
+     * 得到登录用户的信息 from session
+     * @param userId
+     * @return
+     */
+    public UserDO getLoginUser(Integer userId){
+
+        sessionService.getSession().getId();
+        Object users = sessionService.getAttribute("users");
+
+        if (Objects.isNull(users)){
+            sessionService.setAttribute("users",Lists.newArrayList());
+        }
+
+        List<UserDO> userlist = (List)sessionService.getAttribute("users");
+
+        for (UserDO userDO : userlist) {
+
+            if (userDO.getId().equals(userId)){
+                return userDO;
+            }
+
+        }
+        return null;
+    }
 
 
     /**
@@ -97,7 +130,7 @@ public class UserService {
      * @param loginPo
      * @return
      */
-    public Boolean login(LoginPo loginPo){
+    public UserDO login(LoginPo loginPo){
 
         /**
          * 正常登录 登录成功之后的信息放入session 中
@@ -107,7 +140,33 @@ public class UserService {
 
             if (userDOOptional.isPresent()){
                 //如果登录成功 则非空
-                return true;
+                UserDO user = userDOOptional.get();
+                user.setUserPassword(null);
+                // 存储到session 中
+
+                sessionService.getSession().getId();
+                Object users = sessionService.getAttribute("users");
+
+                if (Objects.isNull(users)){ // 前端在登录完成后 将用户id 保存在cookies 中  然后每次通过拿到cookies的用户id 来查询用户状态
+                    sessionService.setAttribute("users",Lists.newArrayList());
+                }
+
+                List<UserDO> userList = (List) sessionService.getAttribute("users");
+
+                for (UserDO userDO : userList) {
+                    if (user.getId().equals(userDO.getId())){
+                        log.info("当前用户已经登录  -- > " + userDO.getUserName());
+                        return user;
+                    }
+                }
+
+                // 当前session 中没有当前的登录对象 放入session中 清空密码
+                userList.add(user);
+
+                //放回session中
+                sessionService.setAttribute("users",userList);
+
+                return user;
             }
 
             throw new BizException("用户名或密码错误");
@@ -116,6 +175,8 @@ public class UserService {
         if (loginPo.getLoginOption().equals(MessageEnum.LOGIN_PHONE.getVal())){
             // 手机验证码登录
 
+            UserDO userDO = registedPhone(loginPo.getAccount());
+            userDO.setUserPassword(null);
             //对比当前手机号 和 验证码
 
             Object code = redisUtil.get(MessageEnum.LOGIN_PHONE.getVal() + "+" + loginPo.getAccount());
@@ -125,7 +186,7 @@ public class UserService {
                 if (code.toString().equals(loginPo.getCode())){
                     // 清除验证码
                     redisUtil.del(MessageEnum.LOGIN_PHONE.getVal() + "+" + loginPo.getAccount());
-                    return true;
+                    return userDO;
                 }
             }
 
@@ -134,6 +195,9 @@ public class UserService {
         if (loginPo.getLoginOption().equals(MessageEnum.LOGIN_EMAIL.getVal())){
             // 邮箱登录
 
+            UserDO userDO = registedEmail(loginPo.getAccount());
+            userDO.setUserPassword(null);
+
             // 对比当前邮箱 和 验证码
             Object rightCode = redisUtil.get(loginPo.getLoginOption() + "+" + loginPo.getAccount());
 
@@ -141,7 +205,7 @@ public class UserService {
                 if (rightCode.equals(loginPo.getCode())){
                     //清除redis
                     redisUtil.del(loginPo.getLoginOption() + "+" + loginPo.getAccount());
-                    return true;
+                    return userDO;
                 }
             }
 
@@ -167,7 +231,7 @@ public class UserService {
 
         if (registerPo.getRegisterOption().equals(MessageEnum.REGISTER_PHONE.getVal())){
 
-            if (registedPhone(registerPo.getPhone())){
+            if (Objects.nonNull(registedPhone(registerPo.getPhone()))){
                 throw new BizException("手机号已经被注册过!");
             }
 
@@ -181,7 +245,7 @@ public class UserService {
         // 邮箱注册
         if (registerPo.getRegisterOption().equals(MessageEnum.REGISTER_EMAIL.getVal())){
 
-            if (registedEmail(registerPo.getEmail())){
+            if (Objects.nonNull(registedEmail(registerPo.getEmail()))){
                 throw new BizException("邮箱已经被注册过!");
             }
 
@@ -258,16 +322,16 @@ public class UserService {
      * @param phone
      * @return
      */
-    public Boolean registedPhone(String phone){
-        List<UserDO> userDOS = userMapper.selectList(new QueryWrapper<UserDO>()
+    public UserDO registedPhone(String phone){
+        UserDO userDO = userMapper.selectOne(new QueryWrapper<UserDO>()
                 .eq("status", 0)
                 .eq("phone", phone));
 
-        if (Objects.nonNull(userDOS) && userDOS.size() != 0){
-            return true;
+        if (Objects.nonNull(userDO)){
+            return userDO;
         }
 
-        return false;
+        return null;
     }
 
     /**
@@ -275,16 +339,14 @@ public class UserService {
      * @param email
      * @return
      */
-    public Boolean registedEmail(String email){
-        List<UserDO> userDOS = userMapper.selectList(new QueryWrapper<UserDO>()
+    public UserDO registedEmail(String email){
+        UserDO userDO = userMapper.selectOne(new QueryWrapper<UserDO>()
                 .eq("status", 0)
                 .eq("email", email));
 
-        if (Objects.nonNull(userDOS) && userDOS.size() != 0){
-            return true;
-        }
 
-        return false;
+            return userDO;
+
     }
 
     /**
@@ -364,6 +426,41 @@ public class UserService {
         // 执行插入
         return userRoleRelManager.saveBatch(insertList);
 
+
+    }
+
+
+    /**
+     * 登出
+     * @param userId
+     * @return
+     */
+    public Boolean logout(Integer userId){
+
+        //将session users--> userId = userId clear
+
+        List<UserDO> users = (List)sessionService.getAttribute("users");
+
+        if (Objects.isNull(users) || users.size() == 0){
+            return true;
+        }
+
+
+        Integer removeId = null;
+        for (int i = 0; i < users.size();++i){
+            if (users.get(i).getId().equals(userId)){
+                removeId = i;
+                break;
+            }
+        }
+
+        if (removeId != null){
+            int i = removeId;
+            users.remove(i);
+        }
+
+        sessionService.setAttribute("users",users);
+        return Boolean.TRUE;
 
     }
 }

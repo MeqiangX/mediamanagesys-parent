@@ -18,7 +18,9 @@ import com.mingkai.mediamanagesyscommon.model.Do.order.TicketDetailDo;
 import com.mingkai.mediamanagesyscommon.model.Do.screen.ScreenArrangeDo;
 import com.mingkai.mediamanagesyscommon.model.Do.screen.ScreenRoomDo;
 import com.mingkai.mediamanagesyscommon.model.Do.screen.ScreenSeatDo;
+import com.mingkai.mediamanagesyscommon.model.Po.order.CoordinatePo;
 import com.mingkai.mediamanagesyscommon.model.Po.order.OrderPagePo;
+import com.mingkai.mediamanagesyscommon.model.Po.order.SeatPo;
 import com.mingkai.mediamanagesyscommon.model.Vo.order.OrderSimpleVo;
 import com.mingkai.mediamanagesyscommon.utils.convert.ConvertUtil;
 import com.mingkai.mediamanagesyscommon.utils.page.PageUtils;
@@ -176,16 +178,16 @@ public class OrderService {
 
         if (Objects.isNull(classUserRel)){
             // 非会员
-            ticketDetailDo.setPrice(oringinalPrice);
+            ticketDetailDo.setPrice(oringinalPrice.multiply(new BigDecimal(seatIds.size())));
         }else{
             //会员
             ClassDicDo classId = classDicManager.getById(classUserRel.getClassId());
 
             if (Objects.isNull(classId)){
                 log.info("未找到相关的会员记录，按照默认价格："+classUserRel.getClassId());
-                ticketDetailDo.setPrice(oringinalPrice);
+                ticketDetailDo.setPrice(oringinalPrice.multiply(new BigDecimal(seatIds.size())));
             }else{
-                ticketDetailDo.setPrice(classId.getDiscount().multiply(oringinalPrice));
+                ticketDetailDo.setPrice((classId.getDiscount().multiply(oringinalPrice)).multiply(new BigDecimal(seatIds.size())));
             }
         }
 
@@ -250,6 +252,8 @@ public class OrderService {
 
 
         orderSimpleVo.setCinemaName(cinema.getCinemaName());
+        orderSimpleVo.setCinemaAddr(cinema.getCinemaFullAddress());
+        orderSimpleVo.setCinemaPhone(cinema.getPhone());
         orderSimpleVo.setScreeningHallName(screenRoomDo.getScreeningHallName());
 
         orderSimpleVo.setMovieName(movie.getMovieName());
@@ -331,5 +335,101 @@ public class OrderService {
 
     }
 
+
+    /**
+     *  下单第一步检验 当前用户在当前排片arrangeId 下 是否已经买满了
+     * @param userId
+     * @param arrangeId
+     * @return
+     */
+    public Integer boughtCountsArrangeId(Integer userId,String arrangeId){
+
+        // 根据userId 查询用户订单 包括未支付 支付
+        List<TicketDetailDo> ticketDetailDos = ticketDetailManager.list(new QueryWrapper<TicketDetailDo>()
+                .eq("user_id", userId));
+
+        // 根据订单的seats 来查询 坐席对应的arrangeId
+        if (Objects.isNull(ticketDetailDos) || ticketDetailDos.size() == 0){
+            return 0;
+        }
+
+
+        // 取出 和 arrangeId 相同的 id 数量
+
+        // 返回
+        for (TicketDetailDo ticketDetailDo : ticketDetailDos) {
+
+            String[] seats = ticketDetailDo.getSeatIds().split(",");
+
+            ScreenSeatDo screenSeatDo = screenSeatManager.getById(seats[0]);
+
+            if (screenSeatDo.getScreenArrangeId().equals(Integer.valueOf(arrangeId))){
+                return seats.length;
+            }
+
+        }
+
+
+        // 或者是有订单 但是没有当前arrangeId 排片下的订单
+        return 0;
+
+    }
+
+
+    /**
+     * 下单前的校验，当前所选坐席是否可买
+     */
+    public List<Integer> isAllowPurchased(List<Integer> seats){
+
+        List<ScreenSeatDo> list = screenSeatManager.list(new QueryWrapper<ScreenSeatDo>()
+                .eq("is_purchased", 0)
+                .in("id", seats));
+
+        if (Objects.isNull(list)){
+            // 全部都被预定了
+            return seats;
+        }else if (list.size() == seats.size()){
+            // 都没有被预定
+            return Lists.newArrayList();
+        }else{
+            // 有一部分已经被预定了
+            List<Integer> ticketingList = Lists.newArrayList();
+            for (Integer seat : seats) {
+
+                if (!list.contains(seat)){
+                    ticketingList.add(seat);
+                }
+            }
+
+            return ticketingList;
+        }
+
+    }
+
+
+    /**
+     * 通过 坐席List 和 arrangeId 查询 坐席ids
+     * @param coordinatePo
+     * @return
+     */
+    public List<Integer> seatIdsByCoordinate(CoordinatePo coordinatePo){
+
+        List<Integer> result = Lists.newArrayList();
+
+        List<SeatPo> seats = coordinatePo.getSeats();
+
+
+
+        for (SeatPo seat : seats) {
+            ScreenSeatDo screenSeatDo = screenSeatManager.getOne(new QueryWrapper<ScreenSeatDo>()
+                    .eq("screen_arrange_id", coordinatePo.getArrangeId())
+                    .eq("screening_hall_x", seat.getRow())
+                    .eq("screening_hall_y", seat.getCol()));
+
+            result.add(screenSeatDo.getId());
+        }
+
+        return result;
+    }
 
 }

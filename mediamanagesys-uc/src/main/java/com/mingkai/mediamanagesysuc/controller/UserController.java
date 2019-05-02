@@ -5,6 +5,7 @@ import com.dtstack.plat.lang.exception.BizException;
 import com.dtstack.plat.lang.web.R;
 import com.dtstack.plat.lang.web.template.APITemplate;
 import com.mingkai.mediamanagesyscommon.common.API;
+import com.mingkai.mediamanagesyscommon.model.Do.uc.UserDO;
 import com.mingkai.mediamanagesyscommon.model.Po.uc.UserRoleAddPo;
 import com.mingkai.mediamanagesysuc.model.MailModel;
 import com.mingkai.mediamanagesysuc.pojo.po.LoginPo;
@@ -16,6 +17,9 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpSession;
+import java.util.Objects;
 
 
 /**
@@ -29,6 +33,9 @@ public class UserController {
 
    @Autowired
    private UserService userService;
+
+   @Autowired
+   private HttpSession session;
 
     @ApiOperation("邮件发送接口")
     @PostMapping("/sendEmail")
@@ -82,11 +89,9 @@ public class UserController {
         }.execute();
     }
 
-
-
-    @ApiOperation("登录")
-    @PostMapping("/login")
-    public R<Boolean> phoneLogin(LoginPo loginPo){
+    @ApiOperation("登出")
+    @GetMapping("/logout")
+    public R<Boolean> logout(Integer userId){
         return new APITemplate<Boolean>() {
             @Override
             protected void checkParams() throws IllegalArgumentException {
@@ -95,11 +100,43 @@ public class UserController {
 
             @Override
             protected Boolean process() throws BizException {
+                return userService.logout(userId);
+            }
+        }.execute();
+    }
+
+
+    @ApiOperation("登录")
+    @GetMapping("/login")
+    public R<UserDO> phoneLogin(LoginPo loginPo){
+        return new APITemplate<UserDO>() {
+            @Override
+            protected void checkParams() throws IllegalArgumentException {
+                System.out.println("sessionId: " + session.getId());
+            }
+
+            @Override
+            protected UserDO process() throws BizException {
                 return userService.login(loginPo);
             }
         }.execute();
     }
 
+    @ApiOperation("得到登录用户信息 from session")
+    @GetMapping("/getloginUser-fromSession")
+    public R<UserDO> getLoginUserFromSession(Integer userId){
+        return new APITemplate<UserDO>() {
+            @Override
+            protected void checkParams() throws IllegalArgumentException {
+                System.out.println("sessionId: " + session.getId());
+            }
+
+            @Override
+            protected UserDO process() throws BizException {
+                return userService.getLoginUser(userId);
+            }
+        }.execute();
+    }
 
     @ApiOperation("邮箱/手机注册")
     @PostMapping("/register")
@@ -128,7 +165,7 @@ public class UserController {
 
             @Override
             protected Boolean process() throws BizException {
-                return userService.registedPhone(phone);
+                return Objects.nonNull(userService.registedPhone(phone));
             }
         }.execute();
     }
@@ -145,7 +182,7 @@ public class UserController {
 
            @Override
            protected Boolean process() throws BizException {
-               return userService.registedEmail(email);
+               return Objects.nonNull(userService.registedEmail(email));
            }
        }.execute();
     }
