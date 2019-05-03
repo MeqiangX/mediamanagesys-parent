@@ -107,4 +107,6 @@ public class RedisUtil {
         Long expire = redisTemplate.getExpire(key);
         return expire;
     }
+
+
 }

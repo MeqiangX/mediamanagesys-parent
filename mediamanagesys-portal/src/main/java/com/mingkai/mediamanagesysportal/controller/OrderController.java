@@ -75,15 +75,15 @@ public class OrderController {
      */
     @ApiOperation("订座")
     @GetMapping("seat-book")
-    public R<Boolean> seatBooking(@RequestParam List<Integer> seatIds, @RequestParam Integer userId){
-        return new APITemplate<Boolean>() {
+    public R<String> seatBooking(@RequestParam("seatIds[]") List<Integer> seatIds, @RequestParam Integer userId){
+        return new APITemplate<String>() {
             @Override
             protected void checkParams() throws IllegalArgumentException {
 
             }
 
             @Override
-            protected Boolean process() throws BizException {
+            protected String process() throws BizException {
                 return orderService.seatBooking(seatIds,userId);
             }
         }.execute();
@@ -142,6 +142,23 @@ public class OrderController {
     }
 
 
+    @ApiOperation("取消订单(未支付和已支付)")
+    @GetMapping("cancel-order")
+    public R<Boolean> cancelOrder(String orderId){
+        return new APITemplate<Boolean>() {
+            @Override
+            protected void checkParams() throws IllegalArgumentException {
+
+            }
+
+            @Override
+            protected Boolean process() throws BizException {
+                return orderService.cancelOrder(orderId);
+            }
+        }.execute();
+    }
+
+
     /**
      * 查询用户在当前排场下已经购买的票数
      * @param userId
@@ -166,7 +183,7 @@ public class OrderController {
 
     @ApiOperation("当前要购买的坐席是否可买")
     @GetMapping("allow-purchased")
-    public R<List<Integer>> isAllowPurchased(@RequestParam List<Integer> seats){
+    public R<List<Integer>> isAllowPurchased(@RequestParam("seats[]") List<Integer> seats){
         return new APITemplate<List<Integer>>() {
             @Override
             protected void checkParams() throws IllegalArgumentException {

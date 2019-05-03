@@ -113,7 +113,7 @@ public class OrderService {
      * @return
      */
     @Transactional
-    public Boolean seatBooking(List<Integer> seatIds, Integer userId){
+    public String seatBooking(List<Integer> seatIds, Integer userId){
 
         // 查看当前的座位状态是否可用 是否已经被购买
         List<ScreenSeatDo> screenSeatLists = screenSeatManager.list(new QueryWrapper<ScreenSeatDo>()
@@ -195,7 +195,7 @@ public class OrderService {
         boolean saveData = ticketDetailManager.save(ticketDetailDo);
         // 订购成功插入表中的同时 插入到Redis 并设置过期时间 15分钟
         redisUtil.set(""+ticketDetailDo.getOrderId(),""+userId, TimeConstant.EXPIRE_TIME_ORDER);
-        return saveData;
+        return true == saveData ? ticketDetailDo.getOrderId() : "";
     }
 
 
@@ -357,21 +357,20 @@ public class OrderService {
         // 取出 和 arrangeId 相同的 id 数量
 
         // 返回
+        Integer num = 0;
+
         for (TicketDetailDo ticketDetailDo : ticketDetailDos) {
+
+            // 更改 可能多个订单号都是同一场的-->
 
             String[] seats = ticketDetailDo.getSeatIds().split(",");
 
             ScreenSeatDo screenSeatDo = screenSeatManager.getById(seats[0]);
-
-            if (screenSeatDo.getScreenArrangeId().equals(Integer.valueOf(arrangeId))){
-                return seats.length;
-            }
+            num += seats.length;
 
         }
 
-
-        // 或者是有订单 但是没有当前arrangeId 排片下的订单
-        return 0;
+        return num;
 
     }
 
@@ -430,6 +429,52 @@ public class OrderService {
         }
 
         return result;
+    }
+
+    /**
+     * 取消订单(0 未支付 1 已经支付)
+     * @param orderId
+     * @return
+     */
+    public Boolean cancelOrder(String orderId){
+
+        // 通过后台查询订单状态
+
+        // status 0 未支付
+
+        // 未支付的订单 会在redis 存在  删除 订单的同时 删除redis
+        TicketDetailDo ticketDetailDo = ticketDetailManager.getOne(new QueryWrapper<TicketDetailDo>()
+                .eq("order_id", orderId));
+
+
+        // 清除redis 订单记录
+        redisUtil.del(orderId);
+
+
+        // 得到seatIds
+        String seatIds = ticketDetailDo.getSeatIds();
+
+        // 删除订单
+        ticketDetailManager.removeById(ticketDetailDo.getId());
+
+        // 恢复座位
+        String[] seats = seatIds.split(",");
+
+        boolean update = screenSeatManager.update(new UpdateWrapper<ScreenSeatDo>()
+                .in("id", seats)
+                .set("is_purchased", 0));
+
+
+        // status 1 已经支付 步骤相同 只是对于已经支付的 要多一个退款操作
+
+        if (ticketDetailDo.getStatus() == 1){
+
+            // 退款操作
+
+        }
+
+        return update;
+
     }
 
 }
