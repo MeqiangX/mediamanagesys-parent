@@ -104,6 +104,53 @@ public class CinemaService {
         return ConvertUtil.pageConvert(screenArrangeDoPage,CinemaVo.class);
     }
 
+    /**
+     * 删除影院 by id
+     * @param cinemaId
+     */
+    public Boolean deleteCinemaById(Integer cinemaId){
+
+        // 当前删除的影院是否有排片记录  查询cinemaScreen --> 得到id --> 通过Ids 查询screenArrange -->
+        List<CinemaScreenDo> cinemaScreens = cinemaScreenManager.list(new QueryWrapper<CinemaScreenDo>()
+                .eq("cinema_id", cinemaId));
+
+        List<Integer> cinemaScreenIds = cinemaScreens.stream().map(CinemaScreenDo::getId).collect(Collectors.toList());
+
+        if (Objects.nonNull(cinemaScreenIds) && cinemaScreenIds.size() != 0){
+            List<ScreenArrangeDo> cinemaArranges = screenArrangeMapper.selectList(new QueryWrapper<ScreenArrangeDo>()
+                    .in("cinema_screen_id", cinemaScreenIds));
+
+
+            if (Objects.nonNull(cinemaArranges) && cinemaArranges.size() != 0){
+                // 当前要删除的影院有排片记录 需要先解绑排片记录
+                throw new BizException("当前要删除的影院含有排片记录，请先将排片记录清楚再删除");
+            }else{
+
+                // 没有排片记录 可以正常删除
+
+                // 删除 影院
+                boolean removeById = cinemaManager.removeById(cinemaId);
+
+                // 删除 影院和放映厅的绑定记录
+                boolean cinemaScreenDels = cinemaScreenManager.remove(new QueryWrapper<CinemaScreenDo>()
+                        .eq("cinema_id", cinemaId));
+
+                // 相关联的 坐席 的 删除 应该是在订单呢完成后  应该有一个定时任务 对完成的排片进行自动清除 坐席和订单
+
+                return removeById && cinemaScreenDels;
+            }
+
+        }else{
+
+            // 没有和放映厅相关的记录 可以直接删除
+            // 删除 影院
+            boolean removeById = cinemaManager.removeById(cinemaId);
+
+            return removeById;
+        }
+
+
+    }
 
     /**
      * 添加影院
@@ -113,18 +160,10 @@ public class CinemaService {
     @Transactional
     public Boolean cinemaAdd(CinemaAddPo cinemaAddPo){
 
-        // 重名校验
-        CinemaDo cinema = cinemaManager.getOne(new QueryWrapper<CinemaDo>()
-                .eq("cinema_full_address", cinemaAddPo.getCinemaFullAddress()));
-
-        if (Objects.nonNull(cinema)){
-            throw new BizException("统一位置上不能出现两个不同的影院");
-        }
-
-        // 正常添加
-
         CinemaDo cinemaDo = new CinemaDo();
 
+        cinemaDo.setPhone(cinemaAddPo.getPhone());
+        cinemaDo.setImage(cinemaAddPo.getImage());
         cinemaDo.setCinemaAreaId(cinemaAddPo.getAreaId());
         cinemaDo.setCinemaName(cinemaAddPo.getCinemaName());
         cinemaDo.setCinemaFullAddress(cinemaAddPo.getCinemaFullAddress());
@@ -139,7 +178,41 @@ public class CinemaService {
 
         cinemaDo.setCinemaAreaFullName(province.getProvince()+city.getCity()+area.getArea());
 
-        return cinemaManager.save(cinemaDo);
+
+        if (Objects.nonNull(cinemaAddPo.getId())){
+
+            cinemaDo.setId(cinemaAddPo.getId());
+
+            // 不为空 是 修改  重名校验 地址校验
+            CinemaDo cinemaAddr = cinemaManager.getOne(new QueryWrapper<CinemaDo>()
+                    .eq("cinema_full_address", cinemaAddPo.getCinemaFullAddress())
+                    .eq("cinema_area_id",cinemaAddPo.getAreaId())
+                    .ne("id", cinemaAddPo.getId()));
+
+            if (Objects.nonNull(cinemaAddr)){
+                    throw new BizException("同一位置上不能出现两个不同的影院");
+            }
+
+
+            // 修改
+            return cinemaManager.updateById(cinemaDo);
+
+        }else{
+            // 重名校验
+            CinemaDo cinema = cinemaManager.getOne(new QueryWrapper<CinemaDo>()
+                    .eq("cinema_full_address", cinemaAddPo.getCinemaFullAddress())
+            .eq("cinema_area_id",cinemaAddPo.getAreaId()));
+
+            if (Objects.nonNull(cinema)){
+                throw new BizException("同一位置上不能出现两个不同的影院");
+            }
+            return cinemaManager.save(cinemaDo);
+        }
+
+
+
+
+
     }
 
     /**
@@ -371,10 +444,10 @@ public class CinemaService {
      * @param cinemaSearchPo
      * @return
      */
-    public Page<CinemaVo> findCinemaByAreaId(CinemaSearchPo cinemaSearchPo){
-        Page<CinemaDo> cinemaDoPage =
-                (Page<CinemaDo>)cinemaManager.page(cinemaSearchPo,new QueryWrapper<CinemaDo>()
-        .eq("cinema_area_id",cinemaSearchPo.getAreaId()));
+    public Page<CinemaVo> searchCinemas(CinemaSearchPo cinemaSearchPo){
+
+        Page<CinemaDo> cinemaDoPage = cinemaManager.getBaseMapper().searchCinemaPage(cinemaSearchPo);
+
 
         if (cinemaDoPage != null && cinemaDoPage.getRecords() != null){
             return ConvertUtil.pageConvert(cinemaDoPage,CinemaVo.class);

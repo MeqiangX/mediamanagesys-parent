@@ -12,13 +12,16 @@ import lombok.Data;
 @Data
 public class ScreenRoomAddPo {
 
-    @ApiModelProperty("放映厅名称")
+    @ApiModelProperty(name = "id",value = "id")
+    private Integer id;
+
+    @ApiModelProperty(name="screeningHallName",value = "放映厅名称")
     private String screeningHallName;
 
-    @ApiModelProperty("放映厅排数")
+    @ApiModelProperty(name="screeningHallX",value = "放映厅排数")
     private Integer screeningHallX;
 
-    @ApiModelProperty("放映厅列数")
+    @ApiModelProperty(name = "screeningHallY",value = "放映厅列数")
     private Integer screeningHallY;
 
 }

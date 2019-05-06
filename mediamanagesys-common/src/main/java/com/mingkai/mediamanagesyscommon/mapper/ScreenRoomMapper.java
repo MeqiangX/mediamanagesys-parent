@@ -1,7 +1,9 @@
 package com.mingkai.mediamanagesyscommon.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.mingkai.mediamanagesyscommon.model.Do.screen.ScreenRoomDo;
+import com.mingkai.mediamanagesyscommon.model.Po.cinema.ScreenPagePo;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
@@ -21,4 +23,5 @@ public interface ScreenRoomMapper extends BaseMapper<ScreenRoomDo> {
     @Select("select * from mesys_screen_room where is_deleted = 0 and id = #{id}")
     ScreenRoomDo selectById(@Param("id") Integer id);
 
+    Page<ScreenRoomDo> queryScreensPage(@Param("screenPagePo")ScreenPagePo screenPagePo);
 }

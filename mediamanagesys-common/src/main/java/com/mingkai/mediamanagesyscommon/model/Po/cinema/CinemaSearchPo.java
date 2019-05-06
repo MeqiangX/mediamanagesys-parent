@@ -16,4 +16,7 @@ public class CinemaSearchPo extends Page {
     @ApiModelProperty(name = "areaId",value = "地域id")
     private String areaId;
 
+    @ApiModelProperty(name = "search",value = "影院名")
+    private String search;
+
 }

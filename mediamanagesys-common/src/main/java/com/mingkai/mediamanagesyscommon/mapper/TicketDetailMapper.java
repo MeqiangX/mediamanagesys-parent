@@ -2,12 +2,15 @@ package com.mingkai.mediamanagesyscommon.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.mingkai.mediamanagesyscommon.model.Do.EchartsDo;
 import com.mingkai.mediamanagesyscommon.model.Do.order.TicketDetailDo;
 import com.mingkai.mediamanagesyscommon.model.Po.order.TicketSearchPo;
 import com.mingkai.mediamanagesyscommon.model.Vo.ticket.TicketDetailVo;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 /**
  * @description:
@@ -18,5 +21,8 @@ import org.springframework.stereotype.Repository;
 public interface TicketDetailMapper extends BaseMapper<TicketDetailDo> {
 
     Page<TicketDetailVo> orderSearch(@Param("ticketSearchPo")TicketSearchPo ticketSearchPo);
+
+    List<EchartsDo> orderEchartsData(@Param("startYear") Integer startYear, @Param("startMonth") Integer startMonth
+            , @Param("endYear") Integer endYear, @Param("endMonth") Integer endMonth);
 
 }

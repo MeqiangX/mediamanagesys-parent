@@ -2,11 +2,14 @@ package com.mingkai.mediamanagesyscommon.mapper;
 
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.mingkai.mediamanagesyscommon.model.Do.EchartsDo;
 import com.mingkai.mediamanagesyscommon.model.Do.uc.UserDO;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 /**
  * @description:
@@ -24,6 +27,10 @@ public interface UserMapper extends BaseMapper<UserDO> {
      */
     @Select("select * from mesys_user where (user_name = #{account} or phone = #{account} or email = #{account}) and user_password = #{password} and status = 0 and is_deleted = 0")
     UserDO login(@Param("account") String account, @Param("password") String password);
+
+    List<EchartsDo> userEchartsData(@Param("startYear") Integer startYear, @Param("startMonth") Integer startMonth
+            , @Param("endYear") Integer endYear, @Param("endMonth") Integer endMonth);
+
 
 
 }

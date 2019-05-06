@@ -12,6 +12,7 @@ public interface API {
 
     // ------- common
     String API_COMMON = "api/common";
+    String API_COMMON_FILE = "api/common/file";
 
 
     // ------- uc
@@ -41,6 +42,8 @@ public interface API {
 
     String API_ORDERMANAGE = "api/backend/ordermanage";
 
+    String API_WELCOME = "api/backend/welcome";
+
     // -------- portal
 
         // movie
@@ -61,6 +64,7 @@ public interface API {
 
     // ----------common
     String COMMON = "通用组";
+    String COMMON_FILE = "通用组-文件";
 
     // ---------- uc
 
@@ -77,6 +81,7 @@ public interface API {
     String BACKEND_CINEMA = "后台-影院相关";
     String BACKEND_USER = "后台-用户管理";
     String BACKEND_ORDER = "后台-订单管理";
+    String BACKEND_WELCOME = "后台-欢迎页";
 
     // ---------- portal
 

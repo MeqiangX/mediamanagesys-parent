@@ -126,4 +126,38 @@ public class AreaService {
         return result;
 
     }
+
+
+    /**
+     * 根据fatherId 查询  城市
+     * @param fatherId
+     * @return
+     */
+    public List<City> searchCitysByFatherId(Integer fatherId){
+        return areaMapper.selectUnderProvinceCitys(fatherId);
+    }
+
+
+    public List<Area> searchAreasByFatherId(Integer fatherId){
+        return areaMapper.selectUnderCityAreas(fatherId);
+    }
+
+
+    /**
+     * 根据areaId来得到三级区域
+     * @param areaId
+     * @return
+     */
+    public AreaCityProvItem getAreaCityProv(Integer areaId){
+        Area area = areaMapper.selectByAreaId(areaId);
+
+        City city = areaMapper.selectByCityId(area.getFatherId());
+
+        Province province = areaMapper.selectByProvinceId(city.getFatherId());
+
+
+        AreaCityProvItem areaCityProvItem = new AreaCityProvItem(province,city,area);
+
+        return areaCityProvItem;
+    }
 }

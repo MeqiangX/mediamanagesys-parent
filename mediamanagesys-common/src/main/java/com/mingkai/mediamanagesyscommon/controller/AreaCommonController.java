@@ -93,6 +93,38 @@ public class AreaCommonController {
     }
 
 
+    @ApiOperation("根据父id查询城市")
+    @GetMapping("underProvCitys")
+    public R<List<City>> searchCitysUnderProv(Integer fatherId){
+        return new APITemplate<List<City>>() {
+            @Override
+            protected void checkParams() throws IllegalArgumentException {
+
+            }
+
+            @Override
+            protected List<City> process() throws BizException {
+                return areaService.searchCitysByFatherId(fatherId);
+            }
+        }.execute();
+    }
+
+    @ApiOperation("根据父id查询区域")
+    @GetMapping("underProvAreas")
+    public R<List<Area>> searchAreasUnderCity(Integer fatherId){
+        return new APITemplate<List<Area>>() {
+            @Override
+            protected void checkParams() throws IllegalArgumentException {
+
+            }
+
+            @Override
+            protected List<Area> process() throws BizException {
+                return areaService.searchAreasByFatherId(fatherId);
+            }
+        }.execute();
+    }
+
     @ApiOperation("初始化城市下拉框")
     @GetMapping("init-select-area")
     public R<List<AreaSelectItem>> initSelectArea(){
@@ -105,6 +137,24 @@ public class AreaCommonController {
             @Override
             protected List<AreaSelectItem> process() throws BizException {
                 return areaService.initSelectArea();
+            }
+        }.execute();
+    }
+
+
+    //通过areaId 来查询 上两级
+    @ApiOperation("得到上两级地区")
+    @GetMapping("/get-area-city-prov")
+    public R<AreaCityProvItem> getAreaCityProv(Integer areaId){
+        return new APITemplate<AreaCityProvItem>() {
+            @Override
+            protected void checkParams() throws IllegalArgumentException {
+
+            }
+
+            @Override
+            protected AreaCityProvItem process() throws BizException {
+                return areaService.getAreaCityProv(areaId);
             }
         }.execute();
     }

@@ -66,6 +66,22 @@ public class CinemaController {
         }.execute();
     }
 
+    @ApiOperation("删除影院by id")
+    @GetMapping("del-by-id")
+    public R<Boolean> deleteCinemaById(Integer cinemaId){
+        return new APITemplate<Boolean>() {
+            @Override
+            protected void checkParams() throws IllegalArgumentException {
+
+            }
+
+            @Override
+            protected Boolean process() throws BizException {
+                return cinemaService.deleteCinemaById(cinemaId);
+            }
+        }.execute();
+    }
+
     @ApiOperation("查询影院by电影")
     @GetMapping("cinema-by-movie")
     public R<Page<CinemaVo>> cinemaByMovie(CinemaPagePo cinemaPagePo){
@@ -82,9 +98,9 @@ public class CinemaController {
         }.execute();
     }
 
-    @ApiOperation("添加地区影院")
+    @ApiOperation("添加(修改)地区影院")
     @PostMapping("cinema-add")
-    public R<Boolean> cinemaAdd(CinemaAddPo cinemaAddPo){
+    public R<Boolean> cinemaAdd(@RequestBody CinemaAddPo cinemaAddPo){
         return new APITemplate<Boolean>() {
             @Override
             protected void checkParams() throws IllegalArgumentException {
@@ -99,9 +115,11 @@ public class CinemaController {
     }
 
 
+
+
     @ApiOperation("影院配置放映厅")
     @PostMapping("cinema-screen-config")
-    public R<Boolean> cinemaScreenConfig(CinemaScreenUpdatePo cinemaScreenUpdatePo){
+    public R<Boolean> cinemaScreenConfig(@RequestBody CinemaScreenUpdatePo cinemaScreenUpdatePo){
         return new APITemplate<Boolean>() {
             @Override
             protected void checkParams() throws IllegalArgumentException {
@@ -135,7 +153,7 @@ public class CinemaController {
 
     @ApiOperation("根据地域id来查找影院")
     @GetMapping("find-cinema-by-areaId")
-    public R<Page<CinemaVo>> findCinemaByAreaId(CinemaSearchPo cinemaSearchPo){
+    public R<Page<CinemaVo>> searchCinemas(CinemaSearchPo cinemaSearchPo){
         return new APITemplate<Page<CinemaVo>>() {
             @Override
             protected void checkParams() throws IllegalArgumentException {
@@ -144,11 +162,10 @@ public class CinemaController {
 
             @Override
             protected Page<CinemaVo> process() throws BizException {
-                return cinemaService.findCinemaByAreaId(cinemaSearchPo);
+                return cinemaService.searchCinemas(cinemaSearchPo);
             }
         }.execute();
     }
-
 
     // 影院下的排片记录
     @ApiOperation("查找影院下排片信息")

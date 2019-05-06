@@ -93,7 +93,7 @@ public interface AreaMapper {
      * @param fatherId
      * @return
      */
-    @Select("select * from area where father_id = #{fatherId}")
+    @Select("select * from area where father_id = #{fatherId} ")
     List<Area> selectUnderCityAreas(@Param("fatherId") Integer fatherId);
 
     /**

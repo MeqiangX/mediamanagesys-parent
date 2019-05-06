@@ -3,6 +3,7 @@ package com.mingkai.mediamanagesyscommon.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.mingkai.mediamanagesyscommon.model.Do.EchartsDo;
 import com.mingkai.mediamanagesyscommon.model.Do.movie.MovieDetailDo;
 import com.mingkai.mediamanagesyscommon.model.Po.movie.MoviePagePo;
 import org.apache.ibatis.annotations.Mapper;
@@ -34,5 +35,8 @@ public interface MovieDetailMapper extends BaseMapper<MovieDetailDo> {
 
 
     Page<MovieDetailDo> moviePage(@Param("moviePagePo") MoviePagePo moviePagePo);
+
+    List<EchartsDo> movieEchartsData(@Param("startYear") Integer startYear,@Param("startMonth") Integer startMonth
+    ,@Param("endYear") Integer endYear,@Param("endMonth") Integer endMonth);
 
 }
