@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mingkai.mediamanagesyscommon.mapper.UserAdminMapper">
+
+
+    <update id="updatePwd">
+
+        update mesys_user_admin set user_password = #{newPwd}
+        where id = #{id}
+
+    </update>
+
+
+    <select id="userAdminPages" resultType="com.mingkai.mediamanagesyscommon.model.Do.UserAdminDo">
+
+        select * from mesys_user_admin
+        <where>
+            is_deleted = 0
+            and parent = #{userAdminPagePo.parentId}
+            <if test="userAdminPagePo.userName != '' and userAdminPagePo.userName != null">
+               and user_name like CONCAT('%',#{userAdminPagePo.userName},'%')
+            </if>
+        </where>
+
+    </select>
+</mapper>

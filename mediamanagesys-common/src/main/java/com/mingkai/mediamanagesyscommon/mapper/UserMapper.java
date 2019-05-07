@@ -2,8 +2,10 @@ package com.mingkai.mediamanagesyscommon.mapper;
 
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.mingkai.mediamanagesyscommon.model.Do.EchartsDo;
 import com.mingkai.mediamanagesyscommon.model.Do.uc.UserDO;
+import com.mingkai.mediamanagesyscommon.model.Po.uc.UserPagePo;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
@@ -31,6 +33,6 @@ public interface UserMapper extends BaseMapper<UserDO> {
     List<EchartsDo> userEchartsData(@Param("startYear") Integer startYear, @Param("startMonth") Integer startMonth
             , @Param("endYear") Integer endYear, @Param("endMonth") Integer endMonth);
 
-
+    Page<UserDO> usersPage(@Param("userPagePo") UserPagePo userPagePo);
 
 }

@@ -141,6 +141,21 @@ public class OrderController {
         }.execute();
     }
 
+    @ApiOperation("取消用户的所有订单")
+    @GetMapping("delete-user-orders")
+    public R<Boolean> deleteUserOrders(Integer userId){
+        return new APITemplate<Boolean>() {
+            @Override
+            protected void checkParams() throws IllegalArgumentException {
+
+            }
+
+            @Override
+            protected Boolean process() throws BizException {
+                return orderService.deleteUserOrders(userId);
+            }
+        }.execute();
+    }
 
     @ApiOperation("取消订单(未支付和已支付)")
     @GetMapping("cancel-order")

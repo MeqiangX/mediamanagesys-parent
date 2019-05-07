@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.dtstack.plat.lang.exception.BizException;
 import com.dtstack.plat.lang.web.R;
 import com.dtstack.plat.lang.web.template.APITemplate;
+import com.mingkai.mediamanagesysbackend.model.PO.MovieArgBackPo;
 import com.mingkai.mediamanagesysbackend.model.PO.MovieArrangePo;
 import com.mingkai.mediamanagesysbackend.service.cinema.CinemaService;
 import com.mingkai.mediamanagesyscommon.common.API;
@@ -11,10 +12,7 @@ import com.mingkai.mediamanagesyscommon.model.Po.cinema.CinemaAddPo;
 import com.mingkai.mediamanagesyscommon.model.Po.cinema.CinemaPagePo;
 import com.mingkai.mediamanagesyscommon.model.Po.cinema.CinemaScreenUpdatePo;
 import com.mingkai.mediamanagesyscommon.model.Po.cinema.CinemaSearchPo;
-import com.mingkai.mediamanagesyscommon.model.Vo.cinema.CinemaVo;
-import com.mingkai.mediamanagesyscommon.model.Vo.cinema.MovieArgUnderCinemaVo;
-import com.mingkai.mediamanagesyscommon.model.Vo.cinema.MovieArrangeDetailVo;
-import com.mingkai.mediamanagesyscommon.model.Vo.cinema.ScreenSeatMapVo;
+import com.mingkai.mediamanagesyscommon.model.Vo.cinema.*;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -217,5 +215,44 @@ public class CinemaController {
             }
         }.execute();
     }
+
+
+    @ApiOperation("搜索排片记录")
+    @GetMapping("arrange-records")
+    public R<Page<MovieArgVo>> arrangeRecords(MovieArgBackPo movieArgBackPo){
+
+        return new APITemplate<Page<MovieArgVo>>() {
+            @Override
+            protected void checkParams() throws IllegalArgumentException {
+
+            }
+
+            @Override
+            protected Page<MovieArgVo> process() throws BizException {
+                return cinemaService.arrangeRecords(movieArgBackPo);
+            }
+        }.execute();
+
+    }
+
+
+    @ApiOperation("搜索排片记录-by-id")
+    @GetMapping("arrange-records-by-id")
+    public R<MovieArgVo> arrangeRecordById(Integer id){
+
+        return new APITemplate<MovieArgVo>() {
+            @Override
+            protected void checkParams() throws IllegalArgumentException {
+
+            }
+
+            @Override
+            protected MovieArgVo process() throws BizException {
+                return cinemaService.arrangeRecordById(id);
+            }
+        }.execute();
+
+    }
+
 
 }

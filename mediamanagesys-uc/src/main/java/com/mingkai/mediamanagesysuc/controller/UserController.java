@@ -1,11 +1,13 @@
 package com.mingkai.mediamanagesysuc.controller;
 
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.dtstack.plat.lang.exception.BizException;
 import com.dtstack.plat.lang.web.R;
 import com.dtstack.plat.lang.web.template.APITemplate;
 import com.mingkai.mediamanagesyscommon.common.API;
 import com.mingkai.mediamanagesyscommon.model.Do.uc.UserDO;
+import com.mingkai.mediamanagesyscommon.model.Po.uc.UserPagePo;
 import com.mingkai.mediamanagesyscommon.model.Po.uc.UserRoleAddPo;
 import com.mingkai.mediamanagesysuc.model.MailModel;
 import com.mingkai.mediamanagesysuc.pojo.po.LoginPo;
@@ -234,6 +236,42 @@ public class UserController {
             @Override
             protected Boolean process() throws BizException {
                 return userService.addRoleToUser(userRoleAddPo);
+            }
+        }.execute();
+    }
+
+
+    @ApiOperation("用户列表")
+    @GetMapping("users-page")
+    public R<Page<UserDO>> userPages(UserPagePo userPagePo){
+
+        return new APITemplate<Page<UserDO>>() {
+            @Override
+            protected void checkParams() throws IllegalArgumentException {
+
+            }
+
+            @Override
+            protected Page<UserDO> process() throws BizException {
+                return userService.userPages(userPagePo);
+            }
+        }.execute();
+
+    }
+
+
+    @ApiOperation("通过id得到用户")
+    @GetMapping("user-by-id")
+    public R<UserDO> userById(Integer id){
+        return new APITemplate<UserDO>() {
+            @Override
+            protected void checkParams() throws IllegalArgumentException {
+
+            }
+
+            @Override
+            protected UserDO process() throws BizException {
+                return userService.userById(id);
             }
         }.execute();
     }

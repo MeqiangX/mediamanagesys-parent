@@ -16,4 +16,7 @@ public class OrderPagePo extends Page {
     @ApiModelProperty(name = "userId",value = "用户id")
     private String userId;
 
+    @ApiModelProperty(name = "orderId",value = "订单id")
+    private String orderId;
+
 }

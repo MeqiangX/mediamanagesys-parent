@@ -16,4 +16,18 @@
 
 
     </select>
+
+    <!-- 分页查询用户 -->
+    <select id="usersPage" resultType="com.mingkai.mediamanagesyscommon.model.Do.uc.UserDO">
+
+        select * from mesys_user
+        <where>
+            is_deleted = 0
+            <if test="userPagePo.search != null and userPagePo.search != ''">
+                and user_name like CONCAT('%',#{userPagePo.search},'%')
+                or phone like CONCAT('%',#{userPagePo.search},'%')
+            </if>
+        </where>
+
+    </select>
 </mapper>

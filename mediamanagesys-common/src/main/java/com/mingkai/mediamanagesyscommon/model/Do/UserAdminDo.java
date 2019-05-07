@@ -18,4 +18,6 @@ public class UserAdminDo extends BaseDo {
 
     private Integer status;
 
+    private Integer parent;
+
 }

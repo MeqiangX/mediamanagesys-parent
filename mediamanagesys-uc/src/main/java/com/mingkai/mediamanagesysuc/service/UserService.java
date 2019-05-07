@@ -2,6 +2,7 @@ package com.mingkai.mediamanagesysuc.service;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.dtstack.plat.lang.exception.BizException;
 import com.google.common.base.Optional;
 import com.google.common.collect.Lists;
@@ -12,6 +13,7 @@ import com.mingkai.mediamanagesyscommon.mapper.UserMapper;
 import com.mingkai.mediamanagesyscommon.model.Do.uc.RoleDo;
 import com.mingkai.mediamanagesyscommon.model.Do.uc.UserDO;
 import com.mingkai.mediamanagesyscommon.model.Do.uc.UserRoleRelDo;
+import com.mingkai.mediamanagesyscommon.model.Po.uc.UserPagePo;
 import com.mingkai.mediamanagesyscommon.model.Po.uc.UserRoleAddPo;
 import com.mingkai.mediamanagesyscommon.utils.redis.RedisUtil;
 import com.mingkai.mediamanagesysuc.commonUtil.CodeUtil;
@@ -62,7 +64,27 @@ public class UserService {
     @Autowired
     private SessionService sessionService;
 
+    /**
+     * 根据id 查询用户
+     * @param id
+     * @return
+     */
+    public UserDO userById(Integer id){
+        return userMapper.selectById(id);
+    }
 
+    /**
+     * 查询用户 分页 phone or user_name
+     * @param userPagePo
+     * @return
+     */
+    public Page<UserDO> userPages(UserPagePo userPagePo){
+
+        Page<UserDO> userPages
+                = (Page<UserDO>)userMapper.usersPage(userPagePo);
+
+        return userPages;
+    }
 
     /**
      * 得到登录用户的信息 from session

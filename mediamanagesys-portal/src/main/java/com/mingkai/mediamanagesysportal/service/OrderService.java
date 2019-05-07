@@ -27,6 +27,7 @@ import com.mingkai.mediamanagesyscommon.utils.page.PageUtils;
 import com.mingkai.mediamanagesyscommon.utils.redis.RedisUtil;
 import com.mingkai.mediamanagesyscommon.utils.string.onlyID.SnowFlakeUtil;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.logging.log4j.util.Strings;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -82,9 +83,32 @@ public class OrderService {
      */
     public Page<OrderSimpleVo> userOrders(OrderPagePo orderPagePo){
 
-        // 根据用户id 去查询 分页订单
-        Page<TicketDetailDo> ticketDetailDoPage = (Page)ticketDetailManager.page(orderPagePo, new QueryWrapper<TicketDetailDo>()
-                .eq("user_id", orderPagePo.getUserId()));
+        Page<TicketDetailDo> ticketDetailDoPage = new Page<>();
+
+        // 如果都是空 则是全部
+        if (Strings.isBlank(orderPagePo.getOrderId()) && Strings.isBlank(orderPagePo.getUserId())){
+
+            ticketDetailDoPage = (Page)ticketDetailManager.page(orderPagePo, new QueryWrapper<TicketDetailDo>());
+
+        }else if (Objects.isNull(orderPagePo.getOrderId())){
+
+            // 发送的是 用户下的订单 不涉及订单号的查询
+
+            // 根据用户id 去查询 分页订单
+            ticketDetailDoPage = (Page)ticketDetailManager.page(orderPagePo, new QueryWrapper<TicketDetailDo>()
+                    .eq("user_id", orderPagePo.getUserId()));
+
+        }else{
+
+            // 订单号 或者 用户id 来查询
+            // 根据用户id 去查询 分页订单
+            ticketDetailDoPage = (Page)ticketDetailManager.page(orderPagePo, new QueryWrapper<TicketDetailDo>()
+                    .eq("user_id", orderPagePo.getUserId())
+                    .or().eq("order_id",orderPagePo.getOrderId()));
+
+
+        }
+
 
         if (Objects.isNull(ticketDetailDoPage) || ticketDetailDoPage.getRecords().size() == 0){
             return PageUtils.emptyPage(orderPagePo,new Page());
@@ -474,6 +498,33 @@ public class OrderService {
         }
 
         return update;
+
+    }
+
+
+    /**
+     *  删除用户订单
+     * @param userId
+     * @return
+     */
+    @Transactional
+    public Boolean deleteUserOrders(Integer userId){
+
+        List<TicketDetailDo> ticketDetailDoList = ticketDetailManager.list(new QueryWrapper<TicketDetailDo>()
+                .eq("user_id", userId));
+
+        if (Objects.nonNull(ticketDetailDoList) && ticketDetailDoList.size() != 0){
+
+            // 删除订单
+            for (TicketDetailDo ticketDetailDo : ticketDetailDoList) {
+                this.cancelOrder(ticketDetailDo.getOrderId());
+            }
+
+            return Boolean.TRUE;
+
+        }else{
+            return Boolean.TRUE;
+        }
 
     }
 

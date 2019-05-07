@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.dtstack.plat.lang.exception.BizException;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
+import com.mingkai.mediamanagesysbackend.model.PO.MovieArgBackPo;
 import com.mingkai.mediamanagesysbackend.model.PO.MovieArrangePo;
 import com.mingkai.mediamanagesyscommon.manager.CinemaManager;
 import com.mingkai.mediamanagesyscommon.manager.CinemaScreenManager;
@@ -30,6 +31,7 @@ import com.mingkai.mediamanagesyscommon.model.common.Area;
 import com.mingkai.mediamanagesyscommon.model.common.City;
 import com.mingkai.mediamanagesyscommon.model.common.Province;
 import com.mingkai.mediamanagesyscommon.utils.convert.ConvertUtil;
+import com.mingkai.mediamanagesyscommon.utils.page.PageUtils;
 import com.mingkai.mediamanagesyscommon.utils.time.LocalDateTimeUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.logging.log4j.util.Strings;
@@ -665,5 +667,118 @@ public class CinemaService {
                 .stream()
                 .sorted(Comparator.comparing(ScreenSeatMapVo::getScreeningHallX))
                 .collect(Collectors.toList());
+    }
+
+
+
+    /**
+     * 搜索排片记录
+     * @param movieArgBackPo
+     * @return
+     */
+    public Page<MovieArgVo> arrangeRecords(MovieArgBackPo movieArgBackPo){
+
+        //  如果时间不为空 查时间 的排片记录
+
+
+        // 如果电影不为空 查询电影的ids
+
+
+        // 如果影院不为空 查询影院的ids
+
+        // 如果时间和电影不为空
+
+        // 如果时间和影院不为空
+
+        // 如果都不为空 查询在这些影院下的记录 根据这些记录 再去筛选在ids 中的 和 时间内的
+
+        if (!Strings.isBlank(movieArgBackPo.getArrangeDate()) && !Strings.isBlank(movieArgBackPo.getCinemaName()) && !Strings.isBlank(movieArgBackPo.getMovieName())){
+
+        }else if (!Strings.isBlank(movieArgBackPo.getArrangeDate()) && !Strings.isBlank(movieArgBackPo.getCinemaName())){
+
+        }else if (!Strings.isBlank(movieArgBackPo.getCinemaName()) && !Strings.isBlank(movieArgBackPo.getMovieName())){
+
+        }else if (!Strings.isBlank(movieArgBackPo.getArrangeDate()) && !Strings.isBlank(movieArgBackPo.getMovieName())){
+
+        }else if (!Strings.isBlank(movieArgBackPo.getArrangeDate())){
+
+        }else if (!Strings.isBlank(movieArgBackPo.getCinemaName())){
+
+        }else if (!Strings.isBlank(movieArgBackPo.getMovieName())){
+
+        }else{
+
+            // 都为空
+
+            // 直接查询所有的
+
+            Page<ScreenArrangeDo> screenArrangeDoPage = (Page<ScreenArrangeDo>)screenArrangeMapper.selectPage(movieArgBackPo, null);
+
+
+            // 转化成需要的
+            List<ScreenArrangeDo> records = screenArrangeDoPage.getRecords();
+
+            List<MovieArgVo> resultList = Lists.newArrayList();
+
+            //  电影名 放映厅名 影院名
+
+            for (ScreenArrangeDo record : records) {
+
+                MovieArgVo convert = ConvertUtil.convert(record, MovieArgVo.class);
+
+                MovieDetailDo movieDetailDo = movieDetailMapper.selectByMovieId(record.getMovieId());
+
+                CinemaScreenDo cinemaScreenDo = cinemaScreenManager.getById(record.getCinemaScreenId());
+
+                CinemaDo cinema = cinemaManager.getById(cinemaScreenDo.getCinemaId());
+
+                ScreenRoomDo screenRoomDo = screenRoomMapper.selectById(cinemaScreenDo.getScreenHallId());
+
+
+                convert.setCinemaName(cinema.getCinemaName());
+
+                convert.setScreeningHallName(screenRoomDo.getScreeningHallName());
+
+                convert.setMovieName(movieDetailDo.getMovieName());
+
+                resultList.add(convert);
+
+            }
+
+            return PageUtils.page(resultList,screenArrangeDoPage);
+
+        }
+
+        return new Page<>();
+    }
+
+    /**
+     * 通过id 来查找排片信息 -- 后台
+     * @param id
+     * @return
+     */
+    public MovieArgVo arrangeRecordById(Integer id){
+
+        ScreenArrangeDo screenArrangeDo = screenArrangeMapper.selectById(id);
+
+        MovieArgVo convert = ConvertUtil.convert(screenArrangeDo, MovieArgVo.class);
+
+        MovieDetailDo movieDetailDo = movieDetailMapper.selectByMovieId(screenArrangeDo.getMovieId());
+
+        CinemaScreenDo cinemaScreenDo = cinemaScreenManager.getById(screenArrangeDo.getCinemaScreenId());
+
+        CinemaDo cinema = cinemaManager.getById(cinemaScreenDo.getCinemaId());
+
+        ScreenRoomDo screenRoomDo = screenRoomMapper.selectById(cinemaScreenDo.getScreenHallId());
+
+
+        convert.setCinemaName(cinema.getCinemaName());
+
+        convert.setScreeningHallName(screenRoomDo.getScreeningHallName());
+
+        convert.setMovieName(movieDetailDo.getMovieName());
+
+        return convert;
+
     }
 }

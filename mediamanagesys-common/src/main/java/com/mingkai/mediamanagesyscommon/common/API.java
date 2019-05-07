@@ -21,6 +21,7 @@ public interface API {
             // user
     String API_USER = "api/uc/user";
     String API_COMMOM_CODE = "api/uc/code";
+    String API_USER_ADMIN = "/api/uc/useradmin";
 
             // role
 
@@ -74,6 +75,7 @@ public interface API {
 
     String ROLE = "角色中心";
     String PERMISION = "权限中心";
+    String USER_ADMIN = "管理员中心";
 
     // ---------- backend
 

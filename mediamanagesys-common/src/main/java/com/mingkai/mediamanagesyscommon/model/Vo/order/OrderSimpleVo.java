@@ -17,7 +17,7 @@ public class OrderSimpleVo extends BaseVo {
 
     private String orderId;
 
-    private String userId;
+    private Integer userId;
 
     private String seatIds;
 
