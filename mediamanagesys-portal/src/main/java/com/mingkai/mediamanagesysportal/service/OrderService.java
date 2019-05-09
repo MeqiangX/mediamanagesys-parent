@@ -528,4 +528,32 @@ public class OrderService {
 
     }
 
+
+    /**
+     *  通过orderId 得到订单
+     * @param orderId
+     * @return
+     */
+    public TicketDetailDo getOrderByOrderId(String orderId){
+        TicketDetailDo ticketDetailDo = ticketDetailManager.getOne(new QueryWrapper<TicketDetailDo>()
+                .eq("order_id", orderId));
+
+        return ticketDetailDo;
+
+    }
+
+
+    /**
+     * 支付成功  更新支付状态  后续有时间可以添加支付记录
+     * @return
+     */
+    public Boolean paySuccess(String orderId){
+
+        boolean update = ticketDetailManager.update(new UpdateWrapper<TicketDetailDo>()
+                .eq("order_id", orderId)
+                .set("status", 1));
+
+        return update;
+    }
+
 }

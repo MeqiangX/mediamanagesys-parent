@@ -317,13 +317,16 @@ public class CinemaService {
                     .in("cinema_screen_id", cinemaScreenRelIdList));
 
             List<Integer> hasArrangedIds = movieArrangeRecords.stream().map(e -> e.getCinemaScreenId()).collect(Collectors.toList());
-            // 然后通过这些id 回去查找对应的放映厅 不能被删除
-            List<CinemaScreenDo> cinemaScreenDos = (List)cinemaScreenManager.listByIds(hasArrangedIds);
 
-            if (Objects.nonNull(cinemaScreenDos) && cinemaScreenDos.size() > 0){
-                throw new BizException("下列放映厅在该影院有排片，无法删除："+Strings.join(cinemaScreenDos.stream().map(CinemaScreenDo::getScreenHallId).collect(Collectors.toList()), ','));
+
+            // 然后通过这些id 回去查找对应的放映厅 不能被删除  在有记录的情况下
+            if (Objects.nonNull(hasArrangedIds) && hasArrangedIds.size() > 0){
+                List<CinemaScreenDo> cinemaScreenDos = (List)cinemaScreenManager.listByIds(hasArrangedIds);
+
+                if (Objects.nonNull(cinemaScreenDos) && cinemaScreenDos.size() > 0){
+                    throw new BizException("下列放映厅在该影院有排片，无法删除："+Strings.join(cinemaScreenDos.stream().map(CinemaScreenDo::getScreenHallId).collect(Collectors.toList()), ','));
+                }
             }
-
 
             // 正常删除
             return cinemaScreenManager.remove(new QueryWrapper<CinemaScreenDo>()
@@ -405,6 +408,7 @@ public class CinemaService {
         screenArrangeDo.setTimeScopeStart(LocalDateTimeUtils.formatLocalDateTime(startTime,LocalDateTimeUtils.DATE_TIME));
         screenArrangeDo.setTimeScopeEnd(LocalDateTimeUtils.formatLocalDateTime(endTime,LocalDateTimeUtils.DATE_TIME));
         screenArrangeDo.setPrice(movieArrangePo.getPrice());
+        screenArrangeDo.setLanguage(movieArrangePo.getLanguage());
         int insert = screenArrangeMapper.insert(screenArrangeDo);
 
         // 插入到坐席表  com
@@ -440,6 +444,19 @@ public class CinemaService {
         return insert == 1 && saveBatch ? true : false;
     }
 
+
+    /**
+     * 不分页 搜索地域下的 所有影院
+     * @param areaId
+     * @return
+     */
+    public List<CinemaVo> findAllCinemasAreaId(Integer areaId){
+
+        List<CinemaDo> cinemaDos = cinemaManager.list(new QueryWrapper<CinemaDo>()
+                .eq("cinema_area_id", areaId));
+
+        return ConvertUtil.listConvert(cinemaDos,CinemaVo.class);
+    }
 
     /**
      *   搜索影院 by  areaId
@@ -678,6 +695,9 @@ public class CinemaService {
      */
     public Page<MovieArgVo> arrangeRecords(MovieArgBackPo movieArgBackPo){
 
+
+        // 前端传的时间为 时间范围  2019-05-01 T 2019-06-05  格式 用T 来分割  去除空格
+
         //  如果时间不为空 查时间 的排片记录
 
 
@@ -691,20 +711,480 @@ public class CinemaService {
         // 如果时间和影院不为空
 
         // 如果都不为空 查询在这些影院下的记录 根据这些记录 再去筛选在ids 中的 和 时间内的
-
         if (!Strings.isBlank(movieArgBackPo.getArrangeDate()) && !Strings.isBlank(movieArgBackPo.getCinemaName()) && !Strings.isBlank(movieArgBackPo.getMovieName())){
+
+            // 如果都不为空  先找时间段
+
+            String[] ts = movieArgBackPo.getArrangeDate().split("T");
+            String startDate = ts[0].trim();
+            String endDate = ts[1].trim();
+
+            // 查找在时间范围内的排片记录  在内存中分页
+            List<ScreenArrangeDo> arrangeDates
+                    = screenArrangeMapper.selectList(new QueryWrapper<ScreenArrangeDo>()
+                    .between("arrange_date", startDate, endDate));
+
+            if (Objects.isNull(arrangeDates) || Objects.isNull(arrangeDates) || arrangeDates.size() == 0){
+                return PageUtils.emptyPage(movieArgBackPo,new Page());
+            }
+
+            // 模糊查询影院
+            List<CinemaDo> cinemas = cinemaManager.list(new QueryWrapper<CinemaDo>()
+                    .like("cinema_name", movieArgBackPo.getCinemaName()));
+
+            if (Objects.isNull(cinemas) || cinemas.size() == 0){
+                return PageUtils.emptyPage(movieArgBackPo,new Page());
+            }
+
+            // 模糊查询电影
+            List<MovieDetailDo> movies = movieDetailMapper.selectList(new QueryWrapper<MovieDetailDo>()
+                    .like("movie_name", movieArgBackPo.getMovieName()));
+
+            if (Objects.isNull(movies) || movies.size() == 0){
+                return PageUtils.emptyPage(movieArgBackPo,new Page());
+            }
+
+            // 查询 影院+ 放映厅
+            List<CinemaScreenDo> cinemaScreenDos
+                        = cinemaScreenManager.list(new QueryWrapper<CinemaScreenDo>()
+                        .in("cinema_id", cinemas.stream().map(CinemaDo::getId).collect(Collectors.toList())));
+
+            if (Objects.isNull(cinemaScreenDos) || cinemaScreenDos.size() == 0){
+                return PageUtils.emptyPage(movieArgBackPo,new Page());
+            }
+
+            // 因为三个条件都要满足 所以一个为空 都为空
+
+            // 三个条件都可以查找到
+
+            // 合并条件 arrangeDates 时间范围内 找到 对应的记录  因为涉及到两个In 所以查询 应该是查询 两个 not in
+
+            List<ScreenArrangeDo> matchResult = Lists.newArrayList();
+
+            List<Integer> cinemaScreenIds = cinemaScreenDos.stream().map(CinemaScreenDo::getId).collect(Collectors.toList());
+
+            List<String> movieIds = movies.stream().map(MovieDetailDo::getMovieId).collect(Collectors.toList());
+            for (Integer cinemaScreenId : cinemaScreenIds) {
+
+                for (ScreenArrangeDo record : arrangeDates) {
+
+                    for (String movieId : movieIds) {
+
+                        if (record.getMovieId().equals(movieId) && record.getCinemaScreenId().equals(cinemaScreenId)){
+                            matchResult.add(record);
+                        }
+
+                    }
+
+
+                }
+
+            }
+            List<MovieArgVo> resultList = Lists.newArrayList();
+            for (ScreenArrangeDo record : matchResult) {
+
+                MovieArgVo convert = ConvertUtil.convert(record, MovieArgVo.class);
+
+                MovieDetailDo movieDetailDo = movieDetailMapper.selectByMovieId(record.getMovieId());
+
+                CinemaScreenDo cinemaScreenDo = cinemaScreenManager.getById(record.getCinemaScreenId());
+
+                CinemaDo cinema = cinemaManager.getById(cinemaScreenDo.getCinemaId());
+
+                ScreenRoomDo screenRoomDo = screenRoomMapper.selectById(cinemaScreenDo.getScreenHallId());
+
+
+                convert.setCinemaName(cinema.getCinemaName());
+
+                convert.setScreeningHallName(screenRoomDo.getScreeningHallName());
+
+                convert.setMovieName(movieDetailDo.getMovieName());
+
+                resultList.add(convert);
+            }
+
+            // 这是所有的 并没有分页  进行分页  代码内分页
+
+            return PageUtils.codePage(resultList,movieArgBackPo);
 
         }else if (!Strings.isBlank(movieArgBackPo.getArrangeDate()) && !Strings.isBlank(movieArgBackPo.getCinemaName())){
 
+            // 电影名为空
+
+            String[] ts = movieArgBackPo.getArrangeDate().split("T");
+            String startDate = ts[0].trim();
+            String endDate = ts[1].trim();
+
+            // 查找在时间范围内的排片记录  在内存中分页
+            List<ScreenArrangeDo> arrangeDates
+                    = screenArrangeMapper.selectList(new QueryWrapper<ScreenArrangeDo>()
+                    .between("arrange_date", startDate, endDate));
+
+            if (Objects.isNull(arrangeDates) || Objects.isNull(arrangeDates) || arrangeDates.size() == 0){
+                return PageUtils.emptyPage(movieArgBackPo,new Page());
+            }
+
+            // 模糊查询影院
+            List<CinemaDo> cinemas = cinemaManager.list(new QueryWrapper<CinemaDo>()
+                    .like("cinema_name", movieArgBackPo.getCinemaName()));
+
+            if (Objects.isNull(cinemas) || cinemas.size() == 0){
+                return PageUtils.emptyPage(movieArgBackPo,new Page());
+            }
+
+            // 查询 影院+ 放映厅
+            List<CinemaScreenDo> cinemaScreenDos
+                    = cinemaScreenManager.list(new QueryWrapper<CinemaScreenDo>()
+                    .in("cinema_id", cinemas.stream().map(CinemaDo::getId).collect(Collectors.toList())));
+
+            if (Objects.isNull(cinemaScreenDos) || cinemaScreenDos.size() == 0){
+                return PageUtils.emptyPage(movieArgBackPo,new Page());
+            }
+
+            List<ScreenArrangeDo> matchResult = Lists.newArrayList();
+
+            List<Integer> cinemaScreenIds = cinemaScreenDos.stream().map(CinemaScreenDo::getId).collect(Collectors.toList());
+
+
+            for (Integer cinemaScreenId : cinemaScreenIds) {
+
+                for (ScreenArrangeDo record : arrangeDates) {
+
+                    if (record.getCinemaScreenId().equals(cinemaScreenId)){
+                        matchResult.add(record);
+                    }
+
+                }
+
+            }
+            List<MovieArgVo> resultList = Lists.newArrayList();
+            for (ScreenArrangeDo record : matchResult) {
+
+                MovieArgVo convert = ConvertUtil.convert(record, MovieArgVo.class);
+
+                MovieDetailDo movieDetailDo = movieDetailMapper.selectByMovieId(record.getMovieId());
+
+                CinemaScreenDo cinemaScreenDo = cinemaScreenManager.getById(record.getCinemaScreenId());
+
+                CinemaDo cinema = cinemaManager.getById(cinemaScreenDo.getCinemaId());
+
+                ScreenRoomDo screenRoomDo = screenRoomMapper.selectById(cinemaScreenDo.getScreenHallId());
+
+
+                convert.setCinemaName(cinema.getCinemaName());
+
+                convert.setScreeningHallName(screenRoomDo.getScreeningHallName());
+
+                convert.setMovieName(movieDetailDo.getMovieName());
+
+                resultList.add(convert);
+            }
+
+            // 这是所有的 并没有分页  进行分页  代码内分页
+
+            return PageUtils.codePage(resultList,movieArgBackPo);
+
         }else if (!Strings.isBlank(movieArgBackPo.getCinemaName()) && !Strings.isBlank(movieArgBackPo.getMovieName())){
+
+            // 日期为空
+
+
+            // 模糊查询影院
+            List<CinemaDo> cinemas = cinemaManager.list(new QueryWrapper<CinemaDo>()
+                    .like("cinema_name", movieArgBackPo.getCinemaName()));
+
+            if (Objects.isNull(cinemas) || cinemas.size() == 0){
+                return PageUtils.emptyPage(movieArgBackPo,new Page());
+            }
+
+            // 查询 影院+ 放映厅
+            List<CinemaScreenDo> cinemaScreenDos
+                    = cinemaScreenManager.list(new QueryWrapper<CinemaScreenDo>()
+                    .in("cinema_id", cinemas.stream().map(CinemaDo::getId).collect(Collectors.toList())));
+
+            if (Objects.isNull(cinemaScreenDos) || cinemaScreenDos.size() == 0){
+                return PageUtils.emptyPage(movieArgBackPo,new Page());
+            }
+
+            // 模糊查询电影
+            List<MovieDetailDo> movies = movieDetailMapper.selectList(new QueryWrapper<MovieDetailDo>()
+                    .like("movie_name", movieArgBackPo.getMovieName()));
+
+            if (Objects.isNull(movies) || movies.size() == 0){
+                return PageUtils.emptyPage(movieArgBackPo,new Page());
+            }
+
+
+            // 查询 in cinema
+            List<Integer> cinemaScreenIds = cinemaScreenDos.stream().map(CinemaScreenDo::getId).collect(Collectors.toList());
+            List<String> movieIds = movies.stream().map(MovieDetailDo::getMovieId).collect(Collectors.toList());
+
+            List<ScreenArrangeDo>  screenArrangeDos = screenArrangeMapper.selectList(new QueryWrapper<ScreenArrangeDo>()
+            .in("cinema_screen_id",cinemaScreenIds));
+
+
+            List<ScreenArrangeDo> matchResult = Lists.newArrayList();
+
+                for (ScreenArrangeDo record : screenArrangeDos) {
+
+                    for (String movieId : movieIds) {
+                        if (record.getMovieId().equals(movieId)){
+                            matchResult.add(record);
+                        }
+                    }
+
+
+                }
+
+            List<MovieArgVo> resultList = Lists.newArrayList();
+            for (ScreenArrangeDo record : matchResult) {
+
+                MovieArgVo convert = ConvertUtil.convert(record, MovieArgVo.class);
+
+                MovieDetailDo movieDetailDo = movieDetailMapper.selectByMovieId(record.getMovieId());
+
+                CinemaScreenDo cinemaScreenDo = cinemaScreenManager.getById(record.getCinemaScreenId());
+
+                CinemaDo cinema = cinemaManager.getById(cinemaScreenDo.getCinemaId());
+
+                ScreenRoomDo screenRoomDo = screenRoomMapper.selectById(cinemaScreenDo.getScreenHallId());
+
+
+                convert.setCinemaName(cinema.getCinemaName());
+
+                convert.setScreeningHallName(screenRoomDo.getScreeningHallName());
+
+                convert.setMovieName(movieDetailDo.getMovieName());
+
+                resultList.add(convert);
+            }
+
+            // 这是所有的 并没有分页  进行分页  代码内分页
+
+            return PageUtils.codePage(resultList,movieArgBackPo);
 
         }else if (!Strings.isBlank(movieArgBackPo.getArrangeDate()) && !Strings.isBlank(movieArgBackPo.getMovieName())){
 
+            // 影院名为空
+
+            String[] ts = movieArgBackPo.getArrangeDate().split("T");
+            String startDate = ts[0].trim();
+            String endDate = ts[1].trim();
+
+            // 查找在时间范围内的排片记录  在内存中分页
+            List<ScreenArrangeDo> arrangeDates
+                    = screenArrangeMapper.selectList(new QueryWrapper<ScreenArrangeDo>()
+                    .between("arrange_date", startDate, endDate));
+
+            if (Objects.isNull(arrangeDates) || Objects.isNull(arrangeDates) || arrangeDates.size() == 0){
+                return PageUtils.emptyPage(movieArgBackPo,new Page());
+            }
+
+
+            // 模糊查询电影
+            List<MovieDetailDo> movies = movieDetailMapper.selectList(new QueryWrapper<MovieDetailDo>()
+                    .like("movie_name", movieArgBackPo.getMovieName()));
+
+            if (Objects.isNull(movies) || movies.size() == 0){
+                return PageUtils.emptyPage(movieArgBackPo,new Page());
+            }
+
+            List<ScreenArrangeDo> matchResult = Lists.newArrayList();
+
+            List<String> movieIds = movies.stream().map(MovieDetailDo::getMovieId).collect(Collectors.toList());
+
+
+                for (ScreenArrangeDo record : arrangeDates) {
+
+                    for (String movieId : movieIds) {
+
+                        if (record.getMovieId().equals(movieId)){
+                            matchResult.add(record);
+                        }
+
+                    }
+                }
+
+            List<MovieArgVo> resultList = Lists.newArrayList();
+            for (ScreenArrangeDo record : matchResult) {
+
+                MovieArgVo convert = ConvertUtil.convert(record, MovieArgVo.class);
+
+                MovieDetailDo movieDetailDo = movieDetailMapper.selectByMovieId(record.getMovieId());
+
+                CinemaScreenDo cinemaScreenDo = cinemaScreenManager.getById(record.getCinemaScreenId());
+
+                CinemaDo cinema = cinemaManager.getById(cinemaScreenDo.getCinemaId());
+
+                ScreenRoomDo screenRoomDo = screenRoomMapper.selectById(cinemaScreenDo.getScreenHallId());
+
+
+                convert.setCinemaName(cinema.getCinemaName());
+
+                convert.setScreeningHallName(screenRoomDo.getScreeningHallName());
+
+                convert.setMovieName(movieDetailDo.getMovieName());
+
+                resultList.add(convert);
+            }
+
+            // 这是所有的 并没有分页  进行分页  代码内分页
+
+            return PageUtils.codePage(resultList,movieArgBackPo);
+
         }else if (!Strings.isBlank(movieArgBackPo.getArrangeDate())){
+
+            // 单条件 日期
+
+            String[] ts = movieArgBackPo.getArrangeDate().split("T");
+            String startDate = ts[0].trim();
+            String endDate = ts[1].trim();
+
+            Page<ScreenArrangeDo> arrangeDoPage = (Page<ScreenArrangeDo>)screenArrangeMapper.selectPage(movieArgBackPo, new QueryWrapper<ScreenArrangeDo>()
+                    .between("arrange_date", startDate, endDate));
+
+            // 转化成需要的
+            List<ScreenArrangeDo> records = arrangeDoPage.getRecords();
+
+            List<MovieArgVo> resultList = Lists.newArrayList();
+
+            //  电影名 放映厅名 影院名
+
+            for (ScreenArrangeDo record : records) {
+
+                MovieArgVo convert = ConvertUtil.convert(record, MovieArgVo.class);
+
+                MovieDetailDo movieDetailDo = movieDetailMapper.selectByMovieId(record.getMovieId());
+
+                CinemaScreenDo cinemaScreenDo = cinemaScreenManager.getById(record.getCinemaScreenId());
+
+                CinemaDo cinema = cinemaManager.getById(cinemaScreenDo.getCinemaId());
+
+                ScreenRoomDo screenRoomDo = screenRoomMapper.selectById(cinemaScreenDo.getScreenHallId());
+
+
+                convert.setCinemaName(cinema.getCinemaName());
+
+                convert.setScreeningHallName(screenRoomDo.getScreeningHallName());
+
+                convert.setMovieName(movieDetailDo.getMovieName());
+
+                resultList.add(convert);
+
+            }
+
+            return PageUtils.page(resultList,arrangeDoPage);
 
         }else if (!Strings.isBlank(movieArgBackPo.getCinemaName())){
 
+            // 单条件 影院名
+
+            // 模糊查询影院
+            List<CinemaDo> cinemas = cinemaManager.list(new QueryWrapper<CinemaDo>()
+                    .like("cinema_name", movieArgBackPo.getCinemaName()));
+
+            if (Objects.isNull(cinemas) || cinemas.size() == 0){
+                return PageUtils.emptyPage(movieArgBackPo,new Page());
+            }
+
+
+            // 查询 影院+ 放映厅
+            List<CinemaScreenDo> cinemaScreenDos
+                    = cinemaScreenManager.list(new QueryWrapper<CinemaScreenDo>()
+                    .in("cinema_id", cinemas.stream().map(CinemaDo::getId).collect(Collectors.toList())));
+
+            if (Objects.isNull(cinemaScreenDos) || cinemaScreenDos.size() == 0){
+                return PageUtils.emptyPage(movieArgBackPo,new Page());
+            }
+
+
+            // in
+            List<Integer> cinemaScreenIds = cinemaScreenDos.stream().map(CinemaScreenDo::getId).collect(Collectors.toList());
+            Page<ScreenArrangeDo> arrangeDoPage = (Page<ScreenArrangeDo>)screenArrangeMapper.selectPage(movieArgBackPo,new QueryWrapper<ScreenArrangeDo>()
+            .in("cinema_screen_id",cinemaScreenIds));
+
+            // 转化成需要的
+            List<ScreenArrangeDo> records = arrangeDoPage.getRecords();
+
+            List<MovieArgVo> resultList = Lists.newArrayList();
+
+            //  电影名 放映厅名 影院名
+
+            for (ScreenArrangeDo record : records) {
+
+                MovieArgVo convert = ConvertUtil.convert(record, MovieArgVo.class);
+
+                MovieDetailDo movieDetailDo = movieDetailMapper.selectByMovieId(record.getMovieId());
+
+                CinemaScreenDo cinemaScreenDo = cinemaScreenManager.getById(record.getCinemaScreenId());
+
+                CinemaDo cinema = cinemaManager.getById(cinemaScreenDo.getCinemaId());
+
+                ScreenRoomDo screenRoomDo = screenRoomMapper.selectById(cinemaScreenDo.getScreenHallId());
+
+
+                convert.setCinemaName(cinema.getCinemaName());
+
+                convert.setScreeningHallName(screenRoomDo.getScreeningHallName());
+
+                convert.setMovieName(movieDetailDo.getMovieName());
+
+                resultList.add(convert);
+
+            }
+
+            return PageUtils.page(resultList,arrangeDoPage);
+
         }else if (!Strings.isBlank(movieArgBackPo.getMovieName())){
+
+            // 单条件 电影名
+
+
+            // 模糊查询电影
+            List<MovieDetailDo> movies = movieDetailMapper.selectList(new QueryWrapper<MovieDetailDo>()
+                    .like("movie_name", movieArgBackPo.getMovieName()));
+
+            if (Objects.isNull(movies) || movies.size() == 0){
+                return PageUtils.emptyPage(movieArgBackPo,new Page());
+            }
+
+
+            // 电影ids
+            List<String> movieIds = movies.stream().map(MovieDetailDo::getMovieId).collect(Collectors.toList());
+            Page<ScreenArrangeDo> arrangeDoPage = (Page<ScreenArrangeDo>)screenArrangeMapper.selectPage(movieArgBackPo,new QueryWrapper<ScreenArrangeDo>()
+                    .in("movie_id",movieIds));
+
+            // 转化成需要的
+            List<ScreenArrangeDo> records = arrangeDoPage.getRecords();
+
+            List<MovieArgVo> resultList = Lists.newArrayList();
+
+            //  电影名 放映厅名 影院名
+
+            for (ScreenArrangeDo record : records) {
+
+                MovieArgVo convert = ConvertUtil.convert(record, MovieArgVo.class);
+
+                MovieDetailDo movieDetailDo = movieDetailMapper.selectByMovieId(record.getMovieId());
+
+                CinemaScreenDo cinemaScreenDo = cinemaScreenManager.getById(record.getCinemaScreenId());
+
+                CinemaDo cinema = cinemaManager.getById(cinemaScreenDo.getCinemaId());
+
+                ScreenRoomDo screenRoomDo = screenRoomMapper.selectById(cinemaScreenDo.getScreenHallId());
+
+
+                convert.setCinemaName(cinema.getCinemaName());
+
+                convert.setScreeningHallName(screenRoomDo.getScreeningHallName());
+
+                convert.setMovieName(movieDetailDo.getMovieName());
+
+                resultList.add(convert);
+
+            }
+
+            return PageUtils.page(resultList,arrangeDoPage);
 
         }else{
 
@@ -749,7 +1229,6 @@ public class CinemaService {
 
         }
 
-        return new Page<>();
     }
 
     /**
@@ -778,7 +1257,132 @@ public class CinemaService {
 
         convert.setMovieName(movieDetailDo.getMovieName());
 
+        convert.setMovieId(movieDetailDo.getMovieId());
+
         return convert;
 
+    }
+
+
+    /**
+     * 删除排片记录
+     * @param arrangeId
+     * @return
+     */
+    public Boolean deleteArrangeRecord(Integer arrangeId){
+
+        // 主要 是 看当前排片记录 是否已经售票了 如果已经售票了 则不允许删除
+        ScreenArrangeDo screenArrangeDo = screenArrangeMapper.selectById(arrangeId);
+
+        if (Objects.isNull(screenArrangeDo)){
+            throw new BizException("记录不存在");
+        }
+
+        //  查找是否坐席已经出售了
+        List<ScreenSeatDo> screenSeatDos = screenSeatManager.list(new QueryWrapper<ScreenSeatDo>()
+                .eq("screen_arrange_id", arrangeId)
+                .eq("is_purchased",1));
+
+        if (Objects.nonNull(screenSeatDos) && screenSeatDos.size() != 0){
+            throw new BizException("当前排片已经出售了，请先取消相关订单再操作");
+        }
+
+
+        // 当前坐席没有出售 可以删除
+
+        // 先删除相关的坐席记录
+        boolean removeSeats = screenSeatManager.remove(new QueryWrapper<ScreenSeatDo>()
+                .eq("screen_arrange_id", arrangeId));
+
+        // 在删除排片记录
+        int deleteArrange = screenArrangeMapper.deleteById(arrangeId);
+
+        return removeSeats && 1 == deleteArrange;
+    }
+
+
+    /**
+     * 跟新排片记录 已售票无法修改
+     * @param movieArrangePo
+     * @return
+     */
+    public Boolean updateArrangeInfo(MovieArrangePo movieArrangePo){
+
+        // 查看是否 有售票
+        List<ScreenSeatDo> screenArrangeDos = screenSeatManager.list(new QueryWrapper<ScreenSeatDo>()
+                .eq("screen_arrange_id", movieArrangePo.getId())
+                .eq("is_purchased",1));
+
+        if (Objects.nonNull(screenArrangeDos) && screenArrangeDos.size() != 0){
+            throw new BizException("当前排片记录有售票订单记录，请取消后再操作");
+        }
+
+        // 没有售票 可以修改
+
+        // 查询当前的排片信息 未修改的记录 因为影院和放映厅不修改
+        ScreenArrangeDo screenArrangeDo1 = screenArrangeMapper.selectById(movieArrangePo.getId());
+
+        if (Objects.isNull(screenArrangeDo1)){
+            throw new BizException("当前记录不存在");
+        }
+
+
+        // 得到修改后的 时间安排 看是否和其他的 排片有冲突
+
+
+        /**
+         * 逻辑
+         *
+         * 主要是解决 排片时间 上的 冲突
+         */
+
+        // 查询 当前日期 下的 当前影院放映厅的 排片情况
+        List<ScreenArrangeDo> screenArrangeDateDos = screenArrangeMapper.selectByDateAndHallId(screenArrangeDo1.getCinemaScreenId(), movieArrangePo.getDate());
+
+        // 查询 当前排片的 电影时长
+        MovieDetailDo movieDetailDo = movieDetailMapper.selectByMovieId(movieArrangePo.getMovieId());
+
+        if (null == movieDetailDo){
+            throw new BizException("排片电影不存在，请重新选择");
+        }
+
+
+        LocalDateTime startTime = LocalDateTimeUtils.getLocalDateTimeFromStr(movieArrangePo.getStartTime(), LocalDateTimeUtils.DATE_TIME);
+        Long movieDurationFormat = LocalDateTimeUtils.getMovieDurationFormat(movieDetailDo.getDuration());
+
+        LocalDateTime endTime = startTime.plusMinutes(movieDurationFormat);
+
+        // 遍历 看是否 开始时间 和 结束时间+20 在  已经排片的记录 (start-end) 中
+        for (ScreenArrangeDo screenArrangeDo : screenArrangeDateDos) {
+
+            // 不同于添加 跟新 要跳过自己 另外 跟新 由于不能跟新 影院和放映厅 所以无设计到坐席的变更
+            if (screenArrangeDo.getId().equals(movieArrangePo.getId())){
+                continue;
+            }
+            LocalDateTime start = LocalDateTimeUtils.getLocalDateTimeFromStr(screenArrangeDo.getTimeScopeStart(), LocalDateTimeUtils.DATE_TIME);
+
+            LocalDateTime end = LocalDateTimeUtils.getLocalDateTimeFromStr(screenArrangeDo.getTimeScopeEnd(), LocalDateTimeUtils.DATE_TIME);
+
+            // 有 冲突
+            if (startTime.compareTo(start) >= 0 && startTime.compareTo(end) < 0){
+                throw new BizException("时间冲突，请重新排片");
+            }
+
+            if (endTime.compareTo(start) > 0 && endTime.compareTo(end) <= 0){
+                throw new BizException("时间冲突，请重新排片");
+            }
+        }
+
+
+        // 修改后的 时间上也不冲突 正常修改
+
+        ScreenArrangeDo screenArrangeDo = ConvertUtil.convert(movieArrangePo, ScreenArrangeDo.class);
+        screenArrangeDo.setArrangeDate(movieArrangePo.getDate());
+        screenArrangeDo.setTimeScopeStart(movieArrangePo.getStartTime());
+        screenArrangeDo.setTimeScopeEnd(LocalDateTimeUtils.formatLocalDateTime(endTime,LocalDateTimeUtils.DATE_TIME));
+
+        int update = screenArrangeMapper.updateById(screenArrangeDo);
+
+        return 1 == update;
     }
 }

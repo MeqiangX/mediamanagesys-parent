@@ -15,6 +15,8 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 /**
  * @description: 放映厅相关Controller
  * @author: Created by 云风 on 2019-04-03 17:31
@@ -72,6 +74,55 @@ public class ScreenHallController {
             @Override
             protected Page<ScreenRoomVo> process() throws BizException {
                 return screenService.queryScreenRoomPage(screenPagePo);
+            }
+        }.execute();
+    }
+
+    @ApiOperation("影院id来查询下面的所有放映厅")
+    @GetMapping("query-screens-by-cinemaId")
+    public R<List<ScreenRoomVo>> queryScreensByCinemaId(Integer cinemaId){
+        return new APITemplate<List<ScreenRoomVo>>() {
+            @Override
+            protected void checkParams() throws IllegalArgumentException {
+
+            }
+
+            @Override
+            protected List<ScreenRoomVo> process() throws BizException {
+                return screenService.queryScreensByCinemaId(cinemaId);
+            }
+        }.execute();
+    }
+
+
+    @ApiOperation("影院id来查询下面的放映厅-分页")
+    @GetMapping("querypage-screens-by-cinemaId")
+    public R<Page<ScreenRoomVo>> queryPageScreensByCinemaId(ScreenPagePo screenPagePo){
+        return new APITemplate<Page<ScreenRoomVo>>() {
+            @Override
+            protected void checkParams() throws IllegalArgumentException {
+
+            }
+
+            @Override
+            protected Page<ScreenRoomVo> process() throws BizException {
+                return screenService.queryPageScreensByCinemaId(screenPagePo);
+            }
+        }.execute();
+    }
+
+    @ApiOperation("影院id来查询可以配置的放映厅-分页")
+    @GetMapping("querypage-canConfig-screens-by-cinemaId")
+    public R<Page<ScreenRoomVo>> queryPageCanConfigScreensByCinemaId(ScreenPagePo screenPagePo){
+        return new APITemplate<Page<ScreenRoomVo>>() {
+            @Override
+            protected void checkParams() throws IllegalArgumentException {
+
+            }
+
+            @Override
+            protected Page<ScreenRoomVo> process() throws BizException {
+                return screenService.queryPageCanConfigScreensByCinemaId(screenPagePo);
             }
         }.execute();
     }

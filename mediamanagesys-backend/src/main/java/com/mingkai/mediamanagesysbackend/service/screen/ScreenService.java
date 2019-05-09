@@ -3,6 +3,7 @@ package com.mingkai.mediamanagesysbackend.service.screen;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.dtstack.plat.lang.exception.BizException;
+import com.google.common.collect.Lists;
 import com.mingkai.mediamanagesysbackend.model.PO.ScreenRoomAddPo;
 import com.mingkai.mediamanagesyscommon.manager.CinemaScreenManager;
 import com.mingkai.mediamanagesyscommon.manager.ScreenSeatManager;
@@ -16,6 +17,7 @@ import com.mingkai.mediamanagesyscommon.model.Do.screen.ScreenRoomDo;
 import com.mingkai.mediamanagesyscommon.model.Po.cinema.ScreenPagePo;
 import com.mingkai.mediamanagesyscommon.model.Vo.screen.ScreenRoomVo;
 import com.mingkai.mediamanagesyscommon.utils.convert.ConvertUtil;
+import com.mingkai.mediamanagesyscommon.utils.page.PageUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -71,6 +73,86 @@ public class ScreenService {
         }
 
         return null == screenRoomDo ? null : ConvertUtil.convert(screenRoomDo, ScreenRoomVo.class);
+    }
+
+
+    /**
+     * 分页查询 影院下的放映厅
+     * @param screenPagePo
+     * @return
+     */
+    public Page<ScreenRoomVo> queryPageScreensByCinemaId(ScreenPagePo screenPagePo){
+
+        List<CinemaScreenDo> cinemaScreenDos = cinemaScreenManager.list(new QueryWrapper<CinemaScreenDo>()
+                .eq("cinema_id", screenPagePo.getCinemaId()));
+
+        if (Objects.isNull(cinemaScreenDos) || cinemaScreenDos.size() == 0){
+            return PageUtils.emptyPage(screenPagePo,new Page());
+        }
+
+        // 通过ids 查询
+        List<Integer> screenIds = cinemaScreenDos.stream().map(CinemaScreenDo::getScreenHallId).collect(Collectors.toList());
+
+        Page<ScreenRoomDo> screenRoomPages = (Page<ScreenRoomDo>)screenRoomMapper.selectPage(screenPagePo,new QueryWrapper<ScreenRoomDo>()
+                .in("id",screenIds));
+
+
+        return ConvertUtil.pageConvert(screenRoomPages,ScreenRoomVo.class);
+
+    }
+
+
+    /**
+     * 查询影院可以配置的放映厅 - 分页
+     * @param screenPagePo
+     * @return
+     */
+    public Page<ScreenRoomVo> queryPageCanConfigScreensByCinemaId(ScreenPagePo screenPagePo){
+
+        List<CinemaScreenDo> cinemaScreenDos = cinemaScreenManager.list(new QueryWrapper<CinemaScreenDo>()
+                .eq("cinema_id", screenPagePo.getCinemaId()));
+
+        if (Objects.isNull(cinemaScreenDos) || cinemaScreenDos.size() == 0){
+            // 查询所有的
+            return ConvertUtil.pageConvert((Page<ScreenRoomDo>)screenRoomMapper.selectPage(screenPagePo,null),ScreenRoomVo.class);
+        }else{
+            // 通过ids 查询
+            List<Integer> screenIds = cinemaScreenDos.stream().map(CinemaScreenDo::getScreenHallId).collect(Collectors.toList());
+
+            Page<ScreenRoomDo> screenRoomDoPage = (Page<ScreenRoomDo>)screenRoomMapper.selectPage(screenPagePo,new QueryWrapper<ScreenRoomDo>()
+                    .notIn("id",screenIds));
+
+            return ConvertUtil.pageConvert(screenRoomDoPage,ScreenRoomVo.class);
+        }
+
+
+
+
+
+
+    }
+    /**
+     * 查询 影院下的所有放映厅
+     * @param cinemaId
+     * @return
+     */
+    public List<ScreenRoomVo> queryScreensByCinemaId(Integer cinemaId){
+
+        // 查找影院下的放映厅
+        List<CinemaScreenDo> cinemaScreenDos = cinemaScreenManager.list(new QueryWrapper<CinemaScreenDo>()
+                .eq("cinema_id", cinemaId));
+
+        if (Objects.isNull(cinemaScreenDos) || cinemaScreenDos.size() == 0){
+            return Lists.newArrayList();
+        }
+
+        // 通过ids 查询
+        List<Integer> screenIds = cinemaScreenDos.stream().map(CinemaScreenDo::getScreenHallId).collect(Collectors.toList());
+
+        List<ScreenRoomDo> screenRoomDos = screenRoomMapper.selectBatchIds(screenIds);
+
+        return ConvertUtil.listConvert(screenRoomDos,ScreenRoomVo.class);
+
     }
 
     /**

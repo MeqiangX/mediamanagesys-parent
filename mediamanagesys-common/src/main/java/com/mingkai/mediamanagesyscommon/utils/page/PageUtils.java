@@ -1,6 +1,7 @@
 package com.mingkai.mediamanagesyscommon.utils.page;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.dtstack.plat.lang.base.Collections;
 import com.dtstack.plat.lang.exception.BizException;
 import lombok.extern.slf4j.Slf4j;
 
@@ -61,5 +62,39 @@ public class PageUtils {
 
         return page;
 
+    }
+
+    /**
+     * 代码内分页
+     *
+     * @param <T>
+     * @return
+     */
+    public static <T> List<T> list(List<T> list, Page page) {
+        if (Objects.isNull(list)) {
+            throw new BizException("分页List为null！");
+        }
+        if (Collections.isEmpty(list)) {
+            return list;
+        }
+        if (page.getCurrent() < 1L) {
+            page.setCurrent(1L);
+            log.info("分页参数Current不能小于1！默认设为1");
+        }
+        if (page.getSize() < 1L) {
+            page.setSize(10L);
+            log.info("分页参数Size不能小于1！默认设为10");
+        }
+        long toIndex = page.getCurrent() * page.getSize();
+        long fromIndex = toIndex - page.getSize();
+        if (fromIndex > list.size()) {
+            fromIndex = 0L;
+        }
+        toIndex = toIndex > list.size() ? list.size() : toIndex;
+        return list.subList((int) fromIndex, (int) toIndex);
+    }
+
+    public static <T> Page<T> codePage(List<T> list, Page page) {
+        return new Page<T>().setRecords(list(list, page)).setTotal(list.size());
     }
 }

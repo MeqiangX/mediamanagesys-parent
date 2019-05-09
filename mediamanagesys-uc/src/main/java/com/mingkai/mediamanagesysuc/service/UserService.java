@@ -9,12 +9,16 @@ import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.mingkai.mediamanagesyscommon.manager.RoleManager;
 import com.mingkai.mediamanagesyscommon.manager.UserRoleRelManager;
+import com.mingkai.mediamanagesyscommon.mapper.UserInfoMapper;
 import com.mingkai.mediamanagesyscommon.mapper.UserMapper;
 import com.mingkai.mediamanagesyscommon.model.Do.uc.RoleDo;
 import com.mingkai.mediamanagesyscommon.model.Do.uc.UserDO;
+import com.mingkai.mediamanagesyscommon.model.Do.uc.UserInfoDo;
 import com.mingkai.mediamanagesyscommon.model.Do.uc.UserRoleRelDo;
+import com.mingkai.mediamanagesyscommon.model.Po.uc.UserInfoPo;
 import com.mingkai.mediamanagesyscommon.model.Po.uc.UserPagePo;
 import com.mingkai.mediamanagesyscommon.model.Po.uc.UserRoleAddPo;
+import com.mingkai.mediamanagesyscommon.utils.convert.ConvertUtil;
 import com.mingkai.mediamanagesyscommon.utils.redis.RedisUtil;
 import com.mingkai.mediamanagesysuc.commonUtil.CodeUtil;
 import com.mingkai.mediamanagesysuc.enums.MessageEnum;
@@ -48,6 +52,9 @@ public class UserService {
 
     @Autowired
     private UserMapper userMapper;
+
+    @Autowired
+    private UserInfoMapper userInfoMapper;
 
     @Autowired
     private RoleManager roleManager;
@@ -294,6 +301,13 @@ public class UserService {
 
         Boolean success = 1 == userMapper.insert(userDO);
 
+        // 插入的同时 添加一条用户信息
+        UserInfoDo userInfoDo = new UserInfoDo();
+
+        userInfoDo.setUserId(userDO.getId());
+
+        userInfoMapper.insert(userInfoDo);
+
         if (success){
             // 清除redis 的 验证信息
             redisUtil.del(key);
@@ -483,6 +497,42 @@ public class UserService {
 
         sessionService.setAttribute("users",users);
         return Boolean.TRUE;
+
+    }
+
+    /**
+     * 取得用户信息 by userid
+     * @param userId
+     * @return
+     */
+    public UserInfoDo userInfoById(Integer userId){
+
+        UserInfoDo userInfoDo = userInfoMapper.selectOne(new QueryWrapper<UserInfoDo>()
+                .eq("user_id", userId));
+
+        if (Objects.isNull(userInfoDo)){
+            throw new BizException("用户不存在");
+        }
+
+
+        return userInfoDo;
+
+    }
+
+
+    /**
+     * 修改用户基本信息
+     * @param userInfoPo
+     * @return
+     */
+    public Boolean updateUserInfo(UserInfoPo userInfoPo){
+
+        UserInfoDo convert = ConvertUtil.convert(userInfoPo, UserInfoDo.class);
+
+        int update = userInfoMapper.update(convert, new UpdateWrapper<UserInfoDo>()
+                .eq("user_id", userInfoPo.getUserId()));
+
+        return update == 1;
 
     }
 }

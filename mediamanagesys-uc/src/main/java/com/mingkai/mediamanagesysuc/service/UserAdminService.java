@@ -225,7 +225,15 @@ public class UserAdminService {
             }else if (Objects.nonNull(userNameVerifify)){
                 throw new BizException("名称重复");
             }else{
-                return 1 == userMapper.insert(userDO);
+
+                // 添加的同时 添加个人信息表中
+                int insertResult = userMapper.insert(userDO);
+
+                UserInfoDo userInfoDo = new UserInfoDo();
+                userInfoDo.setUserId(userDO.getId());
+                int insert = userInfoMapper.insert(userInfoDo);
+
+                return insertResult == 1 && insert == 1;
             }
 
         }else{

@@ -17,7 +17,7 @@ public class CinemaScreenUpdatePo {
     @ApiModelProperty(name = "cinemaId",value = "影院id",example = "1")
     private Integer cinemaId;
 
-    @ApiModelProperty(name = "screenHallIdList",value = "跟新的放映厅配置列表")
+    @ApiModelProperty(name = "screenHallIdList",value = "跟新的放映厅配置列表",example = "[1,2]")
     private List<Integer> screenHallIdList;
 
     @ApiModelProperty(name = "option",value = "选项0 add 1 delete",example = "0")

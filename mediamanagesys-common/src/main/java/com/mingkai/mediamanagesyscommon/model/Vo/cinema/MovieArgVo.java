@@ -21,6 +21,8 @@ public class MovieArgVo {
 
     private String screeningHallName;
 
+    private String movieId;
+
     private String movieName;
 
     private String arrangeDate;

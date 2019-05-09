@@ -16,4 +16,6 @@ public class ScreenPagePo extends Page {
     @ApiModelProperty("放映厅名称")
     private String screeningHallName;
 
+    private Integer cinemaId;
+
 }

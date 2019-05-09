@@ -7,6 +7,8 @@ import com.dtstack.plat.lang.web.R;
 import com.dtstack.plat.lang.web.template.APITemplate;
 import com.mingkai.mediamanagesyscommon.common.API;
 import com.mingkai.mediamanagesyscommon.model.Do.uc.UserDO;
+import com.mingkai.mediamanagesyscommon.model.Do.uc.UserInfoDo;
+import com.mingkai.mediamanagesyscommon.model.Po.uc.UserInfoPo;
 import com.mingkai.mediamanagesyscommon.model.Po.uc.UserPagePo;
 import com.mingkai.mediamanagesyscommon.model.Po.uc.UserRoleAddPo;
 import com.mingkai.mediamanagesysuc.model.MailModel;
@@ -275,4 +277,43 @@ public class UserController {
             }
         }.execute();
     }
+
+    @ApiOperation("通过用户id 取得 用户信息")
+    @GetMapping("/userinfo-by-id")
+    public R<UserInfoDo> userInfoById(Integer userId){
+        return new APITemplate<UserInfoDo>() {
+            @Override
+            protected void checkParams() throws IllegalArgumentException {
+
+            }
+
+            @Override
+            protected UserInfoDo process() throws BizException {
+                return userService.userInfoById(userId);
+            }
+        }.execute();
+    }
+
+
+    @ApiOperation("修改用户信息")
+    @PostMapping("/userinfo-update")
+    public R<Boolean> updateUserInfo(@RequestBody UserInfoPo userInfoPo){
+
+        return new APITemplate<Boolean>() {
+            @Override
+            protected void checkParams() throws IllegalArgumentException {
+
+            }
+
+            @Override
+            protected Boolean process() throws BizException {
+                return userService.updateUserInfo(userInfoPo);
+            }
+        }.execute();
+
+    }
+
+
+
+
 }

@@ -14,6 +14,8 @@ import java.math.BigDecimal;
 @Data
 public class MovieArrangePo {
 
+    private Integer id;
+
     @ApiModelProperty(name = "cinemaId",value = "影院id",example = "1")
     private Integer cinemaId;
 
@@ -31,6 +33,9 @@ public class MovieArrangePo {
 
     @ApiModelProperty(name = "movieId",value = "放映电影id")
     private String movieId;
+
+    @ApiModelProperty(name = "language",value = "语言版本")
+    private String language;
 
     @ApiModelProperty(name = "price",value = "票价")
     private BigDecimal price;

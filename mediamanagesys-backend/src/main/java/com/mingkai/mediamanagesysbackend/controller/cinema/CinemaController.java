@@ -165,6 +165,24 @@ public class CinemaController {
         }.execute();
     }
 
+
+    @ApiOperation("查找区域下的所有电影")
+    @GetMapping("find-all-cinema-areaId")
+    public R<List<CinemaVo>> findAllCinemasAreaId(Integer areaId){
+        return new APITemplate<List<CinemaVo>>() {
+            @Override
+            protected void checkParams() throws IllegalArgumentException {
+
+            }
+
+            @Override
+            protected List<CinemaVo> process() throws BizException {
+                return cinemaService.findAllCinemasAreaId(areaId);
+            }
+        }.execute();
+    }
+
+
     // 影院下的排片记录
     @ApiOperation("查找影院下排片信息")
     @GetMapping("cinema-under-movies")
@@ -182,6 +200,21 @@ public class CinemaController {
         }.execute();
     }
 
+    @ApiOperation("删除排片记录")
+    @GetMapping("/delete-arrange-record")
+    public R<Boolean> deleteArrangeRecord(Integer arrangeId){
+        return new APITemplate<Boolean>() {
+            @Override
+            protected void checkParams() throws IllegalArgumentException {
+
+            }
+
+            @Override
+            protected Boolean process() throws BizException {
+                return cinemaService.deleteArrangeRecord(arrangeId);
+            }
+        }.execute();
+    }
 
     @ApiOperation("根据排片id查找对应的信息(选座)")
     @GetMapping("arrange-details/{arrangeId}")
@@ -252,6 +285,23 @@ public class CinemaController {
             }
         }.execute();
 
+    }
+
+
+    @ApiOperation("跟新排片记录")
+    @PostMapping("update-arrange-info")
+    public R<Boolean> updateArrangeInfo(MovieArrangePo movieArrangePo){
+        return new APITemplate<Boolean>() {
+            @Override
+            protected void checkParams() throws IllegalArgumentException {
+
+            }
+
+            @Override
+            protected Boolean process() throws BizException {
+                return cinemaService.updateArrangeInfo(movieArrangePo);
+            }
+        }.execute();
     }
 
 
