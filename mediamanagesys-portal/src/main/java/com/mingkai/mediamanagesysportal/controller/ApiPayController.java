@@ -89,7 +89,7 @@ public class ApiPayController {
         //设置请求参数
         AlipayTradePagePayRequest alipayRequest = new AlipayTradePagePayRequest();
         alipayRequest.setReturnUrl(AlipayConfig.return_url);
-        //alipayRequest.setNotifyUrl(AlipayConfig.notify_url);
+        alipayRequest.setNotifyUrl(AlipayConfig.notify_url);
         //商户订单号，商户网站订单系统中唯一订单号，必填
         String out_trade_no = orderId;
         //付款金额，必填

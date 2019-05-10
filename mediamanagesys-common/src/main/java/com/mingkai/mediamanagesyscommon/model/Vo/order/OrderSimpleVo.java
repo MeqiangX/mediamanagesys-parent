@@ -27,6 +27,8 @@ public class OrderSimpleVo extends BaseVo {
 
     private String movieName;
 
+    private String movieImage;
+
     private String timeScopeStart;
 
     private String cinemaName;

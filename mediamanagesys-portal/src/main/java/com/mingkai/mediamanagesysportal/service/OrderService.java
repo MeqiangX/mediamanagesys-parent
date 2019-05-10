@@ -280,6 +280,7 @@ public class OrderService {
         orderSimpleVo.setCinemaPhone(cinema.getPhone());
         orderSimpleVo.setScreeningHallName(screenRoomDo.getScreeningHallName());
 
+        orderSimpleVo.setMovieImage(movie.getImage());
         orderSimpleVo.setMovieName(movie.getMovieName());
         orderSimpleVo.setTimeScopeStart(screenArrangeDo.getTimeScopeStart());
 
