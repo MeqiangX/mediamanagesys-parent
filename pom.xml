@@ -21,8 +21,8 @@
 
     <!-- 子模块说明 -->
     <modules>
-        <module>mediamanagesys-backend</module>
         <module>mediamanagesys-common</module>
+        <module>mediamanagesys-backend</module>
         <module>mediamanagesys-portal</module>
         <module>mediamanagesys-uc</module>
         <module>mediamanagesys-schdule</module>
@@ -32,7 +32,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <mediamanagesys-backend.version>0.0.1-SNAPSHOT</mediamanagesys-backend.version>
+        <mediamanagesys-backend.veSchedulersion>0.0.1-SNAPSHOT</mediamanagesys-backend.veSchedulersion>
         <mediamanagesys-common.version>0.0.1-SNAPSHOT</mediamanagesys-common.version>
         <mediamanagesys-portal.version>0.0.1-SNAPSHOT</mediamanagesys-portal.version>
         <mediamanagesys-uc.version>0.0.1-SNAPSHOT</mediamanagesys-uc.version>

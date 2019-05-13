@@ -48,13 +48,13 @@
                     <encoding>UTF-8</encoding>
                 </configuration>
             </plugin>
-           <!-- <plugin>
+            <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
                     <mainClass>com.mingkai.mediamanagesyscommon.MediamanagesysCommonApplication</mainClass>
                 </configuration>
-            </plugin>-->
+            </plugin>
         </plugins>
         <!-- 如果不添加此节点mybatis的mapper.xml文件都会被漏掉。 -->
         <resources>
