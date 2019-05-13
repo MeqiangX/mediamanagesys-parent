@@ -9,6 +9,12 @@
         <option value="$PROJECT_DIR$/mediamanagesys-uc/pom.xml" />
         <option value="$PROJECT_DIR$/mediamanagesys-common/pom.xml" />
         <option value="$PROJECT_DIR$/mediamanagesys-schdule/pom.xml" />
+        <option value="$PROJECT_DIR$/service-center/pom.xml" />
+        <option value="$PROJECT_DIR$/movie-service/pom.xml" />
+        <option value="$PROJECT_DIR$/client-feign/pom.xml" />
+        <option value="$PROJECT_DIR$/movie-service-api/pom.xml" />
+        <option value="$PROJECT_DIR$/order-service-api/pom.xml" />
+        <option value="$PROJECT_DIR$/mediamanagesys-mapp/pom.xml" />
       </list>
     </option>
   </component>

@@ -2,12 +2,18 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/client-feign/client-feign.iml" filepath="$PROJECT_DIR$/client-feign/client-feign.iml" />
       <module fileurl="file://$PROJECT_DIR$/mediamanagesys-backend/mediamanagesys-backend.iml" filepath="$PROJECT_DIR$/mediamanagesys-backend/mediamanagesys-backend.iml" />
       <module fileurl="file://$PROJECT_DIR$/mediamanagesys-common/mediamanagesys-common.iml" filepath="$PROJECT_DIR$/mediamanagesys-common/mediamanagesys-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mediamanagesys-mapp/mediamanagesys-mapp.iml" filepath="$PROJECT_DIR$/mediamanagesys-mapp/mediamanagesys-mapp.iml" />
       <module fileurl="file://$PROJECT_DIR$/mediamanagesys-parent.iml" filepath="$PROJECT_DIR$/mediamanagesys-parent.iml" />
       <module fileurl="file://$PROJECT_DIR$/mediamanagesys-portal/mediamanagesys-portal.iml" filepath="$PROJECT_DIR$/mediamanagesys-portal/mediamanagesys-portal.iml" />
       <module fileurl="file://$PROJECT_DIR$/mediamanagesys-schdule/mediamanagesys-schdule.iml" filepath="$PROJECT_DIR$/mediamanagesys-schdule/mediamanagesys-schdule.iml" />
       <module fileurl="file://$PROJECT_DIR$/mediamanagesys-uc/mediamanagesys-uc.iml" filepath="$PROJECT_DIR$/mediamanagesys-uc/mediamanagesys-uc.iml" />
+      <module fileurl="file://$PROJECT_DIR$/movie-service/movie-service.iml" filepath="$PROJECT_DIR$/movie-service/movie-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/movie-service-api/movie-service-api.iml" filepath="$PROJECT_DIR$/movie-service-api/movie-service-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/order-service-api/order-service-api.iml" filepath="$PROJECT_DIR$/order-service-api/order-service-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/service-center/service-center.iml" filepath="$PROJECT_DIR$/service-center/service-center.iml" />
     </modules>
   </component>
 </project>
