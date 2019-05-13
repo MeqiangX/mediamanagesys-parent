@@ -1,0 +1,3 @@
+com\mingkai\clientfeign\ClientFeignApplication.class
+com\mingkai\clientfeign\controller\MovieController.class
+com\mingkai\clientfeign\feign\MovieFeignService.class

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mingkai.movieserviceapi.mapper.MovieDetailMapper">
+
+
+    <select id="moviePage" resultType="com.mingkai.movieserviceapi.model.Do.movie.MovieDetailDo">
+        select * from mesys_movie_detail
+        <where>
+            <if test="moviePagePo.movieType != null and moviePagePo.movieType != ''">
+                genres like CONCAT('%',#{moviePagePo.movieType},'%')
+            </if>
+            <if test="moviePagePo.area != null and moviePagePo.area != ''">
+                and countries like CONCAT('%',#{moviePagePo.area},'%')
+            </if>
+            <if test="moviePagePo.year != null and moviePagePo.year != ''">
+                and year ${moviePagePo.year}
+            </if>
+        </where>
+        <if test="moviePagePo.sortType != null and moviePagePo.sortType != ''">
+            order by ${moviePagePo.sortType} desc
+        </if>
+    </select>
+
+    <!-- 最近一年内的电影数统计 -->
+    <select id="movieEchartsData" resultType="com.mingkai.movieserviceapi.model.Do.EchartsDo">
+
+        select year(create_time) as year,MONTH(create_time) as month,count(1) as count
+        from mesys_movie_detail
+        where is_deleted = 0
+        group by year(create_time),MONTH(create_time)
+        having CONCAT(year,LPAD(month,2,0)) BETWEEN CONCAT(#{startYear},LPAD(#{startMonth},2,0))
+        and CONCAT(#{endYear},LPAD(#{endMonth},2,0))
+
+
+
+    </select>
+
+
+
+
+</mapper>
