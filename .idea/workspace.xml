@@ -738,7 +738,7 @@
     <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file://C:/Users/xq/Downloads/mediamanagesys-parent/mediamanagesys-uc/src/main/java/com/mingkai/mediamanagesysuc/constant/time/TimeConstant.java" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1557748303413" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1557748499109" />
     <property name="last_opened_file_path" value="F:/资料/开发/支付宝/alipay.trade.page.pay-JAVA-UTF-8" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -940,7 +940,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="674712000" />
+    <option name="totallyTimeSpent" value="674953000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -952,7 +952,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="7" y="11" width="1379" height="693" extended-state="1" />
+    <frame x="7" y="11" width="1379" height="693" extended-state="0" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49223948" visible="true" weight="0.26231995" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -972,7 +972,7 @@
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32935154" />
       <window_info anchor="bottom" id="Messages" order="7" sideWeight="0.5444631" weight="0.24208567" />
       <window_info anchor="bottom" id="Spring" order="8" weight="0.32820514" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="9" sideWeight="0.8271812" visible="true" weight="0.4307116" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="9" sideWeight="0.8271812" visible="true" weight="0.47003746" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.24962178" side_tool="true" weight="0.41367522" />
       <window_info anchor="bottom" id="Statistic" order="11" sideWeight="0.49924356" weight="0.36410257" />
       <window_info anchor="bottom" id="Database Changes" order="12" show_stripe_button="false" />
