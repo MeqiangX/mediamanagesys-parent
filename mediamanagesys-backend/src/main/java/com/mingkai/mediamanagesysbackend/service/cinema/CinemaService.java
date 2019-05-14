@@ -40,10 +40,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 import java.util.stream.Collectors;
 
 /**
@@ -464,6 +461,36 @@ public class CinemaService {
      * @return
      */
     public Page<CinemaVo> searchCinemas(CinemaSearchPo cinemaSearchPo){
+
+        if (Strings.isNotBlank(cinemaSearchPo.getMovieId())){
+            // 如果电影id 不为空  查找有排片记录的影院 ids
+            List<ScreenArrangeDo> screenArrangeDos = screenArrangeMapper.selectList(new QueryWrapper<ScreenArrangeDo>()
+                    .eq("movie_id", cinemaSearchPo.getMovieId()));
+
+            if (Objects.isNull(screenArrangeDos) || screenArrangeDos.size() == 0){
+                return PageUtils.emptyPage(cinemaSearchPo,new Page());
+            }
+
+            // 不为空  提取排片cinemaIds;
+            List<Integer> cinemaAndScreenIds = screenArrangeDos.stream().map(ScreenArrangeDo::getCinemaScreenId).distinct().collect(Collectors.toList());
+
+            // 查找影院 将Ids 放入cinemaSearchPo参数中
+            List<CinemaScreenDo> cinemaScreenDos = cinemaScreenManager.listByIds(cinemaAndScreenIds).stream().collect(Collectors.toList());
+
+            if (Objects.isNull(cinemaScreenDos) || cinemaScreenDos.size() == 0){
+                return PageUtils.emptyPage(cinemaSearchPo,new Page());
+            }
+
+            List<Integer> cinemaIds = cinemaScreenDos.stream().map(CinemaScreenDo::getCinemaId).distinct().collect(Collectors.toList());
+
+            if (Objects.nonNull(cinemaIds) && cinemaIds.size() > 0){
+                // 加入到查询条件
+                cinemaSearchPo.setCinemaIds(cinemaIds);
+            }
+        }
+
+
+
 
         Page<CinemaDo> cinemaDoPage = cinemaManager.getBaseMapper().searchCinemaPage(cinemaSearchPo);
 

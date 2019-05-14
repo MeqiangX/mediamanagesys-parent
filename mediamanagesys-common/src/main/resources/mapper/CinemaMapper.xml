@@ -24,6 +24,12 @@
         select * from mesys_cinema
         <where>
            is_deleted = 0
+           <if test="cinemaSearchPo.cinemaIds != null and cinemaSearchPo.cinemaIds.size != 0">
+               and id in
+               <foreach collection="cinemaSearchPo.cinemaIds" open="(" item="cinemaId" separator="," close=")">
+                   #{cinemaId}
+               </foreach>
+           </if>
            <if test="cinemaSearchPo.areaId != null and cinemaSearchPo.areaId !=''">
                and cinema_area_id = #{cinemaSearchPo.areaId}
            </if>
