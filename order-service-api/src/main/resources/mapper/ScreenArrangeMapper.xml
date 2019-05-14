@@ -25,7 +25,7 @@
 
     <!--购票选影院 根据movieId 以及 地区 分页 来查询-->
     <select id="selectArrangeByPage"
-            resultType="com.mingkai.orderserviceapi.model.Do.cinema.CinemaDo">
+            resultType="com.mingkai.systemcommon.model.Do.cinema.CinemaDo">
        select c.id,c.cinema_name,c.cinema_area_id,c.cinema_area_full_name,c.cinema_full_address
        from mesys_screen_arrange as a
        left join mesys_cinema_screen as b on a.cinema_screen_id = b.id

@@ -1,14 +1,15 @@
 package com.mingkai.mediamanagesysportal.controller;
 
+
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.dtstack.plat.lang.exception.BizException;
 import com.dtstack.plat.lang.web.R;
 import com.dtstack.plat.lang.web.template.APITemplate;
-import com.mingkai.mediamanagesyscommon.common.API;
-import com.mingkai.mediamanagesyscommon.model.Po.order.CoordinatePo;
-import com.mingkai.mediamanagesyscommon.model.Po.order.OrderPagePo;
-import com.mingkai.mediamanagesyscommon.model.Vo.order.OrderSimpleVo;
-import com.mingkai.mediamanagesysportal.service.OrderService;
+import com.mingkai.mediamanagesysportal.service.OrderRpcService;
+import com.mingkai.systemcommon.common.API;
+import com.mingkai.systemcommon.model.Po.order.CoordinatePo;
+import com.mingkai.systemcommon.model.Po.order.OrderPagePo;
+import com.mingkai.systemcommon.model.Vo.order.OrderSimpleVo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +27,7 @@ import java.util.List;
 public class OrderController {
 
     @Autowired
-    private OrderService orderService;
+    private OrderRpcService orderRpcService;
 
 
     /**
@@ -45,7 +46,7 @@ public class OrderController {
 
             @Override
             protected Page<OrderSimpleVo> process() throws BizException {
-                return orderService.userOrders(orderPagePo);
+                return orderRpcService.userOrders(orderPagePo);
             }
         }.execute();
     }
@@ -84,7 +85,7 @@ public class OrderController {
 
             @Override
             protected String process() throws BizException {
-                return orderService.seatBooking(seatIds,userId);
+                return orderRpcService.seatBooking(seatIds,userId);
             }
         }.execute();
     }
@@ -102,7 +103,7 @@ public class OrderController {
 
             @Override
             protected OrderSimpleVo process() throws BizException {
-                return orderService.orderDetail(orderId);
+                return orderRpcService.orderDetail(orderId);
             }
         }.execute();
     }
@@ -119,7 +120,7 @@ public class OrderController {
 
             @Override
             protected Long process() throws BizException {
-                return orderService.getUnPayOrderTime(orderId);
+                return orderRpcService.unpayOrderRestTime(orderId);
             }
         }.execute();
     }
@@ -136,7 +137,7 @@ public class OrderController {
 
             @Override
             protected Boolean process() throws BizException {
-                return orderService.timeoutOrderCheck(orderId);
+                return orderRpcService.timeoutOrderCheck(orderId);
             }
         }.execute();
     }
@@ -152,7 +153,7 @@ public class OrderController {
 
             @Override
             protected Boolean process() throws BizException {
-                return orderService.deleteUserOrders(userId);
+                return orderRpcService.deleteUserOrders(userId);
             }
         }.execute();
     }
@@ -168,7 +169,7 @@ public class OrderController {
 
             @Override
             protected Boolean process() throws BizException {
-                return orderService.cancelOrder(orderId);
+                return orderRpcService.cancelOrder(orderId);
             }
         }.execute();
     }
@@ -191,7 +192,7 @@ public class OrderController {
 
             @Override
             protected Integer process() throws BizException {
-                return orderService.boughtCountsArrangeId(userId,arrangeId);
+                return orderRpcService.boughtCountsArrangeId(userId,arrangeId);
             }
         }.execute();
     }
@@ -207,7 +208,7 @@ public class OrderController {
 
             @Override
             protected List<Integer> process() throws BizException {
-                return orderService.isAllowPurchased(seats);
+                return orderRpcService.isAllowPurchased(seats);
             }
         }.execute();
     }
@@ -224,7 +225,7 @@ public class OrderController {
 
             @Override
             protected List<Integer> process() throws BizException {
-                return orderService.seatIdsByCoordinate(coordinatePo);
+                return orderRpcService.seatIdsByCoordinate(coordinatePo);
             }
         }.execute();
     }

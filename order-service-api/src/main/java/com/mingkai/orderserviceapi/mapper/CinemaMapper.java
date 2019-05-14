@@ -3,9 +3,9 @@ package com.mingkai.orderserviceapi.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.mingkai.orderserviceapi.model.Do.EchartsDo;
-import com.mingkai.orderserviceapi.model.Do.cinema.CinemaDo;
-import com.mingkai.orderserviceapi.model.Po.cinema.CinemaSearchPo;
+import com.mingkai.systemcommon.model.Do.EchartsDo;
+import com.mingkai.systemcommon.model.Do.cinema.CinemaDo;
+import com.mingkai.systemcommon.model.Po.cinema.CinemaSearchPo;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;

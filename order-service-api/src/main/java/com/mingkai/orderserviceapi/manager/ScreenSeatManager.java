@@ -3,7 +3,7 @@ package com.mingkai.orderserviceapi.manager;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.mingkai.orderserviceapi.mapper.ScreenSeatMapper;
-import com.mingkai.orderserviceapi.model.Do.screen.ScreenSeatDo;
+import com.mingkai.systemcommon.model.Do.screen.ScreenSeatDo;
 import org.springframework.stereotype.Repository;
 
 /**

@@ -3,7 +3,7 @@ package com.mingkai.orderserviceapi.manager;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.mingkai.orderserviceapi.mapper.ClassUserRelMapper;
-import com.mingkai.orderserviceapi.model.Do.order.ClassUserRelDo;
+import com.mingkai.systemcommon.model.Do.order.ClassUserRelDo;
 import org.springframework.stereotype.Repository;
 
 /**

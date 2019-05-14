@@ -24,6 +24,11 @@
 
     <dependencies>
         <dependency>
+            <groupId>com.mingkai</groupId>
+            <artifactId>system-common</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+        <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>druid-spring-boot-starter</artifactId>
         </dependency>
@@ -55,11 +60,7 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>com.alipay.sdk</groupId>
-            <artifactId>alipay-sdk-java</artifactId>
-            <version>3.0.0</version>
-        </dependency>
+
 
         <dependency>
             <groupId>org.springframework.boot</groupId>

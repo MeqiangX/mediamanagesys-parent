@@ -3,7 +3,7 @@
 <mapper namespace="com.mingkai.movieserviceapi.mapper.MovieDetailMapper">
 
 
-    <select id="moviePage" resultType="com.mingkai.movieserviceapi.model.Do.movie.MovieDetailDo">
+    <select id="moviePage" resultType="com.mingkai.systemcommon.model.Do.movie.MovieDetailDo">
         select * from mesys_movie_detail
         <where>
             <if test="moviePagePo.movieType != null and moviePagePo.movieType != ''">
@@ -22,7 +22,7 @@
     </select>
 
     <!-- 最近一年内的电影数统计 -->
-    <select id="movieEchartsData" resultType="com.mingkai.movieserviceapi.model.Do.EchartsDo">
+    <select id="movieEchartsData" resultType="com.mingkai.systemcommon.model.Do.EchartsDo">
 
         select year(create_time) as year,MONTH(create_time) as month,count(1) as count
         from mesys_movie_detail

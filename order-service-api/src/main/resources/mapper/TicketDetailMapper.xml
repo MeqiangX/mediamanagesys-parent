@@ -12,7 +12,7 @@
     </sql>
 
 
-    <select id="orderSearch" resultType="com.mingkai.orderserviceapi.model.Vo.ticket.TicketDetailVo">
+    <select id="orderSearch" resultType="com.mingkai.systemcommon.model.Vo.ticket.TicketDetailVo">
           <!-- 订单要展示的信息 订单编号 创建时间 影院 影院id 放映厅 放映厅id 席位信息 用户id 用户名 -->
         SELECT
         t.order_id,
@@ -54,7 +54,7 @@
 
 
 
-    <select id="orderEchartsData" resultType="com.mingkai.orderserviceapi.model.Do.EchartsDo">
+    <select id="orderEchartsData" resultType="com.mingkai.systemcommon.model.Do.EchartsDo">
         select year(create_time) as year,MONTH(create_time) as month,count(1) as count
         from mesys_ticket_detail
 				where is_deleted = 1 and status = 1

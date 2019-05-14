@@ -9,14 +9,15 @@
         <module name="client-feign" />
         <module name="mediamanagesys-backend" />
         <module name="mediamanagesys-common" />
-        <module name="mediamanagesys-mapp" />
         <module name="mediamanagesys-portal" />
         <module name="mediamanagesys-schdule" />
         <module name="mediamanagesys-uc" />
         <module name="movie-service" />
         <module name="movie-service-api" />
         <module name="order-service-api" />
+        <module name="pay-service-api" />
         <module name="service-center" />
+        <module name="system-common" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -31,7 +32,9 @@
       <module name="movie-service" target="1.8" />
       <module name="movie-service-api" target="1.8" />
       <module name="order-service-api" target="1.8" />
+      <module name="pay-service-api" target="1.8" />
       <module name="service-center" target="1.8" />
+      <module name="system-common" target="1.8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
@@ -47,7 +50,9 @@
       <module name="movie-service" options="-parameters" />
       <module name="movie-service-api" options="-parameters" />
       <module name="order-service-api" options="-parameters" />
+      <module name="pay-service-api" options="-parameters" />
       <module name="service-center" options="-parameters" />
+      <module name="system-common" options="-parameters" />
     </option>
   </component>
 </project>

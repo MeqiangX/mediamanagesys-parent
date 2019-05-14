@@ -1,7 +1,7 @@
 package com.mingkai.orderserviceapi.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.mingkai.orderserviceapi.model.Do.order.ClassUserRelDo;
+import com.mingkai.systemcommon.model.Do.order.ClassUserRelDo;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 

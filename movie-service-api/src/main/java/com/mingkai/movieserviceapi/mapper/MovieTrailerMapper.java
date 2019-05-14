@@ -1,7 +1,8 @@
 package com.mingkai.movieserviceapi.mapper;
 
+
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.mingkai.movieserviceapi.model.Do.movie.MovieTrailerDo;
+import com.mingkai.systemcommon.model.Do.movie.MovieTrailerDo;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 

@@ -1,7 +1,8 @@
 package com.mingkai.orderserviceapi.mapper;
 
+
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.mingkai.orderserviceapi.model.Do.cinema.CinemaScreenDo;
+import com.mingkai.systemcommon.model.Do.cinema.CinemaScreenDo;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 

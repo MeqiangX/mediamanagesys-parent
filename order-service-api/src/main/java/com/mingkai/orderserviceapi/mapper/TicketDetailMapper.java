@@ -3,10 +3,10 @@ package com.mingkai.orderserviceapi.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.mingkai.orderserviceapi.model.Do.EchartsDo;
-import com.mingkai.orderserviceapi.model.Do.order.TicketDetailDo;
-import com.mingkai.orderserviceapi.model.Po.order.TicketSearchPo;
-import com.mingkai.orderserviceapi.model.Vo.ticket.TicketDetailVo;
+import com.mingkai.systemcommon.model.Do.EchartsDo;
+import com.mingkai.systemcommon.model.Do.order.TicketDetailDo;
+import com.mingkai.systemcommon.model.Po.order.TicketSearchPo;
+import com.mingkai.systemcommon.model.Vo.ticket.TicketDetailVo;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;

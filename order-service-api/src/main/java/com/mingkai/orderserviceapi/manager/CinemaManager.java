@@ -3,7 +3,7 @@ package com.mingkai.orderserviceapi.manager;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.mingkai.orderserviceapi.mapper.CinemaMapper;
-import com.mingkai.orderserviceapi.model.Do.cinema.CinemaDo;
+import com.mingkai.systemcommon.model.Do.cinema.CinemaDo;
 import org.springframework.stereotype.Repository;
 
 /**

@@ -2,7 +2,7 @@ package com.mingkai.orderserviceapi.mapper;
 
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.mingkai.orderserviceapi.model.Do.screen.ScreenSeatDo;
+import com.mingkai.systemcommon.model.Do.screen.ScreenSeatDo;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;

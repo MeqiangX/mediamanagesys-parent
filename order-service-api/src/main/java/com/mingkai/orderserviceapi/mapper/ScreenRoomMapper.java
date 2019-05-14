@@ -1,9 +1,10 @@
 package com.mingkai.orderserviceapi.mapper;
 
+
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.mingkai.orderserviceapi.model.Do.screen.ScreenRoomDo;
-import com.mingkai.orderserviceapi.model.Po.cinema.ScreenPagePo;
+import com.mingkai.systemcommon.model.Do.screen.ScreenRoomDo;
+import com.mingkai.systemcommon.model.Po.cinema.ScreenPagePo;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;

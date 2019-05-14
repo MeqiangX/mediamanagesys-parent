@@ -4,7 +4,7 @@
 <mapper namespace="com.mingkai.orderserviceapi.mapper.CinemaMapper">
 
 
-    <select id="cinemaEchartsData" resultType="com.mingkai.orderserviceapi.model.Do.EchartsDo">
+    <select id="cinemaEchartsData" resultType="com.mingkai.systemcommon.model.Do.EchartsDo">
 
         select year(create_time) as year,MONTH(create_time) as month,count(1) as count
         from mesys_cinema
@@ -19,7 +19,7 @@
 
 
     <!-- 搜索影院 分页 -->
-    <select id="searchCinemaPage" resultType="com.mingkai.orderserviceapi.model.Do.cinema.CinemaDo">
+    <select id="searchCinemaPage" resultType="com.mingkai.systemcommon.model.Do.cinema.CinemaDo">
 
         select * from mesys_cinema
         <where>

@@ -5,7 +5,7 @@
 
 
 
-    <select id="queryScreensPage" resultType="com.mingkai.orderserviceapi.model.Do.screen.ScreenRoomDo">
+    <select id="queryScreensPage" resultType="com.mingkai.systemcommon.model.Do.screen.ScreenRoomDo">
         select * from mesys_screen_room
         <where>
             is_deleted = 0

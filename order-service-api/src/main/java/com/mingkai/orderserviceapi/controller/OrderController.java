@@ -1,13 +1,15 @@
 package com.mingkai.orderserviceapi.controller;
 
+
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.dtstack.plat.lang.exception.BizException;
 import com.dtstack.plat.lang.web.R;
 import com.dtstack.plat.lang.web.template.APITemplate;
-import com.mingkai.orderserviceapi.model.Po.order.CoordinatePo;
-import com.mingkai.orderserviceapi.model.Po.order.OrderPagePo;
-import com.mingkai.orderserviceapi.model.Vo.order.OrderSimpleVo;
 import com.mingkai.orderserviceapi.service.OrderService;
+import com.mingkai.systemcommon.model.Do.order.TicketDetailDo;
+import com.mingkai.systemcommon.model.Po.order.CoordinatePo;
+import com.mingkai.systemcommon.model.Po.order.OrderPagePo;
+import com.mingkai.systemcommon.model.Vo.order.OrderSimpleVo;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -223,6 +225,38 @@ public class OrderController {
             @Override
             protected List<Integer> process() throws BizException {
                 return orderService.seatIdsByCoordinate(coordinatePo);
+            }
+        }.execute();
+    }
+
+    @ApiOperation("支付成功的操作")
+    @GetMapping("/pay-success")
+    public R<Boolean> paySuccess(@RequestParam("orderId") String orderId){
+        return new APITemplate<Boolean>() {
+            @Override
+            protected void checkParams() throws IllegalArgumentException {
+
+            }
+
+            @Override
+            protected Boolean process() throws BizException {
+                return orderService.paySuccess(orderId);
+            }
+        }.execute();
+    }
+
+    @ApiOperation("得到订单信息By orderId")
+    @GetMapping("/get-orderby-orderId")
+    public R<TicketDetailDo> getOrderByOrderId(@RequestParam("orderId") String orderId){
+        return new APITemplate<TicketDetailDo>() {
+            @Override
+            protected void checkParams() throws IllegalArgumentException {
+
+            }
+
+            @Override
+            protected TicketDetailDo process() throws BizException {
+                return orderService.getOrderByOrderId(orderId);
             }
         }.execute();
     }

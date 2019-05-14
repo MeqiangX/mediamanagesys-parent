@@ -3,7 +3,7 @@ package com.mingkai.orderserviceapi.manager;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.mingkai.orderserviceapi.mapper.TicketDetailMapper;
-import com.mingkai.orderserviceapi.model.Do.order.TicketDetailDo;
+import com.mingkai.systemcommon.model.Do.order.TicketDetailDo;
 import org.springframework.stereotype.Repository;
 
 /**

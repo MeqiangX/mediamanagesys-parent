@@ -2,9 +2,9 @@ package com.mingkai.movieserviceapi.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.mingkai.movieserviceapi.model.Do.movie.MovieDetailDo;
-import com.mingkai.movieserviceapi.model.Do.movie.MovieRankDo;
-import com.mingkai.movieserviceapi.model.Po.movie.MovieRankPagePo;
+import com.mingkai.systemcommon.model.Do.movie.MovieDetailDo;
+import com.mingkai.systemcommon.model.Do.movie.MovieRankDo;
+import com.mingkai.systemcommon.model.Po.movie.MovieRankPagePo;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;

@@ -1,17 +1,18 @@
 package com.mingkai.movieserviceapi.controller;
 
+
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.dtstack.plat.lang.base.Checks;
 import com.dtstack.plat.lang.exception.BizException;
 import com.dtstack.plat.lang.web.R;
 import com.dtstack.plat.lang.web.template.APITemplate;
-import com.mingkai.movieserviceapi.model.Po.movie.MoviePagePo;
-import com.mingkai.movieserviceapi.model.Po.movie.MovieRankPagePo;
-import com.mingkai.movieserviceapi.model.Po.movie.MovieSearchPo;
-import com.mingkai.movieserviceapi.model.Vo.movie.MovieBlooperVo;
-import com.mingkai.movieserviceapi.model.Vo.movie.MovieTrailerVo;
-import com.mingkai.movieserviceapi.model.Vo.movie.MovieVo;
 import com.mingkai.movieserviceapi.service.MovieService;
+import com.mingkai.systemcommon.model.Po.movie.MoviePagePo;
+import com.mingkai.systemcommon.model.Po.movie.MovieRankPagePo;
+import com.mingkai.systemcommon.model.Po.movie.MovieSearchPo;
+import com.mingkai.systemcommon.model.Vo.movie.MovieBlooperVo;
+import com.mingkai.systemcommon.model.Vo.movie.MovieTrailerVo;
+import com.mingkai.systemcommon.model.Vo.movie.MovieVo;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;

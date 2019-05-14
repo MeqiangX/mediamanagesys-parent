@@ -2,7 +2,7 @@ package com.mingkai.movieserviceapi.manager;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.mingkai.movieserviceapi.mapper.MovieDetailMapper;
-import com.mingkai.movieserviceapi.model.Do.movie.MovieDetailDo;
+import com.mingkai.systemcommon.model.Do.movie.MovieDetailDo;
 import org.springframework.stereotype.Repository;
 
 /**

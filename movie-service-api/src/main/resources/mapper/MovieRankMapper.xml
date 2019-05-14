@@ -7,7 +7,7 @@
     <!--这里一个坑 注解的形式 无法得到Page  records  为null 必须要xml-->
 
     <select id="selectMovieRanksByPage"
-            resultType="com.mingkai.movieserviceapi.model.Do.movie.MovieRankDo">
+            resultType="com.mingkai.systemcommon.model.Do.movie.MovieRankDo">
         select * from ${movieRankPagePo.tableName}
             <if test="movieRankPagePo.orderColumn != null and movieRankPagePo.orderColumn != '' and movieRankPagePo.orderType != null and movieRankPagePo.orderType != ''">
                 order by ${movieRankPagePo.orderColumn} ${movieRankPagePo.orderType}
