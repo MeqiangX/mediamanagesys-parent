@@ -125,11 +125,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/mediamanagesys-uc/src/main/java/com/mingkai/mediamanagesysuc/service/UserService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="33">
-              <caret line="291" column="9" lean-forward="true" selection-start-line="291" selection-start-column="9" selection-end-line="291" selection-end-column="9" />
+            <state relative-caret-position="249">
+              <caret line="303" column="25" lean-forward="true" selection-start-line="303" selection-start-column="25" selection-end-line="303" selection-end-column="25" />
             </state>
           </provider>
         </entry>
@@ -143,7 +143,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/mediamanagesys-backend/src/main/java/com/mingkai/mediamanagesysbackend/service/cinema/CinemaService.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="633">
@@ -1036,7 +1036,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="682123000" />
+    <option name="totallyTimeSpent" value="682912000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1049,7 +1049,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="39" y="10" width="1241" height="700" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.48965517" visible="true" weight="0.18628281" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -1062,14 +1061,14 @@
       <window_info id="Web" order="8" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32935154" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.84114975" visible="true" weight="0.29944548" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.84114975" weight="0.44362292" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.7503782" weight="0.36891386" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32935154" />
       <window_info anchor="bottom" id="Messages" order="7" sideWeight="0.5444631" weight="0.27171904" />
       <window_info anchor="bottom" id="Spring" order="8" weight="0.32820514" />
-      <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.8271812" weight="0.18726592" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="9" sideWeight="0.8271812" visible="true" weight="0.4861368" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.24962178" side_tool="true" weight="0.41367522" />
       <window_info anchor="bottom" id="Statistic" order="11" sideWeight="0.49924356" weight="0.36410257" />
       <window_info anchor="bottom" id="Database Changes" order="12" show_stripe_button="false" />
@@ -1465,13 +1464,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mediamanagesys-backend/src/main/java/com/mingkai/mediamanagesysbackend/service/cinema/CinemaService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="633">
-          <caret line="490" lean-forward="true" selection-start-line="490" selection-end-line="490" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/mediamanagesys-backend/src/main/java/com/mingkai/mediamanagesysbackend/controller/cinema/CinemaController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="144">
@@ -1495,8 +1487,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/mediamanagesys-uc/src/main/java/com/mingkai/mediamanagesysuc/service/UserService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="33">
-          <caret line="291" column="9" lean-forward="true" selection-start-line="291" selection-start-column="9" selection-end-line="291" selection-end-column="9" />
+        <state relative-caret-position="249">
+          <caret line="303" column="25" lean-forward="true" selection-start-line="303" selection-start-column="25" selection-end-line="303" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mediamanagesys-backend/src/main/java/com/mingkai/mediamanagesysbackend/service/cinema/CinemaService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="633">
+          <caret line="490" lean-forward="true" selection-start-line="490" selection-end-line="490" />
         </state>
       </provider>
     </entry>
