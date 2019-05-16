@@ -6,27 +6,29 @@ import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.dtstack.plat.lang.exception.BizException;
 import com.google.common.collect.Lists;
-import com.mingkai.orderserviceapi.manager.*;
-import com.mingkai.orderserviceapi.mapper.ScreenArrangeMapper;
-import com.mingkai.orderserviceapi.mapper.ScreenRoomMapper;
-import com.mingkai.systemcommon.common.TimeConstant;
-import com.mingkai.systemcommon.model.Do.cinema.CinemaDo;
-import com.mingkai.systemcommon.model.Do.cinema.CinemaScreenDo;
-import com.mingkai.systemcommon.model.Do.movie.MovieDetailDo;
-import com.mingkai.systemcommon.model.Do.order.ClassDicDo;
-import com.mingkai.systemcommon.model.Do.order.ClassUserRelDo;
-import com.mingkai.systemcommon.model.Do.order.TicketDetailDo;
-import com.mingkai.systemcommon.model.Do.screen.ScreenArrangeDo;
-import com.mingkai.systemcommon.model.Do.screen.ScreenRoomDo;
-import com.mingkai.systemcommon.model.Do.screen.ScreenSeatDo;
-import com.mingkai.systemcommon.model.Po.order.CoordinatePo;
-import com.mingkai.systemcommon.model.Po.order.OrderPagePo;
-import com.mingkai.systemcommon.model.Po.order.SeatPo;
-import com.mingkai.systemcommon.model.Vo.order.OrderSimpleVo;
-import com.mingkai.systemcommon.utils.convert.ConvertUtil;
-import com.mingkai.systemcommon.utils.page.PageUtils;
-import com.mingkai.systemcommon.utils.redis.RedisUtil;
-import com.mingkai.systemcommon.utils.string.onlyID.SnowFlakeUtil;
+import com.mingkai.mappermodule.common.TimeConstant;
+import com.mingkai.mappermodule.manager.*;
+import com.mingkai.mappermodule.mapper.ScreenArrangeMapper;
+import com.mingkai.mappermodule.mapper.ScreenRoomMapper;
+import com.mingkai.mappermodule.model.Do.cinema.CinemaDo;
+import com.mingkai.mappermodule.model.Do.cinema.CinemaScreenDo;
+import com.mingkai.mappermodule.model.Do.movie.MovieDetailDo;
+import com.mingkai.mappermodule.model.Do.order.ClassDicDo;
+import com.mingkai.mappermodule.model.Do.order.ClassUserRelDo;
+import com.mingkai.mappermodule.model.Do.order.TicketDetailDo;
+import com.mingkai.mappermodule.model.Do.screen.ScreenArrangeDo;
+import com.mingkai.mappermodule.model.Do.screen.ScreenRoomDo;
+import com.mingkai.mappermodule.model.Do.screen.ScreenSeatDo;
+import com.mingkai.mappermodule.model.Po.order.CoordinatePo;
+import com.mingkai.mappermodule.model.Po.order.OrderPagePo;
+import com.mingkai.mappermodule.model.Po.order.SeatPo;
+import com.mingkai.mappermodule.model.Po.order.TicketSearchPo;
+import com.mingkai.mappermodule.model.Vo.order.OrderSimpleVo;
+import com.mingkai.mappermodule.model.Vo.ticket.TicketDetailVo;
+import com.mingkai.mappermodule.utils.convert.ConvertUtil;
+import com.mingkai.mappermodule.utils.page.PageUtils;
+import com.mingkai.mappermodule.utils.redis.RedisUtil;
+import com.mingkai.mappermodule.utils.string.onlyID.SnowFlakeUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.logging.log4j.util.Strings;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -379,10 +381,7 @@ public class OrderService {
             return 0;
         }
 
-
         // 取出 和 arrangeId 相同的 id 数量
-
-        // 返回
         Integer num = 0;
 
         for (TicketDetailDo ticketDetailDo : ticketDetailDos) {
@@ -556,6 +555,15 @@ public class OrderService {
                 .set("status", 1));
 
         return update;
+    }
+
+    /**
+     * 搜索用户订单
+     * @param ticketSearchPo
+     * @return
+     */
+    public Page<TicketDetailVo> orderSearch(TicketSearchPo ticketSearchPo){
+        return ticketDetailManager.getBaseMapper().orderSearch(ticketSearchPo);
     }
 
 }

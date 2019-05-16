@@ -3,6 +3,8 @@ server:
   port: 8084
 #mysql
 spring:
+  application:
+    name: uc-app
   datasource: #数据源
     url: jdbc:mysql://localhost:3306/mediamanagesys?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf-8
     username: root
@@ -46,14 +48,13 @@ spring:
     cache: false # 调试时关闭缓存
     servlet:
       content-type: text/html
-      #mybatis
-      mybatis-plus:
+
 
 
 #mybatisPlus
 mybatis-plus:
   mapper-locations: classpath*:/mapper/*Mapper.xml
-  type-aliases-package: com.mingkai.mediamanagesysuc.pojo  #别名包扫描路径
+  type-aliases-package: com.mingkai.mappermodule  #别名包扫描路径
   ##configuration-properties:  classpath:mybatis/config.properties  #指定外部化Mybatis Properties配置,用这个配置可以抽离配置，实现不同环境的配置部署 （test or dev）
   global-config:
     db-config:
@@ -63,7 +64,7 @@ logging:
   level:
     com:
       mingkai:
-        mediamanagesyscommon:
+        mediamanagesysuc:
           mapper: debug
 ## 原生的Mybatis 配置 因为MybatisPlus 是向下兼容Mybatis的 所以也可以用Mybatis的配置
 # configuration 原生Mybatis 所支持的配置
@@ -73,5 +74,15 @@ configuration:
   cache-enabled: true #全局开启或关闭配置文件中所有映射器已经配置的任何缓存，默认为true
   call-setters-on-nulls: false #指定当结果集中值为null时是否调用映射对象的setter方法，解决当查询列值为null时造成的空指针异常
 
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
 
-
+# feign超时问题
+feign:
+  client:
+    config:
+      default:
+        connec-timeout: 20000
+        read-timeout: 20000

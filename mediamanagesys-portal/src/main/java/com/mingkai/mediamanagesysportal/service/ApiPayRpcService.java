@@ -1,8 +1,8 @@
 package com.mingkai.mediamanagesysportal.service;
 
 import com.alipay.api.AlipayApiException;
+import com.mingkai.mappermodule.model.AliPay;
 import com.mingkai.mediamanagesysportal.feigns.ApiPayRpcFeign;
-import com.mingkai.systemcommon.model.AliPay;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -24,13 +24,19 @@ eureka:
   client:
     service-url:
       defaultZone: http://localhost:8761/eureka/
+  instance:
+    lease-renewal-interval-in-seconds: 30  #  provider 向服务中心发送心跳的间隔 如果在这个间隔内还没有发送 中心就会删除这个实例 默认30s
+    lease-expiration-duration-in-seconds: 90 # 服务器的等待时间  在等待时间内收到了 最后的心跳 才能删除实例 默认 90s
+
 
 #mybatis
 mybatis-plus:
   mapper-locations: classpath*:/mapper/*Mapper.xml
+
 logging:
   level:
     com:
       mingkai:
         movieserviceapi:
           mapper: debug
+      netflix: debug

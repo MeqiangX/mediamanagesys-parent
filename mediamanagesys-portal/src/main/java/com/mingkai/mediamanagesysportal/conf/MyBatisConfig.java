@@ -17,7 +17,7 @@ import java.util.Date;
  * @author: Created by 云风 on 2019-04-04 16:59
  */
 @Configuration
-/*@MapperScan("com.mingkai.mediamanagesyscommon.mapper")*/
+/*@MapperScan("com.mingkai")*/
 public class MyBatisConfig {
 
     /**

@@ -1,3 +1,4 @@
+/*
 package com.mingkai.mediamanagesysbackend.service.backindex;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
@@ -24,10 +25,12 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
+*/
 /**
  * @description:
  * @author: Created by 云风 on 2019-05-04 20:07
- */
+ *//*
+
 @Service
 @Slf4j
 public class BackIndexWelcomeService {
@@ -50,10 +53,12 @@ public class BackIndexWelcomeService {
     @Autowired
     private UserAdminManager userAdminManager;
 
-    /**
+    */
+/**
      * 面板数据
      * @return
-     */
+     *//*
+
     public List<PaneDataVo> paneData(){
 
         List<PaneDataVo> list = Lists.newArrayList();
@@ -94,11 +99,13 @@ public class BackIndexWelcomeService {
     }
 
 
-    /**
+    */
+/**
      * 图表数据 0 电影 1 影院 2 用户 3 订单
      * @param echartsPo
      * @return
-     */
+     *//*
+
     public List<EchartsVo> echartsOption(EchartsPo echartsPo){
 
         List<EchartsVo> list = Lists.newArrayList();
@@ -172,3 +179,4 @@ public class BackIndexWelcomeService {
     }
 
 }
+*/

@@ -1,15 +1,16 @@
 package com.mingkai.mediamanagesysbackend.controller.screen;
 
+
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.dtstack.plat.lang.base.Checks;
 import com.dtstack.plat.lang.exception.BizException;
 import com.dtstack.plat.lang.web.R;
 import com.dtstack.plat.lang.web.template.APITemplate;
-import com.mingkai.mediamanagesysbackend.model.PO.ScreenRoomAddPo;
-import com.mingkai.mediamanagesysbackend.service.screen.ScreenService;
-import com.mingkai.mediamanagesyscommon.common.API;
-import com.mingkai.mediamanagesyscommon.model.Po.cinema.ScreenPagePo;
-import com.mingkai.mediamanagesyscommon.model.Vo.screen.ScreenRoomVo;
+import com.mingkai.mappermodule.common.API;
+import com.mingkai.mappermodule.model.Po.ScreenRoomAddPo;
+import com.mingkai.mappermodule.model.Po.cinema.ScreenPagePo;
+import com.mingkai.mappermodule.model.Vo.screen.ScreenRoomVo;
+import com.mingkai.mediamanagesysbackend.service.ScreenRpcService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +28,7 @@ import java.util.List;
 public class ScreenHallController {
 
     @Autowired
-    private ScreenService screenService;
+    private ScreenRpcService screenRpcService;
 
     @ApiOperation("测试查询")
     @GetMapping("query-screen-room")
@@ -40,7 +41,7 @@ public class ScreenHallController {
 
             @Override
             protected ScreenRoomVo process() throws BizException {
-                return screenService.queryScreenRoom();
+                return screenRpcService.queryScreenRoom();
             }
         }.execute();
     }
@@ -57,7 +58,7 @@ public class ScreenHallController {
 
             @Override
             protected ScreenRoomVo process() throws BizException {
-                return screenService.queryScreenById(id);
+                return screenRpcService.queryScreenById(id);
             }
         }.execute();
     }
@@ -73,7 +74,7 @@ public class ScreenHallController {
 
             @Override
             protected Page<ScreenRoomVo> process() throws BizException {
-                return screenService.queryScreenRoomPage(screenPagePo);
+                return screenRpcService.queryScreensPage(screenPagePo);
             }
         }.execute();
     }
@@ -89,7 +90,7 @@ public class ScreenHallController {
 
             @Override
             protected List<ScreenRoomVo> process() throws BizException {
-                return screenService.queryScreensByCinemaId(cinemaId);
+                return screenRpcService.queryScreensByCinemaId(cinemaId);
             }
         }.execute();
     }
@@ -106,7 +107,7 @@ public class ScreenHallController {
 
             @Override
             protected Page<ScreenRoomVo> process() throws BizException {
-                return screenService.queryPageScreensByCinemaId(screenPagePo);
+                return screenRpcService.queryPageScreensByCinemaId(screenPagePo);
             }
         }.execute();
     }
@@ -122,7 +123,7 @@ public class ScreenHallController {
 
             @Override
             protected Page<ScreenRoomVo> process() throws BizException {
-                return screenService.queryPageCanConfigScreensByCinemaId(screenPagePo);
+                return screenRpcService.queryPageCanConfigScreensByCinemaId(screenPagePo);
             }
         }.execute();
     }
@@ -138,7 +139,7 @@ public class ScreenHallController {
 
             @Override
             protected Boolean process() throws BizException {
-                return screenService.addScreenRoom(screenRoomAddPo);
+                return screenRpcService.addScreenRoom(screenRoomAddPo);
             }
         }.execute();
     }
@@ -154,7 +155,7 @@ public class ScreenHallController {
 
             @Override
             protected Boolean process() throws BizException {
-                return screenService.isArranged(id);
+                return screenRpcService.isArranged(id);
             }
         }.execute();
     }
@@ -171,7 +172,7 @@ public class ScreenHallController {
 
             @Override
             protected Boolean process() throws BizException {
-                return screenService.deleteScreenById(id);
+                return screenRpcService.deleteScreenById(id);
             }
         }.execute();
     }

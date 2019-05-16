@@ -1,19 +1,18 @@
 package com.mingkai.mediamanagesysportal.feigns;
 
+
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.dtstack.plat.lang.web.R;
-import com.mingkai.systemcommon.model.Po.movie.MoviePagePo;
-import com.mingkai.systemcommon.model.Po.movie.MovieRankPagePo;
-import com.mingkai.systemcommon.model.Po.movie.MovieSearchPo;
-import com.mingkai.systemcommon.model.Vo.movie.MovieBlooperVo;
-import com.mingkai.systemcommon.model.Vo.movie.MovieTrailerVo;
-import com.mingkai.systemcommon.model.Vo.movie.MovieVo;
+import com.mingkai.mappermodule.model.Po.movie.MoviePagePo;
+import com.mingkai.mappermodule.model.Po.movie.MovieRankPagePo;
+import com.mingkai.mappermodule.model.Po.movie.MovieSearchPo;
+import com.mingkai.mappermodule.model.Vo.movie.MovieBlooperVo;
+import com.mingkai.mappermodule.model.Vo.movie.MovieTrailerVo;
+import com.mingkai.mappermodule.model.Vo.movie.MovieVo;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.stereotype.Repository;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -44,17 +43,17 @@ public interface MovieRpcFeign {
 
 
     @ApiOperation("得到电影的预告片")
-    @GetMapping("movie-trailers/{movieId}")
+    @RequestMapping(value = "movie-trailers/{movieId}",method = RequestMethod.GET)
     R<List<MovieTrailerVo>> movieTrailers(@PathVariable String movieId);
 
     @ApiOperation("得到电影的花絮")
-    @GetMapping("movie-bloopers/{movieId}")
+    @RequestMapping(value = "movie-bloopers/{movieId}",method = RequestMethod.GET)
     R<List<MovieBlooperVo>> movieBloopers(@PathVariable String movieId);
 
 
     @ApiOperation("模糊搜索电影(电影名，演员，导演)")
-    @GetMapping("search-movies")
-    R<Page<MovieVo>> searchMovies(@RequestParam("movieSearchPo") MovieSearchPo movieSearchPo);
+    @RequestMapping(value = "search-movies",method = RequestMethod.POST)
+    R<Page<MovieVo>> searchMovies(@RequestBody MovieSearchPo movieSearchPo);
 
 
 }

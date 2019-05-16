@@ -36,3 +36,10 @@ eureka:
   client:
     service-url:
       defaultZone: http://localhost:8761/eureka/
+# feign超时问题
+feign:
+  client:
+    config:
+      default:
+        connec-timeout: 20000
+        read-timeout: 20000

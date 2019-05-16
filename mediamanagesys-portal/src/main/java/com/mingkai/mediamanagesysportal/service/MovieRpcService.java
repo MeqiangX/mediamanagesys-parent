@@ -1,18 +1,20 @@
 package com.mingkai.mediamanagesysportal.service;
 
+
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.mingkai.mappermodule.model.Po.movie.MoviePagePo;
+import com.mingkai.mappermodule.model.Po.movie.MovieRankPagePo;
+import com.mingkai.mappermodule.model.Po.movie.MovieSearchPo;
+import com.mingkai.mappermodule.model.Vo.movie.MovieBlooperVo;
+import com.mingkai.mappermodule.model.Vo.movie.MovieTrailerVo;
+import com.mingkai.mappermodule.model.Vo.movie.MovieVo;
+import com.mingkai.mappermodule.utils.check.CheckOfR;
 import com.mingkai.mediamanagesysportal.feigns.MovieRpcFeign;
-import com.mingkai.systemcommon.model.Po.movie.MoviePagePo;
-import com.mingkai.systemcommon.model.Po.movie.MovieRankPagePo;
-import com.mingkai.systemcommon.model.Po.movie.MovieSearchPo;
-import com.mingkai.systemcommon.model.Vo.movie.MovieBlooperVo;
-import com.mingkai.systemcommon.model.Vo.movie.MovieTrailerVo;
-import com.mingkai.systemcommon.model.Vo.movie.MovieVo;
-import com.mingkai.systemcommon.utils.check.CheckOfR;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+
 
 /**
  * @description:

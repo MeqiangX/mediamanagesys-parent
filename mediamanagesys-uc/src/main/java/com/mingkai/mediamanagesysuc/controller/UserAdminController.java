@@ -1,16 +1,17 @@
 package com.mingkai.mediamanagesysuc.controller;
 
+
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.dtstack.plat.lang.exception.BizException;
 import com.dtstack.plat.lang.web.R;
 import com.dtstack.plat.lang.web.template.APITemplate;
-import com.mingkai.mediamanagesyscommon.common.API;
-import com.mingkai.mediamanagesyscommon.model.Do.UserAdminDo;
-import com.mingkai.mediamanagesyscommon.model.Po.uc.UserAddPo;
-import com.mingkai.mediamanagesyscommon.model.Po.uc.UserAdminAddPo;
-import com.mingkai.mediamanagesyscommon.model.Po.uc.UserAdminLoginPo;
-import com.mingkai.mediamanagesyscommon.model.Po.uc.UserAdminPagePo;
-import com.mingkai.mediamanagesysuc.service.UserAdminService;
+import com.mingkai.mappermodule.common.API;
+import com.mingkai.mappermodule.model.Do.UserAdminDo;
+import com.mingkai.mappermodule.model.Po.uc.UserAddPo;
+import com.mingkai.mappermodule.model.Po.uc.UserAdminAddPo;
+import com.mingkai.mappermodule.model.Po.uc.UserAdminLoginPo;
+import com.mingkai.mappermodule.model.Po.uc.UserAdminPagePo;
+import com.mingkai.mediamanagesysuc.service.UserAdminRpcService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +27,7 @@ import org.springframework.web.bind.annotation.*;
 public class UserAdminController {
 
     @Autowired
-    private UserAdminService userAdminService;
+    private UserAdminRpcService userAdminRpcService;
 
 
     @ApiOperation("后台登录")
@@ -40,7 +41,7 @@ public class UserAdminController {
 
             @Override
             protected UserAdminDo process() throws BizException {
-                return userAdminService.adminLogin(userAdminLoginPo);
+                return userAdminRpcService.adminLogin(userAdminLoginPo);
             }
         }.execute();
     }
@@ -57,7 +58,7 @@ public class UserAdminController {
 
             @Override
             protected Boolean process() throws BizException {
-                return userAdminService.addUpdateAdmin(userAdminAddPo);
+                return userAdminRpcService.addUpdateAdmin(userAdminAddPo);
             }
         }.execute();
     }
@@ -73,7 +74,7 @@ public class UserAdminController {
 
             @Override
             protected Boolean process() throws BizException {
-                return userAdminService.deleteAdmin(id);
+                return userAdminRpcService.deleteAdmin(id);
             }
         }.execute();
     }
@@ -89,7 +90,7 @@ public class UserAdminController {
 
             @Override
             protected Page<UserAdminDo> process() throws BizException {
-                return userAdminService.adminsUnder(userAdminPagePo);
+                return userAdminRpcService.adminsUnder(userAdminPagePo);
             }
         }.execute();
     }
@@ -106,7 +107,7 @@ public class UserAdminController {
 
             @Override
             protected UserAdminDo process() throws BizException {
-                return userAdminService.adminById(id);
+                return userAdminRpcService.adminById(id);
             }
         }.execute();
     }
@@ -124,7 +125,7 @@ public class UserAdminController {
 
             @Override
             protected Boolean process() throws BizException {
-                return userAdminService.addOrUpdateUser(userAddPo);
+                return userAdminRpcService.addOrUpdateUser(userAddPo);
             }
         }.execute();
     }
@@ -141,7 +142,7 @@ public class UserAdminController {
 
             @Override
             protected Boolean process() throws BizException {
-                return userAdminService.deleteUserById(id);
+                return userAdminRpcService.deleteUserById(id);
             }
         }.execute();
     }
@@ -157,7 +158,7 @@ public class UserAdminController {
 
             @Override
             protected Boolean process() throws BizException {
-                return userAdminService.updatePwd(id,oldPwd,newPwd);
+                return userAdminRpcService.updatePwd(id,oldPwd,newPwd);
             }
         }.execute();
     }

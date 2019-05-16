@@ -1,6 +1,7 @@
 package com.mingkai.mediamanagesysportal.feigns;
 
-import com.mingkai.systemcommon.model.AliPay;
+
+import com.mingkai.mappermodule.model.AliPay;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.stereotype.Repository;

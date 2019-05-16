@@ -6,18 +6,16 @@ import com.dtstack.plat.lang.base.Checks;
 import com.dtstack.plat.lang.exception.BizException;
 import com.dtstack.plat.lang.web.R;
 import com.dtstack.plat.lang.web.template.APITemplate;
+import com.mingkai.mappermodule.model.Po.movie.MoviePagePo;
+import com.mingkai.mappermodule.model.Po.movie.MovieRankPagePo;
+import com.mingkai.mappermodule.model.Po.movie.MovieSearchPo;
+import com.mingkai.mappermodule.model.Vo.movie.MovieBlooperVo;
+import com.mingkai.mappermodule.model.Vo.movie.MovieTrailerVo;
+import com.mingkai.mappermodule.model.Vo.movie.MovieVo;
 import com.mingkai.movieserviceapi.service.MovieService;
-import com.mingkai.systemcommon.model.Po.movie.MoviePagePo;
-import com.mingkai.systemcommon.model.Po.movie.MovieRankPagePo;
-import com.mingkai.systemcommon.model.Po.movie.MovieSearchPo;
-import com.mingkai.systemcommon.model.Vo.movie.MovieBlooperVo;
-import com.mingkai.systemcommon.model.Vo.movie.MovieTrailerVo;
-import com.mingkai.systemcommon.model.Vo.movie.MovieVo;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -68,7 +66,7 @@ public class MovieController {
 
     @ApiOperation("电影榜单")
     @GetMapping("movie-rank")
-    public R<Page<MovieVo>> movieRank(MovieRankPagePo movieRankPagePo){
+    public R<Page<MovieVo>> movieRank(@RequestParam("movieRankPagePo") MovieRankPagePo movieRankPagePo){
         return new APITemplate<Page<MovieVo>>() {
             @Override
             protected void checkParams() throws IllegalArgumentException {
@@ -133,8 +131,8 @@ public class MovieController {
 
 
     @ApiOperation("模糊搜索电影(电影名，演员，导演)")
-    @GetMapping("search-movies")
-    public R<Page<MovieVo>> searchMovies(MovieSearchPo movieSearchPo){
+    @PostMapping("search-movies")
+    public R<Page<MovieVo>> searchMovies(@RequestBody MovieSearchPo movieSearchPo){
         return new APITemplate<Page<MovieVo>>() {
             @Override
             protected void checkParams() throws IllegalArgumentException {

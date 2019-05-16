@@ -7,9 +7,9 @@ import com.alipay.api.internal.util.AlipaySignature;
 import com.alipay.api.request.AlipayTradePagePayRequest;
 import com.meqiang.payserviceapi.config.AlipayConfig;
 import com.meqiang.payserviceapi.service.ApiPayService;
-import com.mingkai.systemcommon.common.API;
-import com.mingkai.systemcommon.model.AliPay;
-import com.mingkai.systemcommon.model.Do.order.TicketDetailDo;
+import com.mingkai.mappermodule.common.API;
+import com.mingkai.mappermodule.model.AliPay;
+import com.mingkai.mappermodule.model.Do.order.TicketDetailDo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
@@ -80,9 +80,7 @@ public class ApiPayController {
 
         //生成订单 --> 将订单号传入 --> 通过订单号 查询 总额
 
-
         TicketDetailDo order = apiPayService.getOrderByOrderId(orderId);
-
 
         //获得初始化的AlipayClient
         AlipayClient alipayClient = new DefaultAlipayClient(AlipayConfig.gatewayUrl, AlipayConfig.app_id, AlipayConfig.merchant_private_key, "json", AlipayConfig.charset, AlipayConfig.alipay_public_key, AlipayConfig.sign_type);

@@ -1,7 +1,7 @@
 package com.meqiang.payserviceapi.feigns;
 
 import com.dtstack.plat.lang.web.R;
-import com.mingkai.systemcommon.model.Do.order.TicketDetailDo;
+import com.mingkai.mappermodule.model.Do.order.TicketDetailDo;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;

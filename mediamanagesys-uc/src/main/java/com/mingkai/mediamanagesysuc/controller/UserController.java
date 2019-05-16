@@ -5,18 +5,12 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.dtstack.plat.lang.exception.BizException;
 import com.dtstack.plat.lang.web.R;
 import com.dtstack.plat.lang.web.template.APITemplate;
-import com.mingkai.mediamanagesyscommon.common.API;
-import com.mingkai.mediamanagesyscommon.model.Do.uc.UserDO;
-import com.mingkai.mediamanagesyscommon.model.Do.uc.UserInfoDo;
-import com.mingkai.mediamanagesyscommon.model.Po.uc.UserInfoPo;
-import com.mingkai.mediamanagesyscommon.model.Po.uc.UserPagePo;
-import com.mingkai.mediamanagesyscommon.model.Po.uc.UserRoleAddPo;
-import com.mingkai.mediamanagesysuc.model.MailModel;
-import com.mingkai.mediamanagesysuc.pojo.po.LoginPo;
-import com.mingkai.mediamanagesysuc.pojo.po.MessagePo;
-import com.mingkai.mediamanagesysuc.pojo.po.PwdUpdatePo;
-import com.mingkai.mediamanagesysuc.pojo.po.RegisterPo;
-import com.mingkai.mediamanagesysuc.service.UserService;
+import com.mingkai.mappermodule.common.API;
+import com.mingkai.mappermodule.model.Do.uc.UserDO;
+import com.mingkai.mappermodule.model.Do.uc.UserInfoDo;
+import com.mingkai.mappermodule.model.MailModel;
+import com.mingkai.mappermodule.model.Po.uc.*;
+import com.mingkai.mediamanagesysuc.service.UserRpcService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,7 +30,7 @@ import java.util.Objects;
 public class UserController {
 
    @Autowired
-   private UserService userService;
+   private UserRpcService userRpcService;
 
    @Autowired
    private HttpSession session;
@@ -53,7 +47,7 @@ public class UserController {
 
             @Override
             protected Boolean process() throws BizException {
-                return userService.sendEmail(mailModel);
+                return userRpcService.sendEmail(mailModel);
             }
         }.execute();
 
@@ -71,7 +65,7 @@ public class UserController {
 
             @Override
             protected Boolean process() throws BizException {
-                return userService.sendMessage(messagePo);
+                return userRpcService.sendMessage(messagePo);
             }
         }.execute();
     }
@@ -88,7 +82,7 @@ public class UserController {
 
             @Override
             protected String process() throws BizException {
-                return userService.getCode(messagePo);
+                return userRpcService.getCode(messagePo);
             }
         }.execute();
     }
@@ -104,7 +98,7 @@ public class UserController {
 
             @Override
             protected Boolean process() throws BizException {
-                return userService.logout(userId);
+                return userRpcService.logout(userId);
             }
         }.execute();
     }
@@ -121,7 +115,7 @@ public class UserController {
 
             @Override
             protected UserDO process() throws BizException {
-                return userService.login(loginPo);
+                return userRpcService.phoneLogin(loginPo);
             }
         }.execute();
     }
@@ -137,7 +131,7 @@ public class UserController {
 
             @Override
             protected UserDO process() throws BizException {
-                return userService.getLoginUser(userId);
+                return userRpcService.getLoginUserFromSession(userId);
             }
         }.execute();
     }
@@ -153,7 +147,7 @@ public class UserController {
 
             @Override
             protected Boolean process() throws BizException {
-                return userService.register(registerPo);
+                return userRpcService.register(registerPo);
             }
         }.execute();
     }
@@ -169,7 +163,7 @@ public class UserController {
 
             @Override
             protected Boolean process() throws BizException {
-                return Objects.nonNull(userService.registedPhone(phone));
+                return Objects.nonNull(userRpcService.phoneCheck(phone));
             }
         }.execute();
     }
@@ -186,7 +180,7 @@ public class UserController {
 
            @Override
            protected Boolean process() throws BizException {
-               return Objects.nonNull(userService.registedEmail(email));
+               return Objects.nonNull(userRpcService.emailCheck(email));
            }
        }.execute();
     }
@@ -202,7 +196,7 @@ public class UserController {
 
             @Override
             protected Boolean process() throws BizException {
-                return userService.repeatName(userName);
+                return userRpcService.userNameCheck(userName);
             }
         }.execute();
     }
@@ -219,7 +213,7 @@ public class UserController {
 
             @Override
             protected Boolean process() throws BizException {
-                return userService.updatePwd(pwdUpdatePo);
+                return userRpcService.updatePwd(pwdUpdatePo);
             }
         }.execute();
     }
@@ -237,7 +231,7 @@ public class UserController {
 
             @Override
             protected Boolean process() throws BizException {
-                return userService.addRoleToUser(userRoleAddPo);
+                return userRpcService.addRoleToUser(userRoleAddPo);
             }
         }.execute();
     }
@@ -255,7 +249,7 @@ public class UserController {
 
             @Override
             protected Page<UserDO> process() throws BizException {
-                return userService.userPages(userPagePo);
+                return userRpcService.userPages(userPagePo);
             }
         }.execute();
 
@@ -273,7 +267,7 @@ public class UserController {
 
             @Override
             protected UserDO process() throws BizException {
-                return userService.userById(id);
+                return userRpcService.userById(id);
             }
         }.execute();
     }
@@ -289,7 +283,7 @@ public class UserController {
 
             @Override
             protected UserInfoDo process() throws BizException {
-                return userService.userInfoById(userId);
+                return userRpcService.userInfoById(userId);
             }
         }.execute();
     }
@@ -307,7 +301,7 @@ public class UserController {
 
             @Override
             protected Boolean process() throws BizException {
-                return userService.updateUserInfo(userInfoPo);
+                return userRpcService.updateUserInfo(userInfoPo);
             }
         }.execute();
 

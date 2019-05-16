@@ -1,3 +1,4 @@
+/*
 package com.mingkai.mediamanagesysuc.controller;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
@@ -5,22 +6,24 @@ import com.dtstack.plat.lang.base.Checks;
 import com.dtstack.plat.lang.exception.BizException;
 import com.dtstack.plat.lang.web.R;
 import com.dtstack.plat.lang.web.template.APITemplate;
-import com.mingkai.mediamanagesyscommon.common.API;
-import com.mingkai.mediamanagesyscommon.model.Po.uc.PermRoleAddPo;
-import com.mingkai.mediamanagesyscommon.model.Po.uc.PermisionPagePo;
-import com.mingkai.mediamanagesyscommon.model.Po.uc.RoleAddPo;
-import com.mingkai.mediamanagesyscommon.model.Vo.uc.PermisionVo;
-import com.mingkai.mediamanagesyscommon.model.Vo.uc.RoleVo;
+import com.mingkai.mappermodule.common.API;
+import com.mingkai.mappermodule.model.Po.uc.PermRoleAddPo;
+import com.mingkai.mappermodule.model.Po.uc.PermisionPagePo;
+import com.mingkai.mappermodule.model.Po.uc.RoleAddPo;
+import com.mingkai.mappermodule.model.Vo.uc.PermisionVo;
+import com.mingkai.mappermodule.model.Vo.uc.RoleVo;
 import com.mingkai.mediamanagesysuc.service.RoleService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+*/
 /**
  * @description: 角色管理Controller
  * @author: Created by 云风 on 2019-04-05 11:49
- */
+ *//*
+
 @RestController
 @RequestMapping(API.API_ROLE)
 @Api(tags = API.ROLE)
@@ -150,3 +153,4 @@ public class RoleController {
         }.execute();
     }
 }
+*/

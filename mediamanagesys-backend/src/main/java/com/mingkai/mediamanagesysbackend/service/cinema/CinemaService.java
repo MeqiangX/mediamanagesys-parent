@@ -1,3 +1,4 @@
+/*
 package com.mingkai.mediamanagesysbackend.service.cinema;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
@@ -46,10 +47,12 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
+*/
 /**
  * @description:
  * @author: Created by 云风 on 2019-04-12 9:31
- */
+ *//*
+
 @Service
 @Slf4j
 public class CinemaService {
@@ -78,11 +81,13 @@ public class CinemaService {
     @Autowired
     private ScreenSeatManager screenSeatManager;
 
-    /**
+    */
+/**
      *  查找影院 by id
      * @param cinemaId
      * @return
-     */
+     *//*
+
     public CinemaVo searchCinemaById(String cinemaId){
 
         CinemaDo cinemaDo = cinemaManager.getById(cinemaId);
@@ -94,11 +99,13 @@ public class CinemaService {
         return ConvertUtil.convert(cinemaDo,CinemaVo.class);
     }
 
-    /**
+    */
+/**
      * 查询影院by 电影
      * @param cinemaPagePo
      * @return
-     */
+     *//*
+
     public Page<CinemaVo> cinemaByMovie(CinemaPagePo cinemaPagePo){
         //通过 movieId 查询 有场次的影院id
         Page<CinemaDo> screenArrangeDoPage = screenArrangeMapper.selectArrangeByPage(cinemaPagePo);
@@ -106,10 +113,12 @@ public class CinemaService {
         return ConvertUtil.pageConvert(screenArrangeDoPage,CinemaVo.class);
     }
 
-    /**
+    */
+/**
      * 删除影院 by id
      * @param cinemaId
-     */
+     *//*
+
     public Boolean deleteCinemaById(Integer cinemaId){
 
         // 当前删除的影院是否有排片记录  查询cinemaScreen --> 得到id --> 通过Ids 查询screenArrange -->
@@ -154,11 +163,13 @@ public class CinemaService {
 
     }
 
-    /**
+    */
+/**
      * 添加影院
      * @param cinemaAddPo
      * @return
-     */
+     *//*
+
     @Transactional
     public Boolean cinemaAdd(CinemaAddPo cinemaAddPo){
 
@@ -217,11 +228,13 @@ public class CinemaService {
 
     }
 
-    /**
+    */
+/**
      * 配置影院 放映厅
      * @param cinemaScreenUpdatePo
      * @return
-     */
+     *//*
+
     @Transactional
     public Boolean cinemaScreenConfig(CinemaScreenUpdatePo cinemaScreenUpdatePo){
         if (cinemaScreenUpdatePo.getOption().equals(Integer.valueOf(0))){
@@ -339,11 +352,13 @@ public class CinemaService {
 
     }
 
-    /**
+    */
+/**
      * 排片
      * @param movieArrangePo
      * @return
-     */
+     *//*
+
     @Transactional
     public Boolean arrangeMovie(MovieArrangePo movieArrangePo){
 
@@ -359,11 +374,13 @@ public class CinemaService {
         //填充relId
         movieArrangePo.setCinemaScreenId(cinemaScreenRel.getId());
 
-        /**
+        */
+/**
          * 逻辑
          *
          * 主要是解决 排片时间 上的 冲突
-         */
+         *//*
+
 
         // 查询 当前日期 下的 当前影院放映厅的 排片情况
         List<ScreenArrangeDo> screenArrangeDos = screenArrangeMapper.selectByDateAndHallId(movieArrangePo.getCinemaScreenId(), movieArrangePo.getDate());
@@ -445,11 +462,13 @@ public class CinemaService {
     }
 
 
-    /**
+    */
+/**
      * 不分页 搜索地域下的 所有影院
      * @param areaId
      * @return
-     */
+     *//*
+
     public List<CinemaVo> findAllCinemasAreaId(Integer areaId){
 
         List<CinemaDo> cinemaDos = cinemaManager.list(new QueryWrapper<CinemaDo>()
@@ -458,11 +477,13 @@ public class CinemaService {
         return ConvertUtil.listConvert(cinemaDos,CinemaVo.class);
     }
 
-    /**
+    */
+/**
      *   搜索影院 by  areaId
      * @param cinemaSearchPo
      * @return
-     */
+     *//*
+
     public Page<CinemaVo> searchCinemas(CinemaSearchPo cinemaSearchPo){
 
         Page<CinemaDo> cinemaDoPage = cinemaManager.getBaseMapper().searchCinemaPage(cinemaSearchPo);
@@ -476,11 +497,13 @@ public class CinemaService {
     }
 
 
-    /**
+    */
+/**
      * 查找排片电影记录 by cinemaId   重新定义返回的
      * @param cinemaId
      * @return
-     */
+     *//*
+
     public List<MovieArgUnderCinemaVo> cinemaUnderMovies(String cinemaId){
 
         // 先查找 对应的 cinema+screen 的 ids
@@ -582,11 +605,13 @@ public class CinemaService {
     }
 
 
-    /**
+    */
+/**
      * 排片的详细信息 电影 影院 放映厅 等
      * @param arrangeId
      * @return
-     */
+     *//*
+
     public MovieArrangeDetailVo arrangeDetails(String arrangeId){
 
         // 排片记录
@@ -638,11 +663,13 @@ public class CinemaService {
     }
 
 
-    /**
+    */
+/**
      * 排片的座位信息
      * @param arrangeId
      * @return
-     */
+     *//*
+
     public List<ScreenSeatMapVo>  seatsInfo(String arrangeId){
 
         List<ScreenSeatDo> screenSeatDos = screenSeatManager.list(new QueryWrapper<ScreenSeatDo>()
@@ -688,11 +715,13 @@ public class CinemaService {
 
 
 
-    /**
+    */
+/**
      * 搜索排片记录
      * @param movieArgBackPo
      * @return
-     */
+     *//*
+
     public Page<MovieArgVo> arrangeRecords(MovieArgBackPo movieArgBackPo){
 
 
@@ -1231,11 +1260,13 @@ public class CinemaService {
 
     }
 
-    /**
+    */
+/**
      * 通过id 来查找排片信息 -- 后台
      * @param id
      * @return
-     */
+     *//*
+
     public MovieArgVo arrangeRecordById(Integer id){
 
         ScreenArrangeDo screenArrangeDo = screenArrangeMapper.selectById(id);
@@ -1264,11 +1295,13 @@ public class CinemaService {
     }
 
 
-    /**
+    */
+/**
      * 删除排片记录
      * @param arrangeId
      * @return
-     */
+     *//*
+
     public Boolean deleteArrangeRecord(Integer arrangeId){
 
         // 主要 是 看当前排片记录 是否已经售票了 如果已经售票了 则不允许删除
@@ -1301,11 +1334,13 @@ public class CinemaService {
     }
 
 
-    /**
+    */
+/**
      * 跟新排片记录 已售票无法修改
      * @param movieArrangePo
      * @return
-     */
+     *//*
+
     public Boolean updateArrangeInfo(MovieArrangePo movieArrangePo){
 
         // 查看是否 有售票
@@ -1330,11 +1365,13 @@ public class CinemaService {
         // 得到修改后的 时间安排 看是否和其他的 排片有冲突
 
 
-        /**
+        */
+/**
          * 逻辑
          *
          * 主要是解决 排片时间 上的 冲突
-         */
+         *//*
+
 
         // 查询 当前日期 下的 当前影院放映厅的 排片情况
         List<ScreenArrangeDo> screenArrangeDateDos = screenArrangeMapper.selectByDateAndHallId(screenArrangeDo1.getCinemaScreenId(), movieArrangePo.getDate());
@@ -1386,3 +1423,4 @@ public class CinemaService {
         return 1 == update;
     }
 }
+*/

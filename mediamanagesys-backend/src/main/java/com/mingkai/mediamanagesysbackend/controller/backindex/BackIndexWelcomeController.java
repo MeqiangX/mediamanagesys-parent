@@ -1,3 +1,4 @@
+/*
 package com.mingkai.mediamanagesysbackend.controller.backindex;
 
 import com.dtstack.plat.lang.exception.BizException;
@@ -17,10 +18,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+*/
 /**
  * @description:
  * @author: Created by 云风 on 2019-05-04 19:59
- */
+ *//*
+
 @RestController
 @Api(tags = API.BACKEND_WELCOME)
 @RequestMapping(API.API_WELCOME)
@@ -62,3 +65,4 @@ public class BackIndexWelcomeController {
     }
 
 }
+*/

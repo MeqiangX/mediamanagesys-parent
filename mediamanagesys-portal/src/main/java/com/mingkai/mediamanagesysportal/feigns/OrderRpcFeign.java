@@ -1,11 +1,12 @@
 package com.mingkai.mediamanagesysportal.feigns;
 
+
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.dtstack.plat.lang.web.R;
-import com.mingkai.systemcommon.model.Do.order.TicketDetailDo;
-import com.mingkai.systemcommon.model.Po.order.CoordinatePo;
-import com.mingkai.systemcommon.model.Po.order.OrderPagePo;
-import com.mingkai.systemcommon.model.Vo.order.OrderSimpleVo;
+import com.mingkai.mappermodule.model.Do.order.TicketDetailDo;
+import com.mingkai.mappermodule.model.Po.order.CoordinatePo;
+import com.mingkai.mappermodule.model.Po.order.OrderPagePo;
+import com.mingkai.mappermodule.model.Vo.order.OrderSimpleVo;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.stereotype.Repository;

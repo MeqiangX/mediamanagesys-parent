@@ -1,3 +1,4 @@
+/*
 package com.mingkai.mediamanagesysbackend.controller.user;
 
 import com.dtstack.plat.lang.exception.BizException;
@@ -10,10 +11,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+*/
 /**
  * @description: 后台-用户管理
  * @author: Created by 云风 on 2019-04-15 10:06
- */
+ *//*
+
 @RestController
 @RequestMapping(API.API_USERMANAGE)
 @Api(tags = API.BACKEND_USER)
@@ -36,3 +39,4 @@ public class UserManageController {
     }
 
 }
+*/

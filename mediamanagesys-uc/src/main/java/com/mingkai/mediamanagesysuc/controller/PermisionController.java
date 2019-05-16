@@ -1,3 +1,4 @@
+/*
 package com.mingkai.mediamanagesysuc.controller;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
@@ -16,10 +17,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+*/
 /**
  * @description: 权限Controller
  * @author: Created by 云风 on 2019-04-08 17:02
- */
+ *//*
+
 @RestController
 @RequestMapping(API.API_PERMISION)
 @Api(tags = API.PERMISION)
@@ -94,3 +97,4 @@ public class PermisionController {
         }.execute();
     }
 }
+*/

@@ -7,17 +7,25 @@
         <option value="$PROJECT_DIR$/mediamanagesys-portal/pom.xml" />
         <option value="$PROJECT_DIR$/mediamanagesys-backend/pom.xml" />
         <option value="$PROJECT_DIR$/mediamanagesys-uc/pom.xml" />
-        <option value="$PROJECT_DIR$/mediamanagesys-common/pom.xml" />
         <option value="$PROJECT_DIR$/mediamanagesys-schdule/pom.xml" />
         <option value="$PROJECT_DIR$/service-center/pom.xml" />
         <option value="$PROJECT_DIR$/movie-service/pom.xml" />
-        <option value="$PROJECT_DIR$/client-feign/pom.xml" />
         <option value="$PROJECT_DIR$/movie-service-api/pom.xml" />
         <option value="$PROJECT_DIR$/order-service-api/pom.xml" />
         <option value="$PROJECT_DIR$/mediamanagesys-mapp/pom.xml" />
         <option value="$PROJECT_DIR$/pay-service-api/pom.xml" />
-        <option value="$PROJECT_DIR$/system-common/pom.xml" />
+        <option value="$PROJECT_DIR$/cinema-service-api/pom.xml" />
+        <option value="$PROJECT_DIR$/screen-service-api/pom.xml" />
+        <option value="$PROJECT_DIR$/uc-service-api/pom.xml" />
+        <option value="$PROJECT_DIR$/mapper-module/pom.xml" />
+        <option value="$PROJECT_DIR$/common-service-api/pom.xml" />
+        <option value="$PROJECT_DIR$/mediamanagesys-common-app/pom.xml" />
       </list>
+    </option>
+    <option name="ignoredFiles">
+      <set>
+        <option value="$PROJECT_DIR$/mediamanagesys-common/pom.xml" />
+      </set>
     </option>
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" project-jdk-name="1.8" project-jdk-type="JavaSDK">

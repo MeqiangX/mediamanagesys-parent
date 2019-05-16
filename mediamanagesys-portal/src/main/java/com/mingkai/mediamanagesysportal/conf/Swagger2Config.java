@@ -23,7 +23,7 @@ public class Swagger2Config {
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo())  //构建swagger-ui 基本信息
                 .select() //返回一个ApiSelectorBuilder实例来控制哪些接口暴露给swagger来展现
-                .apis(RequestHandlerSelectors.basePackage("com.mingkai"))
+                .apis(RequestHandlerSelectors.basePackage("com.mingkai.mediamanagesysportal"))
                 .paths(PathSelectors.any())
                 .build();
     }

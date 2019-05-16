@@ -2,6 +2,8 @@ server:
   port: 8080
 #mysql
 spring:
+  application:
+    name: backend-app
   datasource: #数据源
     url: jdbc:mysql://localhost:3306/mediamanagesys?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf-8
     username: root
@@ -21,5 +23,17 @@ logging:
   level:
     com:
       mingkai:
-        mediamanagesyscommon:
+        mediamanagesysbackend:
           mapper: debug
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+
+# feign超时问题
+feign:
+  client:
+    config:
+      default:
+        connec-timeout: 20000
+        read-timeout: 20000

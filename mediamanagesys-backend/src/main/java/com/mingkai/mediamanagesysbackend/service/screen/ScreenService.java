@@ -1,3 +1,4 @@
+/*
 package com.mingkai.mediamanagesysbackend.service.screen;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
@@ -26,10 +27,12 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
+*/
 /**
  * @description: 放映厅相关service
  * @author: Created by 云风 on 2019-04-03 17:42
- */
+ *//*
+
 @Service
 public class ScreenService {
 
@@ -51,20 +54,24 @@ public class ScreenService {
     @Autowired
     private ScreenSeatManager screenSeatManager;
 
-    /**
+    */
+/**
      *  查询放映厅
      * @return
-     */
+     *//*
+
     public ScreenRoomVo queryScreenRoom(){
         ScreenRoomDo screenRoomDo = screenRoomMapper.selectById(4);
         return null == screenRoomDo ? null : ConvertUtil.convert(screenRoomDo, ScreenRoomVo.class);
     }
 
-    /**
+    */
+/**
      * 通过id 查询放映厅
      * @param id
      * @return
-     */
+     *//*
+
     public ScreenRoomVo queryScreenById(Integer id){
         ScreenRoomDo screenRoomDo = screenRoomMapper.selectById(id);
 
@@ -76,11 +83,13 @@ public class ScreenService {
     }
 
 
-    /**
+    */
+/**
      * 分页查询 影院下的放映厅
      * @param screenPagePo
      * @return
-     */
+     *//*
+
     public Page<ScreenRoomVo> queryPageScreensByCinemaId(ScreenPagePo screenPagePo){
 
         List<CinemaScreenDo> cinemaScreenDos = cinemaScreenManager.list(new QueryWrapper<CinemaScreenDo>()
@@ -102,11 +111,13 @@ public class ScreenService {
     }
 
 
-    /**
+    */
+/**
      * 查询影院可以配置的放映厅 - 分页
      * @param screenPagePo
      * @return
-     */
+     *//*
+
     public Page<ScreenRoomVo> queryPageCanConfigScreensByCinemaId(ScreenPagePo screenPagePo){
 
         List<CinemaScreenDo> cinemaScreenDos = cinemaScreenManager.list(new QueryWrapper<CinemaScreenDo>()
@@ -131,11 +142,13 @@ public class ScreenService {
 
 
     }
-    /**
+    */
+/**
      * 查询 影院下的所有放映厅
      * @param cinemaId
      * @return
-     */
+     *//*
+
     public List<ScreenRoomVo> queryScreensByCinemaId(Integer cinemaId){
 
         // 查找影院下的放映厅
@@ -155,11 +168,13 @@ public class ScreenService {
 
     }
 
-    /**
+    */
+/**
      *  分页查询 放映厅  模糊查询
      * @param screenPagePo
      * @return
-     */
+     *//*
+
     public Page<ScreenRoomVo> queryScreenRoomPage(ScreenPagePo screenPagePo){
 
         Page<ScreenRoomDo> screenRoomDoPage = screenRoomMapper.queryScreensPage(screenPagePo);
@@ -168,11 +183,13 @@ public class ScreenService {
 
     }
 
-    /**
+    */
+/**
      *  添加放映厅
      * @param screenRoomAddPo
      * @return
-     */
+     *//*
+
     @Transactional
     public Boolean addScreenRoom(ScreenRoomAddPo screenRoomAddPo){
 
@@ -232,11 +249,13 @@ public class ScreenService {
     }
 
 
-    /**
+    */
+/**
      * 查找当前放映厅是否排片
      * @param id
      * @return
-     */
+     *//*
+
     public Boolean isArranged(Integer id){
 
         List<CinemaScreenDo> cinemaScreenRels = cinemaScreenManager.list(new QueryWrapper<CinemaScreenDo>()
@@ -266,11 +285,13 @@ public class ScreenService {
 
     }
 
-    /**
+    */
+/**
      *  通过id 来删除放映厅
      * @param id
      * @return
-     */
+     *//*
+
     public Boolean deleteScreenById(Integer id){
 
         // 是否排片
@@ -296,3 +317,4 @@ public class ScreenService {
 
 
 }
+*/

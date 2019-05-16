@@ -1,9 +1,9 @@
 package com.mingkai.mediamanagesysportal.controller;
 
 import com.alipay.api.AlipayApiException;
+import com.mingkai.mappermodule.common.API;
+import com.mingkai.mappermodule.model.AliPay;
 import com.mingkai.mediamanagesysportal.service.ApiPayRpcService;
-import com.mingkai.systemcommon.common.API;
-import com.mingkai.systemcommon.model.AliPay;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;

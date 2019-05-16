@@ -26,7 +26,7 @@
 
         <dependency>
             <groupId>com.mingkai</groupId>
-            <artifactId>system-common</artifactId>
+            <artifactId>mapper-module</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
 

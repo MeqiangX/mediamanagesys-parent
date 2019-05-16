@@ -1,14 +1,16 @@
 package com.mingkai.mediamanagesysschdule.service;
 
+
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.dtstack.plat.lang.exception.BizException;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
-import com.mingkai.mediamanagesyscommon.mapper.*;
-import com.mingkai.mediamanagesyscommon.model.Do.movie.*;
+import com.mingkai.mappermodule.mapper.*;
+import com.mingkai.mappermodule.model.Do.movie.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
+
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;

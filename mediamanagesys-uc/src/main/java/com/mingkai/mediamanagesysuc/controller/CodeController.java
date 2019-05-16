@@ -1,3 +1,4 @@
+/*
 package com.mingkai.mediamanagesysuc.controller;
 
 import com.google.code.kaptcha.Constants;
@@ -17,10 +18,12 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.awt.image.BufferedImage;
 
+*/
 /**
  * @description:
  * @author: Created by 云风 on 2019-03-31 10:43
- */
+ *//*
+
 @Api(tags = API.COMMON_CODE)
 @Controller
 @RequestMapping(API.API_COMMOM_CODE)
@@ -54,3 +57,4 @@ public class CodeController {
     }
 
 }
+*/

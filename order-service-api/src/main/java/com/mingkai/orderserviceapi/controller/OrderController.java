@@ -5,11 +5,15 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.dtstack.plat.lang.exception.BizException;
 import com.dtstack.plat.lang.web.R;
 import com.dtstack.plat.lang.web.template.APITemplate;
+import com.mingkai.mappermodule.common.API;
+import com.mingkai.mappermodule.model.Do.order.TicketDetailDo;
+import com.mingkai.mappermodule.model.Po.order.CoordinatePo;
+import com.mingkai.mappermodule.model.Po.order.OrderPagePo;
+import com.mingkai.mappermodule.model.Po.order.TicketSearchPo;
+import com.mingkai.mappermodule.model.Vo.order.OrderSimpleVo;
+import com.mingkai.mappermodule.model.Vo.ticket.TicketDetailVo;
 import com.mingkai.orderserviceapi.service.OrderService;
-import com.mingkai.systemcommon.model.Do.order.TicketDetailDo;
-import com.mingkai.systemcommon.model.Po.order.CoordinatePo;
-import com.mingkai.systemcommon.model.Po.order.OrderPagePo;
-import com.mingkai.systemcommon.model.Vo.order.OrderSimpleVo;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -21,8 +25,8 @@ import java.util.List;
  * @author: Created by 云风 on 2019-04-12 15:04
  */
 @RestController
-/*@RequestMapping(API.API_ORDER)
-@Api(tags = API.PROTAL_ORDER)*/
+@RequestMapping(API.API_ORDER)
+@Api(tags = API.PROTAL_ORDER)
 public class OrderController {
 
     @Autowired
@@ -257,6 +261,39 @@ public class OrderController {
             @Override
             protected TicketDetailDo process() throws BizException {
                 return orderService.getOrderByOrderId(orderId);
+            }
+        }.execute();
+    }
+
+    @ApiOperation("订单管理")
+    @GetMapping("backend-order")
+    public R<Boolean> backendOrder(){
+        return new APITemplate<Boolean>() {
+            @Override
+            protected void checkParams() throws IllegalArgumentException {
+
+            }
+
+            @Override
+            protected Boolean process() throws BizException {
+                return Boolean.TRUE;
+            }
+        }.execute();
+    }
+
+
+    @ApiOperation("查询用户订单(分页/条件)")
+    @PostMapping("order-search")
+    public R<Page<TicketDetailVo>> orderSearch(TicketSearchPo ticketSearchPo){
+        return new APITemplate<Page<TicketDetailVo>>() {
+            @Override
+            protected void checkParams() throws IllegalArgumentException {
+
+            }
+
+            @Override
+            protected Page<TicketDetailVo> process() throws BizException {
+                return orderService.orderSearch(ticketSearchPo);
             }
         }.execute();
     }

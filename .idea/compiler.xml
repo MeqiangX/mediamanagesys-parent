@@ -6,9 +6,12 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="cinema-service-api" />
         <module name="client-feign" />
+        <module name="common-service-api" />
+        <module name="mapper-module" />
         <module name="mediamanagesys-backend" />
-        <module name="mediamanagesys-common" />
+        <module name="mediamanagesys-common-app" />
         <module name="mediamanagesys-portal" />
         <module name="mediamanagesys-schdule" />
         <module name="mediamanagesys-uc" />
@@ -16,14 +19,19 @@
         <module name="movie-service-api" />
         <module name="order-service-api" />
         <module name="pay-service-api" />
+        <module name="screen-service-api" />
         <module name="service-center" />
-        <module name="system-common" />
+        <module name="uc-service-api" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="cinema-service-api" target="1.8" />
       <module name="client-feign" target="1.8" />
+      <module name="common-service-api" target="1.8" />
+      <module name="mapper-module" target="1.8" />
       <module name="mediamanagesys-backend" target="1.8" />
       <module name="mediamanagesys-common" target="1.8" />
+      <module name="mediamanagesys-common-app" target="1.8" />
       <module name="mediamanagesys-mapp" target="1.8" />
       <module name="mediamanagesys-parent" target="1.8" />
       <module name="mediamanagesys-portal" target="1.8" />
@@ -33,15 +41,21 @@
       <module name="movie-service-api" target="1.8" />
       <module name="order-service-api" target="1.8" />
       <module name="pay-service-api" target="1.8" />
+      <module name="screen-service-api" target="1.8" />
       <module name="service-center" target="1.8" />
       <module name="system-common" target="1.8" />
+      <module name="uc-service-api" target="1.8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="cinema-service-api" options="-parameters" />
       <module name="client-feign" options="-parameters" />
+      <module name="common-service-api" options="-parameters" />
+      <module name="mapper-module" options="-parameters" />
       <module name="mediamanagesys-backend" options="-parameters" />
       <module name="mediamanagesys-common" options="-parameters" />
+      <module name="mediamanagesys-common-app" options="-parameters" />
       <module name="mediamanagesys-mapp" options="-parameters" />
       <module name="mediamanagesys-parent" options="" />
       <module name="mediamanagesys-portal" options="-parameters" />
@@ -51,8 +65,10 @@
       <module name="movie-service-api" options="-parameters" />
       <module name="order-service-api" options="-parameters" />
       <module name="pay-service-api" options="-parameters" />
+      <module name="screen-service-api" options="-parameters" />
       <module name="service-center" options="-parameters" />
       <module name="system-common" options="-parameters" />
+      <module name="uc-service-api" options="-parameters" />
     </option>
   </component>
 </project>

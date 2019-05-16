@@ -1,18 +1,19 @@
 package com.mingkai.mediamanagesysbackend.controller.cinema;
 
+
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.dtstack.plat.lang.exception.BizException;
 import com.dtstack.plat.lang.web.R;
 import com.dtstack.plat.lang.web.template.APITemplate;
-import com.mingkai.mediamanagesysbackend.model.PO.MovieArgBackPo;
-import com.mingkai.mediamanagesysbackend.model.PO.MovieArrangePo;
-import com.mingkai.mediamanagesysbackend.service.cinema.CinemaService;
-import com.mingkai.mediamanagesyscommon.common.API;
-import com.mingkai.mediamanagesyscommon.model.Po.cinema.CinemaAddPo;
-import com.mingkai.mediamanagesyscommon.model.Po.cinema.CinemaPagePo;
-import com.mingkai.mediamanagesyscommon.model.Po.cinema.CinemaScreenUpdatePo;
-import com.mingkai.mediamanagesyscommon.model.Po.cinema.CinemaSearchPo;
-import com.mingkai.mediamanagesyscommon.model.Vo.cinema.*;
+import com.mingkai.mappermodule.common.API;
+import com.mingkai.mappermodule.model.Po.MovieArgBackPo;
+import com.mingkai.mappermodule.model.Po.MovieArrangePo;
+import com.mingkai.mappermodule.model.Po.cinema.CinemaAddPo;
+import com.mingkai.mappermodule.model.Po.cinema.CinemaPagePo;
+import com.mingkai.mappermodule.model.Po.cinema.CinemaScreenUpdatePo;
+import com.mingkai.mappermodule.model.Po.cinema.CinemaSearchPo;
+import com.mingkai.mappermodule.model.Vo.cinema.*;
+import com.mingkai.mediamanagesysbackend.service.CinemaRpcService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +31,7 @@ import java.util.List;
 public class CinemaController {
 
     @Autowired
-    private CinemaService cinemaService;
+    private CinemaRpcService cinemaRpcService;
 
     @ApiOperation("影院测试")
     @GetMapping("cinema-test")
@@ -59,7 +60,7 @@ public class CinemaController {
 
             @Override
             protected CinemaVo process() throws BizException {
-                return cinemaService.searchCinemaById(cinemaId);
+                return cinemaRpcService.searchCinemaById(cinemaId);
             }
         }.execute();
     }
@@ -75,7 +76,7 @@ public class CinemaController {
 
             @Override
             protected Boolean process() throws BizException {
-                return cinemaService.deleteCinemaById(cinemaId);
+                return cinemaRpcService.deleteCinemaById(cinemaId);
             }
         }.execute();
     }
@@ -91,7 +92,7 @@ public class CinemaController {
 
             @Override
             protected Page<CinemaVo> process() throws BizException {
-                return cinemaService.cinemaByMovie(cinemaPagePo);
+                return cinemaRpcService.cinemaByMovie(cinemaPagePo);
             }
         }.execute();
     }
@@ -107,7 +108,7 @@ public class CinemaController {
 
             @Override
             protected Boolean process() throws BizException {
-                return cinemaService.cinemaAdd(cinemaAddPo);
+                return cinemaRpcService.cinemaAdd(cinemaAddPo);
             }
         }.execute();
     }
@@ -126,7 +127,7 @@ public class CinemaController {
 
             @Override
             protected Boolean process() throws BizException {
-                return cinemaService.cinemaScreenConfig(cinemaScreenUpdatePo);
+                return cinemaRpcService.cinemaScreenConfig(cinemaScreenUpdatePo);
             }
         }.execute();
     }
@@ -143,7 +144,7 @@ public class CinemaController {
 
             @Override
             protected Boolean process() throws BizException {
-                return cinemaService.arrangeMovie(movieArrangePo);
+                return cinemaRpcService.cinemaMovieArrange(movieArrangePo);
             }
         }.execute();
     }
@@ -160,7 +161,7 @@ public class CinemaController {
 
             @Override
             protected Page<CinemaVo> process() throws BizException {
-                return cinemaService.searchCinemas(cinemaSearchPo);
+                return cinemaRpcService.searchCinemas(cinemaSearchPo);
             }
         }.execute();
     }
@@ -177,7 +178,7 @@ public class CinemaController {
 
             @Override
             protected List<CinemaVo> process() throws BizException {
-                return cinemaService.findAllCinemasAreaId(areaId);
+                return cinemaRpcService.findAllCinemasAreaId(areaId);
             }
         }.execute();
     }
@@ -195,7 +196,7 @@ public class CinemaController {
 
             @Override
             protected List<MovieArgUnderCinemaVo> process() throws BizException {
-                return cinemaService.cinemaUnderMovies(cinemaId);
+                return cinemaRpcService.cinemaUnderMovies(cinemaId);
             }
         }.execute();
     }
@@ -211,7 +212,7 @@ public class CinemaController {
 
             @Override
             protected Boolean process() throws BizException {
-                return cinemaService.deleteArrangeRecord(arrangeId);
+                return cinemaRpcService.deleteArrangeRecord(arrangeId);
             }
         }.execute();
     }
@@ -227,7 +228,7 @@ public class CinemaController {
 
             @Override
             protected MovieArrangeDetailVo process() throws BizException {
-                return cinemaService.arrangeDetails(arrangeId);
+                return cinemaRpcService.arrangeDetails(arrangeId);
             }
         }.execute();
     }
@@ -244,7 +245,7 @@ public class CinemaController {
 
             @Override
             protected List<ScreenSeatMapVo> process() throws BizException {
-                return cinemaService.seatsInfo(arrangeId);
+                return cinemaRpcService.seatsInfo(arrangeId);
             }
         }.execute();
     }
@@ -262,7 +263,7 @@ public class CinemaController {
 
             @Override
             protected Page<MovieArgVo> process() throws BizException {
-                return cinemaService.arrangeRecords(movieArgBackPo);
+                return cinemaRpcService.arrangeRecords(movieArgBackPo);
             }
         }.execute();
 
@@ -281,7 +282,7 @@ public class CinemaController {
 
             @Override
             protected MovieArgVo process() throws BizException {
-                return cinemaService.arrangeRecordById(id);
+                return cinemaRpcService.arrangeRecordById(id);
             }
         }.execute();
 
@@ -299,7 +300,7 @@ public class CinemaController {
 
             @Override
             protected Boolean process() throws BizException {
-                return cinemaService.updateArrangeInfo(movieArrangePo);
+                return cinemaRpcService.updateArrangeInfo(movieArrangePo);
             }
         }.execute();
     }
