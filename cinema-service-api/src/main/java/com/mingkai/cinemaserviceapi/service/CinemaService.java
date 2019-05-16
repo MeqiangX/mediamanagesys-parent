@@ -394,10 +394,10 @@ public class CinemaService {
             }
         }
 
-        // 无 正常排片
+            // 无 正常排片
 
-        //插入记录  并且 同时插入到 坐席表
-        ScreenArrangeDo screenArrangeDo = new ScreenArrangeDo();
+            //插入记录  并且 同时插入到 坐席表
+            ScreenArrangeDo screenArrangeDo = new ScreenArrangeDo();
 
         screenArrangeDo.setCinemaScreenId(movieArrangePo.getCinemaScreenId());
         screenArrangeDo.setArrangeDate(movieArrangePo.getDate());
@@ -434,8 +434,6 @@ public class CinemaService {
         }
 
         //批量插入
-
-
         boolean saveBatch = screenSeatManager.saveBatch(seatList);
 
         return insert == 1 && saveBatch ? true : false;

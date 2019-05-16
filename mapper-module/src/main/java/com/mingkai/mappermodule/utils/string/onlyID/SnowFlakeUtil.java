@@ -5,8 +5,8 @@ package com.mingkai.mappermodule.utils.string.onlyID;
  * @author: Created by 云风 on 2019-04-12 16:24
  */
 public class SnowFlakeUtil {
-    private long workerId;
-    private long datacenterId;
+    private long workerId; // 分布式环境区分
+    private long datacenterId; // 分布式环境区分下生成不会ID碰撞
     private long sequence = 0L;
     private long twepoch = 1288834974657L;                              //  Thu, 04 Nov 2010 01:42:54 GMT 标记时间 用来计算偏移量，距离当前时间不同，得到的数据的位数也不同
     private long workerIdBits = 5L;                                     //  物理节点ID长度
