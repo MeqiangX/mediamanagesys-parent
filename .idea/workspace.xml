@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="2eca2e12-4f08-4c3b-bb3c-a9ef02423428" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cinema-service-api/src/main/java/com/mingkai/cinemaserviceapi/service/CinemaService.java" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-service-api/src/main/java/com/mingkai/cinemaserviceapi/service/CinemaService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mapper-module/src/main/java/com/mingkai/mappermodule/utils/string/onlyID/SnowFlakeUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/mapper-module/src/main/java/com/mingkai/mappermodule/utils/string/onlyID/SnowFlakeUtil.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -40,7 +38,7 @@
     <session id="-1451395706">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="46" />
+          <entry key="project.closed" value="47" />
           <entry key="project.open.time.1" value="1" />
           <entry key="project.open.time.100" value="2" />
           <entry key="project.open.time.103" value="1" />
@@ -52,6 +50,7 @@
           <entry key="project.open.time.114" value="2" />
           <entry key="project.open.time.116" value="1" />
           <entry key="project.open.time.118" value="1" />
+          <entry key="project.open.time.119" value="1" />
           <entry key="project.open.time.12" value="1" />
           <entry key="project.open.time.121" value="2" />
           <entry key="project.open.time.122" value="1" />
@@ -82,7 +81,7 @@
           <entry key="project.open.time.92" value="1" />
           <entry key="project.open.time.93" value="3" />
           <entry key="project.open.time.96" value="1" />
-          <entry key="project.opened" value="52" />
+          <entry key="project.opened" value="53" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
@@ -755,8 +754,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/mediamanagesys-schdule/src/main/java/com/mingkai/mediamanagesysschdule/service/ScheduleService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="131">
-              <caret line="82" column="41" lean-forward="true" selection-start-line="82" selection-start-column="41" selection-end-line="82" selection-end-column="41" />
+            <state relative-caret-position="1350">
+              <caret line="82" column="41" selection-start-line="82" selection-start-column="41" selection-end-line="82" selection-end-column="41" />
             </state>
           </provider>
         </entry>
@@ -764,8 +763,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/mediamanagesys-schdule/src/main/java/com/mingkai/mediamanagesysschdule/service/SendDoubanRequestService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="265">
-              <caret line="158" column="39" lean-forward="true" selection-start-line="158" selection-start-column="39" selection-end-line="158" selection-end-column="39" />
+            <state relative-caret-position="2592">
+              <caret line="158" column="39" selection-start-line="158" selection-start-column="39" selection-end-line="158" selection-end-column="39" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -776,8 +775,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/mediamanagesys-backend/src/main/java/com/mingkai/mediamanagesysbackend/controller/cinema/CinemaController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="257">
-              <caret line="302" column="51" lean-forward="true" selection-start-line="302" selection-start-column="51" selection-end-line="302" selection-end-column="51" />
+            <state relative-caret-position="5112">
+              <caret line="302" column="51" selection-start-line="302" selection-start-column="51" selection-end-line="302" selection-end-column="51" />
             </state>
           </provider>
         </entry>
@@ -785,7 +784,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/mediamanagesys-backend/src/main/java/com/mingkai/mediamanagesysbackend/service/CinemaRpcService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="191">
+            <state relative-caret-position="1584">
               <caret line="107" column="19" selection-start-line="107" selection-start-column="19" selection-end-line="107" selection-end-column="19" />
             </state>
           </provider>
@@ -794,7 +793,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/cinema-service-api/src/main/java/com/mingkai/cinemaserviceapi/controller/CinemaController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="252">
+            <state relative-caret-position="1620">
               <caret line="108" column="44" selection-start-line="108" selection-start-column="44" selection-end-line="108" selection-end-column="44" />
             </state>
           </provider>
@@ -803,30 +802,26 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/cinema-service-api/src/main/java/com/mingkai/cinemaserviceapi/service/CinemaService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="185">
-              <caret line="433" column="9" lean-forward="true" selection-start-line="433" selection-start-column="9" selection-end-line="433" selection-end-column="9" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/pay-service-api/src/main/java/com/meqiang/payserviceapi/controller/ApiPayController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="179">
-              <caret line="160" lean-forward="true" selection-start-line="160" selection-end-line="160" />
+            <state relative-caret-position="7002">
+              <caret line="433" column="9" selection-start-line="433" selection-start-column="9" selection-end-line="433" selection-end-column="9" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pay-service-api/src/main/java/com/meqiang/payserviceapi/controller/ApiPayController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2502">
+              <caret line="163" column="21" selection-start-line="163" selection-start-column="21" selection-end-line="163" selection-end-column="21" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/mapper-module/src/main/java/com/mingkai/mappermodule/utils/string/onlyID/SnowFlakeUtil.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="252">
-              <caret line="73" column="48" lean-forward="true" selection-start-line="73" selection-start-column="48" selection-end-line="73" selection-end-column="48" />
-              <folding>
-                <element signature="e#3896#3897#0" expanded="true" />
-                <element signature="e#3945#3946#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="144">
+              <caret line="80" column="40" lean-forward="true" selection-start-line="80" selection-start-column="40" selection-end-line="80" selection-end-column="40" />
             </state>
           </provider>
         </entry>
@@ -834,8 +829,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/order-service-api/src/main/java/com/mingkai/orderserviceapi/controller/OrderController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="77">
-              <caret line="284" column="34" lean-forward="true" selection-start-line="284" selection-start-column="34" selection-end-line="284" selection-end-column="34" />
+            <state relative-caret-position="4806">
+              <caret line="284" column="34" selection-start-line="284" selection-start-column="34" selection-end-line="284" selection-end-column="34" />
             </state>
           </provider>
         </entry>
@@ -984,11 +979,11 @@
       <select />
     </treeState>
   </component>
-  <component name="ProjectFrameBounds" extendedState="1">
-    <option name="x" value="20" />
-    <option name="y" value="4" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="23" />
+    <option name="y" value="33" />
     <option name="width" value="1329" />
-    <option name="height" value="692" />
+    <option name="height" value="684" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -1397,8 +1392,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -1566,6 +1559,8 @@
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -1577,7 +1572,7 @@
     <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file://C:/Users/xq/Downloads/mediamanagesys-parent/mediamanagesys-uc/src/main/java/com/mingkai/mediamanagesysuc/constant/time/TimeConstant.java" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1558021189209" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1558021579592" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/mapper-module" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -1845,7 +1840,8 @@
       <workItem from="1557847170828" duration="170000" />
       <workItem from="1557882588366" duration="16751000" />
       <workItem from="1557906928161" duration="12865000" />
-      <workItem from="1557968294676" duration="31240000" />
+      <workItem from="1557968294676" duration="32219000" />
+      <workItem from="1558072633735" duration="691000" />
     </task>
     <servers />
   </component>
@@ -1882,7 +1878,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="775828000" />
+    <option name="totallyTimeSpent" value="777498000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1894,10 +1890,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="20" y="4" width="1329" height="692" extended-state="0" />
+    <frame x="23" y="33" width="1329" height="684" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4914842" visible="true" weight="0.12371946" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4914842" visible="true" weight="0.1607565" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Favorites" order="3" sideWeight="0.50851583" side_tool="true" weight="0.35186723" />
@@ -1915,7 +1911,7 @@
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32820514" />
       <window_info anchor="bottom" id="Messages" order="7" sideWeight="0.5444631" weight="0.54409003" />
       <window_info anchor="bottom" id="Spring" order="8" weight="0.32820514" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="9" sideWeight="0.8271812" visible="true" weight="0.16510318" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="9" sideWeight="0.8271812" visible="true" weight="0.23428571" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.22987552" side_tool="true" weight="0.59546316" />
       <window_info anchor="bottom" id="Statistic" order="11" sideWeight="0.49924356" weight="0.36410257" />
       <window_info anchor="bottom" id="Database Changes" order="12" show_stripe_button="false" />
@@ -2065,13 +2061,7 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/mediamanagesys-backend/src/main/java/com/mingkai/mediamanagesysbackend/service/backindex/BackIndexWelcomeService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#5351#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/mediamanagesys-backend/src/main/java/com/mingkai/mediamanagesysbackend/controller/backindex/BackIndexWelcomeController.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -2091,10 +2081,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
           <caret line="30" column="51" selection-start-line="30" selection-start-column="51" selection-end-line="30" selection-end-column="51" />
-          <folding>
-            <element signature="e#894#895#0" expanded="true" />
-            <element signature="e#967#968#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2123,10 +2109,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="140">
           <caret line="34" column="48" lean-forward="true" selection-start-line="34" selection-start-column="48" selection-end-line="34" selection-end-column="48" />
-          <folding>
-            <element signature="e#1053#1054#0" expanded="true" />
-            <element signature="e#1126#1127#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2183,10 +2165,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="133">
           <caret line="19" column="52" lean-forward="true" selection-start-line="19" selection-start-column="52" selection-end-line="19" selection-end-column="52" />
-          <folding>
-            <element signature="e#555#556#0" expanded="true" />
-            <element signature="e#629#630#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2292,65 +2270,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
           <caret line="12" selection-start-line="12" selection-end-line="12" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mediamanagesys-schdule/src/main/java/com/mingkai/mediamanagesysschdule/service/ScheduleService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="131">
-          <caret line="82" column="41" lean-forward="true" selection-start-line="82" selection-start-column="41" selection-end-line="82" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mediamanagesys-schdule/src/main/java/com/mingkai/mediamanagesysschdule/service/SendDoubanRequestService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="265">
-          <caret line="158" column="39" lean-forward="true" selection-start-line="158" selection-start-column="39" selection-end-line="158" selection-end-column="39" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mediamanagesys-backend/src/main/java/com/mingkai/mediamanagesysbackend/controller/cinema/CinemaController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="257">
-          <caret line="302" column="51" lean-forward="true" selection-start-line="302" selection-start-column="51" selection-end-line="302" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mediamanagesys-backend/src/main/java/com/mingkai/mediamanagesysbackend/service/CinemaRpcService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="191">
-          <caret line="107" column="19" selection-start-line="107" selection-start-column="19" selection-end-line="107" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cinema-service-api/src/main/java/com/mingkai/cinemaserviceapi/controller/CinemaController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="108" column="44" selection-start-line="108" selection-start-column="44" selection-end-line="108" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cinema-service-api/src/main/java/com/mingkai/cinemaserviceapi/service/CinemaService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="185">
-          <caret line="433" column="9" lean-forward="true" selection-start-line="433" selection-start-column="9" selection-end-line="433" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mapper-module/src/main/java/com/mingkai/mappermodule/utils/string/onlyID/SnowFlakeUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="73" column="48" lean-forward="true" selection-start-line="73" selection-start-column="48" selection-end-line="73" selection-end-column="48" />
-          <folding>
-            <element signature="e#3896#3897#0" expanded="true" />
-            <element signature="e#3945#3946#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2361,17 +2280,69 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/order-service-api/src/main/java/com/mingkai/orderserviceapi/controller/OrderController.java">
+    <entry file="file://$PROJECT_DIR$/mediamanagesys-schdule/src/main/java/com/mingkai/mediamanagesysschdule/service/ScheduleService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="77">
-          <caret line="284" column="34" lean-forward="true" selection-start-line="284" selection-start-column="34" selection-end-line="284" selection-end-column="34" />
+        <state relative-caret-position="1350">
+          <caret line="82" column="41" selection-start-line="82" selection-start-column="41" selection-end-line="82" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mediamanagesys-schdule/src/main/java/com/mingkai/mediamanagesysschdule/service/SendDoubanRequestService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2592">
+          <caret line="158" column="39" selection-start-line="158" selection-start-column="39" selection-end-line="158" selection-end-column="39" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mediamanagesys-backend/src/main/java/com/mingkai/mediamanagesysbackend/controller/cinema/CinemaController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5112">
+          <caret line="302" column="51" selection-start-line="302" selection-start-column="51" selection-end-line="302" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mediamanagesys-backend/src/main/java/com/mingkai/mediamanagesysbackend/service/CinemaRpcService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1584">
+          <caret line="107" column="19" selection-start-line="107" selection-start-column="19" selection-end-line="107" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cinema-service-api/src/main/java/com/mingkai/cinemaserviceapi/controller/CinemaController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1620">
+          <caret line="108" column="44" selection-start-line="108" selection-start-column="44" selection-end-line="108" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cinema-service-api/src/main/java/com/mingkai/cinemaserviceapi/service/CinemaService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="7002">
+          <caret line="433" column="9" selection-start-line="433" selection-start-column="9" selection-end-line="433" selection-end-column="9" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/pay-service-api/src/main/java/com/meqiang/payserviceapi/controller/ApiPayController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="179">
-          <caret line="160" lean-forward="true" selection-start-line="160" selection-end-line="160" />
+        <state relative-caret-position="2502">
+          <caret line="163" column="21" selection-start-line="163" selection-start-column="21" selection-end-line="163" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/order-service-api/src/main/java/com/mingkai/orderserviceapi/controller/OrderController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4806">
+          <caret line="284" column="34" selection-start-line="284" selection-start-column="34" selection-end-line="284" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mapper-module/src/main/java/com/mingkai/mappermodule/utils/string/onlyID/SnowFlakeUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="80" column="40" lean-forward="true" selection-start-line="80" selection-start-column="40" selection-end-line="80" selection-end-column="40" />
         </state>
       </provider>
     </entry>
