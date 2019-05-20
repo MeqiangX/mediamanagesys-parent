@@ -1,3 +1,4 @@
+/*
 package com.mingkai.mediamanagesysschdule.conf;
 
 import org.springframework.context.annotation.Bean;
@@ -10,13 +11,10 @@ import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
-/**
- * @description:
- * @author: Created by 云风 on 2019-03-31 10:56
- */
+
 @Configuration
 @EnableSwagger2  //swagger2 启动注解
-public class Swagger2Config {
+public class SwaggerScheduleConfig {
 
     @Bean
     public Docket createRestApi(){
@@ -40,3 +38,4 @@ public class Swagger2Config {
     }
 
 }
+*/

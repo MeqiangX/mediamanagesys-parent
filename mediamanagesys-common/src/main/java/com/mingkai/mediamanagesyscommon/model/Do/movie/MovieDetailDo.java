@@ -49,3 +49,4 @@ public class MovieDetailDo extends BaseDo {
     private String duration;
 
 }
+

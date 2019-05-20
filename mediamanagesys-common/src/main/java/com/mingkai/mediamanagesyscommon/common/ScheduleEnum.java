@@ -1,0 +1,19 @@
+package com.mingkai.mediamanagesyscommon.common;
+
+/**
+ * @description: 定时任务种类
+ * @author: Created by 云风 on 2019-05-19 0:58
+ */
+public class ScheduleEnum {
+
+    /**
+     * 清除榜单任务
+     *
+     */
+    public static Integer CLEAN_RANK = 0;
+
+    /**
+     * 跟新电影
+     */
+    public static Integer INSERT_RECORD = 1;
+}

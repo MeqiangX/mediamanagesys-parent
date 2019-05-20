@@ -25,7 +25,7 @@ import java.util.Objects;
  * @author: Created by 云风 on 2019-04-11 9:32
  */
 @Service
-public class MovieService {
+    public class MovieService {
 
     @Autowired
     private MovieDetailManager movieDetailManager;

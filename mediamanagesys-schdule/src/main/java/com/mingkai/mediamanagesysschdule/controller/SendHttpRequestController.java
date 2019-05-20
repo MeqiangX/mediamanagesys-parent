@@ -5,6 +5,7 @@ import com.dtstack.plat.lang.web.R;
 import com.dtstack.plat.lang.web.template.APITemplate;
 import com.google.common.collect.Sets;
 import com.mingkai.mediamanagesyscommon.common.API;
+import com.mingkai.mediamanagesysschdule.service.ScheduleService;
 import com.mingkai.mediamanagesysschdule.service.SendDoubanRequestService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -29,6 +30,25 @@ public class SendHttpRequestController {
     @Autowired
     private SendDoubanRequestService sendDoubanRequestService;
 
+    @Autowired
+    private ScheduleService scheduleService;
+
+    @ApiOperation("测试")
+    @GetMapping("test")
+    public R<Boolean> test(){
+        return new APITemplate<Boolean>() {
+            @Override
+            protected void checkParams() throws IllegalArgumentException {
+
+            }
+
+            @Override
+            protected Boolean process() throws BizException {
+                scheduleService.test();
+                return null;
+            }
+        }.execute();
+    }
 
     @ApiOperation("跟新库数据")
     @GetMapping("update-data")

@@ -38,6 +38,9 @@ public class ScheduleService {
 
     public static final Integer count = 200;
 
+    public void test(){
+        log.info("执行测试方法");
+    }
 
     // 每天0点开始 跑任务
     @Scheduled(cron = "0 0 0-23 * * ?")
@@ -48,6 +51,8 @@ public class ScheduleService {
         startCleanData();
 
         log.info("清除完成，现在时间：" +  LocalDateTime.now());
+
+
 
         log.info("开始执行 插入数据：");
 

@@ -26,6 +26,11 @@
             <artifactId>mediamanagesys-common</artifactId>
         </dependency>
 
+        <!-- 引入aop依赖 引入aop后可以不需要配置 直接使用注解-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-aop</artifactId>
+        </dependency>
     </dependencies>
 
     <build>
