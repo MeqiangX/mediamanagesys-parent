@@ -45,6 +45,7 @@ public interface API {
 
     String API_WELCOME = "api/backend/welcome";
 
+    String API_TASK_MANAGE = "api/backend/taskmanage"; // 后台定时任务管理
     // -------- portal
 
         // movie
@@ -84,6 +85,7 @@ public interface API {
     String BACKEND_USER = "后台-用户管理";
     String BACKEND_ORDER = "后台-订单管理";
     String BACKEND_WELCOME = "后台-欢迎页";
+    String BACKEND_TASK = "后台-定时任务";
 
     // ---------- portal
 

@@ -67,6 +67,28 @@ public class SendHttpRequestController {
     }
 
 
+    @ApiOperation("手动执行定时任务")
+    @GetMapping("task-run")
+    public R<Boolean> taskRun(){
+        return new APITemplate<Boolean>() {
+            @Override
+            protected void checkParams() throws IllegalArgumentException {
+
+            }
+
+            @Override
+            protected Boolean process() throws BizException {
+                try{
+                    scheduleService.clearDataScheduleMethod();
+                }catch (Exception e){
+                    throw new BizException(e);
+                }
+
+                return Boolean.TRUE;
+            }
+        }.execute();
+    }
+
     @ApiOperation("TOP250")
     @GetMapping("top250")
     public void top250(){

@@ -30,13 +30,13 @@ public interface MovieRankMapper extends BaseMapper<MovieRankDo> {
      * @return
      */
     @Insert("insert into ${tableName}(movie_id,movie_name,original_name,image,genres,rating,ratings_count,directors,casts" +
-            ",year,countries,summary,another_name,pubdates,languages,writers,tags,duration) values(" +
+            ",year,countries,summary,another_name,pubdates,languages,writers,tags,duration,create_time,update_time,creator,updator,is_deleted) values(" +
             "#{movieDetailDo.movieId},#{movieDetailDo.movieName},#{movieDetailDo.originalName}," +
             "#{movieDetailDo.image},#{movieDetailDo.genres},#{movieDetailDo.rating}," +
             "#{movieDetailDo.ratingsCount},#{movieDetailDo.directors},#{movieDetailDo.casts}," +
             "#{movieDetailDo.year},#{movieDetailDo.countries},#{movieDetailDo.summary}," +
             "#{movieDetailDo.anotherName},#{movieDetailDo.pubdates},#{movieDetailDo.languages}," +
-            "#{movieDetailDo.writers},#{movieDetailDo.tags},#{movieDetailDo.duration})")
+            "#{movieDetailDo.writers},#{movieDetailDo.tags},#{movieDetailDo.duration},#{movieDetailDo.createTime},#{movieDetailDo.updateTime},#{movieDetailDo.creator},#{movieDetailDo.updator},#{movieDetailDo.isDeleted})")
     Boolean insertIntoTable(@Param("tableName") String tableName, @Param("movieDetailDo") MovieDetailDo movieDetailDo);
 
 

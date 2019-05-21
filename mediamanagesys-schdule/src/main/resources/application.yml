@@ -12,3 +12,16 @@ spring:
   aop:
     proxy-target-class: true # 配置aop的实现方式 不配置默认是使用java，配置是使用cglib java的形式需要父子关系 cglib是基于接口的，实现同一个接口即可
 
+  #jackson
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+
+#mybatis
+mybatis-plus:
+  mapper-locations: classpath*:/mapper/*Mapper.xml
+
+
+#cron 定时任务执行周期
+schedule:
+  cron: 0 0 0-23 * * ? # 每天0点跑任务

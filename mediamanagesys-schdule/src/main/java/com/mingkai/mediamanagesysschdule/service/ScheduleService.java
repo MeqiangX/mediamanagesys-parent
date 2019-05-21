@@ -1,12 +1,13 @@
 package com.mingkai.mediamanagesysschdule.service;
 
+import com.mingkai.mediamanagesysschdule.constant.anno.TaskType;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.aop.framework.AopContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -43,30 +44,41 @@ public class ScheduleService {
     }
 
     // 每天0点开始 跑任务
-    @Scheduled(cron = "0 0 0-23 * * ?")
+    @Scheduled(cron = "${schedule.cron}")
     public void clearDataScheduleMethod(){
 
-        log.info("现在开始执行定时任务,执行清除数据,现在时间："+ LocalDateTime.now() + " 定时任务启动.....");
 
-        startCleanData();
+        // 因为aop 不会拦截类内的同类调用方法，动态代理的方式 所以要用当前的代理对象的类内方法来触发调用 即
+        // 即 当前被调用的 第一层方法 在aop拦截的时候 会生成一个代理对象，通过拦截这个代理对象的这个方法，来进行增强
+        // 而这个方法再次调用类内的方法时，会再次生成代理对象，但是不是同一个，所以不拦截，
+        // 可以得到通过得到当前的代理对象  来执行拦截
 
-        log.info("清除完成，现在时间：" +  LocalDateTime.now());
+        if (null != AopContext.currentProxy()){
+            ((ScheduleService)(AopContext.currentProxy())).startCleanData();
+        }else{
+            startCleanData();
+        }
 
 
+        if (null != AopContext.currentProxy()){
+            ((ScheduleService)(AopContext.currentProxy())).saveData();
+        }else{
+            saveData();
+        }
 
-        log.info("开始执行 插入数据：");
-
-        saveData();
-
-        log.info("结束插入------------> 时间：" + LocalDateTime.now());
 
     }
+
+
+
+    // 过期的订单
 
 
     /**
      * 清除数据
      */
     @Transactional
+    @TaskType(type = 0)
     public void startCleanData(){
         sendDoubanRequestService.clearData(HOT_RANK_TABLE);
         sendDoubanRequestService.clearData(NEW_RANK_TABLE);
@@ -81,6 +93,7 @@ public class ScheduleService {
      * 保存数据
      */
     @Transactional
+    @TaskType(type = 1)
     public void saveData(){
         List<String> newRankMovieIds = sendDoubanRequestService.newRankQuery();
 

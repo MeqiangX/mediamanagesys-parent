@@ -101,6 +101,11 @@ public class SendDoubanRequestService {
 
         save(movieId,movie);
 
+        movie.setCreateTime(new Date());
+        movie.setUpdateTime(new Date());
+        movie.setCreator("yunfeng");
+        movie.setUpdator("yunfeng");
+        movie.setIsDeleted(0);
         // 然后插入到tableName
 
         // 跑个定时任务 每日将6个榜单的数据清空

@@ -14,6 +14,20 @@ public class TaskRecordDo extends BaseDo {
 
     private Integer taskType;
 
-    private Long spengTime;
+    private Long spendTime;
 
+    private Integer success;
+
+    private String errMessage;
+
+
+    public TaskRecordDo() {
+    }
+
+    public TaskRecordDo(Integer taskType, Long spendTime, Integer success, String errMessage) {
+        this.taskType = taskType;
+        this.spendTime = spendTime;
+        this.success = success;
+        this.errMessage = errMessage;
+    }
 }
