@@ -86,3 +86,11 @@ feign:
       default:
         connec-timeout: 20000
         read-timeout: 20000
+
+# 熔断的转发拦截请求头处理
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          strategy: SEMAPHORE

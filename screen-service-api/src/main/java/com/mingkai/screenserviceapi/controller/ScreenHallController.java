@@ -23,7 +23,7 @@ import java.util.List;
  * @author: Created by 云风 on 2019-04-03 17:31
  */
 @RestController
-/*@RequestMapping(API.API_SCREEN)*/
+@RequestMapping(API.API_SCREEN)
 @Api(tags = API.BACKEND_SCREEN)
 public class ScreenHallController {
 

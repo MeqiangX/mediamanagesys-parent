@@ -3,6 +3,7 @@ package com.mingkai.mediamanagesysportal.feigns;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.dtstack.plat.lang.web.R;
+import com.mingkai.mappermodule.common.API;
 import com.mingkai.mappermodule.model.Do.order.TicketDetailDo;
 import com.mingkai.mappermodule.model.Po.order.CoordinatePo;
 import com.mingkai.mappermodule.model.Po.order.OrderPagePo;
@@ -28,8 +29,8 @@ public interface OrderRpcFeign {
      * @return
      */
     @ApiOperation("查询用户的订单")
-    @PostMapping("user-orders")
-    R<Page<OrderSimpleVo>> userOrders(OrderPagePo orderPagePo);
+    @RequestMapping(value = API.API_ORDER + "/user-orders",method = RequestMethod.POST)
+    R<Page<OrderSimpleVo>> userOrders(@RequestBody OrderPagePo orderPagePo);
 
     @ApiOperation("购票测试")
     @GetMapping("order-test")
@@ -42,30 +43,30 @@ public interface OrderRpcFeign {
      * @return
      */
     @ApiOperation("订座")
-    @GetMapping("seat-book")
+    @RequestMapping(value = API.API_ORDER + "/seat-book",method = RequestMethod.GET)
     R<String> seatBooking(@RequestParam("seatIds[]") List<Integer> seatIds, @RequestParam Integer userId);
 
 
     @ApiOperation("通过订单id查找未支付订单信息")
-    @GetMapping("order-detail/{orderId}")
+    @RequestMapping(value = API.API_ORDER + "/order-detail/{orderId}")
     R<OrderSimpleVo> orderDetail(@PathVariable String orderId);
 
 
     @ApiOperation("通过订单id来查找未支付订单的剩余支付时间")
-    @GetMapping("unpay-order-rest-time/{orderId}")
+    @RequestMapping(value = API.API_ORDER + "/unpay-order-rest-time/{orderId}")
     R<Long> unpayOrderRestTime(@PathVariable String orderId);
 
 
     @ApiOperation("对于过期为支付的订单的操作")
-    @GetMapping("timeout-order-check/{orderId}")
+    @RequestMapping(value = API.API_ORDER + "/timeout-order-check/{orderId}")
     R<Boolean> timeoutOrderCheck(@PathVariable String orderId);
 
     @ApiOperation("取消用户的所有订单")
-    @GetMapping("delete-user-orders")
+    @RequestMapping(value = API.API_ORDER + "/delete-user-orders",method = RequestMethod.GET)
     R<Boolean> deleteUserOrders(@RequestParam("userId") Integer userId);
 
     @ApiOperation("取消订单(未支付和已支付)")
-    @GetMapping("cancel-order")
+    @RequestMapping(value = API.API_ORDER + "/cancel-order",method = RequestMethod.GET)
     R<Boolean> cancelOrder(@RequestParam("orderId") String orderId);
 
 
@@ -76,24 +77,24 @@ public interface OrderRpcFeign {
      * @return
      */
     @ApiOperation("当前排场下当前用户的已经购买票数")
-    @GetMapping("bought-counts-arrangeId")
+    @RequestMapping(value = API.API_ORDER + "/bought-counts-arrangeId",method = RequestMethod.GET)
     R<Integer> boughtCountsArrangeId(@RequestParam("userId") Integer userId,@RequestParam("arrangeId") String arrangeId);
 
     @ApiOperation("当前要购买的坐席是否可买")
-    @GetMapping("allow-purchased")
+    @RequestMapping(value = API.API_ORDER + "/allow-purchased",method = RequestMethod.GET)
     R<List<Integer>> isAllowPurchased(@RequestParam("seats[]") List<Integer> seats);
 
 
     @ApiOperation("通过坐席坐标和排片id来查询坐席id")
-    @PostMapping("/seatId-by-coordinate")
+    @RequestMapping(value = API.API_ORDER + "/seatId-by-coordinate",method = RequestMethod.POST)
     R<List<Integer>> seatIdsByCoordinate(@RequestBody CoordinatePo coordinatePo);
 
     @ApiOperation("支付成功的操作")
-    @GetMapping("/pay-success")
+    @RequestMapping(value = API.API_ORDER + "/pay-success",method = RequestMethod.GET)
     R<Boolean> paySuccess(@RequestParam("orderId") String orderId);
 
     @ApiOperation("得到订单信息By orderId")
-    @GetMapping("/get-orderby-orderId")
+    @RequestMapping(value = API.API_ORDER + "/get-orderby-orderId",method = RequestMethod.GET)
     R<TicketDetailDo> getOrderByOrderId(@RequestParam("orderId") String orderId);
 
 }

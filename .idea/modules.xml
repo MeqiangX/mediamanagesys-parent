@@ -18,6 +18,7 @@
       <module fileurl="file://$PROJECT_DIR$/pay-service-api/pay-service-api.iml" filepath="$PROJECT_DIR$/pay-service-api/pay-service-api.iml" />
       <module fileurl="file://$PROJECT_DIR$/screen-service-api/screen-service-api.iml" filepath="$PROJECT_DIR$/screen-service-api/screen-service-api.iml" />
       <module fileurl="file://$PROJECT_DIR$/service-center/service-center.iml" filepath="$PROJECT_DIR$/service-center/service-center.iml" />
+      <module fileurl="file://$PROJECT_DIR$/service-zuul/service-zuul.iml" filepath="$PROJECT_DIR$/service-zuul/service-zuul.iml" />
       <module fileurl="file://$PROJECT_DIR$/uc-service-api/uc-service-api.iml" filepath="$PROJECT_DIR$/uc-service-api/uc-service-api.iml" />
     </modules>
   </component>

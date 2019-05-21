@@ -1,25 +1,17 @@
-package com.mingkai.mediamanagesysportal.controller;
+package com.mingkai.movieserviceapi.controller;
 
 import com.dtstack.plat.lang.exception.BizException;
 import com.dtstack.plat.lang.web.R;
 import com.dtstack.plat.lang.web.template.APITemplate;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  * @description:
- * @author: Created by 云风 on 2019-03-30 16:33
+ * @author: Created by 云风 on 2019-05-21 19:27
  */
-
-
-@Controller
-public class TestController {
-
-    @RequestMapping("/test2")
-    public String test(){
-        return "index";
-    }
+@RestController
+public class MovieZuulTestController {
 
     @GetMapping("test")
     public R<String> zuulTest(){
@@ -31,7 +23,7 @@ public class TestController {
 
             @Override
             protected String process() throws BizException {
-                return null;
+                return "网关测试";
             }
         }.execute();
     }

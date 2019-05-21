@@ -37,7 +37,7 @@ public class UserController {
 
     @ApiOperation("邮件发送接口")
     @PostMapping("/sendEmail")
-    public R<Boolean> sendEmail(MailModel mailModel){
+    public R<Boolean> sendEmail(@RequestBody MailModel mailModel){
 
         return new APITemplate<Boolean>() {
             @Override
@@ -56,7 +56,7 @@ public class UserController {
 
     @ApiOperation("短信发送接口")
     @PostMapping("/sendMessage")
-    public R<Boolean> sendMessage(MessagePo messagePo){
+    public R<Boolean> sendMessage(@RequestBody MessagePo messagePo){
         return new APITemplate<Boolean>() {
             @Override
             protected void checkParams() throws IllegalArgumentException {
@@ -73,7 +73,7 @@ public class UserController {
 
     @ApiOperation("得到验证码")
     @PostMapping("/getCode")
-    public R<String> getCode(MessagePo messagePo){
+    public R<String> getCode(@RequestBody MessagePo messagePo){
         return new APITemplate<String>() {
             @Override
             protected void checkParams() throws IllegalArgumentException {
@@ -89,7 +89,7 @@ public class UserController {
 
     @ApiOperation("登出")
     @GetMapping("/logout")
-    public R<Boolean> logout(Integer userId){
+    public R<Boolean> logout(@RequestParam("userId") Integer userId){
         return new APITemplate<Boolean>() {
             @Override
             protected void checkParams() throws IllegalArgumentException {
@@ -122,7 +122,7 @@ public class UserController {
 
     @ApiOperation("得到登录用户信息 from session")
     @GetMapping("/getloginUser-fromSession")
-    public R<UserDO> getLoginUserFromSession(Integer userId){
+    public R<UserDO> getLoginUserFromSession(@RequestParam("userId") Integer userId){
         return new APITemplate<UserDO>() {
             @Override
             protected void checkParams() throws IllegalArgumentException {
@@ -138,7 +138,7 @@ public class UserController {
 
     @ApiOperation("邮箱/手机注册")
     @PostMapping("/register")
-    public R<Boolean> register(RegisterPo registerPo){
+    public R<Boolean> register(@RequestBody RegisterPo registerPo){
         return new APITemplate<Boolean>() {
             @Override
             protected void checkParams() throws IllegalArgumentException {
@@ -153,7 +153,7 @@ public class UserController {
     }
 
     @ApiOperation("注册手机验证")
-    @GetMapping("/phone-check/{phone}")
+    @RequestMapping("/phone-check/{phone}")
     public R<Boolean> phoneCheck(@PathVariable String phone){
         return new APITemplate<Boolean>() {
             @Override
@@ -170,7 +170,7 @@ public class UserController {
 
 
     @ApiOperation("注册邮箱验证")
-    @GetMapping("/email-check/{email}")
+    @RequestMapping("/email-check/{email}")
     public R<Boolean> emailCheck(@PathVariable String email){
        return new APITemplate<Boolean>() {
            @Override
@@ -204,7 +204,7 @@ public class UserController {
 
     @ApiOperation("修改密码")
     @PostMapping("/update-pwd")
-    public R<Boolean> updatePwd(PwdUpdatePo pwdUpdatePo){
+    public R<Boolean> updatePwd(@RequestBody PwdUpdatePo pwdUpdatePo){
         return new APITemplate<Boolean>() {
             @Override
             protected void checkParams() throws IllegalArgumentException {
@@ -222,7 +222,7 @@ public class UserController {
     @ApiOperation("给用户赋予角色")
     @PostMapping("user-role-add")
    // @PreAuthorize("hasPermission('front_user_default','测试权限') or hasRole('main_admin')")
-    public R<Boolean> addRoleToUser(UserRoleAddPo userRoleAddPo){
+    public R<Boolean> addRoleToUser(@RequestBody UserRoleAddPo userRoleAddPo){
         return new APITemplate<Boolean>() {
             @Override
             protected void checkParams() throws IllegalArgumentException {
@@ -238,8 +238,8 @@ public class UserController {
 
 
     @ApiOperation("用户列表")
-    @GetMapping("users-page")
-    public R<Page<UserDO>> userPages(UserPagePo userPagePo){
+    @PostMapping("users-page")
+    public R<Page<UserDO>> userPages(@RequestBody UserPagePo userPagePo){
 
         return new APITemplate<Page<UserDO>>() {
             @Override
@@ -258,7 +258,7 @@ public class UserController {
 
     @ApiOperation("通过id得到用户")
     @GetMapping("user-by-id")
-    public R<UserDO> userById(Integer id){
+    public R<UserDO> userById(@RequestParam("id") Integer id){
         return new APITemplate<UserDO>() {
             @Override
             protected void checkParams() throws IllegalArgumentException {
@@ -274,7 +274,7 @@ public class UserController {
 
     @ApiOperation("通过用户id 取得 用户信息")
     @GetMapping("/userinfo-by-id")
-    public R<UserInfoDo> userInfoById(Integer userId){
+    public R<UserInfoDo> userInfoById(@RequestParam("userId") Integer userId){
         return new APITemplate<UserInfoDo>() {
             @Override
             protected void checkParams() throws IllegalArgumentException {

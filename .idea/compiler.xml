@@ -21,6 +21,7 @@
         <module name="pay-service-api" />
         <module name="screen-service-api" />
         <module name="service-center" />
+        <module name="service-zuul" />
         <module name="uc-service-api" />
       </profile>
     </annotationProcessing>
@@ -43,6 +44,7 @@
       <module name="pay-service-api" target="1.8" />
       <module name="screen-service-api" target="1.8" />
       <module name="service-center" target="1.8" />
+      <module name="service-zuul" target="1.8" />
       <module name="system-common" target="1.8" />
       <module name="uc-service-api" target="1.8" />
     </bytecodeTargetLevel>
@@ -67,6 +69,7 @@
       <module name="pay-service-api" options="-parameters" />
       <module name="screen-service-api" options="-parameters" />
       <module name="service-center" options="-parameters" />
+      <module name="service-zuul" options="-parameters" />
       <module name="system-common" options="-parameters" />
       <module name="uc-service-api" options="-parameters" />
     </option>

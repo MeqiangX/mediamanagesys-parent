@@ -20,6 +20,7 @@
         <option value="$PROJECT_DIR$/mapper-module/pom.xml" />
         <option value="$PROJECT_DIR$/common-service-api/pom.xml" />
         <option value="$PROJECT_DIR$/mediamanagesys-common-app/pom.xml" />
+        <option value="$PROJECT_DIR$/service-zuul/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">

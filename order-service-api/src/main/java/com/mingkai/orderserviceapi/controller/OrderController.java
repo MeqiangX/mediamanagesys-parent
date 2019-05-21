@@ -40,7 +40,7 @@ public class OrderController {
      */
     @ApiOperation("查询用户的订单")
     @PostMapping("user-orders")
-    public R<Page<OrderSimpleVo>> userOrders(OrderPagePo orderPagePo){
+    public R<Page<OrderSimpleVo>> userOrders(@RequestBody OrderPagePo orderPagePo){
         return new APITemplate<Page<OrderSimpleVo>>() {
             @Override
             protected void checkParams() throws IllegalArgumentException {
@@ -96,7 +96,7 @@ public class OrderController {
 
 
     @ApiOperation("通过订单id查找未支付订单信息")
-    @GetMapping("order-detail/{orderId}")
+    @RequestMapping("order-detail/{orderId}")
     public R<OrderSimpleVo> orderDetail(@PathVariable String orderId){
         return new APITemplate<OrderSimpleVo>() {
             @Override
@@ -113,7 +113,7 @@ public class OrderController {
 
 
     @ApiOperation("通过订单id来查找未支付订单的剩余支付时间")
-    @GetMapping("unpay-order-rest-time/{orderId}")
+    @RequestMapping("unpay-order-rest-time/{orderId}")
     public R<Long> unpayOrderRestTime(@PathVariable String orderId){
         return new APITemplate<Long>() {
             @Override
@@ -130,7 +130,7 @@ public class OrderController {
 
 
     @ApiOperation("对于过期为支付的订单的操作")
-    @GetMapping("timeout-order-check/{orderId}")
+    @RequestMapping("timeout-order-check/{orderId}")
     public R<Boolean> timeoutOrderCheck(@PathVariable String orderId){
         return new APITemplate<Boolean>() {
             @Override
@@ -147,7 +147,7 @@ public class OrderController {
 
     @ApiOperation("取消用户的所有订单")
     @GetMapping("delete-user-orders")
-    public R<Boolean> deleteUserOrders(Integer userId){
+    public R<Boolean> deleteUserOrders(@RequestParam("userId") Integer userId){
         return new APITemplate<Boolean>() {
             @Override
             protected void checkParams() throws IllegalArgumentException {
@@ -163,7 +163,7 @@ public class OrderController {
 
     @ApiOperation("取消订单(未支付和已支付)")
     @GetMapping("cancel-order")
-    public R<Boolean> cancelOrder(String orderId){
+    public R<Boolean> cancelOrder(@RequestParam("orderId") String orderId){
         return new APITemplate<Boolean>() {
             @Override
             protected void checkParams() throws IllegalArgumentException {
@@ -186,7 +186,8 @@ public class OrderController {
      */
     @ApiOperation("当前排场下当前用户的已经购买票数")
     @GetMapping("bought-counts-arrangeId")
-    public R<Integer> boughtCountsArrangeId(Integer userId,String arrangeId){
+    public R<Integer> boughtCountsArrangeId(@RequestParam("userId") Integer userId,
+                                            @RequestParam("arrangeId") String arrangeId){
         return new APITemplate<Integer>() {
             @Override
             protected void checkParams() throws IllegalArgumentException {
@@ -284,7 +285,7 @@ public class OrderController {
 
     @ApiOperation("查询用户订单(分页/条件)")
     @PostMapping("order-search")
-    public R<Page<TicketDetailVo>> orderSearch(TicketSearchPo ticketSearchPo){
+    public R<Page<TicketDetailVo>> orderSearch(@RequestBody TicketSearchPo ticketSearchPo){
         return new APITemplate<Page<TicketDetailVo>>() {
             @Override
             protected void checkParams() throws IllegalArgumentException {
