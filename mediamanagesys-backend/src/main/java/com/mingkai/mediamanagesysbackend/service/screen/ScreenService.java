@@ -109,6 +109,8 @@ public class ScreenService {
      */
     public Page<ScreenRoomVo> queryPageCanConfigScreensByCinemaId(ScreenPagePo screenPagePo){
 
+        // 查询没有被配置的放映厅 以及 和已配置的名称不相同的 交集
+
         List<CinemaScreenDo> cinemaScreenDos = cinemaScreenManager.list(new QueryWrapper<CinemaScreenDo>()
                 .eq("cinema_id", screenPagePo.getCinemaId()));
 
@@ -279,7 +281,6 @@ public class ScreenService {
         }
 
         // 没有排片 删除放映厅  同时删除和影院的关联记录
-
         boolean deleteCount = cinemaScreenManager.remove(new QueryWrapper<CinemaScreenDo>()
                 .eq("screen_hall_id", id));
 

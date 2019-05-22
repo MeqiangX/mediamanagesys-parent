@@ -13,7 +13,13 @@ public class ScheduleEnum {
     public static Integer CLEAN_RANK = 0;
 
     /**
-     * 跟新电影
+     * 跟新电影榜单
      */
     public static Integer INSERT_RECORD = 1;
+
+
+    /**
+     * 清除完成排片
+     */
+    public static Integer CLEAN_ARRANGE = 2;
 }

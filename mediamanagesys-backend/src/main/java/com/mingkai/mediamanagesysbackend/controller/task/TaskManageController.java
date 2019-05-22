@@ -4,14 +4,19 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.dtstack.plat.lang.exception.BizException;
 import com.dtstack.plat.lang.web.R;
 import com.dtstack.plat.lang.web.template.APITemplate;
+import com.mingkai.mediamanagesysbackend.service.task.TaskService;
 import com.mingkai.mediamanagesyscommon.common.API;
 import com.mingkai.mediamanagesyscommon.model.Po.task.TaskPo;
+import com.mingkai.mediamanagesyscommon.model.Vo.task.TaskTypeVo;
 import com.mingkai.mediamanagesyscommon.model.Vo.task.TaskVo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 /**
  * @description: 后台定时任务管理
@@ -22,6 +27,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping(API.API_TASK_MANAGE)
 public class TaskManageController {
 
+    @Autowired
+    private TaskService taskService;
 
     @ApiOperation("手动执行任务")
     @GetMapping("task-run")
@@ -39,6 +46,22 @@ public class TaskManageController {
         }.execute();
     }
 
+    @ApiOperation("任务类型")
+    @GetMapping("task-type")
+    public R<List<TaskTypeVo>> taskTypeList(){
+        return new APITemplate<List<TaskTypeVo>>() {
+            @Override
+            protected void checkParams() throws IllegalArgumentException {
+
+            }
+
+            @Override
+            protected List<TaskTypeVo> process() throws BizException {
+                return taskService.taskTypeList();
+            }
+        }.execute();
+    }
+
     @ApiOperation("任务记录列表")
     @GetMapping("task-records")
     public R<Page<TaskVo>> taskRecords(TaskPo taskPo){
@@ -50,7 +73,7 @@ public class TaskManageController {
 
            @Override
            protected Page<TaskVo> process() throws BizException {
-               return null;
+               return taskService.taskRecords(taskPo);
            }
        }.execute();
     }

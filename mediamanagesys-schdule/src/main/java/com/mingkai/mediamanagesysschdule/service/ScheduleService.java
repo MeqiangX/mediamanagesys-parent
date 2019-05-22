@@ -1,5 +1,15 @@
 package com.mingkai.mediamanagesysschdule.service;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
+import com.mingkai.mediamanagesyscommon.manager.ScreenSeatManager;
+import com.mingkai.mediamanagesyscommon.manager.TicketDetailManager;
+import com.mingkai.mediamanagesyscommon.mapper.ScreenArrangeMapper;
+import com.mingkai.mediamanagesyscommon.model.Do.order.TicketDetailDo;
+import com.mingkai.mediamanagesyscommon.model.Do.screen.ScreenArrangeDo;
+import com.mingkai.mediamanagesyscommon.model.Do.screen.ScreenSeatDo;
+import com.mingkai.mediamanagesyscommon.utils.redis.RedisUtil;
+import com.mingkai.mediamanagesyscommon.utils.time.LocalDateTimeUtils;
 import com.mingkai.mediamanagesysschdule.constant.anno.TaskType;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.aop.framework.AopContext;
@@ -8,7 +18,10 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
 
 /**
  * @description: 定时任务service
@@ -20,6 +33,18 @@ public class ScheduleService {
 
     @Autowired
     private SendDoubanRequestService sendDoubanRequestService;
+
+    @Autowired
+    private ScreenArrangeMapper screenArrangeMapper;
+
+    @Autowired
+    private ScreenSeatManager screenSeatManager;
+
+    @Autowired
+    private TicketDetailManager ticketDetailManager;
+
+    @Autowired
+    private RedisUtil redisUtil;
 
     public static final String HOT_RANK_TABLE = "mesys_movie_hot_rank";
 
@@ -43,8 +68,8 @@ public class ScheduleService {
         log.info("执行测试方法");
     }
 
-    // 每天0点开始 跑任务
-    @Scheduled(cron = "${schedule.cron}")
+    // 每天0点开始 跑任务 1次/天
+    @Scheduled(cron = "${schedule.movie-cron}")
     public void clearDataScheduleMethod(){
 
 
@@ -55,23 +80,91 @@ public class ScheduleService {
 
         if (null != AopContext.currentProxy()){
             ((ScheduleService)(AopContext.currentProxy())).startCleanData();
-        }else{
-            startCleanData();
-        }
-
-
-        if (null != AopContext.currentProxy()){
             ((ScheduleService)(AopContext.currentProxy())).saveData();
         }else{
+            startCleanData();
             saveData();
         }
+
 
 
     }
 
 
 
-    // 过期的订单
+
+
+    /**
+     * 过期的排片清理  放映结束 先寻找排片记录 对比当前时间和 结束时间time_scope_end
+     * 超过结束时间 清理对应的坐席
+     * 然后查询订单表  查询坐席如果没有找到 则是过期了，如果是已经支付的 则状态变更为2 删除  如果是未支付的 清除redis 过期时间  删除记录
+     * 每隔一小时执行一次
+     */
+    @Transactional
+    @TaskType(type = 2)
+    @Scheduled(cron = "${schedule.order-cron}")
+    public void movieArrangeCleanTask(){
+
+        //得到当前时间 清除排片 结束时间 比 当前时间小的记录
+
+        // 清除排片
+        List<ScreenArrangeDo> screenArrangeDos = screenArrangeMapper.selectList(new QueryWrapper<ScreenArrangeDo>()
+                .le("time_scope_end", LocalDateTimeUtils.formatLocalDateTime(LocalDateTime.now(), LocalDateTimeUtils.DATE_TIME)));
+
+        if (Objects.isNull(screenArrangeDos) || screenArrangeDos.size() == 0){
+            return ;
+        }
+
+        List<Integer> arrangeIds = screenArrangeDos.stream().map(ScreenArrangeDo::getId).collect(Collectors.toList());
+
+        // 得到排片的坐席表 删除
+
+        // 删除排片记录
+        int batchIds = screenArrangeMapper.deleteBatchIds(arrangeIds);
+
+        boolean deleteArrangeSeats = screenSeatManager.remove(new QueryWrapper<ScreenSeatDo>()
+                .in("screen_arrange_id", arrangeIds));
+
+
+        // 查找所有的订单
+
+        // 如果订单的坐席不存在，则说明已经失效了， 如果没有付款，则直接删除
+        // 如果付了款，将订单变为 2 已完成状态， 删除 （如果有取票操作，也是置为已经完成）
+
+        List<TicketDetailDo> list = ticketDetailManager.list(null);
+
+        for (TicketDetailDo ticketDetailDo : list) {
+
+            String[] split = ticketDetailDo.getSeatIds().split(",");
+
+            if (null == screenSeatManager.getById(Integer.valueOf(split[0]))){
+
+                // 订单过期
+
+                // 查看订单的支付状态 成功的置为2 完成
+                Integer payStatus = ticketDetailDo.getStatus();
+                if (1 == payStatus){
+                    ticketDetailDo.setStatus(2);
+                    ticketDetailDo.setIsDeleted(1);
+                }else if (0 == payStatus){
+                    // 待支付  Redis 清除  删除订单
+                    redisUtil.del(ticketDetailDo.getOrderId());
+                    ticketDetailDo.setIsDeleted(1);
+                }else{
+                    // 2 已经完成的状态 删除
+                    ticketDetailDo.setIsDeleted(1);
+                }
+
+                //跟新
+                boolean update = ticketDetailManager.update(ticketDetailDo, new UpdateWrapper<TicketDetailDo>()
+                        .eq("id", ticketDetailDo.getId()));
+
+            }
+
+        }
+
+
+    }
 
 
     /**
