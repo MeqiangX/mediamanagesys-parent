@@ -7,13 +7,18 @@
         <option value="$PROJECT_DIR$/mediamanagesys-portal/pom.xml" />
         <option value="$PROJECT_DIR$/mediamanagesys-backend/pom.xml" />
         <option value="$PROJECT_DIR$/mediamanagesys-uc/pom.xml" />
-        <option value="$PROJECT_DIR$/mediamanagesys-common/pom.xml" />
         <option value="$PROJECT_DIR$/mediamanagesys-schdule/pom.xml" />
+        <option value="$PROJECT_DIR$/service-center/pom.xml" />
+        <option value="$PROJECT_DIR$/mapper-module/pom.xml" />
+        <option value="$PROJECT_DIR$/movie-service-api/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">
       <set>
+        <option value="$PROJECT_DIR$/client-feign/pom.xml" />
+        <option value="$PROJECT_DIR$/mediamanagesys-common/pom.xml" />
         <option value="$PROJECT_DIR$/mediamanagesys-mapp/pom.xml" />
+        <option value="$PROJECT_DIR$/movie-service/pom.xml" />
       </set>
     </option>
   </component>

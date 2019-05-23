@@ -1,0 +1,19 @@
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+spring:
+  application:
+    name: service-zuul
+
+server:
+  port: 9100
+
+zuul:
+  routes:
+    movie:
+      path: /movie/**
+      serviceId: movie-service-api   # 开启网关 将所有 http://localhost:xxx/movie/** 的请求都转发给movie-service-api服务
+
+    # .. 可以配置多个 movie + path + serviceId的

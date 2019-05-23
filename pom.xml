@@ -21,7 +21,6 @@
 
     <!-- 子模块说明 -->
     <modules>
-        <module>mediamanagesys-common</module>
         <module>mediamanagesys-backend</module>
         <module>mediamanagesys-portal</module>
         <module>mediamanagesys-uc</module>
