@@ -1,6 +1,7 @@
 package com.mingkai.mediamanagesyscommon.service;
 
-import com.mingkai.mediamanagesyscommon.utils.file.OSSClientUtil;
+
+import com.mingkai.mediamanagesysmapper.utils.file.OSSClientUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

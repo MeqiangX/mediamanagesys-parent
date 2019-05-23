@@ -1,22 +1,23 @@
 package com.mingkai.mediamanagesysuc.service;
 
+
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.dtstack.plat.lang.exception.BizException;
 import com.google.common.collect.Lists;
-import com.mingkai.mediamanagesyscommon.manager.PermisionManager;
-import com.mingkai.mediamanagesyscommon.manager.RoleManager;
-import com.mingkai.mediamanagesyscommon.manager.RolePermRelManager;
-import com.mingkai.mediamanagesyscommon.model.Do.uc.PermisionDo;
-import com.mingkai.mediamanagesyscommon.model.Do.uc.RoleDo;
-import com.mingkai.mediamanagesyscommon.model.Do.uc.RolePermRelDo;
-import com.mingkai.mediamanagesyscommon.model.Po.uc.PermRoleAddPo;
-import com.mingkai.mediamanagesyscommon.model.Po.uc.PermisionPagePo;
-import com.mingkai.mediamanagesyscommon.model.Po.uc.RoleAddPo;
-import com.mingkai.mediamanagesyscommon.model.Vo.uc.PermisionVo;
-import com.mingkai.mediamanagesyscommon.model.Vo.uc.RoleVo;
-import com.mingkai.mediamanagesyscommon.utils.convert.ConvertUtil;
-import com.mingkai.mediamanagesyscommon.utils.page.PageUtils;
+import com.mingkai.mediamanagesysmapper.manager.PermisionManager;
+import com.mingkai.mediamanagesysmapper.manager.RoleManager;
+import com.mingkai.mediamanagesysmapper.manager.RolePermRelManager;
+import com.mingkai.mediamanagesysmapper.model.Do.uc.PermisionDo;
+import com.mingkai.mediamanagesysmapper.model.Do.uc.RoleDo;
+import com.mingkai.mediamanagesysmapper.model.Do.uc.RolePermRelDo;
+import com.mingkai.mediamanagesysmapper.model.Po.uc.PermRoleAddPo;
+import com.mingkai.mediamanagesysmapper.model.Po.uc.PermisionPagePo;
+import com.mingkai.mediamanagesysmapper.model.Po.uc.RoleAddPo;
+import com.mingkai.mediamanagesysmapper.model.Vo.uc.PermisionVo;
+import com.mingkai.mediamanagesysmapper.model.Vo.uc.RoleVo;
+import com.mingkai.mediamanagesysmapper.utils.convert.ConvertUtil;
+import com.mingkai.mediamanagesysmapper.utils.page.PageUtils;
 import org.apache.logging.log4j.util.Strings;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

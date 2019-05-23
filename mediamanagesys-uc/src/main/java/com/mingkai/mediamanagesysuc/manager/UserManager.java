@@ -1,6 +1,7 @@
 package com.mingkai.mediamanagesysuc.manager;
 
-import com.mingkai.mediamanagesyscommon.utils.redis.RedisUtil;
+
+import com.mingkai.mediamanagesysmapper.utils.redis.RedisUtil;
 import com.mingkai.mediamanagesysuc.constant.time.TimeConstant;
 import com.mingkai.mediamanagesysuc.model.MailModel;
 import com.mingkai.mediamanagesysuc.pojo.po.MessagePo;

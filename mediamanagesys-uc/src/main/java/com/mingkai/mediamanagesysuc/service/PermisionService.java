@@ -2,11 +2,11 @@ package com.mingkai.mediamanagesysuc.service;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.dtstack.plat.lang.exception.BizException;
-import com.mingkai.mediamanagesyscommon.manager.PermisionManager;
-import com.mingkai.mediamanagesyscommon.model.Do.uc.PermisionDo;
-import com.mingkai.mediamanagesyscommon.model.Po.uc.PermAddPo;
-import com.mingkai.mediamanagesyscommon.model.Vo.uc.PermisionVo;
-import com.mingkai.mediamanagesyscommon.utils.convert.ConvertUtil;
+import com.mingkai.mediamanagesysmapper.manager.PermisionManager;
+import com.mingkai.mediamanagesysmapper.model.Do.uc.PermisionDo;
+import com.mingkai.mediamanagesysmapper.model.Po.uc.PermAddPo;
+import com.mingkai.mediamanagesysmapper.model.Vo.uc.PermisionVo;
+import com.mingkai.mediamanagesysmapper.utils.convert.ConvertUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

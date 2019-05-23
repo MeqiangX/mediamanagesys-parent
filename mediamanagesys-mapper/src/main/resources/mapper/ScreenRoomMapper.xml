@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mingkai.mediamanagesysmapper.mapper.ScreenRoomMapper">
+
+    <select id="queryScreensPage" resultType="com.mingkai.mediamanagesysmapper.model.Do.screen.ScreenRoomDo">
+        select * from mesys_screen_room
+        <where>
+            is_deleted = 0
+            <if test="screenPagePo.screeningHallName != null and screenPagePo.screeningHallName != ''">
+                and screening_hall_name like CONCAT('%',#{screenPagePo.screeningHallName},'%')
+            </if>
+        </where>
+    </select>
+</mapper>

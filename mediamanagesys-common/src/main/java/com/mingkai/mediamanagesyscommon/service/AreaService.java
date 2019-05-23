@@ -5,8 +5,8 @@ import com.github.stuxuhai.jpinyin.PinyinException;
 import com.github.stuxuhai.jpinyin.PinyinHelper;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
-import com.mingkai.mediamanagesyscommon.mapper.common.AreaMapper;
-import com.mingkai.mediamanagesyscommon.model.common.*;
+import com.mingkai.mediamanagesysmapper.mapper.common.AreaMapper;
+import com.mingkai.mediamanagesysmapper.model.common.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.*;
@@ -70,7 +70,7 @@ public class AreaService {
      * @param cityName
      * @return
      */
-    public List<City> searchCity(Integer fatherId,String cityName){
+    public List<City> searchCity(Integer fatherId, String cityName){
         return areaMapper.selectCitysByName(fatherId,cityName);
     }
 

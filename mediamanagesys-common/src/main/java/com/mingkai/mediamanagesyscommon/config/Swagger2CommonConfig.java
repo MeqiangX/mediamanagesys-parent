@@ -23,7 +23,7 @@ public class Swagger2CommonConfig {
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo())  //构建swagger-ui 基本信息
                 .select() //返回一个ApiSelectorBuilder实例来控制哪些接口暴露给swagger来展现
-                .apis(RequestHandlerSelectors.basePackage("com.mingkai"))
+                .apis(RequestHandlerSelectors.basePackage("com.mingkai.mediamanagesyscommon.controller"))
                 .paths(PathSelectors.any())
                 .build();
     }
@@ -31,7 +31,7 @@ public class Swagger2CommonConfig {
 
     private ApiInfo apiInfo(){
         return new ApiInfoBuilder()
-                .title("电影院管理系统 前台模块 RestFul Apis")
+                .title("电影院管理系统 通用模块 RestFul Apis")
                 .description("整合测试 调试接口")
                 .termsOfServiceUrl("www.baidu.com")
                 .contact("Meqiang")

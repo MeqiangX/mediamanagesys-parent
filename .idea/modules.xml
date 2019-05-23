@@ -2,12 +2,16 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/mapper/mapper.iml" filepath="$PROJECT_DIR$/mapper/mapper.iml" />
       <module fileurl="file://$PROJECT_DIR$/mediamanagesys-backend/mediamanagesys-backend.iml" filepath="$PROJECT_DIR$/mediamanagesys-backend/mediamanagesys-backend.iml" />
       <module fileurl="file://$PROJECT_DIR$/mediamanagesys-common/mediamanagesys-common.iml" filepath="$PROJECT_DIR$/mediamanagesys-common/mediamanagesys-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mediamanagesys-mapper/mediamanagesys-mapper.iml" filepath="$PROJECT_DIR$/mediamanagesys-mapper/mediamanagesys-mapper.iml" />
       <module fileurl="file://$PROJECT_DIR$/mediamanagesys-parent.iml" filepath="$PROJECT_DIR$/mediamanagesys-parent.iml" />
       <module fileurl="file://$PROJECT_DIR$/mediamanagesys-portal/mediamanagesys-portal.iml" filepath="$PROJECT_DIR$/mediamanagesys-portal/mediamanagesys-portal.iml" />
       <module fileurl="file://$PROJECT_DIR$/mediamanagesys-schdule/mediamanagesys-schdule.iml" filepath="$PROJECT_DIR$/mediamanagesys-schdule/mediamanagesys-schdule.iml" />
       <module fileurl="file://$PROJECT_DIR$/mediamanagesys-uc/mediamanagesys-uc.iml" filepath="$PROJECT_DIR$/mediamanagesys-uc/mediamanagesys-uc.iml" />
+      <module fileurl="file://$PROJECT_DIR$/movie-api/movie-api.iml" filepath="$PROJECT_DIR$/movie-api/movie-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/register/register.iml" filepath="$PROJECT_DIR$/register/register.iml" />
     </modules>
   </component>
 </project>

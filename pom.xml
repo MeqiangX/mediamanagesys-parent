@@ -26,6 +26,7 @@
         <module>mediamanagesys-portal</module>
         <module>mediamanagesys-uc</module>
         <module>mediamanagesys-schdule</module>
+        <module>mapper</module>
     </modules>
 
     <!-- 版本控制 并未导入 可以在这儿对所有用到的依赖进行版本控制 就完成了整个项目的依赖版本控制 而如果要在某个项目中单独选择版本 则只需要加上version即可 就近原则-->
@@ -218,7 +219,16 @@
             <optional>true</optional>
         </dependency>
 
+        <!--工具包-->
+        <dependency>
+            <groupId>com.dtstack.plat</groupId>
+            <artifactId>dt-lang</artifactId>
+        </dependency>
 
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+        </dependency>
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -226,10 +236,10 @@
             <scope>test</scope>
         </dependency>
 
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-tomcat</artifactId>
-        </dependency>
+        <!--    <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-tomcat</artifactId>
+            </dependency>-->
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -237,68 +247,60 @@
         </dependency>
 
         <dependency>
-            <groupId>com.baomidou</groupId>
-            <artifactId>mybatis-plus-boot-starter</artifactId>
-        </dependency>
-
-        <!-- druid阿里巴巴数据库连接池 -->
-        <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>druid-spring-boot-starter</artifactId>
-        </dependency>
-
-        <!--mysql-->
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <scope>runtime</scope>
-        </dependency>
-
-        <!--工具包-->
-        <dependency>
-            <groupId>com.dtstack.plat</groupId>
-            <artifactId>dt-lang</artifactId>
-        </dependency>
-
-        <!-- kaptcha验证码 -->
-        <dependency>
-            <groupId>com.github.penggle</groupId>
-            <artifactId>kaptcha</artifactId>
-        </dependency>
-
-        <!--swagger2-->
-        <dependency>
-            <groupId>io.springfox</groupId>
-            <artifactId>springfox-swagger2</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>io.springfox</groupId>
-            <artifactId>springfox-swagger-ui</artifactId>
-        </dependency>
-
-        <!-- fastjson -->
-        <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
         </dependency>
 
-        <!--阿里短信SDK-->
-        <dependency>
-            <groupId>com.aliyun</groupId>
-            <artifactId>aliyun-java-sdk-core</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.aliyun</groupId>
-            <artifactId>aliyun-java-sdk-ecs</artifactId>
-        </dependency>
+        <!-- <dependency>
+             <groupId>com.baomidou</groupId>
+             <artifactId>mybatis-plus-boot-starter</artifactId>
+         </dependency>
+         &lt;!&ndash; druid阿里巴巴数据库连接池 &ndash;&gt;
+         <dependency>
+             <groupId>com.alibaba</groupId>
+             <artifactId>druid-spring-boot-starter</artifactId>
+         </dependency>-->
 
+        <!--mysql-->
+        <!-- <dependency>
+             <groupId>mysql</groupId>
+             <artifactId>mysql-connector-java</artifactId>
+             <scope>runtime</scope>
+         </dependency>-->
+
+
+        <!--
+          &lt;!&ndash; kaptcha验证码 &ndash;&gt;
+          <dependency>
+              <groupId>com.github.penggle</groupId>
+              <artifactId>kaptcha</artifactId>
+          </dependency>-->
+
+        <!--swagger2-->
+        <!-- <dependency>
+             <groupId>io.springfox</groupId>
+             <artifactId>springfox-swagger2</artifactId>
+         </dependency>
+         <dependency>
+             <groupId>io.springfox</groupId>
+             <artifactId>springfox-swagger-ui</artifactId>
+         </dependency>-->
+
+        <!--  &lt;!&ndash; fastjson &ndash;&gt;
+          &lt;!&ndash;阿里短信SDK&ndash;&gt;
+          <dependency>
+              <groupId>com.aliyun</groupId>
+              <artifactId>aliyun-java-sdk-core</artifactId>
+          </dependency>
+          <dependency>
+              <groupId>com.aliyun</groupId>
+              <artifactId>aliyun-java-sdk-ecs</artifactId>
+          </dependency>-->
     </dependencies>
+
     <build>
         <finalName>mediamanagesys-parent</finalName>
         <plugins>
-
-            <!-- 全部在父工程中 引入 插件 都会在子模块中生效 emmm 貌似不行？-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-resources-plugin</artifactId>
@@ -308,23 +310,18 @@
                 </configuration>
             </plugin>
         </plugins>
-        <!-- 如果不添加此节点mybatis的mapper.xml文件都会被漏掉。 -->
         <resources>
             <resource>
                 <directory>src/main/java</directory>
                 <includes>
-                    <include>**/*.yml</include>
-                    <include>**/*.properties</include>
-                    <include>**/*.xml</include>
+                    <include>**/**</include>
                 </includes>
                 <filtering>false</filtering>
             </resource>
             <resource>
                 <directory>src/main/resources</directory>
                 <includes>
-                    <include>**/*.yml</include>
-                    <include>**/*.properties</include>
-                    <include>**/*.xml</include>
+                    <include>**/*.**</include>
                 </includes>
                 <filtering>false</filtering>
             </resource>

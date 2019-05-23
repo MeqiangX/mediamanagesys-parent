@@ -1,13 +1,14 @@
 package com.mingkai.mediamanagesysbackend.controller.order;
 
+
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.dtstack.plat.lang.exception.BizException;
 import com.dtstack.plat.lang.web.R;
 import com.dtstack.plat.lang.web.template.APITemplate;
 import com.mingkai.mediamanagesysbackend.service.order.OrderManageService;
-import com.mingkai.mediamanagesyscommon.common.API;
-import com.mingkai.mediamanagesyscommon.model.Po.order.TicketSearchPo;
-import com.mingkai.mediamanagesyscommon.model.Vo.ticket.TicketDetailVo;
+import com.mingkai.mediamanagesysmapper.common.API;
+import com.mingkai.mediamanagesysmapper.model.Po.order.TicketSearchPo;
+import com.mingkai.mediamanagesysmapper.model.Vo.ticket.TicketDetailVo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;

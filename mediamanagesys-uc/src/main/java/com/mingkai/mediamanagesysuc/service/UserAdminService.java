@@ -1,18 +1,19 @@
 package com.mingkai.mediamanagesysuc.service;
 
+
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.dtstack.plat.lang.exception.BizException;
-import com.mingkai.mediamanagesyscommon.manager.UserAdminManager;
-import com.mingkai.mediamanagesyscommon.mapper.UserInfoMapper;
-import com.mingkai.mediamanagesyscommon.mapper.UserMapper;
-import com.mingkai.mediamanagesyscommon.model.Do.UserAdminDo;
-import com.mingkai.mediamanagesyscommon.model.Do.uc.UserDO;
-import com.mingkai.mediamanagesyscommon.model.Do.uc.UserInfoDo;
-import com.mingkai.mediamanagesyscommon.model.Po.uc.UserAddPo;
-import com.mingkai.mediamanagesyscommon.model.Po.uc.UserAdminAddPo;
-import com.mingkai.mediamanagesyscommon.model.Po.uc.UserAdminLoginPo;
-import com.mingkai.mediamanagesyscommon.model.Po.uc.UserAdminPagePo;
+import com.mingkai.mediamanagesysmapper.manager.UserAdminManager;
+import com.mingkai.mediamanagesysmapper.mapper.UserInfoMapper;
+import com.mingkai.mediamanagesysmapper.mapper.UserMapper;
+import com.mingkai.mediamanagesysmapper.model.Do.UserAdminDo;
+import com.mingkai.mediamanagesysmapper.model.Do.uc.UserDO;
+import com.mingkai.mediamanagesysmapper.model.Do.uc.UserInfoDo;
+import com.mingkai.mediamanagesysmapper.model.Po.uc.UserAddPo;
+import com.mingkai.mediamanagesysmapper.model.Po.uc.UserAdminAddPo;
+import com.mingkai.mediamanagesysmapper.model.Po.uc.UserAdminLoginPo;
+import com.mingkai.mediamanagesysmapper.model.Po.uc.UserAdminPagePo;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -183,7 +184,7 @@ public class UserAdminService {
      */
     public Page<UserAdminDo> adminsUnder(UserAdminPagePo userAdminPagePo){
 
-        Page<UserAdminDo>  result = userAdminManager.getBaseMapper().userAdminPages(userAdminPagePo);
+        Page<UserAdminDo> result = userAdminManager.getBaseMapper().userAdminPages(userAdminPagePo);
 
         return result;
     }

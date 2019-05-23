@@ -1,14 +1,15 @@
 package com.mingkai.mediamanagesysbackend.controller.task;
 
+
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.dtstack.plat.lang.exception.BizException;
 import com.dtstack.plat.lang.web.R;
 import com.dtstack.plat.lang.web.template.APITemplate;
 import com.mingkai.mediamanagesysbackend.service.task.TaskService;
-import com.mingkai.mediamanagesyscommon.common.API;
-import com.mingkai.mediamanagesyscommon.model.Po.task.TaskPo;
-import com.mingkai.mediamanagesyscommon.model.Vo.task.TaskTypeVo;
-import com.mingkai.mediamanagesyscommon.model.Vo.task.TaskVo;
+import com.mingkai.mediamanagesysmapper.common.API;
+import com.mingkai.mediamanagesysmapper.model.Po.task.TaskPo;
+import com.mingkai.mediamanagesysmapper.model.Vo.task.TaskTypeVo;
+import com.mingkai.mediamanagesysmapper.model.Vo.task.TaskVo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,8 +1,9 @@
 package com.mingkai.mediamanagesysuc.controller;
 
+
 import com.google.code.kaptcha.Constants;
 import com.google.code.kaptcha.Producer;
-import com.mingkai.mediamanagesyscommon.common.API;
+import com.mingkai.mediamanagesysmapper.common.API;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +28,7 @@ import java.awt.image.BufferedImage;
 public class CodeController {
 
     @Autowired
-    private Producer captchaProducer = null;
+    private Producer captchaProducer;
 
 
     @ApiOperation("前端验证码图片")

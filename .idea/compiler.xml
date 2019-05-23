@@ -6,30 +6,42 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="mapper" />
         <module name="mediamanagesys-backend" />
         <module name="mediamanagesys-common" />
+        <module name="mediamanagesys-mapper" />
         <module name="mediamanagesys-portal" />
         <module name="mediamanagesys-schdule" />
         <module name="mediamanagesys-uc" />
+        <module name="movie-api" />
+        <module name="register" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="mapper" target="1.8" />
       <module name="mediamanagesys-backend" target="1.8" />
       <module name="mediamanagesys-common" target="1.8" />
+      <module name="mediamanagesys-mapper" target="1.8" />
       <module name="mediamanagesys-parent" target="1.8" />
       <module name="mediamanagesys-portal" target="1.8" />
       <module name="mediamanagesys-schdule" target="1.8" />
       <module name="mediamanagesys-uc" target="1.8" />
+      <module name="movie-api" target="1.8" />
+      <module name="register" target="1.8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="mapper" options="-parameters" />
       <module name="mediamanagesys-backend" options="-parameters" />
       <module name="mediamanagesys-common" options="-parameters" />
+      <module name="mediamanagesys-mapper" options="-parameters" />
       <module name="mediamanagesys-parent" options="" />
       <module name="mediamanagesys-portal" options="-parameters" />
       <module name="mediamanagesys-schdule" options="-parameters" />
       <module name="mediamanagesys-uc" options="-parameters" />
+      <module name="movie-api" options="-parameters" />
+      <module name="register" options="-parameters" />
     </option>
   </component>
 </project>

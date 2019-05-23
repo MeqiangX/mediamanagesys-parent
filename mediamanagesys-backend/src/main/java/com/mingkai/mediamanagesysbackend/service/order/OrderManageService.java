@@ -1,9 +1,10 @@
 package com.mingkai.mediamanagesysbackend.service.order;
 
+
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.mingkai.mediamanagesyscommon.manager.TicketDetailManager;
-import com.mingkai.mediamanagesyscommon.model.Po.order.TicketSearchPo;
-import com.mingkai.mediamanagesyscommon.model.Vo.ticket.TicketDetailVo;
+import com.mingkai.mediamanagesysmapper.manager.TicketDetailManager;
+import com.mingkai.mediamanagesysmapper.model.Po.order.TicketSearchPo;
+import com.mingkai.mediamanagesysmapper.model.Vo.ticket.TicketDetailVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -9,6 +9,9 @@
         <option value="$PROJECT_DIR$/mediamanagesys-uc/pom.xml" />
         <option value="$PROJECT_DIR$/mediamanagesys-common/pom.xml" />
         <option value="$PROJECT_DIR$/mediamanagesys-schdule/pom.xml" />
+        <option value="$PROJECT_DIR$/mediamanagesys-mapper/pom.xml" />
+        <option value="$PROJECT_DIR$/movie-api/pom.xml" />
+        <option value="$PROJECT_DIR$/register/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">

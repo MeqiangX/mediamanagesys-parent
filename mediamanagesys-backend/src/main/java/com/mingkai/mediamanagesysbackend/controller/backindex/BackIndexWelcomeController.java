@@ -7,7 +7,7 @@ import com.mingkai.mediamanagesysbackend.model.PO.EchartsPo;
 import com.mingkai.mediamanagesysbackend.model.VO.EchartsVo;
 import com.mingkai.mediamanagesysbackend.model.VO.PaneDataVo;
 import com.mingkai.mediamanagesysbackend.service.backindex.BackIndexWelcomeService;
-import com.mingkai.mediamanagesyscommon.common.API;
+import com.mingkai.mediamanagesysmapper.common.API;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;

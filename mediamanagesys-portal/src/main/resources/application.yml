@@ -19,14 +19,27 @@ spring:
     port: 6379
     password: 123456
     timeout: 0
+  application:
+    name: portal-app
 #log
 logging:
   level:
     com:
       mingkai:
-        mediamanagesyscommon:
+        mediamanagesysmapper:
           mapper: debug
 mybatis-plus:
-  mapper-locations: classpath*:/mapper/*Mapper.xml
+  mapper-locations: classpath:mapper/*.xml # classpath*:/mapper/*Mapper.xml
   configuration:
     map-underscore-to-camel-case: true
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+# feign超时问题
+feign:
+  client:
+    config:
+      default:
+        connec-timeout: 20000
+        read-timeout: 20000

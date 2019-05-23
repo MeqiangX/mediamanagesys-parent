@@ -3,9 +3,9 @@ package com.mingkai.mediamanagesyscommon.controller;
 import com.dtstack.plat.lang.exception.BizException;
 import com.dtstack.plat.lang.web.R;
 import com.dtstack.plat.lang.web.template.APITemplate;
-import com.mingkai.mediamanagesyscommon.common.API;
-import com.mingkai.mediamanagesyscommon.model.common.*;
 import com.mingkai.mediamanagesyscommon.service.AreaService;
+import com.mingkai.mediamanagesysmapper.common.API;
+import com.mingkai.mediamanagesysmapper.model.common.*;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+
 
 /**
  * @description:
@@ -61,7 +62,7 @@ public class AreaCommonController {
 
     @ApiOperation("模糊搜索城市")
     @GetMapping("search-city")
-    public R<List<City>> searchCity(Integer fatherId,String cityName){
+    public R<List<City>> searchCity(Integer fatherId, String cityName){
         return new APITemplate<List<City>>() {
             @Override
             protected void checkParams() throws IllegalArgumentException {

@@ -1,16 +1,16 @@
 package com.mingkai.mediamanagesysuc.service;
 
 
+import com.aliyun.oss.ClientException;
 import com.aliyuncs.CommonRequest;
 import com.aliyuncs.CommonResponse;
 import com.aliyuncs.DefaultAcsClient;
 import com.aliyuncs.IAcsClient;
-import com.aliyuncs.exceptions.ClientException;
 import com.aliyuncs.exceptions.ServerException;
 import com.aliyuncs.http.MethodType;
 import com.aliyuncs.profile.DefaultProfile;
 import com.dtstack.plat.lang.exception.BizException;
-import com.mingkai.mediamanagesyscommon.utils.redis.RedisUtil;
+import com.mingkai.mediamanagesysmapper.utils.redis.RedisUtil;
 import com.mingkai.mediamanagesysuc.commonUtil.CodeUtil;
 import com.mingkai.mediamanagesysuc.interfaces.Sender;
 import com.mingkai.mediamanagesysuc.model.MailModel;
@@ -99,6 +99,8 @@ public class SenderService implements Sender {
         } catch (ClientException e) {
            log.info(String.format("短信发送失败-{}",e.getMessage()));
             throw new BizException(e.getMessage());
+        }  catch (com.aliyuncs.exceptions.ClientException e) {
+            e.printStackTrace();
         }
 
         return true;

@@ -1,19 +1,20 @@
 package com.mingkai.mediamanagesysportal.service;
 
+
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.dtstack.plat.lang.exception.BizException;
-import com.mingkai.mediamanagesyscommon.common.MovieRankEnum;
-import com.mingkai.mediamanagesyscommon.manager.*;
-import com.mingkai.mediamanagesyscommon.mapper.MovieRankMapper;
-import com.mingkai.mediamanagesyscommon.model.Do.movie.*;
-import com.mingkai.mediamanagesyscommon.model.Po.movie.MoviePagePo;
-import com.mingkai.mediamanagesyscommon.model.Po.movie.MovieRankPagePo;
-import com.mingkai.mediamanagesyscommon.model.Po.movie.MovieSearchPo;
-import com.mingkai.mediamanagesyscommon.model.Vo.movie.MovieBlooperVo;
-import com.mingkai.mediamanagesyscommon.model.Vo.movie.MovieTrailerVo;
-import com.mingkai.mediamanagesyscommon.model.Vo.movie.MovieVo;
-import com.mingkai.mediamanagesyscommon.utils.convert.ConvertUtil;
+import com.mingkai.mediamanagesysmapper.common.MovieRankEnum;
+import com.mingkai.mediamanagesysmapper.manager.*;
+import com.mingkai.mediamanagesysmapper.mapper.MovieRankMapper;
+import com.mingkai.mediamanagesysmapper.model.Do.movie.*;
+import com.mingkai.mediamanagesysmapper.model.Po.movie.MoviePagePo;
+import com.mingkai.mediamanagesysmapper.model.Po.movie.MovieRankPagePo;
+import com.mingkai.mediamanagesysmapper.model.Po.movie.MovieSearchPo;
+import com.mingkai.mediamanagesysmapper.model.Vo.movie.MovieBlooperVo;
+import com.mingkai.mediamanagesysmapper.model.Vo.movie.MovieTrailerVo;
+import com.mingkai.mediamanagesysmapper.model.Vo.movie.MovieVo;
+import com.mingkai.mediamanagesysmapper.utils.convert.ConvertUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

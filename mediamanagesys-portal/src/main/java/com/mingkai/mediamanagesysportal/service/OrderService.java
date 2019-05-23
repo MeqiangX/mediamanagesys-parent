@@ -1,11 +1,11 @@
 package com.mingkai.mediamanagesysportal.service;
 
+
 import com.aliyuncs.CommonRequest;
 import com.aliyuncs.CommonResponse;
 import com.aliyuncs.DefaultAcsClient;
 import com.aliyuncs.IAcsClient;
 import com.aliyuncs.exceptions.ClientException;
-import com.aliyuncs.exceptions.ServerException;
 import com.aliyuncs.http.MethodType;
 import com.aliyuncs.profile.DefaultProfile;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
@@ -13,30 +13,30 @@ import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.dtstack.plat.lang.exception.BizException;
 import com.google.common.collect.Lists;
-import com.mingkai.mediamanagesyscommon.common.TimeConstant;
-import com.mingkai.mediamanagesyscommon.manager.*;
-import com.mingkai.mediamanagesyscommon.mapper.ScreenArrangeMapper;
-import com.mingkai.mediamanagesyscommon.mapper.ScreenRoomMapper;
-import com.mingkai.mediamanagesyscommon.mapper.UserMapper;
-import com.mingkai.mediamanagesyscommon.model.Do.cinema.CinemaDo;
-import com.mingkai.mediamanagesyscommon.model.Do.cinema.CinemaScreenDo;
-import com.mingkai.mediamanagesyscommon.model.Do.movie.MovieDetailDo;
-import com.mingkai.mediamanagesyscommon.model.Do.order.ClassDicDo;
-import com.mingkai.mediamanagesyscommon.model.Do.order.ClassUserRelDo;
-import com.mingkai.mediamanagesyscommon.model.Do.order.TicketDetailDo;
-import com.mingkai.mediamanagesyscommon.model.Do.screen.ScreenArrangeDo;
-import com.mingkai.mediamanagesyscommon.model.Do.screen.ScreenRoomDo;
-import com.mingkai.mediamanagesyscommon.model.Do.screen.ScreenSeatDo;
-import com.mingkai.mediamanagesyscommon.model.Do.uc.UserDO;
-import com.mingkai.mediamanagesyscommon.model.Po.order.CoordinatePo;
-import com.mingkai.mediamanagesyscommon.model.Po.order.OrderPagePo;
-import com.mingkai.mediamanagesyscommon.model.Po.order.SeatPo;
-import com.mingkai.mediamanagesyscommon.model.Vo.order.OrderSimpleVo;
-import com.mingkai.mediamanagesyscommon.utils.convert.ConvertUtil;
-import com.mingkai.mediamanagesyscommon.utils.page.PageUtils;
-import com.mingkai.mediamanagesyscommon.utils.redis.RedisUtil;
-import com.mingkai.mediamanagesyscommon.utils.string.onlyID.SnowFlakeUtil;
-import com.mingkai.mediamanagesyscommon.utils.time.LocalDateTimeUtils;
+import com.mingkai.mediamanagesysmapper.common.TimeConstant;
+import com.mingkai.mediamanagesysmapper.manager.*;
+import com.mingkai.mediamanagesysmapper.mapper.ScreenArrangeMapper;
+import com.mingkai.mediamanagesysmapper.mapper.ScreenRoomMapper;
+import com.mingkai.mediamanagesysmapper.mapper.UserMapper;
+import com.mingkai.mediamanagesysmapper.model.Do.cinema.CinemaDo;
+import com.mingkai.mediamanagesysmapper.model.Do.cinema.CinemaScreenDo;
+import com.mingkai.mediamanagesysmapper.model.Do.movie.MovieDetailDo;
+import com.mingkai.mediamanagesysmapper.model.Do.order.ClassDicDo;
+import com.mingkai.mediamanagesysmapper.model.Do.order.ClassUserRelDo;
+import com.mingkai.mediamanagesysmapper.model.Do.order.TicketDetailDo;
+import com.mingkai.mediamanagesysmapper.model.Do.screen.ScreenArrangeDo;
+import com.mingkai.mediamanagesysmapper.model.Do.screen.ScreenRoomDo;
+import com.mingkai.mediamanagesysmapper.model.Do.screen.ScreenSeatDo;
+import com.mingkai.mediamanagesysmapper.model.Do.uc.UserDO;
+import com.mingkai.mediamanagesysmapper.model.Po.order.CoordinatePo;
+import com.mingkai.mediamanagesysmapper.model.Po.order.OrderPagePo;
+import com.mingkai.mediamanagesysmapper.model.Po.order.SeatPo;
+import com.mingkai.mediamanagesysmapper.model.Vo.order.OrderSimpleVo;
+import com.mingkai.mediamanagesysmapper.utils.convert.ConvertUtil;
+import com.mingkai.mediamanagesysmapper.utils.page.PageUtils;
+import com.mingkai.mediamanagesysmapper.utils.redis.RedisUtil;
+import com.mingkai.mediamanagesysmapper.utils.string.onlyID.SnowFlakeUtil;
+import com.mingkai.mediamanagesysmapper.utils.time.LocalDateTimeUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.logging.log4j.util.Strings;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -651,9 +651,6 @@ public class OrderService {
         try {
             CommonResponse response = client.getCommonResponse(request);
             System.out.println(response.getData());
-        } catch (ServerException e) {
-            log.info(String.format("短信发送失败-{}",e.getMessage()));
-            throw new BizException(e.getMessage());
         } catch (ClientException e) {
             log.info(String.format("短信发送失败-{}",e.getMessage()));
             throw new BizException(e.getMessage());

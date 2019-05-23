@@ -1,15 +1,16 @@
 package com.mingkai.mediamanagesysuc.controller;
 
+
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.dtstack.plat.lang.exception.BizException;
 import com.dtstack.plat.lang.web.R;
 import com.dtstack.plat.lang.web.template.APITemplate;
-import com.mingkai.mediamanagesyscommon.common.API;
-import com.mingkai.mediamanagesyscommon.model.Do.UserAdminDo;
-import com.mingkai.mediamanagesyscommon.model.Po.uc.UserAddPo;
-import com.mingkai.mediamanagesyscommon.model.Po.uc.UserAdminAddPo;
-import com.mingkai.mediamanagesyscommon.model.Po.uc.UserAdminLoginPo;
-import com.mingkai.mediamanagesyscommon.model.Po.uc.UserAdminPagePo;
+import com.mingkai.mediamanagesysmapper.common.API;
+import com.mingkai.mediamanagesysmapper.model.Do.UserAdminDo;
+import com.mingkai.mediamanagesysmapper.model.Po.uc.UserAddPo;
+import com.mingkai.mediamanagesysmapper.model.Po.uc.UserAdminAddPo;
+import com.mingkai.mediamanagesysmapper.model.Po.uc.UserAdminLoginPo;
+import com.mingkai.mediamanagesysmapper.model.Po.uc.UserAdminPagePo;
 import com.mingkai.mediamanagesysuc.service.UserAdminService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;

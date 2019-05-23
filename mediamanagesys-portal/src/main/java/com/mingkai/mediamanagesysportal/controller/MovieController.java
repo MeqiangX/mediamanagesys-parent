@@ -1,18 +1,20 @@
 package com.mingkai.mediamanagesysportal.controller;
 
+
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.dtstack.plat.lang.base.Checks;
 import com.dtstack.plat.lang.exception.BizException;
 import com.dtstack.plat.lang.web.R;
 import com.dtstack.plat.lang.web.template.APITemplate;
-import com.mingkai.mediamanagesyscommon.common.API;
-import com.mingkai.mediamanagesyscommon.model.Po.movie.MoviePagePo;
-import com.mingkai.mediamanagesyscommon.model.Po.movie.MovieRankPagePo;
-import com.mingkai.mediamanagesyscommon.model.Po.movie.MovieSearchPo;
-import com.mingkai.mediamanagesyscommon.model.Vo.movie.MovieBlooperVo;
-import com.mingkai.mediamanagesyscommon.model.Vo.movie.MovieTrailerVo;
-import com.mingkai.mediamanagesyscommon.model.Vo.movie.MovieVo;
-import com.mingkai.mediamanagesysportal.service.MovieService;
+import com.mingkai.mediamanagesysmapper.common.API;
+import com.mingkai.mediamanagesysmapper.model.Po.movie.MoviePagePo;
+import com.mingkai.mediamanagesysmapper.model.Po.movie.MovieRankPagePo;
+import com.mingkai.mediamanagesysmapper.model.Po.movie.MovieSearchPo;
+import com.mingkai.mediamanagesysmapper.model.Vo.movie.MovieBlooperVo;
+import com.mingkai.mediamanagesysmapper.model.Vo.movie.MovieTrailerVo;
+import com.mingkai.mediamanagesysmapper.model.Vo.movie.MovieVo;
+import com.mingkai.mediamanagesysportal.service.MovieRpcService;
+
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,7 +35,7 @@ import java.util.List;
 public class MovieController {
 
     @Autowired
-    private MovieService movieService;
+    private MovieRpcService movieRpcService;
 
     @ApiOperation("前台测试")
     @GetMapping("portal-test")
@@ -62,7 +64,7 @@ public class MovieController {
 
             @Override
             protected MovieVo process() throws BizException {
-                return movieService.movieDetailById(id);
+                return movieRpcService.movieDetailsById(id);
             }
         }.execute();
     }
@@ -79,7 +81,7 @@ public class MovieController {
 
             @Override
             protected Page<MovieVo> process() throws BizException {
-                return movieService.movieRank(movieRankPagePo);
+                return movieRpcService.movieRank(movieRankPagePo);
             }
         }.execute();
     }
@@ -95,7 +97,7 @@ public class MovieController {
 
             @Override
             protected Page<MovieVo> process() throws BizException {
-                return movieService.moviePage(moviePagePo);
+                return movieRpcService.moviePage(moviePagePo);
             }
         }.execute();
     }
@@ -112,7 +114,7 @@ public class MovieController {
 
             @Override
             protected List<MovieTrailerVo> process() throws BizException {
-                return movieService.movieTrailers(movieId);
+                return movieRpcService.movieTrailers(movieId);
             }
         }.execute();
     }
@@ -128,7 +130,7 @@ public class MovieController {
 
             @Override
             protected List<MovieBlooperVo> process() throws BizException {
-                return movieService.movieBloopers(movieId);
+                return movieRpcService.movieBloopers(movieId);
             }
         }.execute();
     }
@@ -145,7 +147,7 @@ public class MovieController {
 
             @Override
             protected Page<MovieVo> process() throws BizException {
-                return movieService.searchMovies(movieSearchPo);
+                return movieRpcService.searchMovies(movieSearchPo);
             }
         }.execute();
     }
