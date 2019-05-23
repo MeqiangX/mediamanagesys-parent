@@ -9,6 +9,7 @@
         <option value="$PROJECT_DIR$/mediamanagesys-uc/pom.xml" />
         <option value="$PROJECT_DIR$/mediamanagesys-common/pom.xml" />
         <option value="$PROJECT_DIR$/mediamanagesys-schdule/pom.xml" />
+        <option value="$PROJECT_DIR$/service-center/target/maven-archiver/pom.properties" />
       </list>
     </option>
     <option name="ignoredFiles">

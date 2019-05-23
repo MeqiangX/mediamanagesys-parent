@@ -6,6 +6,7 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="maven-archiver" />
         <module name="mediamanagesys-backend" />
         <module name="mediamanagesys-common" />
         <module name="mediamanagesys-portal" />
@@ -14,6 +15,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="maven-archiver" target="1.8" />
       <module name="mediamanagesys-backend" target="1.8" />
       <module name="mediamanagesys-common" target="1.8" />
       <module name="mediamanagesys-parent" target="1.8" />
