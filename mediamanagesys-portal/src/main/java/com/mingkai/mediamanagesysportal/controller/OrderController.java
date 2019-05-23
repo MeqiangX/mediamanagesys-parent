@@ -228,4 +228,21 @@ public class OrderController {
             }
         }.execute();
     }
+
+
+    @ApiOperation("发送购票成功短信")
+    @GetMapping("send-order-success")
+    public R<Boolean> sendOrderSuccess(String orderId){
+        return new APITemplate<Boolean>() {
+            @Override
+            protected void checkParams() throws IllegalArgumentException {
+
+            }
+
+            @Override
+            protected Boolean process() throws BizException {
+                return orderService.sendOrderSuccessMessage(orderId);
+            }
+        }.execute();
+    }
 }

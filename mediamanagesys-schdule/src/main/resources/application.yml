@@ -25,4 +25,4 @@ mybatis-plus:
 #cron 定时任务执行周期
 schedule:
   movie-cron: 0 0 23 * * ?    # 每天23点执行一次
-  order-cron: 0 */60 * * * ? # 每隔60分钟执行一次
+  order-cron: 0 */3 * * * ? # 每隔60分钟执行一次
