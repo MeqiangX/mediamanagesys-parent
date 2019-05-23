@@ -3,22 +3,35 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/cinema-service-api/cinema-service-api.iml" filepath="$PROJECT_DIR$/cinema-service-api/cinema-service-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/cinema-service-api/cinema-service-api.iml" filepath="$PROJECT_DIR$/cinema-service-api/cinema-service-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/client-feign/client-feign.iml" filepath="$PROJECT_DIR$/client-feign/client-feign.iml" />
       <module fileurl="file://$PROJECT_DIR$/client-feign/client-feign.iml" filepath="$PROJECT_DIR$/client-feign/client-feign.iml" />
       <module fileurl="file://$PROJECT_DIR$/common-service-api/common-service-api.iml" filepath="$PROJECT_DIR$/common-service-api/common-service-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/common-service-api/common-service-api.iml" filepath="$PROJECT_DIR$/common-service-api/common-service-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mapper-module/mapper-module.iml" filepath="$PROJECT_DIR$/mapper-module/mapper-module.iml" />
       <module fileurl="file://$PROJECT_DIR$/mapper-module/mapper-module.iml" filepath="$PROJECT_DIR$/mapper-module/mapper-module.iml" />
       <module fileurl="file://$PROJECT_DIR$/mediamanagesys-backend/mediamanagesys-backend.iml" filepath="$PROJECT_DIR$/mediamanagesys-backend/mediamanagesys-backend.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mediamanagesys-common-app/mediamanagesys-common-app.iml" filepath="$PROJECT_DIR$/mediamanagesys-common-app/mediamanagesys-common-app.iml" />
       <module fileurl="file://$PROJECT_DIR$/mediamanagesys-common-app/mediamanagesys-common-app.iml" filepath="$PROJECT_DIR$/mediamanagesys-common-app/mediamanagesys-common-app.iml" />
       <module fileurl="file://$PROJECT_DIR$/mediamanagesys-parent.iml" filepath="$PROJECT_DIR$/mediamanagesys-parent.iml" />
       <module fileurl="file://$PROJECT_DIR$/mediamanagesys-portal/mediamanagesys-portal.iml" filepath="$PROJECT_DIR$/mediamanagesys-portal/mediamanagesys-portal.iml" />
       <module fileurl="file://$PROJECT_DIR$/mediamanagesys-schdule/mediamanagesys-schdule.iml" filepath="$PROJECT_DIR$/mediamanagesys-schdule/mediamanagesys-schdule.iml" />
       <module fileurl="file://$PROJECT_DIR$/mediamanagesys-uc/mediamanagesys-uc.iml" filepath="$PROJECT_DIR$/mediamanagesys-uc/mediamanagesys-uc.iml" />
       <module fileurl="file://$PROJECT_DIR$/movie-service/movie-service.iml" filepath="$PROJECT_DIR$/movie-service/movie-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/movie-service/movie-service.iml" filepath="$PROJECT_DIR$/movie-service/movie-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/movie-service-api/movie-service-api.iml" filepath="$PROJECT_DIR$/movie-service-api/movie-service-api.iml" />
       <module fileurl="file://$PROJECT_DIR$/movie-service-api/movie-service-api.iml" filepath="$PROJECT_DIR$/movie-service-api/movie-service-api.iml" />
       <module fileurl="file://$PROJECT_DIR$/order-service-api/order-service-api.iml" filepath="$PROJECT_DIR$/order-service-api/order-service-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/order-service-api/order-service-api.iml" filepath="$PROJECT_DIR$/order-service-api/order-service-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/pay-service-api/pay-service-api.iml" filepath="$PROJECT_DIR$/pay-service-api/pay-service-api.iml" />
       <module fileurl="file://$PROJECT_DIR$/pay-service-api/pay-service-api.iml" filepath="$PROJECT_DIR$/pay-service-api/pay-service-api.iml" />
       <module fileurl="file://$PROJECT_DIR$/screen-service-api/screen-service-api.iml" filepath="$PROJECT_DIR$/screen-service-api/screen-service-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/screen-service-api/screen-service-api.iml" filepath="$PROJECT_DIR$/screen-service-api/screen-service-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/service-center/service-center.iml" filepath="$PROJECT_DIR$/service-center/service-center.iml" />
       <module fileurl="file://$PROJECT_DIR$/service-center/service-center.iml" filepath="$PROJECT_DIR$/service-center/service-center.iml" />
       <module fileurl="file://$PROJECT_DIR$/service-zuul/service-zuul.iml" filepath="$PROJECT_DIR$/service-zuul/service-zuul.iml" />
+      <module fileurl="file://$PROJECT_DIR$/service-zuul/service-zuul.iml" filepath="$PROJECT_DIR$/service-zuul/service-zuul.iml" />
+      <module fileurl="file://$PROJECT_DIR$/uc-service-api/uc-service-api.iml" filepath="$PROJECT_DIR$/uc-service-api/uc-service-api.iml" />
       <module fileurl="file://$PROJECT_DIR$/uc-service-api/uc-service-api.iml" filepath="$PROJECT_DIR$/uc-service-api/uc-service-api.iml" />
     </modules>
   </component>
