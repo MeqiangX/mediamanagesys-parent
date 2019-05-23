@@ -1,5 +1,13 @@
 package com.mingkai.mediamanagesysportal.service;
 
+import com.aliyuncs.CommonRequest;
+import com.aliyuncs.CommonResponse;
+import com.aliyuncs.DefaultAcsClient;
+import com.aliyuncs.IAcsClient;
+import com.aliyuncs.exceptions.ClientException;
+import com.aliyuncs.exceptions.ServerException;
+import com.aliyuncs.http.MethodType;
+import com.aliyuncs.profile.DefaultProfile;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
@@ -9,6 +17,7 @@ import com.mingkai.mediamanagesyscommon.common.TimeConstant;
 import com.mingkai.mediamanagesyscommon.manager.*;
 import com.mingkai.mediamanagesyscommon.mapper.ScreenArrangeMapper;
 import com.mingkai.mediamanagesyscommon.mapper.ScreenRoomMapper;
+import com.mingkai.mediamanagesyscommon.mapper.UserMapper;
 import com.mingkai.mediamanagesyscommon.model.Do.cinema.CinemaDo;
 import com.mingkai.mediamanagesyscommon.model.Do.cinema.CinemaScreenDo;
 import com.mingkai.mediamanagesyscommon.model.Do.movie.MovieDetailDo;
@@ -18,6 +27,7 @@ import com.mingkai.mediamanagesyscommon.model.Do.order.TicketDetailDo;
 import com.mingkai.mediamanagesyscommon.model.Do.screen.ScreenArrangeDo;
 import com.mingkai.mediamanagesyscommon.model.Do.screen.ScreenRoomDo;
 import com.mingkai.mediamanagesyscommon.model.Do.screen.ScreenSeatDo;
+import com.mingkai.mediamanagesyscommon.model.Do.uc.UserDO;
 import com.mingkai.mediamanagesyscommon.model.Po.order.CoordinatePo;
 import com.mingkai.mediamanagesyscommon.model.Po.order.OrderPagePo;
 import com.mingkai.mediamanagesyscommon.model.Po.order.SeatPo;
@@ -26,6 +36,7 @@ import com.mingkai.mediamanagesyscommon.utils.convert.ConvertUtil;
 import com.mingkai.mediamanagesyscommon.utils.page.PageUtils;
 import com.mingkai.mediamanagesyscommon.utils.redis.RedisUtil;
 import com.mingkai.mediamanagesyscommon.utils.string.onlyID.SnowFlakeUtil;
+import com.mingkai.mediamanagesyscommon.utils.time.LocalDateTimeUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.logging.log4j.util.Strings;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,6 +44,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
@@ -72,6 +84,9 @@ public class OrderService {
 
     @Autowired
     private ScreenRoomMapper screenRoomMapper;
+
+    @Autowired
+    private UserMapper userMapper;
 
     @Autowired
     private RedisUtil redisUtil;
@@ -463,6 +478,9 @@ public class OrderService {
      */
     public Boolean cancelOrder(String orderId){
 
+        // 查看订单电影的开场时间 和 现在时间进行比较 过了就不显示取消 前端上做控制
+
+
         // 通过后台查询订单状态
 
         // status 0 未支付
@@ -471,6 +489,21 @@ public class OrderService {
         TicketDetailDo ticketDetailDo = ticketDetailManager.getOne(new QueryWrapper<TicketDetailDo>()
                 .eq("order_id", orderId));
 
+
+        // 查看电影的开场时间 过了即不显示退款
+        String[] seatArr = ticketDetailDo.getSeatIds().split(",");
+
+        ScreenSeatDo screenSeat = screenSeatManager.getById(seatArr[0]);
+
+        ScreenArrangeDo screenArrangeDo = screenArrangeMapper.selectById(screenSeat.getScreenArrangeId());
+
+        LocalDateTime arrangeTime = LocalDateTimeUtils.getLocalDateTimeFromStr(screenArrangeDo.getTimeScopeStart(), LocalDateTimeUtils.DATE_TIME);
+
+
+        if (LocalDateTime.now().compareTo(arrangeTime) >= 0){
+            //  当前时间 比 放映时间大  即 已经开始放映了
+            throw new BizException("该场次已经开始，无法取消");
+        }
 
         // 清除redis 订单记录
         redisUtil.del(orderId);
@@ -555,6 +588,80 @@ public class OrderService {
                 .set("status", 1));
 
         return update;
+    }
+
+
+    /**
+     * 支付完成后 发送订单短信给用户
+     * @param orderId
+     * @return
+     */
+    public Boolean sendOrderSuccessMessage(String orderId) {
+
+        // 变量 ${cinemaName} ,${screenHall} ,${dateTime} ${movie} {seats} ${orderId} ${price}
+        TicketDetailDo orderByOrderId = getOrderByOrderId(orderId);
+
+        // 电影和影院和时间的信息 在 排片表中
+        String[] seatIds = orderByOrderId.getSeatIds().split(",");
+
+        ScreenSeatDo screenSeatDo = screenSeatManager.getById(seatIds[0]);
+
+        ScreenArrangeDo screenArrangeDo = screenArrangeMapper.selectById(screenSeatDo.getScreenArrangeId());
+
+        MovieDetailDo movie = movieDetailManager.getOne(new QueryWrapper<MovieDetailDo>()
+                .eq("movie_id", screenArrangeDo.getMovieId()));
+
+
+        CinemaScreenDo cinemaScreenDo = cinemaScreenManager.getById(screenArrangeDo.getCinemaScreenId());
+
+        CinemaDo cinema = cinemaManager.getById(cinemaScreenDo.getCinemaId());
+
+        ScreenRoomDo screen = screenRoomMapper.selectById(cinemaScreenDo.getScreenHallId());
+
+        String timeScopeStart = screenArrangeDo.getTimeScopeStart();
+
+        // 坐席和价格在订单表中
+        List<ScreenSeatDo> list = (List<ScreenSeatDo>) screenSeatManager.listByIds(Arrays.asList(seatIds));
+        // 坐席列表
+        List<String> seats = Lists.newArrayList();
+        for (ScreenSeatDo seatDo : list) {
+            seats.add(seatDo.getScreeningHallX() + "排" + seatDo.getScreeningHallY() + "列");
+        }
+
+        String seatList = String.join(",", seats);
+
+        // 手机号根据用户id 拿到
+        UserDO user = userMapper.selectById(orderByOrderId.getUserId());
+        String phone = user.getPhone();
+
+        DefaultProfile profile = DefaultProfile.getProfile("cn-hangzhou", "LTAI7suwceOqdho7", "1uCBXdyNUTWymjF2E8RuNFu4B5o1hD");
+        IAcsClient client = new DefaultAcsClient(profile);
+
+        CommonRequest request = new CommonRequest();
+        request.setMethod(MethodType.POST);
+        request.setDomain("dysmsapi.aliyuncs.com");
+        request.setVersion("2017-05-25");
+        request.setAction("SendSms");
+        request.putQueryParameter("RegionId", "cn-hangzhou");
+        request.putQueryParameter("PhoneNumbers", "18061651105");
+        request.putQueryParameter("SignName", "明凯电影院");
+        request.putQueryParameter("TemplateCode", "SMS_166080623");
+        request.putQueryParameter("TemplateParam", "{\"cinemaName\": \""+ cinema.getCinemaName() +"\",\"screenHall\": \""+ screen.getScreeningHallName() +"\",\"dateTime\": \""+ timeScopeStart +"\",\"movie\": \""+ movie.getMovieName() +"\",\"seats\": \""+ seatList +"\",\"orderId\": \""+ orderId +"\",\"price\": \""+ orderByOrderId.getPrice() +"\"}");
+
+        try {
+            CommonResponse response = client.getCommonResponse(request);
+            System.out.println(response.getData());
+        } catch (ServerException e) {
+            log.info(String.format("短信发送失败-{}",e.getMessage()));
+            throw new BizException(e.getMessage());
+        } catch (ClientException e) {
+            log.info(String.format("短信发送失败-{}",e.getMessage()));
+            throw new BizException(e.getMessage());
+        } catch (Exception e){
+            log.info(e.getMessage());
+        }
+
+        return true;
     }
 
 }

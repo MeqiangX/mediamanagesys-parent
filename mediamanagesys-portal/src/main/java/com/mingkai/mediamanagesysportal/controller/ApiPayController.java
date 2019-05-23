@@ -199,6 +199,10 @@ public class ApiPayController {
 
             //更新订单
             Boolean aBoolean = orderService.paySuccess(out_trade_no);
+
+            // 付款成功后 发送短信 给用户 通知订单的信息 订单号，影院 放映厅 放映电影 座位号 票价
+            Boolean isTrue = orderService.sendOrderSuccessMessage(out_trade_no);
+
             writer.write("success");
         } else {
             writer.write("fail");

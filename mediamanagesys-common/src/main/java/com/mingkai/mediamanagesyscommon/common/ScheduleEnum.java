@@ -22,4 +22,9 @@ public class ScheduleEnum {
      * 清除完成排片
      */
     public static Integer CLEAN_ARRANGE = 2;
+
+    /**
+     * 清除完成订单
+     */
+    public static Integer CLEAN_ORDER = 3;
 }

@@ -126,10 +126,20 @@ public class ScheduleService {
                 .in("screen_arrange_id", arrangeIds));
 
 
+
+    }
+
+
+    @Transactional
+    @TaskType(type = 3)
+    @Scheduled(cron = "${schedule.order-cron}")
+    public void cleanOrder(){
         // 查找所有的订单
 
         // 如果订单的坐席不存在，则说明已经失效了， 如果没有付款，则直接删除
         // 如果付了款，将订单变为 2 已完成状态， 删除 （如果有取票操作，也是置为已经完成）
+
+        // 订单的信息 应该是在放映完成后 删除
 
         List<TicketDetailDo> list = ticketDetailManager.list(null);
 
@@ -145,26 +155,26 @@ public class ScheduleService {
                 Integer payStatus = ticketDetailDo.getStatus();
                 if (1 == payStatus){
                     ticketDetailDo.setStatus(2);
-                    ticketDetailDo.setIsDeleted(1);
                 }else if (0 == payStatus){
                     // 待支付  Redis 清除  删除订单
                     redisUtil.del(ticketDetailDo.getOrderId());
-                    ticketDetailDo.setIsDeleted(1);
                 }else{
                     // 2 已经完成的状态 删除
-                    ticketDetailDo.setIsDeleted(1);
                 }
 
                 //跟新
                 boolean update = ticketDetailManager.update(ticketDetailDo, new UpdateWrapper<TicketDetailDo>()
                         .eq("id", ticketDetailDo.getId()));
 
+                // 删除
+                ticketDetailManager.removeById(ticketDetailDo.getId());
+
             }
 
         }
 
-
     }
+
 
 
     /**

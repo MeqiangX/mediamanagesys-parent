@@ -543,7 +543,8 @@ public class CinemaService {
 
         //  查找对应的排片的记录
         List<ScreenArrangeDo> movieArranges = screenArrangeMapper.selectList(new QueryWrapper<ScreenArrangeDo>()
-                .in("cinema_screen_id", cinemaScreenIds));
+                .in("cinema_screen_id", cinemaScreenIds)
+                .gt("time_scope_start",LocalDateTimeUtils.formatLocalDateTime(LocalDateTime.now(),LocalDateTimeUtils.DATE_TIME)));
 
         if (Objects.isNull(movieArranges) || movieArranges.size() == 0){
             return Lists.newArrayList();

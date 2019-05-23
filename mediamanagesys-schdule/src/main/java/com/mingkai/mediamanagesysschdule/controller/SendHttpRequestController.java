@@ -50,6 +50,40 @@ public class SendHttpRequestController {
         }.execute();
     }
 
+    @ApiOperation("清除排片信息")
+    @GetMapping("clear-arrange")
+    public R<Boolean> movieArrangeCleanTask(){
+        return new APITemplate<Boolean>() {
+            @Override
+            protected void checkParams() throws IllegalArgumentException {
+
+            }
+
+            @Override
+            protected Boolean process() throws BizException {
+                scheduleService.movieArrangeCleanTask();
+                return Boolean.TRUE;
+            }
+        }.execute();
+    }
+
+    @ApiOperation("清除订单信息")
+    @GetMapping("clear-order")
+    public R<Boolean> cleanOrder(){
+        return new APITemplate<Boolean>() {
+            @Override
+            protected void checkParams() throws IllegalArgumentException {
+
+            }
+
+            @Override
+            protected Boolean process() throws BizException {
+                scheduleService.cleanOrder();
+                return Boolean.TRUE;
+            }
+        }.execute();
+    }
+
     @ApiOperation("跟新库数据")
     @GetMapping("update-data")
     public R<Boolean> updateMoviesDatas(String city,Integer start,Integer count){
@@ -65,6 +99,7 @@ public class SendHttpRequestController {
             }
         }.execute();
     }
+
 
 
     @ApiOperation("手动执行定时任务")
