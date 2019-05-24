@@ -19,6 +19,9 @@
         <if test="moviePagePo.sortType != null and moviePagePo.sortType != ''">
             order by ${moviePagePo.sortType} desc
         </if>
+        <if test="moviePagePo.sortType == null or moviePagePo.sortType == ''">
+            order by create_time desc,update_time desc
+        </if>
     </select>
 
     <!-- 最近一年内的电影数统计 -->

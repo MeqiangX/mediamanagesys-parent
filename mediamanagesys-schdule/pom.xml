@@ -24,7 +24,8 @@
 
         <dependency>
             <groupId>com.mingkai</groupId>
-            <artifactId>mediamanagesys-common</artifactId>
+            <artifactId>mediamanagesys-mapper</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
         </dependency>
 
         <!-- 引入aop依赖 引入aop后可以不需要配置 直接使用注解-->

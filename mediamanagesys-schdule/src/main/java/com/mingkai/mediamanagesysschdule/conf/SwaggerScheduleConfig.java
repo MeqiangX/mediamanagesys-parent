@@ -1,4 +1,3 @@
-/*
 package com.mingkai.mediamanagesysschdule.conf;
 
 import org.springframework.context.annotation.Bean;
@@ -29,7 +28,7 @@ public class SwaggerScheduleConfig {
 
     private ApiInfo apiInfo(){
         return new ApiInfoBuilder()
-                .title("SpringBoot整合Swagger2 来实现RestFul Apis")
+                .title("定时任务RestFul Apis")
                 .description("整合测试 调试接口")
                 .termsOfServiceUrl("www.baidu.com")
                 .contact("Meqiang")
@@ -38,4 +37,3 @@ public class SwaggerScheduleConfig {
     }
 
 }
-*/

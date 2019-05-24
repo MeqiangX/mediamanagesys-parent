@@ -1,13 +1,6 @@
 package com.mingkai.mediamanagesysportal.service;
 
 
-import com.aliyuncs.CommonRequest;
-import com.aliyuncs.CommonResponse;
-import com.aliyuncs.DefaultAcsClient;
-import com.aliyuncs.IAcsClient;
-import com.aliyuncs.exceptions.ClientException;
-import com.aliyuncs.http.MethodType;
-import com.aliyuncs.profile.DefaultProfile;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
@@ -33,6 +26,7 @@ import com.mingkai.mediamanagesysmapper.model.Po.order.OrderPagePo;
 import com.mingkai.mediamanagesysmapper.model.Po.order.SeatPo;
 import com.mingkai.mediamanagesysmapper.model.Vo.order.OrderSimpleVo;
 import com.mingkai.mediamanagesysmapper.utils.convert.ConvertUtil;
+import com.mingkai.mediamanagesysmapper.utils.message.SmsSendUtil;
 import com.mingkai.mediamanagesysmapper.utils.page.PageUtils;
 import com.mingkai.mediamanagesysmapper.utils.redis.RedisUtil;
 import com.mingkai.mediamanagesysmapper.utils.string.onlyID.SnowFlakeUtil;
@@ -109,14 +103,15 @@ public class OrderService {
 
             // 发送的是 用户下的订单 不涉及订单号的查询
 
-            // 根据用户id 去查询 分页订单
+            // 根据用户id 去查询 分页订单  排除已经完成的
             ticketDetailDoPage = (Page)ticketDetailManager.page(orderPagePo, new QueryWrapper<TicketDetailDo>()
-                    .eq("user_id", orderPagePo.getUserId()));
+                    .eq("user_id", orderPagePo.getUserId())
+                    .ne("status",2));
 
         }else{
 
             // 订单号 或者 用户id 来查询
-            // 根据用户id 去查询 分页订单
+            // 根据用户id 去查询 分页订单  后台订单查询
             ticketDetailDoPage = (Page)ticketDetailManager.page(orderPagePo, new QueryWrapper<TicketDetailDo>()
                     .eq("user_id", orderPagePo.getUserId())
                     .or().eq("order_id",orderPagePo.getOrderId()));
@@ -634,29 +629,8 @@ public class OrderService {
         UserDO user = userMapper.selectById(orderByOrderId.getUserId());
         String phone = user.getPhone();
 
-        DefaultProfile profile = DefaultProfile.getProfile("cn-hangzhou", "LTAI7suwceOqdho7", "1uCBXdyNUTWymjF2E8RuNFu4B5o1hD");
-        IAcsClient client = new DefaultAcsClient(profile);
-
-        CommonRequest request = new CommonRequest();
-        request.setMethod(MethodType.POST);
-        request.setDomain("dysmsapi.aliyuncs.com");
-        request.setVersion("2017-05-25");
-        request.setAction("SendSms");
-        request.putQueryParameter("RegionId", "cn-hangzhou");
-        request.putQueryParameter("PhoneNumbers", "18061651105");
-        request.putQueryParameter("SignName", "明凯电影院");
-        request.putQueryParameter("TemplateCode", "SMS_166080623");
-        request.putQueryParameter("TemplateParam", "{\"cinemaName\": \""+ cinema.getCinemaName() +"\",\"screenHall\": \""+ screen.getScreeningHallName() +"\",\"dateTime\": \""+ timeScopeStart +"\",\"movie\": \""+ movie.getMovieName() +"\",\"seats\": \""+ seatList +"\",\"orderId\": \""+ orderId +"\",\"price\": \""+ orderByOrderId.getPrice() +"\"}");
-
-        try {
-            CommonResponse response = client.getCommonResponse(request);
-            System.out.println(response.getData());
-        } catch (ClientException e) {
-            log.info(String.format("短信发送失败-{}",e.getMessage()));
-            throw new BizException(e.getMessage());
-        } catch (Exception e){
-            log.info(e.getMessage());
-        }
+        SmsSendUtil.sendMessage(phone,"【明凯电影院】尊敬的会员，您已成功订购了 "+ cinema.getCinemaName() +"-"+ screen.getScreeningHallName()  +"-放映厅-"+ timeScopeStart +"开场的"+ movie.getMovieName() +"，坐席："+ seatList +"，"+"订单号"+ orderId +"，票价："+ orderByOrderId.getPrice() +"元 祝您观赏愉快!。");
+     //  "{\"cinemaName\": \""+ cinema.getCinemaName() +"\",\"screenHall\": \""+ screen.getScreeningHallName() +"\",\"dateTime\": \""+ timeScopeStart +"\",\"movie\": \""+ movie.getMovieName() +"\",\"seats\": \""+ seatList +"\",\"orderId\": \""+ orderId +"\",\"price\": \""+ orderByOrderId.getPrice() +"\"};
 
         return true;
     }

@@ -4,7 +4,7 @@ import com.dtstack.plat.lang.exception.BizException;
 import com.dtstack.plat.lang.web.R;
 import com.dtstack.plat.lang.web.template.APITemplate;
 import com.google.common.collect.Sets;
-import com.mingkai.mediamanagesyscommon.common.API;
+import com.mingkai.mediamanagesysmapper.common.API;
 import com.mingkai.mediamanagesysschdule.service.ScheduleService;
 import com.mingkai.mediamanagesysschdule.service.SendDoubanRequestService;
 import io.swagger.annotations.Api;

@@ -33,3 +33,12 @@ media:
       accessKeySecret: 1uCBXdyNUTWymjF2E8RuNFu4B5o1hD
       bucket: mediasys-image
       endpoint: http://oss-cn-shenzhen.aliyuncs.com
+
+
+## 自定义参数
+
+## 短信宝
+message:
+  username: 18061651105
+  password: XQ674064975
+  url: http://api.smsbao.com/sms

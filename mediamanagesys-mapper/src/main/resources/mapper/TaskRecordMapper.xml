@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mingkai.mediamanagesysmapper.mapper.TaskRecordMapper">
+
+    <!-- 分页查询任务列表 -->
+    <select id="taskPage" resultType="com.mingkai.mediamanagesysmapper.model.Vo.task.TaskVo">
+        select a.id,a.task_type,a.spend_time,a.create_time,a.update_time,a.creator,a.updator,
+        a.is_deleted,a.success,a.err_message,b.task_name from mesys_task_record a left join mesys_task_type b
+        on a.task_type = b.type_id
+        <where>
+            <if test="taskPo.taskType != null">
+                and a.task_type = #{taskPo.taskType}
+            </if>
+            <if test="taskPo.startDate != null and taskPo.startDate != ''">
+                and a.create_time &gt;= #{taskPo.startDate}
+            </if>
+            <if test="taskPo.endDate != null and taskPo.endDate != ''">
+                and a.create_time &lt;= #{taskPo.endDate}
+            </if>
+        </where>
+        order by create_time desc,update_time desc
+    </select>
+</mapper>

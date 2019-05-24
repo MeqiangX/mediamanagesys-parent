@@ -1,8 +1,9 @@
 package com.mingkai.mediamanagesysschdule.aspect;
 
-import com.mingkai.mediamanagesyscommon.common.StatusEnum;
-import com.mingkai.mediamanagesyscommon.mapper.TaskRecordMapper;
-import com.mingkai.mediamanagesyscommon.model.Do.task.TaskRecordDo;
+
+import com.mingkai.mediamanagesysmapper.common.StatusEnum;
+import com.mingkai.mediamanagesysmapper.mapper.TaskRecordMapper;
+import com.mingkai.mediamanagesysmapper.model.Do.task.TaskRecordDo;
 import com.mingkai.mediamanagesysschdule.constant.anno.TaskType;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.JoinPoint;

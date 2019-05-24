@@ -8,7 +8,7 @@ import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
-@SpringBootApplication(scanBasePackages = "com.mingkai")
+@SpringBootApplication(scanBasePackages = {"com.mingkai.mediamanagesysmapper","com.mingkai.mediamanagesysschdule"})
 @EnableAspectJAutoProxy(proxyTargetClass = true,exposeProxy = true)
 @EnableSwagger2
 @EnableScheduling

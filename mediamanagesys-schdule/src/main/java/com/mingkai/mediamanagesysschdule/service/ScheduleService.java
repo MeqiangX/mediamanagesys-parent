@@ -1,15 +1,16 @@
 package com.mingkai.mediamanagesysschdule.service;
 
+
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
-import com.mingkai.mediamanagesyscommon.manager.ScreenSeatManager;
-import com.mingkai.mediamanagesyscommon.manager.TicketDetailManager;
-import com.mingkai.mediamanagesyscommon.mapper.ScreenArrangeMapper;
-import com.mingkai.mediamanagesyscommon.model.Do.order.TicketDetailDo;
-import com.mingkai.mediamanagesyscommon.model.Do.screen.ScreenArrangeDo;
-import com.mingkai.mediamanagesyscommon.model.Do.screen.ScreenSeatDo;
-import com.mingkai.mediamanagesyscommon.utils.redis.RedisUtil;
-import com.mingkai.mediamanagesyscommon.utils.time.LocalDateTimeUtils;
+import com.mingkai.mediamanagesysmapper.manager.ScreenSeatManager;
+import com.mingkai.mediamanagesysmapper.manager.TicketDetailManager;
+import com.mingkai.mediamanagesysmapper.mapper.ScreenArrangeMapper;
+import com.mingkai.mediamanagesysmapper.model.Do.order.TicketDetailDo;
+import com.mingkai.mediamanagesysmapper.model.Do.screen.ScreenArrangeDo;
+import com.mingkai.mediamanagesysmapper.model.Do.screen.ScreenSeatDo;
+import com.mingkai.mediamanagesysmapper.utils.redis.RedisUtil;
+import com.mingkai.mediamanagesysmapper.utils.time.LocalDateTimeUtils;
 import com.mingkai.mediamanagesysschdule.constant.anno.TaskType;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.aop.framework.AopContext;
@@ -139,7 +140,7 @@ public class ScheduleService {
         // 如果订单的坐席不存在，则说明已经失效了， 如果没有付款，则直接删除
         // 如果付了款，将订单变为 2 已完成状态， 删除 （如果有取票操作，也是置为已经完成）
 
-        // 订单的信息 应该是在放映完成后 删除
+        // 订单的信息 应该是在放映完成后 删除  2019年5月24日10:51:32  更新 已完成订单不删除 后台做统计
 
         List<TicketDetailDo> list = ticketDetailManager.list(null);
 
@@ -155,19 +156,27 @@ public class ScheduleService {
                 Integer payStatus = ticketDetailDo.getStatus();
                 if (1 == payStatus){
                     ticketDetailDo.setStatus(2);
+                    //跟新
+                    boolean update = ticketDetailManager.update(ticketDetailDo, new UpdateWrapper<TicketDetailDo>()
+                            .eq("id", ticketDetailDo.getId()));
+
                 }else if (0 == payStatus){
                     // 待支付  Redis 清除  删除订单
                     redisUtil.del(ticketDetailDo.getOrderId());
+                    //跟新
+                    boolean update = ticketDetailManager.update(ticketDetailDo, new UpdateWrapper<TicketDetailDo>()
+                            .eq("id", ticketDetailDo.getId()));
+
+                    // 删除订单
+                    ticketDetailManager.removeById(ticketDetailDo.getId());
+
                 }else{
-                    // 2 已经完成的状态 删除
+                    // 2 已经完成的状态  不变
+
                 }
 
-                //跟新
-                boolean update = ticketDetailManager.update(ticketDetailDo, new UpdateWrapper<TicketDetailDo>()
-                        .eq("id", ticketDetailDo.getId()));
 
-                // 删除
-                ticketDetailManager.removeById(ticketDetailDo.getId());
+
 
             }
 
