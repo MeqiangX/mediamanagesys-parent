@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/mapper/mapper.iml" filepath="$PROJECT_DIR$/mapper/mapper.iml" />
       <module fileurl="file://$PROJECT_DIR$/mediamanagesys-backend/mediamanagesys-backend.iml" filepath="$PROJECT_DIR$/mediamanagesys-backend/mediamanagesys-backend.iml" />
       <module fileurl="file://$PROJECT_DIR$/mediamanagesys-common/mediamanagesys-common.iml" filepath="$PROJECT_DIR$/mediamanagesys-common/mediamanagesys-common.iml" />
       <module fileurl="file://$PROJECT_DIR$/mediamanagesys-mapper/mediamanagesys-mapper.iml" filepath="$PROJECT_DIR$/mediamanagesys-mapper/mediamanagesys-mapper.iml" />
