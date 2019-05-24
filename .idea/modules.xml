@@ -9,6 +9,7 @@
       <module fileurl="file://$PROJECT_DIR$/mediamanagesys-portal/mediamanagesys-portal.iml" filepath="$PROJECT_DIR$/mediamanagesys-portal/mediamanagesys-portal.iml" />
       <module fileurl="file://$PROJECT_DIR$/mediamanagesys-schdule/mediamanagesys-schdule.iml" filepath="$PROJECT_DIR$/mediamanagesys-schdule/mediamanagesys-schdule.iml" />
       <module fileurl="file://$PROJECT_DIR$/mediamanagesys-uc/mediamanagesys-uc.iml" filepath="$PROJECT_DIR$/mediamanagesys-uc/mediamanagesys-uc.iml" />
+      <module fileurl="file://$PROJECT_DIR$/meduamanagesys-pojo/meduamanagesyspojo.iml" filepath="$PROJECT_DIR$/meduamanagesys-pojo/meduamanagesyspojo.iml" />
       <module fileurl="file://$PROJECT_DIR$/movie-api/movie-api.iml" filepath="$PROJECT_DIR$/movie-api/movie-api.iml" />
       <module fileurl="file://$PROJECT_DIR$/register/register.iml" filepath="$PROJECT_DIR$/register/register.iml" />
     </modules>

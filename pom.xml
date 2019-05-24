@@ -28,6 +28,8 @@
         <module>mediamanagesys-schdule</module>
         <module>mediamanagesys-common</module>
         <module>movie-api</module>
+        <module>mediamanagesys-pojo</module>
+        <module>meduamanagesys-pojo</module>
     </modules>
 
     <!-- 版本控制 并未导入 可以在这儿对所有用到的依赖进行版本控制 就完成了整个项目的依赖版本控制 而如果要在某个项目中单独选择版本 则只需要加上version即可 就近原则-->

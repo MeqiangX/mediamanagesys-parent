@@ -23,7 +23,7 @@ import java.util.List;
  * @description:
  * @author: Created by 云风 on 2019-05-23 20:41
  */
-@FeignClient(value = "movie-api")
+@FeignClient(name = "movie-api",url = "http://xiaoqiang.fun:8761/eureka/")
 @Repository
 public interface MovieRpcFeign {
     @ApiOperation("前台测试")

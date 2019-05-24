@@ -17,6 +17,7 @@
     <option name="ignoredFiles">
       <set>
         <option value="$PROJECT_DIR$/mediamanagesys-mapp/pom.xml" />
+        <option value="$PROJECT_DIR$/mediamanagesys-pojo/pom.xml" />
       </set>
     </option>
   </component>

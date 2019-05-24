@@ -12,6 +12,7 @@
         <module name="mediamanagesys-portal" />
         <module name="mediamanagesys-schdule" />
         <module name="mediamanagesys-uc" />
+        <module name="meduamanagesyspojo" />
         <module name="movie-api" />
         <module name="register" />
       </profile>
@@ -25,6 +26,7 @@
       <module name="mediamanagesys-portal" target="1.8" />
       <module name="mediamanagesys-schdule" target="1.8" />
       <module name="mediamanagesys-uc" target="1.8" />
+      <module name="meduamanagesyspojo" target="1.8" />
       <module name="movie-api" target="1.8" />
       <module name="register" target="1.8" />
     </bytecodeTargetLevel>
@@ -39,6 +41,7 @@
       <module name="mediamanagesys-portal" options="-parameters" />
       <module name="mediamanagesys-schdule" options="-parameters" />
       <module name="mediamanagesys-uc" options="-parameters" />
+      <module name="meduamanagesyspojo" options="-parameters" />
       <module name="movie-api" options="-parameters" />
       <module name="register" options="-parameters" />
     </option>
