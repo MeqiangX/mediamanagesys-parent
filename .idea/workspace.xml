@@ -1,19 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2eca2e12-4f08-4c3b-bb3c-a9ef02423428" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/meduamanagesys-pojo/meduamanagesyspojo.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/meduamanagesys-pojo/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mediamanagesys-portal/src/main/java/com/mingkai/mediamanagesysportal/feign/MovieRpcFeign.java" beforeDir="false" afterPath="$PROJECT_DIR$/mediamanagesys-portal/src/main/java/com/mingkai/mediamanagesysportal/feign/MovieRpcFeign.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mediamanagesys-portal/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/mediamanagesys-portal/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/movie-api/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/movie-api/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-    </list>
+    <list default="true" id="2eca2e12-4f08-4c3b-bb3c-a9ef02423428" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
     <ignored path="$PROJECT_DIR$/mediamanagesys-portal/target/" />
@@ -1450,7 +1438,7 @@
     <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file://C:/Users/xq/Downloads/mediamanagesys-parent/mediamanagesys-uc/src/main/java/com/mingkai/mediamanagesysuc/constant/time/TimeConstant.java" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1558709264185" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1558709267872" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/service-center" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -1661,7 +1649,7 @@
       <workItem from="1558574386298" duration="24963000" />
       <workItem from="1558611662472" duration="13523000" />
       <workItem from="1558627006332" duration="3622000" />
-      <workItem from="1558660633727" duration="23630000" />
+      <workItem from="1558660633727" duration="23872000" />
     </task>
     <servers />
   </component>
@@ -1698,7 +1686,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="913568000" />
+    <option name="totallyTimeSpent" value="913810000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1712,7 +1700,7 @@
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.15106383" visible="true" weight="0.18078668" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.15106383" visible="true" weight="0.2579425" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Favorites" order="3" sideWeight="0.50851583" side_tool="true" weight="0.35186723" />
@@ -1731,14 +1719,14 @@
       <window_info anchor="bottom" id="Messages" order="7" sideWeight="0.5444631" weight="0.46495727" />
       <window_info anchor="bottom" id="Spring" order="8" weight="0.32820514" />
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.22987552" side_tool="true" weight="0.59546316" />
-      <window_info anchor="bottom" id="Terminal" order="10" sideWeight="0.8271812" weight="0.43931624" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="10" sideWeight="0.8271812" visible="true" weight="0.51452994" />
       <window_info anchor="bottom" id="Statistic" order="11" sideWeight="0.49924356" weight="0.36410257" />
       <window_info anchor="bottom" id="Database Changes" order="12" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="13" show_stripe_button="false" />
       <window_info anchor="bottom" id="JRebel Executor" order="14" />
       <window_info anchor="bottom" id="JRebel Console" order="15" sideWeight="0.33585477" side_tool="true" weight="0.2717949" />
       <window_info anchor="bottom" id="Java Enterprise" order="16" weight="0.32931727" />
-      <window_info active="true" anchor="bottom" id="Run Dashboard" order="17" sideWeight="0.66414523" visible="true" weight="0.45982906" />
+      <window_info anchor="bottom" id="Run Dashboard" order="17" sideWeight="0.66414523" weight="0.53504276" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
