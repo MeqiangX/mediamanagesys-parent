@@ -122,8 +122,6 @@ public class ScheduleService {
         boolean deleteArrangeSeats = screenSeatManager.remove(new QueryWrapper<ScreenSeatDo>()
                 .in("screen_arrange_id", arrangeIds));
 
-
-
     }
 
 
