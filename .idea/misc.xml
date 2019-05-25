@@ -12,6 +12,8 @@
         <option value="$PROJECT_DIR$/mediamanagesys-mapper/pom.xml" />
         <option value="$PROJECT_DIR$/movie-api/pom.xml" />
         <option value="$PROJECT_DIR$/register/pom.xml" />
+        <option value="$PROJECT_DIR$/cinema-api/pom.xml" />
+        <option value="$PROJECT_DIR$/order-api/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">

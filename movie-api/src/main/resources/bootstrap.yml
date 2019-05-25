@@ -41,6 +41,6 @@ logging:
   level:
     com:
       mingkai:
-        movieserviceapi:
+        mediamanagesysmapper:
           mapper: debug
       netflix: debug

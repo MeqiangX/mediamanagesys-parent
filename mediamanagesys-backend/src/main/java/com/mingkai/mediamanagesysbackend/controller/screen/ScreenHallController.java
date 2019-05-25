@@ -5,10 +5,10 @@ import com.dtstack.plat.lang.base.Checks;
 import com.dtstack.plat.lang.exception.BizException;
 import com.dtstack.plat.lang.web.R;
 import com.dtstack.plat.lang.web.template.APITemplate;
-import com.mingkai.mediamanagesysbackend.model.PO.ScreenRoomAddPo;
-import com.mingkai.mediamanagesysbackend.service.screen.ScreenService;
+import com.mingkai.mediamanagesysbackend.service.CinemaRpcService;
 import com.mingkai.mediamanagesysmapper.common.API;
 import com.mingkai.mediamanagesysmapper.model.Po.cinema.ScreenPagePo;
+import com.mingkai.mediamanagesysmapper.model.Po.cinema.ScreenRoomAddPo;
 import com.mingkai.mediamanagesysmapper.model.Vo.screen.ScreenRoomVo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -27,7 +27,7 @@ import java.util.List;
 public class ScreenHallController {
 
     @Autowired
-    private ScreenService screenService;
+    private CinemaRpcService cinemaRpcService;
 
     @ApiOperation("测试查询")
     @GetMapping("query-screen-room")
@@ -40,7 +40,7 @@ public class ScreenHallController {
 
             @Override
             protected ScreenRoomVo process() throws BizException {
-                return screenService.queryScreenRoom();
+                return cinemaRpcService.queryScreenRoom();
             }
         }.execute();
     }
@@ -57,7 +57,7 @@ public class ScreenHallController {
 
             @Override
             protected ScreenRoomVo process() throws BizException {
-                return screenService.queryScreenById(id);
+                return cinemaRpcService.queryScreenById(id);
             }
         }.execute();
     }
@@ -73,7 +73,7 @@ public class ScreenHallController {
 
             @Override
             protected Page<ScreenRoomVo> process() throws BizException {
-                return screenService.queryScreenRoomPage(screenPagePo);
+                return cinemaRpcService.queryScreensPage(screenPagePo);
             }
         }.execute();
     }
@@ -89,7 +89,7 @@ public class ScreenHallController {
 
             @Override
             protected List<ScreenRoomVo> process() throws BizException {
-                return screenService.queryScreensByCinemaId(cinemaId);
+                return cinemaRpcService.queryScreensByCinemaId(cinemaId);
             }
         }.execute();
     }
@@ -106,7 +106,7 @@ public class ScreenHallController {
 
             @Override
             protected Page<ScreenRoomVo> process() throws BizException {
-                return screenService.queryPageScreensByCinemaId(screenPagePo);
+                return cinemaRpcService.queryPageScreensByCinemaId(screenPagePo);
             }
         }.execute();
     }
@@ -122,7 +122,7 @@ public class ScreenHallController {
 
             @Override
             protected Page<ScreenRoomVo> process() throws BizException {
-                return screenService.queryPageCanConfigScreensByCinemaId(screenPagePo);
+                return cinemaRpcService.queryPageCanConfigScreensByCinemaId(screenPagePo);
             }
         }.execute();
     }
@@ -138,7 +138,7 @@ public class ScreenHallController {
 
             @Override
             protected Boolean process() throws BizException {
-                return screenService.addScreenRoom(screenRoomAddPo);
+                return cinemaRpcService.addScreenRoom(screenRoomAddPo);
             }
         }.execute();
     }
@@ -154,7 +154,7 @@ public class ScreenHallController {
 
             @Override
             protected Boolean process() throws BizException {
-                return screenService.isArranged(id);
+                return cinemaRpcService.isArranged(id);
             }
         }.execute();
     }
@@ -171,7 +171,7 @@ public class ScreenHallController {
 
             @Override
             protected Boolean process() throws BizException {
-                return screenService.deleteScreenById(id);
+                return cinemaRpcService.deleteScreenById(id);
             }
         }.execute();
     }

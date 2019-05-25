@@ -1,0 +1,46 @@
+server:
+  port: 8787
+spring:
+  application:
+    name: cinema-api
+  datasource: #数据源
+    url: jdbc:mysql://localhost:3306/mediamanagesys?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf-8
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+  #jackson
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+  #redis
+  redis:
+    database: 0
+    host: 127.0.0.1
+    port: 6379
+    password: 123456
+    timeout: 0
+eureka:
+  client:
+    service-url:
+      defaultZone: http://120.79.11.150:8761/eureka/
+  instance:
+    lease-renewal-interval-in-seconds: 30  #  provider 向服务中心发送心跳的间隔 如果在这个间隔内还没有发送 中心就会删除这个实例 默认30s
+    lease-expiration-duration-in-seconds: 90 # 服务器的等待时间  在等待时间内收到了 最后的心跳 才能删除实例 默认 90s
+    instance-id: ${eureka.instance.ip-address}:${server.port} #自定义服务名称信息
+    prefer-ip-address: true # 显示ip信息
+    ip-address: 120.79.11.150
+    hostname: cinema
+
+
+#mybatis
+mybatis-plus:
+  mapper-locations: classpath:mapper/*.xml
+
+logging:
+  level:
+    com:
+      mingkai:
+        mediamanagesysmapper:
+          mapper: debug
+      netflix: debug

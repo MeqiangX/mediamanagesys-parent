@@ -5,7 +5,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.dtstack.plat.lang.exception.BizException;
 import com.dtstack.plat.lang.web.R;
 import com.dtstack.plat.lang.web.template.APITemplate;
-import com.mingkai.mediamanagesysbackend.service.order.OrderManageService;
+import com.mingkai.mediamanagesysbackend.service.OrderManageRpcService;
 import com.mingkai.mediamanagesysmapper.common.API;
 import com.mingkai.mediamanagesysmapper.model.Po.order.TicketSearchPo;
 import com.mingkai.mediamanagesysmapper.model.Vo.ticket.TicketDetailVo;
@@ -27,7 +27,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class OrderManageController {
 
     @Autowired
-    private OrderManageService orderManageService;
+    private OrderManageRpcService orderManageRpcService;
 
     @ApiOperation("订单管理")
     @GetMapping("backend-order")
@@ -57,7 +57,7 @@ public class OrderManageController {
 
             @Override
             protected Page<TicketDetailVo> process() throws BizException {
-                return orderManageService.orderSearch(ticketSearchPo);
+                return orderManageRpcService.orderSearch(ticketSearchPo);
             }
         }.execute();
     }

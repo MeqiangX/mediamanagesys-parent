@@ -1,4 +1,4 @@
-package com.mingkai.mediamanagesysbackend.model.PO;
+package com.mingkai.mediamanagesysmapper.model.Po.movie;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;

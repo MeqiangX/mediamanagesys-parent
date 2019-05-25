@@ -3,11 +3,11 @@ package com.mingkai.mediamanagesysbackend.controller.backindex;
 import com.dtstack.plat.lang.exception.BizException;
 import com.dtstack.plat.lang.web.R;
 import com.dtstack.plat.lang.web.template.APITemplate;
-import com.mingkai.mediamanagesysbackend.model.PO.EchartsPo;
-import com.mingkai.mediamanagesysbackend.model.VO.EchartsVo;
-import com.mingkai.mediamanagesysbackend.model.VO.PaneDataVo;
 import com.mingkai.mediamanagesysbackend.service.backindex.BackIndexWelcomeService;
 import com.mingkai.mediamanagesysmapper.common.API;
+import com.mingkai.mediamanagesysmapper.model.Po.EchartsPo;
+import com.mingkai.mediamanagesysmapper.model.Vo.EchartsVo;
+import com.mingkai.mediamanagesysmapper.model.Vo.PaneDataVo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+
 
 /**
  * @description:

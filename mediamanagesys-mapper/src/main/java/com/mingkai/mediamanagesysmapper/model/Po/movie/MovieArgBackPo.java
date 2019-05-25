@@ -1,4 +1,4 @@
-package com.mingkai.mediamanagesysbackend.model.PO;
+package com.mingkai.mediamanagesysmapper.model.Po.movie;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import io.swagger.annotations.ApiModel;
