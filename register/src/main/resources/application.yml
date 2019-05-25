@@ -2,7 +2,9 @@ server:
   port: 8761
 eureka:
   instance:
-    hostname: localhost
+    hostname: CentOS
+    prefer-ip-address: true # 显示ip信息
+    ip-address: 120.79.11.150
   client:
     registerWithEureka: false
     fetchRegistry: false

@@ -111,25 +111,38 @@ public class ScreenService {
 
         // 查询没有被配置的放映厅 以及 和已配置的名称不相同的 交集
 
-        List<CinemaScreenDo> cinemaScreenDos = cinemaScreenManager.list(new QueryWrapper<CinemaScreenDo>()
-                .eq("cinema_id", screenPagePo.getCinemaId()));
+        List<CinemaScreenDo> cinemaScreenDos = cinemaScreenManager.list(null);
 
         if (Objects.isNull(cinemaScreenDos) || cinemaScreenDos.size() == 0){
             // 查询所有的
             return ConvertUtil.pageConvert((Page<ScreenRoomDo>)screenRoomMapper.selectPage(screenPagePo,null),ScreenRoomVo.class);
         }else{
-            // 通过ids 查询
+            // 通过ids 查询 已经被配置的放映厅ids
             List<Integer> screenIds = cinemaScreenDos.stream().map(CinemaScreenDo::getScreenHallId).collect(Collectors.toList());
 
-            Page<ScreenRoomDo> screenRoomDoPage = (Page<ScreenRoomDo>)screenRoomMapper.selectPage(screenPagePo,new QueryWrapper<ScreenRoomDo>()
-                    .notIn("id",screenIds));
 
-            return ConvertUtil.pageConvert(screenRoomDoPage,ScreenRoomVo.class);
+            // 不在已经被配置的放映厅中， 并且和当前已配置的放映厅名称不重复
+
+            // 查找已经配置的放映厅
+            List<CinemaScreenDo> arrangedCinemaScreenDos = cinemaScreenManager.list(new QueryWrapper<CinemaScreenDo>()
+                    .eq("cinema_id", screenPagePo.getCinemaId()));
+
+            // 得到当前影院已经被配置的放映厅名称
+            if (Objects.nonNull(arrangedCinemaScreenDos) && arrangedCinemaScreenDos.size() > 0){
+                List<Integer> arrangeIds = arrangedCinemaScreenDos.stream().map(CinemaScreenDo::getScreenHallId).collect(Collectors.toList());
+                List<ScreenRoomDo> roomDoList = screenRoomMapper.selectBatchIds(arrangeIds);
+                List<String> roomNames = roomDoList.stream().map(ScreenRoomDo::getScreeningHallName).collect(Collectors.toList());
+                Page<ScreenRoomDo> screenRoomDoPage = (Page<ScreenRoomDo>)screenRoomMapper.selectPage(screenPagePo,new QueryWrapper<ScreenRoomDo>()
+                        .notIn("id",screenIds)
+                        .notIn("screening_hall_name",roomNames));
+                return ConvertUtil.pageConvert(screenRoomDoPage,ScreenRoomVo.class);
+            }else{
+                Page<ScreenRoomDo> screenRoomDoPage = (Page<ScreenRoomDo>)screenRoomMapper.selectPage(screenPagePo,new QueryWrapper<ScreenRoomDo>()
+                        .notIn("id",screenIds));
+                return ConvertUtil.pageConvert(screenRoomDoPage,ScreenRoomVo.class);
+            }
+
         }
-
-
-
-
 
 
     }
@@ -194,9 +207,9 @@ public class ScreenService {
             //重名校验
             Integer repeatCount = screenRoomMapper.selectRepeatNameCount(screenRoomAddPo.getScreeningHallName());
 
-            if (0 != repeatCount){
+           /* if (0 != repeatCount){
                 throw new BizException("存在重名放映厅");
-            }
+            }*/
 
             int insert = screenRoomMapper.insert(screenRoomDo);
 
@@ -218,15 +231,15 @@ public class ScreenService {
                     .eq("screening_hall_name", screenRoomDo.getScreeningHallName())
                     .ne("id", screenRoomDo.getId()));
 
-            if (Objects.nonNull(screenRoomDos) && screenRoomDos.size() != 0){
+            /*if (Objects.nonNull(screenRoomDos) && screenRoomDos.size() != 0){
                     throw new BizException("存在重名放映厅");
-            }else{
+            }else{*/
 
                 // 执行跟新
                 int updateCount = screenRoomMapper.updateById(screenRoomDo);
 
                 return 1 == updateCount;
-            }
+          //  }
 
         }
 
