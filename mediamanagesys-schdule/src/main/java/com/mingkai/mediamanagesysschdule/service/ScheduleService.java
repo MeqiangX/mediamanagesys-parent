@@ -91,10 +91,6 @@ public class ScheduleService {
 
     }
 
-
-
-
-
     /**
      * 过期的排片清理  放映结束 先寻找排片记录 对比当前时间和 结束时间time_scope_end
      * 超过结束时间 清理对应的坐席
