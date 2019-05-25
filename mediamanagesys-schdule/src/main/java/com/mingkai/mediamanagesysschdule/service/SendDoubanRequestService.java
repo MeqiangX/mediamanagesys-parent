@@ -435,6 +435,14 @@ public class SendDoubanRequestService {
 
     public MovieDetailDo getModelFromApi(String movieId){
 
+        // 查看是否已经有该条记录在详情表中
+        MovieDetailDo movieDetailDo = movieDetailMapper.selectByMovieId(movieId);
+
+        if (movieDetailDo != null){
+            // 记录已存在
+            return movieDetailDo;
+        }
+
         Map map = sentHttpRequest("https://api.douban.com/v2/movie/subject/"+movieId+"?apikey=0b2bdeda43b5688921839c8ecb20399b");
 
         // 否则  插入

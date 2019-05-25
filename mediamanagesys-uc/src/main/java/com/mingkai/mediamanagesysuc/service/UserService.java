@@ -34,6 +34,7 @@ import org.apache.logging.log4j.util.Strings;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.DigestUtils;
 
 import java.util.List;
 import java.util.Map;
@@ -166,7 +167,7 @@ public class UserService {
          * 正常登录 登录成功之后的信息放入session 中
          */
         if (loginPo.getLoginOption().equals(MessageEnum.LOGIN.getVal())){
-            Optional<UserDO> userDOOptional = Optional.fromNullable(userMapper.login(loginPo.getAccount(), loginPo.getPassword()));
+            Optional<UserDO> userDOOptional = Optional.fromNullable(userMapper.login(loginPo.getAccount(), DigestUtils.md5DigestAsHex(loginPo.getPassword().getBytes())));
 
             if (userDOOptional.isPresent()){
                 //如果登录成功 则非空
@@ -292,10 +293,10 @@ public class UserService {
             throw new BizException("名称重复!");
         }
 
-        // 完成注册
+        // 完成注册 密码加密
         UserDO userDO = new UserDO();
         userDO.setUserName(registerPo.getUserName());
-        userDO.setUserPassword(registerPo.getPassword());
+        userDO.setUserPassword(DigestUtils.md5DigestAsHex(registerPo.getPassword().getBytes()));
         userDO.setEmail(registerPo.getEmail());
         userDO.setPhone(registerPo.getPhone());
         userDO.setStatus(0);

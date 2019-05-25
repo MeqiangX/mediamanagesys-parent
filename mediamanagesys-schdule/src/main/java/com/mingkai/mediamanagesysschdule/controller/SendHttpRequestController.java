@@ -3,7 +3,6 @@ package com.mingkai.mediamanagesysschdule.controller;
 import com.dtstack.plat.lang.exception.BizException;
 import com.dtstack.plat.lang.web.R;
 import com.dtstack.plat.lang.web.template.APITemplate;
-import com.google.common.collect.Sets;
 import com.mingkai.mediamanagesysmapper.common.API;
 import com.mingkai.mediamanagesysschdule.service.ScheduleService;
 import com.mingkai.mediamanagesysschdule.service.SendDoubanRequestService;
@@ -13,10 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.client.RestTemplate;
-
-import java.util.Map;
-import java.util.Set;
 
 /**
  * @description: 发送http请求
@@ -32,23 +27,6 @@ public class SendHttpRequestController {
 
     @Autowired
     private ScheduleService scheduleService;
-
-    @ApiOperation("测试")
-    @GetMapping("test")
-    public R<Boolean> test(){
-        return new APITemplate<Boolean>() {
-            @Override
-            protected void checkParams() throws IllegalArgumentException {
-
-            }
-
-            @Override
-            protected Boolean process() throws BizException {
-                scheduleService.test();
-                return null;
-            }
-        }.execute();
-    }
 
     @ApiOperation("清除排片信息")
     @GetMapping("clear-arrange")
@@ -101,7 +79,6 @@ public class SendHttpRequestController {
     }
 
 
-
     @ApiOperation("手动执行定时任务")
     @GetMapping("task-run")
     public R<Boolean> taskRun(){
@@ -122,18 +99,5 @@ public class SendHttpRequestController {
                 return Boolean.TRUE;
             }
         }.execute();
-    }
-
-    @ApiOperation("TOP250")
-    @GetMapping("top250")
-    public void top250(){
-        RestTemplate restTemplate = new RestTemplate();
-        Map map=restTemplate.getForObject("https://api.douban.com/v2/movie/top250?apikey=0b2bdeda43b5688921839c8ecb20399b&start=0&count=100",Map.class);
-
-        map.get("subjects");
-
-
-        Set s = Sets.newHashSet();
-
     }
 }

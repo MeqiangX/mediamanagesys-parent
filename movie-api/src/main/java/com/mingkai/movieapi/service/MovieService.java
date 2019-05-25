@@ -169,16 +169,16 @@ public class MovieService {
 
         // 如果search 不为空
 
-        //  查找 演员的ids
-
-        //  查找导演的ids
+        //  类别 标签
 
         // 电影名 中文/英文/别名
 
         String search = movieSearchPo.getSearch();
         Page<MovieDetailDo> page = (Page<MovieDetailDo>)movieDetailManager.page(movieSearchPo, new QueryWrapper<MovieDetailDo>()
                 .like("movie_name", null == search ? "":search)
-                .or().like("original_name", null == search ? "":search));
+                .or().like("original_name", null == search ? "":search)
+                .or().like("genres",null == search ? "" : search)
+                .or().like("tags",null == search ? "" : search));
 
         return ConvertUtil.pageConvert(page,MovieVo.class);
 

@@ -74,8 +74,7 @@ public class BackIndexWelcomeService {
 
         // 订单总数 已经支付 并且已经使用了
         int orderCount = ticketDetailManager.count(new QueryWrapper<TicketDetailDo>()
-                .eq("status", 1)
-                .eq("is_deleted", 1));
+                .eq("status", 2));
         list.add(new PaneDataVo("订单总数",orderCount));
 
         // 用户总数

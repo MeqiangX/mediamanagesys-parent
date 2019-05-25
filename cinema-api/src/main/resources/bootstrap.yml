@@ -43,4 +43,3 @@ logging:
       mingkai:
         mediamanagesysmapper:
           mapper: debug
-      netflix: debug

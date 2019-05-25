@@ -16,7 +16,20 @@ spring:
   jackson:
     date-format: yyyy-MM-dd HH:mm:ss
     time-zone: GMT+8
+  application:
+    name: schedule
 
+eureka:
+  client:
+    service-url:
+      defaultZone: http://120.79.11.150:8761/eureka/
+  instance:
+    lease-renewal-interval-in-seconds: 30  #  provider 向服务中心发送心跳的间隔 如果在这个间隔内还没有发送 中心就会删除这个实例 默认30s
+    lease-expiration-duration-in-seconds: 90 # 服务器的等待时间  在等待时间内收到了 最后的心跳 才能删除实例 默认 90s
+    instance-id: ${eureka.instance.ip-address}:${server.port} #自定义服务名称信息
+    prefer-ip-address: true # 显示ip信息
+    ip-address: 120.79.11.150
+    hostname: schedule
 #mybatis
 mybatis-plus:
   mapper-locations: classpath*:/mapper/*Mapper.xml
