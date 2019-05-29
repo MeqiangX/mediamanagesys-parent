@@ -24,6 +24,12 @@ public class EchartsPo {
     @ApiModelProperty(name = "endMonth",value = "结束月份")
     private Integer endMonth;
 
+    @ApiModelProperty(name = "startDate",value = "开始日期")
+    private String startDate;
+
+    @ApiModelProperty(name = "endDate",value = "结束日期")
+    private String endDate;
+
     @ApiModelProperty(name = "option",value = "选项(0 电影 1 影院 2 用户 3 订单)")
     private Integer option;
 

@@ -6,6 +6,7 @@ import com.dtstack.plat.lang.exception.BizException;
 import com.dtstack.plat.lang.web.R;
 import com.dtstack.plat.lang.web.template.APITemplate;
 import com.mingkai.mediamanagesysbackend.service.CinemaRpcService;
+import com.mingkai.mediamanagesysbackend.service.cinema.CinemaService;
 import com.mingkai.mediamanagesysmapper.common.API;
 import com.mingkai.mediamanagesysmapper.model.Po.cinema.CinemaAddPo;
 import com.mingkai.mediamanagesysmapper.model.Po.cinema.CinemaPagePo;
@@ -13,6 +14,8 @@ import com.mingkai.mediamanagesysmapper.model.Po.cinema.CinemaScreenUpdatePo;
 import com.mingkai.mediamanagesysmapper.model.Po.cinema.CinemaSearchPo;
 import com.mingkai.mediamanagesysmapper.model.Po.movie.MovieArgBackPo;
 import com.mingkai.mediamanagesysmapper.model.Po.movie.MovieArrangePo;
+import com.mingkai.mediamanagesysmapper.model.Vo.MapVo;
+import com.mingkai.mediamanagesysmapper.model.Vo.PercentPaneVo;
 import com.mingkai.mediamanagesysmapper.model.Vo.cinema.*;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -33,6 +36,9 @@ public class CinemaController {
 
     @Autowired
     private CinemaRpcService cinemaRpcService;
+
+    @Autowired
+    private CinemaService cinemaService;
 
     @ApiOperation("影院测试")
     @GetMapping("cinema-test")
@@ -306,5 +312,42 @@ public class CinemaController {
         }.execute();
     }
 
+
+    @ApiOperation("地图数据")
+    @GetMapping("maps-data")
+    public R<List<List<MapVo>>> mapsData(){
+        return new APITemplate<List<List<MapVo>>>() {
+            @Override
+            protected void checkParams() throws IllegalArgumentException {
+
+            }
+
+            @Override
+            protected List<List<MapVo>> process() throws BizException {
+                return cinemaService.selectCinemaCountsProvs();
+            }
+        }.execute();
+    }
+
+
+    /**
+     *  三个变量  一个是柱状图的坐标轴 一个是坐标轴的 名称和数值的对应数组 还有一个是饼图的 影院省份分布
+     * @return
+     */
+    @ApiOperation("截止到目前的前十交易额的影院柱狀圖和的省份占比")
+    @GetMapping("percent")
+    public R<PercentPaneVo> percentTen(){
+        return new APITemplate<PercentPaneVo>() {
+            @Override
+            protected void checkParams() throws IllegalArgumentException {
+
+            }
+
+            @Override
+            protected PercentPaneVo process() throws BizException {
+                return cinemaService.percentTen();
+            }
+        }.execute();
+    }
 
 }

@@ -24,4 +24,14 @@ public class TicketDetailDo extends BaseDo {
 
     private Integer status;
 
+    private String movie;
+
+    private String cinema;
+
+    private String screen;
+
+    private String seats;
+
+    private String timeScopeStart;
+
 }

@@ -15,4 +15,6 @@ public class EchartsDo {
 
     private Integer count;
 
+    private String date; // YYYY-mm-DD
+
 }

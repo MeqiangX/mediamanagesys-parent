@@ -6,6 +6,7 @@ import com.mingkai.mediamanagesysmapper.common.API;
 import com.mingkai.mediamanagesysmapper.model.Po.cinema.*;
 import com.mingkai.mediamanagesysmapper.model.Po.movie.MovieArgBackPo;
 import com.mingkai.mediamanagesysmapper.model.Po.movie.MovieArrangePo;
+import com.mingkai.mediamanagesysmapper.model.Vo.MapVo;
 import com.mingkai.mediamanagesysmapper.model.Vo.cinema.*;
 import com.mingkai.mediamanagesysmapper.model.Vo.screen.ScreenRoomVo;
 import io.swagger.annotations.ApiOperation;
@@ -98,6 +99,10 @@ public interface CinemaRpcFeign {
     @RequestMapping(value = API.API_CINEMA + "/update-arrange-info",method = RequestMethod.POST)
     R<Boolean> updateArrangeInfo(@RequestBody MovieArrangePo movieArrangePo);
 
+
+    @ApiOperation("地图数据")
+    @GetMapping("maps-data")
+    R<List<List<MapVo>>> mapsData();
 
     // ---  放映厅
 

@@ -26,4 +26,9 @@ public interface TicketDetailMapper extends BaseMapper<TicketDetailDo> {
     List<EchartsDo> orderEchartsData(@Param("startYear") Integer startYear, @Param("startMonth") Integer startMonth
             , @Param("endYear") Integer endYear, @Param("endMonth") Integer endMonth);
 
+    List<EchartsDo> orderEchartsDataLast30D(@Param("startDate") String startDate, @Param("endDate") String endDate);
+
+
+    List<TicketDetailDo> percentTen();
+
 }

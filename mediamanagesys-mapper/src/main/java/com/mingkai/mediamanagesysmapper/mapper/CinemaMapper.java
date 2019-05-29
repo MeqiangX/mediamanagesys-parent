@@ -22,6 +22,8 @@ public interface CinemaMapper extends BaseMapper<CinemaDo> {
     List<EchartsDo> cinemaEchartsData(@Param("startYear") Integer startYear, @Param("startMonth") Integer startMonth
             , @Param("endYear") Integer endYear, @Param("endMonth") Integer endMonth);
 
+    List<EchartsDo> cinemaEchartsDataLast30D(@Param("startDate") String startDate, @Param("endDate") String endDate);
+
     Page<CinemaDo> searchCinemaPage(@Param("cinemaSearchPo") CinemaSearchPo cinemaSearchPo);
 
 }

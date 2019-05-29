@@ -43,8 +43,8 @@ public interface OrderRpcFeign {
      * @return
      */
     @ApiOperation("订座")
-    @RequestMapping(value = API.API_ORDER + "/seat-book",method = RequestMethod.GET)
-    R<String> seatBooking(@RequestParam("seatIds[]") List<Integer> seatIds, @RequestParam("userId") Integer userId);
+    @RequestMapping(value = API.API_ORDER + "/seat-book",method = RequestMethod.POST)
+    R<String> seatBooking(@RequestBody List<Integer> seatIds, @RequestParam("userId") Integer userId);
 
 
 
@@ -82,8 +82,8 @@ public interface OrderRpcFeign {
     R<Integer> boughtCountsArrangeId(@RequestParam("userId") Integer userId,@RequestParam("arrangeId") String arrangeId);
 
     @ApiOperation("当前要购买的坐席是否可买")
-    @RequestMapping(value = API.API_ORDER + "/allow-purchased",method = RequestMethod.GET)
-    R<List<Integer>> isAllowPurchased(@RequestParam("seats[]") List<Integer> seats);
+    @RequestMapping(value = API.API_ORDER + "/allow-purchased",method = RequestMethod.POST)
+    R<List<Integer>> isAllowPurchased(@RequestBody List<Integer> seats);
 
     @ApiOperation("通过坐席坐标和排片id来查询坐席id")
     @RequestMapping(value = API.API_ORDER + "/seatId-by-coordinate",method = RequestMethod.POST)

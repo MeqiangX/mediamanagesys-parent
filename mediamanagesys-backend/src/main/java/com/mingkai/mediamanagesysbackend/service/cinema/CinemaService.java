@@ -5,10 +5,8 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.dtstack.plat.lang.exception.BizException;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
-import com.mingkai.mediamanagesysmapper.manager.CinemaManager;
-import com.mingkai.mediamanagesysmapper.manager.CinemaScreenManager;
-import com.mingkai.mediamanagesysmapper.manager.MovieCastManager;
-import com.mingkai.mediamanagesysmapper.manager.ScreenSeatManager;
+import com.mingkai.mediamanagesysmapper.common.ProvinceShortEnum;
+import com.mingkai.mediamanagesysmapper.manager.*;
 import com.mingkai.mediamanagesysmapper.mapper.MovieDetailMapper;
 import com.mingkai.mediamanagesysmapper.mapper.ScreenArrangeMapper;
 import com.mingkai.mediamanagesysmapper.mapper.ScreenRoomMapper;
@@ -17,6 +15,7 @@ import com.mingkai.mediamanagesysmapper.model.Do.cinema.CinemaDo;
 import com.mingkai.mediamanagesysmapper.model.Do.cinema.CinemaScreenDo;
 import com.mingkai.mediamanagesysmapper.model.Do.movie.MovieCastDo;
 import com.mingkai.mediamanagesysmapper.model.Do.movie.MovieDetailDo;
+import com.mingkai.mediamanagesysmapper.model.Do.order.TicketDetailDo;
 import com.mingkai.mediamanagesysmapper.model.Do.screen.ScreenArrangeDo;
 import com.mingkai.mediamanagesysmapper.model.Do.screen.ScreenRoomDo;
 import com.mingkai.mediamanagesysmapper.model.Do.screen.ScreenSeatDo;
@@ -26,6 +25,8 @@ import com.mingkai.mediamanagesysmapper.model.Po.cinema.CinemaScreenUpdatePo;
 import com.mingkai.mediamanagesysmapper.model.Po.cinema.CinemaSearchPo;
 import com.mingkai.mediamanagesysmapper.model.Po.movie.MovieArgBackPo;
 import com.mingkai.mediamanagesysmapper.model.Po.movie.MovieArrangePo;
+import com.mingkai.mediamanagesysmapper.model.Vo.MapVo;
+import com.mingkai.mediamanagesysmapper.model.Vo.PercentPaneVo;
 import com.mingkai.mediamanagesysmapper.model.Vo.cinema.*;
 import com.mingkai.mediamanagesysmapper.model.common.Area;
 import com.mingkai.mediamanagesysmapper.model.common.City;
@@ -39,6 +40,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.Comparator;
 import java.util.List;
@@ -78,6 +80,8 @@ public class CinemaService {
     @Autowired
     private ScreenSeatManager screenSeatManager;
 
+    @Autowired
+    private TicketDetailManager ticketDetailManager;
     /**
      *  查找影院 by id
      * @param cinemaId
@@ -1415,5 +1419,222 @@ public class CinemaService {
         int update = screenArrangeMapper.updateById(screenArrangeDo);
 
         return 1 == update;
+    }
+
+    // 统计截止当前的各个省份下的影院数 name + value
+    public List<List<MapVo>> selectCinemaCountsProvs(){
+
+        // return map
+        List<List<MapVo>> returnList = Lists.newArrayList();
+        List<MapVo> cinemaMapList = Lists.newArrayList();
+        List<MapVo> orderMapList = Lists.newArrayList();
+        List<MapVo> priceMapList = Lists.newArrayList();
+
+
+        // 查找所有的省份
+        List<Province> provinces = areaMapper.selectProvincesByName(null);
+
+        // 影院是以地区为单位的， 找到省份下的地区影院数
+
+        for (Province province : provinces) {
+
+            String provinceName = ProvinceShortEnum.getProvinceEnum(province.getProvince()).getShortname();
+
+            List<City> cities = areaMapper.selectUnderProvinceCitys(province.getProvinceId());
+
+            // 得到在这些城市下的地区  通过地区来搜索地区下的影院数
+            List<Integer> citys = cities.stream().map(City::getCityId).collect(Collectors.toList());
+            if (Objects.isNull(citys) || citys.size() == 0){
+                MapVo mapVo = new MapVo();
+                mapVo.setName(provinceName);
+                mapVo.setValue(new BigDecimal(0));
+                cinemaMapList.add(mapVo);
+                orderMapList.add(mapVo);
+                priceMapList.add(mapVo);
+                continue;
+            }
+            List<Area> areas = areaMapper.selectAreasUnderCities(citys);
+
+            if (Objects.isNull(areas) || areas.size() == 0){
+                MapVo mapVo = new MapVo();
+                mapVo.setName(provinceName);
+                mapVo.setValue(new BigDecimal(0));
+                cinemaMapList.add(mapVo);
+                orderMapList.add(mapVo);
+                priceMapList.add(mapVo);
+                continue;
+            }
+            // 查找在这些 地区下的影院数量
+            List<CinemaDo> cinemas = cinemaManager.list(new QueryWrapper<CinemaDo>()
+                    .in("cinema_area_id", areas.stream().map(Area::getAreaId).collect(Collectors.toList())));
+
+            if (Objects.isNull(cinemas) || cinemas.size() == 0){
+                MapVo mapVo = new MapVo();
+                mapVo.setName(provinceName);
+                mapVo.setValue(new BigDecimal(0));
+                cinemaMapList.add(mapVo);
+                orderMapList.add(mapVo);
+                priceMapList.add(mapVo);
+            }else{
+
+                // 数量
+                MapVo mapVo = new MapVo();
+                mapVo.setName(provinceName);
+                mapVo.setValue(new BigDecimal(cinemas.size()));
+                cinemaMapList.add(mapVo);
+
+                // 订单数
+                List<TicketDetailDo> ticketDetailDoList = ticketDetailManager.list(new QueryWrapper<TicketDetailDo>()
+                        .eq("status", 2)
+                        .in("cinema", cinemas.stream().map(CinemaDo::getCinemaName).collect(Collectors.toList())));
+
+                if (Objects.isNull(ticketDetailDoList) || ticketDetailDoList.size() == 0){
+                    MapVo emptyMapVo = new MapVo();
+                    emptyMapVo.setName(provinceName);
+                    emptyMapVo.setValue(new BigDecimal(0));
+                    orderMapList.add(emptyMapVo);
+                    priceMapList.add(emptyMapVo);
+                }else{
+                    // 交易总额
+                    MapVo orderMap = new MapVo();
+                    orderMap.setName(provinceName);
+                    orderMap.setValue(new BigDecimal(ticketDetailDoList.size()));
+                    orderMapList.add(orderMap);
+
+                    BigDecimal total = new BigDecimal(0);
+
+                    for (TicketDetailDo ticketDetailDo : ticketDetailDoList) {
+                        total = total.add(ticketDetailDo.getPrice());
+                    }
+
+
+                    MapVo priceMap = new MapVo();
+                    priceMap.setName(provinceName);
+                    priceMap.setValue(total);
+                    priceMapList.add(priceMap);
+                }
+
+            }
+
+        }
+
+        returnList.add(cinemaMapList);
+        returnList.add(orderMapList);
+        returnList.add(priceMapList);
+
+        return returnList;
+
+    }
+
+
+    /**
+     * 三个变量  一个是柱状图的坐标轴 一个是坐标轴的 名称和数值的对应数组 还有一个是饼图的 影院省份分布
+     */
+    public PercentPaneVo percentTen(){
+
+
+        // 最终返回
+        PercentPaneVo percentPaneVo = new PercentPaneVo();
+
+        // 获取交易额前十的影院
+        List<TicketDetailDo> ticketDetailDos = ticketDetailManager.getBaseMapper().percentTen();
+
+        if (Objects.isNull(ticketDetailDos) || ticketDetailDos.size() == 0){
+            return new PercentPaneVo();
+        }
+
+        // 获取对应的名字列表
+        List<String> cinemaNames = ticketDetailDos.stream().map(TicketDetailDo::getCinema).collect(Collectors.toList());
+
+        // 获取影院所在的地区省份
+        List<CinemaDo> cinemaDos = cinemaManager.list(new QueryWrapper<CinemaDo>()
+                .in("cinema_name", cinemaNames));
+
+        // 转换成地区 + 影院的 map
+
+        // 地区id 对应 省份id
+
+        // 最后是要 省份 和 影院数量
+
+        List<Integer> areaIds = cinemaDos.stream().map(CinemaDo::getCinemaAreaId).collect(Collectors.toList());
+
+        // 统计相同areaId 出现次数
+        Map<Integer,Integer> areaCount = Maps.newHashMap();
+
+        for (Integer areaId : areaIds) {
+            if (null == areaCount.get(areaId)){
+                areaCount.put(areaId,0);
+            }
+            areaCount.put(areaId,areaCount.get(areaId) + 1);
+
+        }
+
+        List<Area> areas = areaMapper.selectAreasByIds(areaIds);
+
+        List<City> cities = areaMapper.selectCitysByIds(areas.stream().map(Area::getFatherId).distinct().collect(Collectors.toList()));
+
+        // 查询city 上的省份
+        List<Province> provinces = areaMapper.selectProvincesByIds(cities.stream().map(City::getFatherId).distinct().collect(Collectors.toList()));
+
+        // 城市和的对应关系map
+        Map<Integer,Integer> proAndCityMaps = Maps.newHashMap();
+
+        // 城市下的地区影院数
+        Map<Integer,Integer> underCityAreaCounts = Maps.newHashMap();
+
+        // 数量 - 》 城市影院数量
+        for (Area area : areas) {
+            if (null == underCityAreaCounts.get(area.getFatherId())){
+                underCityAreaCounts.put(area.getFatherId(),areaCount.get(area.getAreaId()));
+            }
+        }
+
+
+        // 省份 影院数量
+        for (City city : cities) {
+            if (null == proAndCityMaps.get(city.getFatherId())){
+                proAndCityMaps.put(city.getFatherId(),underCityAreaCounts.get(city.getCityId()));
+            }
+        }
+
+
+        // 省份id 换成 省份名称
+        Map<Integer, String> provinceMap = provinces.stream().collect(Collectors.toMap(Province::getProvinceId, Province::getProvince));
+
+
+
+
+        //  ticketDetailDos; 交易额前十影院
+
+        //  cinemaNames;影院名称
+
+        //proAndCityMaps;  各个影院的省份占比
+
+
+        percentPaneVo.setTimeNames(cinemaNames);
+
+        List<MapVo> cinemaHistogramMap = Lists.newArrayList();
+        for (TicketDetailDo ticketDetailDo : ticketDetailDos) {
+
+            MapVo mapVo = new MapVo();
+            mapVo.setName(ticketDetailDo.getCinema());
+            mapVo.setValue(ticketDetailDo.getPrice());
+            cinemaHistogramMap.add(mapVo);
+        }
+        percentPaneVo.setHistogramMap(cinemaHistogramMap);
+
+
+        // 省份占比
+        List<MapVo> provincePercentMap = Lists.newArrayList();
+        for (Map.Entry<Integer, Integer> integerIntegerEntry : proAndCityMaps.entrySet()) {
+            MapVo mapVo = new MapVo();
+            mapVo.setName(provinceMap.get(integerIntegerEntry.getKey()));
+            mapVo.setValue(new BigDecimal(integerIntegerEntry.getValue()));
+            provincePercentMap.add(mapVo);
+        }
+
+        percentPaneVo.setPaneMap(provincePercentMap);
+
+        return percentPaneVo;
     }
 }

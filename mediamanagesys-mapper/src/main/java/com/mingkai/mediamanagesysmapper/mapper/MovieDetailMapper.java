@@ -39,4 +39,6 @@ public interface MovieDetailMapper extends BaseMapper<MovieDetailDo> {
     List<EchartsDo> movieEchartsData(@Param("startYear") Integer startYear, @Param("startMonth") Integer startMonth
             , @Param("endYear") Integer endYear, @Param("endMonth") Integer endMonth);
 
+    List<EchartsDo> movieEchartsDataLast30D(@Param("startDate") String startDate, @Param("endDate") String endDate);
+
 }

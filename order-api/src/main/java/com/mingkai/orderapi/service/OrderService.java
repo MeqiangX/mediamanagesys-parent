@@ -225,6 +225,29 @@ public class OrderService {
             }
         }
 
+
+        // 添加冗余字段  电影 影院 放映厅 坐席 开场时间
+        MovieDetailDo movie = movieDetailManager.getOne(new QueryWrapper<MovieDetailDo>()
+        .eq("movie_id",screenArrangeDo.getMovieId())); // 电影
+        // 影院 放映厅
+        CinemaScreenDo cinemaScreenDo = cinemaScreenManager.getById(screenArrangeDo.getCinemaScreenId());
+
+        CinemaDo cinema = cinemaManager.getById(cinemaScreenDo.getCinemaId());
+        ScreenRoomDo screen = screenRoomMapper.selectById(cinemaScreenDo.getScreenHallId());
+
+        // 坐席
+        List<ScreenSeatDo> seats = (List<ScreenSeatDo>)screenSeatManager.listByIds(seatIds);
+
+        List<String> seatlist = Lists.newArrayList();
+        for (ScreenSeatDo screenSeatDo : seats) {
+            seatlist.add(screenSeatDo.getScreeningHallX() + "排" + screenSeatDo.getScreeningHallY() + "座");
+        }
+
+        ticketDetailDo.setMovie(movie.getMovieName());
+        ticketDetailDo.setCinema(cinema.getCinemaName());
+        ticketDetailDo.setScreen(screen.getScreeningHallName());
+        ticketDetailDo.setSeats(String.join(",",seatlist));
+        ticketDetailDo.setTimeScopeStart(screenArrangeDo.getTimeScopeStart());
         // 插入表中
         boolean saveData = ticketDetailManager.save(ticketDetailDo);
         // 订购成功插入表中的同时 插入到Redis 并设置过期时间 15分钟
@@ -261,46 +284,57 @@ public class OrderService {
         // 通过座位id 来找 排片id  但是同时要找座位  所以一起找
         List<ScreenSeatDo> screenSeatDos = (List)screenSeatManager.listByIds(Arrays.asList(seatIdsArray));
 
+        // 当前订单是  未完成的订单
+        if (Objects.nonNull(screenSeatDos) && screenSeatDos.size() > 0){
+            // 座位有了
 
-        // 座位有了
-
-        //找影院和放映厅 以及电影
-        ScreenArrangeDo screenArrangeDo = screenArrangeMapper.selectById(screenSeatDos.get(0).getScreenArrangeId());
-
-
-        //电影
-        MovieDetailDo movie = movieDetailManager.getOne(new QueryWrapper<MovieDetailDo>()
-                .eq("movie_id", screenArrangeDo.getMovieId()));
-
-        // 影院 放映厅
+            //找影院和放映厅 以及电影
+            ScreenArrangeDo screenArrangeDo = screenArrangeMapper.selectById(screenSeatDos.get(0).getScreenArrangeId());
 
 
-        CinemaScreenDo cinemaAndScreenDo = cinemaScreenManager.getById(screenArrangeDo.getCinemaScreenId());
+            //电影
+            MovieDetailDo movie = movieDetailManager.getOne(new QueryWrapper<MovieDetailDo>()
+                    .eq("movie_id", screenArrangeDo.getMovieId()));
+
+            // 影院 放映厅
 
 
-        // 影院
-        CinemaDo cinema = cinemaManager.getById(cinemaAndScreenDo.getCinemaId());
-
-        //放映厅
-        ScreenRoomDo screenRoomDo = screenRoomMapper.selectById(cinemaAndScreenDo.getScreenHallId());
+            CinemaScreenDo cinemaAndScreenDo = cinemaScreenManager.getById(screenArrangeDo.getCinemaScreenId());
 
 
-        orderSimpleVo.setCinemaName(cinema.getCinemaName());
-        orderSimpleVo.setCinemaAddr(cinema.getCinemaFullAddress());
-        orderSimpleVo.setCinemaPhone(cinema.getPhone());
-        orderSimpleVo.setScreeningHallName(screenRoomDo.getScreeningHallName());
+            // 影院
+            CinemaDo cinema = cinemaManager.getById(cinemaAndScreenDo.getCinemaId());
 
-        orderSimpleVo.setMovieImage(movie.getImage());
-        orderSimpleVo.setMovieName(movie.getMovieName());
-        orderSimpleVo.setTimeScopeStart(screenArrangeDo.getTimeScopeStart());
+            //放映厅
+            ScreenRoomDo screenRoomDo = screenRoomMapper.selectById(cinemaAndScreenDo.getScreenHallId());
 
-        // 座位
-        List<String> seats = Lists.newArrayList();
-        for (ScreenSeatDo screenSeatDo : screenSeatDos) {
-            seats.add(screenSeatDo.getScreeningHallX() + "排" + screenSeatDo.getScreeningHallY() + "座");
+
+            orderSimpleVo.setCinemaName(cinema.getCinemaName());
+            orderSimpleVo.setCinemaAddr(cinema.getCinemaFullAddress());
+            orderSimpleVo.setCinemaPhone(cinema.getPhone());
+            orderSimpleVo.setScreeningHallName(screenRoomDo.getScreeningHallName());
+
+            orderSimpleVo.setMovieImage(movie.getImage());
+            orderSimpleVo.setMovieName(movie.getMovieName());
+            orderSimpleVo.setTimeScopeStart(screenArrangeDo.getTimeScopeStart());
+
+            // 座位
+            List<String> seats = Lists.newArrayList();
+            for (ScreenSeatDo screenSeatDo : screenSeatDos) {
+                seats.add(screenSeatDo.getScreeningHallX() + "排" + screenSeatDo.getScreeningHallY() + "座");
+            }
+            orderSimpleVo.setSeats(seats);
+        }else{
+
+            // 当前查询的是完成订单
+            orderSimpleVo.setCinemaName(ticketDetailDo.getCinema());
+            orderSimpleVo.setScreeningHallName(ticketDetailDo.getScreen());
+
+            orderSimpleVo.setMovieName(ticketDetailDo.getMovie());
+            orderSimpleVo.setSeats(Arrays.asList( ticketDetailDo.getSeats().split(",")));
         }
 
-        orderSimpleVo.setSeats(seats);
+
 
         return orderSimpleVo;
     }

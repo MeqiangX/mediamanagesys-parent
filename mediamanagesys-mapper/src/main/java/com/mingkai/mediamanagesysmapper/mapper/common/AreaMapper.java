@@ -32,6 +32,20 @@ public interface AreaMapper {
     Province selectByProvinceId(@Param("provinceId") Integer provinceId);
 
     /**
+     *
+     * province by Ids
+     * @param provinceIds
+     * @return
+     */
+    @Select("<script>" +
+            "select * from province where province_id in " +
+            "<foreach collection='provinceIds' open='(' item='provinceId' separator=',' close=')'>" +
+            "#{provinceId}" +
+            "</foreach>" +
+            "</script>")
+    List<Province> selectProvincesByIds(@Param("provinceIds") List<Integer> provinceIds);
+
+    /**
      * 模糊搜索 省份
      * @param provinceName
      * @return
@@ -55,6 +69,20 @@ public interface AreaMapper {
      */
     @Select("select * from city where city_id = #{cityId}")
     City selectByCityId(@Param("cityId") Integer cityId);
+
+    /**
+     *
+     * 查询city by Ids
+     * @param cidyIds
+     * @return
+     */
+    @Select("<script>" +
+            "select * from city where city_id in " +
+            "<foreach collection='cityIds' open='(' item='cityId' separator=',' close=')'>" +
+            "#{cityId}" +
+            "</foreach>" +
+            "</script>")
+    List<City> selectCitysByIds(@Param("cityIds") List<Integer> cidyIds);
 
     /**
      * 查找省份下的城市
@@ -90,6 +118,21 @@ public interface AreaMapper {
     @Select("select * from area where area_id = #{areaId}")
     Area selectByAreaId(@Param("areaId") Integer areaId);
 
+
+    /**
+     *
+     * 查询area by Ids
+     * @param areaIds
+     * @return
+     */
+    @Select("<script>" +
+            "select * from area where area_id in " +
+            "<foreach collection='areaIds' open='(' item='areaId' separator=',' close=')'>" +
+            "#{areaId}" +
+            "</foreach>" +
+            "</script>")
+    List<Area> selectAreasByIds(@Param("areaIds") List<Integer> areaIds);
+
     /**
      * 查找城市下的区域
      * @param fatherId
@@ -120,4 +163,15 @@ public interface AreaMapper {
     @Select("select * from area where area != '县' and area != '市辖区'")
     List<Area> selectAreas();
 
+
+    /**
+     * 查找在城市下的所有地区 地图用
+     */
+    @Select("<script>" +
+            "select * from area where father_id in " +
+            "<foreach collection='citys' open='(' item='item' separator=',' close=')'>" +
+            "#{item}" +
+            "</foreach>" +
+            "</script>")
+    List<Area> selectAreasUnderCities(@Param("citys") List<Integer> citys);
 }

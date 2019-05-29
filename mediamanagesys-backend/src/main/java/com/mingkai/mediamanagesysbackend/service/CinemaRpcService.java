@@ -5,6 +5,7 @@ import com.mingkai.mediamanagesysbackend.feign.CinemaRpcFeign;
 import com.mingkai.mediamanagesysmapper.model.Po.cinema.*;
 import com.mingkai.mediamanagesysmapper.model.Po.movie.MovieArgBackPo;
 import com.mingkai.mediamanagesysmapper.model.Po.movie.MovieArrangePo;
+import com.mingkai.mediamanagesysmapper.model.Vo.MapVo;
 import com.mingkai.mediamanagesysmapper.model.Vo.cinema.*;
 import com.mingkai.mediamanagesysmapper.model.Vo.screen.ScreenRoomVo;
 import com.mingkai.mediamanagesysmapper.utils.check.CheckOfR;
@@ -153,4 +154,7 @@ public class CinemaRpcService {
         return CheckOfR.check(cinemaRpcFeign.deleteScreenById(id));
     }
 
+    public List<List<MapVo>> mapsData(){
+        return CheckOfR.check(cinemaRpcFeign.mapsData());
+    }
 }

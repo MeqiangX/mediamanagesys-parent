@@ -16,10 +16,12 @@ import com.mingkai.mediamanagesysmapper.model.Do.uc.UserDO;
 import com.mingkai.mediamanagesysmapper.model.Po.EchartsPo;
 import com.mingkai.mediamanagesysmapper.model.Vo.EchartsVo;
 import com.mingkai.mediamanagesysmapper.model.Vo.PaneDataVo;
+import com.mingkai.mediamanagesysmapper.utils.time.LocalDateTimeUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -94,7 +96,7 @@ public class BackIndexWelcomeService {
 
 
     /**
-     * 图表数据 0 电影 1 影院 2 用户 3 订单
+     * 图表数据 0 电影 1 影院 2 用户 3 订单  最近一年
      * @param echartsPo
      * @return
      */
@@ -167,6 +169,74 @@ public class BackIndexWelcomeService {
         }
 
         return list;
+
+    }
+
+
+    /**
+     * 时间段内的 数据显示 startDate - endDate
+     * @param echartsPo
+     * @return
+     */
+    public List<EchartsVo> echartsOptionBetweenDate(EchartsPo echartsPo){
+
+        List<EchartsVo> list = Lists.newArrayList();
+        List<EchartsDo> echartsDos = Lists.newArrayList();
+
+        if (echartsPo.getOption().equals(Integer.valueOf(0))){
+
+            // 电影
+            echartsDos = movieDetailManager.getBaseMapper().movieEchartsDataLast30D(echartsPo.getStartDate(),echartsPo.getEndDate());
+
+
+        }else if (echartsPo.getOption().equals(Integer.valueOf(1))){
+
+            // 影院
+            echartsDos = cinemaManager.getBaseMapper().cinemaEchartsDataLast30D(echartsPo.getStartDate(),echartsPo.getEndDate());
+
+        }else if (echartsPo.getOption().equals(Integer.valueOf(2))){
+
+            // 用户
+            echartsDos = userMapper.userEchartsDataLast30D(echartsPo.getStartDate(),echartsPo.getEndDate());
+
+        }else{
+
+            // 订单
+            echartsDos = ticketDetailManager.getBaseMapper().orderEchartsDataLast30D(echartsPo.getStartDate(),echartsPo.getEndDate());
+
+        }
+
+        // 生成从 startDate - > endDate 的时间Map
+        Map<String,Integer> countDateMap = Maps.newHashMap();
+
+        // 顺序
+        LocalDateTime startDate = LocalDateTimeUtils.getLocalDateTimeFromStr(echartsPo.getStartDate(), LocalDateTimeUtils.DATE);
+        LocalDateTime endDate = LocalDateTimeUtils.getLocalDateTimeFromStr(echartsPo.getEndDate(), LocalDateTimeUtils.DATE);
+
+        while (startDate.compareTo(endDate) <= 0){
+            countDateMap.put(LocalDateTimeUtils.formatLocalDateTime(startDate, LocalDateTimeUtils.DATE),0);
+            startDate = startDate.plusDays(1);
+        }
+
+
+        // 遍历 赋值
+        for (EchartsDo echartsDo : echartsDos) {
+            countDateMap.put(echartsDo.getDate(),echartsDo.getCount());
+        }
+
+        List<EchartsVo> convertList = Lists.newArrayList();
+
+        //遍历map
+        for (Map.Entry<String, Integer> stringIntegerEntry : countDateMap.entrySet()) {
+            EchartsVo echartsVo = new EchartsVo();
+            echartsVo.setDate(stringIntegerEntry.getKey());
+            echartsVo.setCount(stringIntegerEntry.getValue());
+            convertList.add(echartsVo);
+        }
+
+        convertList.sort((EchartsVo echartsVo1,EchartsVo echartsVo2) -> echartsVo1.getDate().compareTo(echartsVo2.getDate()));
+
+        return convertList;
 
     }
 

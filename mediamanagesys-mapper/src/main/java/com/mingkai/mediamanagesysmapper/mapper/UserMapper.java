@@ -33,6 +33,8 @@ public interface UserMapper extends BaseMapper<UserDO> {
     List<EchartsDo> userEchartsData(@Param("startYear") Integer startYear, @Param("startMonth") Integer startMonth
             , @Param("endYear") Integer endYear, @Param("endMonth") Integer endMonth);
 
+    List<EchartsDo> userEchartsDataLast30D(@Param("startDate") String startDate, @Param("endDate") String endDate);
+
     Page<UserDO> usersPage(@Param("userPagePo") UserPagePo userPagePo);
 
 }

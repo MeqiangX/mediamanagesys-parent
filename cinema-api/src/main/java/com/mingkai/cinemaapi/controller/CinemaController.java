@@ -13,6 +13,7 @@ import com.mingkai.mediamanagesysmapper.model.Po.cinema.CinemaScreenUpdatePo;
 import com.mingkai.mediamanagesysmapper.model.Po.cinema.CinemaSearchPo;
 import com.mingkai.mediamanagesysmapper.model.Po.movie.MovieArgBackPo;
 import com.mingkai.mediamanagesysmapper.model.Po.movie.MovieArrangePo;
+import com.mingkai.mediamanagesysmapper.model.Vo.MapVo;
 import com.mingkai.mediamanagesysmapper.model.Vo.cinema.*;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -305,6 +306,24 @@ public class CinemaController {
             }
         }.execute();
     }
+
+
+    @ApiOperation("地图数据")
+    @GetMapping("maps-data")
+    public R<List<List<MapVo>>> mapsData(){
+        return new APITemplate<List<List<MapVo>>>() {
+            @Override
+            protected void checkParams() throws IllegalArgumentException {
+
+            }
+
+            @Override
+            protected List<List<MapVo>> process() throws BizException {
+                return cinemaService.selectCinemaCountsProvs();
+            }
+        }.execute();
+    }
+
 
 
 }

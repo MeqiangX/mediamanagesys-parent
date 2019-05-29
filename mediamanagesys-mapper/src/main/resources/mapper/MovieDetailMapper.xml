@@ -34,8 +34,21 @@
         having CONCAT(year,LPAD(month,2,0)) BETWEEN CONCAT(#{startYear},LPAD(#{startMonth},2,0))
         and CONCAT(#{endYear},LPAD(#{endMonth},2,0))
 
-
-
     </select>
+
+
+
+    <!-- 时间段内的电影统计 -->
+    <select id="movieEchartsDataLast30D" resultType="com.mingkai.mediamanagesysmapper.model.Do.EchartsDo">
+        select DATE_FORMAT(create_time,'%Y-%m-%d') as date,count(1) as count
+        from mesys_movie_detail
+        where is_deleted = 0
+        group by DATE_FORMAT(create_time,'%Y-%m-%d')
+        having  date &gt;= #{startDate}
+        and date &lt;= #{endDate}
+    </select>
+
+
+
 
 </mapper>

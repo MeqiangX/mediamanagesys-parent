@@ -4,6 +4,7 @@ package com.mingkai.mediamanagesysuc.service;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.dtstack.plat.lang.exception.BizException;
+import com.google.common.base.Strings;
 import com.mingkai.mediamanagesysmapper.manager.UserAdminManager;
 import com.mingkai.mediamanagesysmapper.mapper.UserInfoMapper;
 import com.mingkai.mediamanagesysmapper.mapper.UserMapper;
@@ -18,6 +19,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.DigestUtils;
 
 import java.util.List;
 import java.util.Objects;
@@ -200,8 +202,8 @@ public class UserAdminService {
 
         UserDO userDO = new UserDO();
         userDO.setId(userAddPo.getId());
-        userDO.setUserName(userAddPo.getUserName());
-        userDO.setUserPassword(userAddPo.getUserPassword());
+        userDO.setUserName(Strings.isNullOrEmpty(userAddPo.getUserName()) ? userAddPo.getPhone() : userAddPo.getUserName());
+        userDO.setUserPassword(DigestUtils.md5DigestAsHex(userAddPo.getUserPassword().getBytes()));
         userDO.setPhone(userAddPo.getPhone());
         userDO.setEmail(userAddPo.getEmail());
         userDO.setStatus(userAddPo.getStatus());

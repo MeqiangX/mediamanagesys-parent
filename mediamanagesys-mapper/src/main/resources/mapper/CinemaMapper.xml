@@ -38,4 +38,15 @@
             </if>
         </where>
     </select>
+
+
+    <!-- 时间段内的影院数据 -->
+    <select id="cinemaEchartsDataLast30D" resultType="com.mingkai.mediamanagesysmapper.model.Do.EchartsDo">
+        select DATE_FORMAT(create_time,'%Y-%m-%d') as date,count(1) as count
+        from mesys_cinema
+        where is_deleted = 0
+        group by DATE_FORMAT(create_time,'%Y-%m-%d')
+        having  date &gt;= #{startDate}
+        and date &lt;= #{endDate}
+    </select>
 </mapper>

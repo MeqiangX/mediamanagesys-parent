@@ -57,7 +57,7 @@ public class BackIndexWelcomeController {
 
             @Override
             protected List<EchartsVo> process() throws BizException {
-                return backIndexWelcomeService.echartsOption(echartsPo);
+                return backIndexWelcomeService.echartsOptionBetweenDate(echartsPo);
             }
         }.execute();
     }

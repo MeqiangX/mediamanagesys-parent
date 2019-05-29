@@ -27,4 +27,14 @@
         </where>
 
     </select>
+
+    <!-- 时间段内的用户显示 -->
+    <select id="userEchartsDataLast30D" resultType="com.mingkai.mediamanagesysmapper.model.Do.EchartsDo">
+        select DATE_FORMAT(create_time,'%Y-%m-%d') as date,count(1) as count
+        from mesys_user
+        where is_deleted = 0 and status = 0
+        group by DATE_FORMAT(create_time,'%Y-%m-%d')
+        having  date &gt;= #{startDate}
+        and date &lt;= #{endDate}
+    </select>
 </mapper>

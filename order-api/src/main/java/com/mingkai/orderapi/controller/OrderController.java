@@ -74,12 +74,11 @@ public class OrderController {
      * @return
      */
     @ApiOperation("订座")
-    @GetMapping("seat-book")
-    public R<String> seatBooking(@RequestParam("seatIds[]") List<Integer> seatIds, @RequestParam("userId") Integer userId){
+    @PostMapping("seat-book")
+    public R<String> seatBooking(@RequestBody List<Integer> seatIds, @RequestParam("userId") Integer userId){
         return new APITemplate<String>() {
             @Override
             protected void checkParams() throws IllegalArgumentException {
-
             }
 
             @Override
@@ -198,8 +197,8 @@ public class OrderController {
     }
 
     @ApiOperation("当前要购买的坐席是否可买")
-    @GetMapping("allow-purchased")
-    public R<List<Integer>> isAllowPurchased(@RequestParam("seats[]") List<Integer> seats){
+    @PostMapping("allow-purchased")
+    public R<List<Integer>> isAllowPurchased(@RequestBody List<Integer> seats){
         return new APITemplate<List<Integer>>() {
             @Override
             protected void checkParams() throws IllegalArgumentException {

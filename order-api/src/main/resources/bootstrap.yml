@@ -16,7 +16,7 @@ spring:
   #redis
   redis:
     database: 0
-    host: 127.0.0.1
+    host: 120.79.11.150
     port: 6379
     password: 123456
     timeout: 0
@@ -43,4 +43,4 @@ logging:
       mingkai:
         mediamanagesysmapper:
           mapper: debug
-      netflix: debug
+      # netflix: debug 打印某个包下的日志信息 不打印s

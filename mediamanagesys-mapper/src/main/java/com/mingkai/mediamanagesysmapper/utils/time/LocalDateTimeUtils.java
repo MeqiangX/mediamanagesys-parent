@@ -5,6 +5,8 @@ import com.dtstack.plat.lang.exception.BizException;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeFormatterBuilder;
+import java.time.temporal.ChronoField;
 
 /**
  * @description:  时间日期工具类
@@ -24,9 +26,21 @@ public class LocalDateTimeUtils {
      * @param format
      * @return
      */
-    public static LocalDateTime getLocalDateTimeFromStr(String dateTime,String format){
-        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern(format);
-        return LocalDateTime.parse(dateTime,dateTimeFormatter);
+    public static LocalDateTime getLocalDateTimeFromStr(String dateTime,String format) {
+
+        final DateTimeFormatter formatter = new DateTimeFormatterBuilder()
+                .appendPattern(format)
+                .parseDefaulting(ChronoField.HOUR_OF_DAY, 0)
+                .parseDefaulting(ChronoField.MINUTE_OF_HOUR, 0)
+                .parseDefaulting(ChronoField.SECOND_OF_MINUTE, 0)
+                .parseDefaulting(ChronoField.MILLI_OF_SECOND, 0)
+                .toFormatter();
+        final LocalDateTime localDateTime = LocalDateTime.parse(dateTime, formatter);
+
+        /*DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern(format);
+        return LocalDateTime.parse(dateTime,dateTimeFormatter);*/
+
+        return localDateTime;
     }
 
     /**

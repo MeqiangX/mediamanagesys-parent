@@ -18,7 +18,13 @@ spring:
     time-zone: GMT+8
   application:
     name: schedule
-
+  #redis
+  redis:
+    database: 0
+    host: 120.79.11.150
+    port: 6379
+    password: 123456
+    timeout: 0
 eureka:
   client:
     service-url:
