@@ -14,6 +14,13 @@
     <name>register</name>
     <description>Demo project for Spring Boot</description>
 
+
+   <!-- <groupId>com.xia.o2o</groupId>
+    <artifactId>register</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>register</name>
+    <description>Demo project for Spring Boot</description>-->
+
     <properties>
         <java.version>1.8</java.version>
         <spring-cloud.version>Greenwich.SR1</spring-cloud.version>

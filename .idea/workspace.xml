@@ -2,50 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2eca2e12-4f08-4c3b-bb3c-a9ef02423428" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/mediamanagesys-mapper/src/main/java/com/mingkai/mediamanagesysmapper/common/ProvinceShortEnum.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mediamanagesys-mapper/src/main/java/com/mingkai/mediamanagesysmapper/model/Vo/MapVo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mediamanagesys-mapper/src/main/java/com/mingkai/mediamanagesysmapper/model/Vo/PercentPaneVo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cinema-api/src/main/java/com/mingkai/cinemaapi/controller/CinemaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-api/src/main/java/com/mingkai/cinemaapi/controller/CinemaController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cinema-api/src/main/java/com/mingkai/cinemaapi/service/CinemaService.java" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-api/src/main/java/com/mingkai/cinemaapi/service/CinemaService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cinema-api/src/main/resources/bootstrap.yml" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-api/src/main/resources/bootstrap.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cinema-api/src/test/java/com/mingkai/cinemaapi/CinemaApiApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-api/src/test/java/com/mingkai/cinemaapi/CinemaApiApplicationTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mediamanagesys-backend/src/main/java/com/mingkai/mediamanagesysbackend/controller/backindex/BackIndexWelcomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/mediamanagesys-backend/src/main/java/com/mingkai/mediamanagesysbackend/controller/backindex/BackIndexWelcomeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mediamanagesys-backend/src/main/java/com/mingkai/mediamanagesysbackend/controller/cinema/CinemaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/mediamanagesys-backend/src/main/java/com/mingkai/mediamanagesysbackend/controller/cinema/CinemaController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mediamanagesys-backend/src/main/java/com/mingkai/mediamanagesysbackend/feign/CinemaRpcFeign.java" beforeDir="false" afterPath="$PROJECT_DIR$/mediamanagesys-backend/src/main/java/com/mingkai/mediamanagesysbackend/feign/CinemaRpcFeign.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mediamanagesys-backend/src/main/java/com/mingkai/mediamanagesysbackend/service/CinemaRpcService.java" beforeDir="false" afterPath="$PROJECT_DIR$/mediamanagesys-backend/src/main/java/com/mingkai/mediamanagesysbackend/service/CinemaRpcService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mediamanagesys-backend/src/main/java/com/mingkai/mediamanagesysbackend/service/backindex/BackIndexWelcomeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/mediamanagesys-backend/src/main/java/com/mingkai/mediamanagesysbackend/service/backindex/BackIndexWelcomeService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cinema-api/src/main/java/com/mingkai/cinemaapi/service/ScreenService.java" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-api/src/main/java/com/mingkai/cinemaapi/service/ScreenService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mediamanagesys-backend/src/main/java/com/mingkai/mediamanagesysbackend/service/cinema/CinemaService.java" beforeDir="false" afterPath="$PROJECT_DIR$/mediamanagesys-backend/src/main/java/com/mingkai/mediamanagesysbackend/service/cinema/CinemaService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mediamanagesys-backend/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/mediamanagesys-backend/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mediamanagesys-common/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/mediamanagesys-common/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mediamanagesys-mapper/src/main/java/com/mingkai/mediamanagesysmapper/mapper/CinemaMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/mediamanagesys-mapper/src/main/java/com/mingkai/mediamanagesysmapper/mapper/CinemaMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mediamanagesys-mapper/src/main/java/com/mingkai/mediamanagesysmapper/mapper/MovieDetailMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/mediamanagesys-mapper/src/main/java/com/mingkai/mediamanagesysmapper/mapper/MovieDetailMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mediamanagesys-mapper/src/main/java/com/mingkai/mediamanagesysmapper/mapper/TicketDetailMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/mediamanagesys-mapper/src/main/java/com/mingkai/mediamanagesysmapper/mapper/TicketDetailMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mediamanagesys-mapper/src/main/java/com/mingkai/mediamanagesysmapper/mapper/UserMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/mediamanagesys-mapper/src/main/java/com/mingkai/mediamanagesysmapper/mapper/UserMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mediamanagesys-mapper/src/main/java/com/mingkai/mediamanagesysmapper/mapper/common/AreaMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/mediamanagesys-mapper/src/main/java/com/mingkai/mediamanagesysmapper/mapper/common/AreaMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mediamanagesys-mapper/src/main/java/com/mingkai/mediamanagesysmapper/model/Do/EchartsDo.java" beforeDir="false" afterPath="$PROJECT_DIR$/mediamanagesys-mapper/src/main/java/com/mingkai/mediamanagesysmapper/model/Do/EchartsDo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mediamanagesys-mapper/src/main/java/com/mingkai/mediamanagesysmapper/model/Do/order/TicketDetailDo.java" beforeDir="false" afterPath="$PROJECT_DIR$/mediamanagesys-mapper/src/main/java/com/mingkai/mediamanagesysmapper/model/Do/order/TicketDetailDo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mediamanagesys-mapper/src/main/java/com/mingkai/mediamanagesysmapper/model/Po/EchartsPo.java" beforeDir="false" afterPath="$PROJECT_DIR$/mediamanagesys-mapper/src/main/java/com/mingkai/mediamanagesysmapper/model/Po/EchartsPo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mediamanagesys-mapper/src/main/java/com/mingkai/mediamanagesysmapper/utils/time/LocalDateTimeUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/mediamanagesys-mapper/src/main/java/com/mingkai/mediamanagesysmapper/utils/time/LocalDateTimeUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mediamanagesys-mapper/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/mediamanagesys-mapper/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mediamanagesys-mapper/src/main/resources/mapper/CinemaMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/mediamanagesys-mapper/src/main/resources/mapper/CinemaMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mediamanagesys-mapper/src/main/resources/mapper/MovieDetailMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/mediamanagesys-mapper/src/main/resources/mapper/MovieDetailMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mediamanagesys-mapper/src/main/resources/mapper/TicketDetailMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/mediamanagesys-mapper/src/main/resources/mapper/TicketDetailMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mediamanagesys-mapper/src/main/resources/mapper/UserMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/mediamanagesys-mapper/src/main/resources/mapper/UserMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mediamanagesys-portal/src/main/java/com/mingkai/mediamanagesysportal/conf/AlipayConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/mediamanagesys-portal/src/main/java/com/mingkai/mediamanagesysportal/conf/AlipayConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mediamanagesys-portal/src/main/java/com/mingkai/mediamanagesysportal/controller/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/mediamanagesys-portal/src/main/java/com/mingkai/mediamanagesysportal/controller/OrderController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mediamanagesys-portal/src/main/java/com/mingkai/mediamanagesysportal/feign/OrderRpcFeign.java" beforeDir="false" afterPath="$PROJECT_DIR$/mediamanagesys-portal/src/main/java/com/mingkai/mediamanagesysportal/feign/OrderRpcFeign.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mediamanagesys-portal/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/mediamanagesys-portal/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mediamanagesys-schdule/src/main/java/com/mingkai/mediamanagesysschdule/service/ScheduleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/mediamanagesys-schdule/src/main/java/com/mingkai/mediamanagesysschdule/service/ScheduleService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mediamanagesys-schdule/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/mediamanagesys-schdule/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mediamanagesys-uc/src/main/java/com/mingkai/mediamanagesysuc/service/UserAdminService.java" beforeDir="false" afterPath="$PROJECT_DIR$/mediamanagesys-uc/src/main/java/com/mingkai/mediamanagesysuc/service/UserAdminService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mediamanagesys-uc/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/mediamanagesys-uc/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/movie-api/src/main/resources/bootstrap.yml" beforeDir="false" afterPath="$PROJECT_DIR$/movie-api/src/main/resources/bootstrap.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/order-api/src/main/java/com/mingkai/orderapi/controller/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/order-api/src/main/java/com/mingkai/orderapi/controller/OrderController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mediamanagesys-portal/src/main/java/com/mingkai/mediamanagesysportal/controller/ApiPayController.java" beforeDir="false" afterPath="$PROJECT_DIR$/mediamanagesys-portal/src/main/java/com/mingkai/mediamanagesysportal/controller/ApiPayController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mediamanagesys-portal/src/main/java/com/mingkai/mediamanagesysportal/controller/MovieController.java" beforeDir="false" afterPath="$PROJECT_DIR$/mediamanagesys-portal/src/main/java/com/mingkai/mediamanagesysportal/controller/MovieController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mediamanagesys-portal/src/main/resources/static/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/mediamanagesys-portal/src/main/resources/static/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mediamanagesys-portal/src/main/resources/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/mediamanagesys-portal/src/main/resources/templates/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/order-api/src/main/java/com/mingkai/orderapi/service/OrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/order-api/src/main/java/com/mingkai/orderapi/service/OrderService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/order-api/src/main/resources/bootstrap.yml" beforeDir="false" afterPath="$PROJECT_DIR$/order-api/src/main/resources/bootstrap.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/order-api/src/test/java/com/mingkai/orderapi/OrderApiApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/order-api/src/test/java/com/mingkai/orderapi/OrderApiApplicationTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/register/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/register/pom.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -88,15 +57,16 @@
     <session id="-1451395706">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="58" />
+          <entry key="project.closed" value="62" />
           <entry key="project.open.time.1" value="1" />
           <entry key="project.open.time.100" value="2" />
           <entry key="project.open.time.101" value="1" />
-          <entry key="project.open.time.103" value="1" />
+          <entry key="project.open.time.103" value="2" />
           <entry key="project.open.time.104" value="2" />
-          <entry key="project.open.time.105" value="1" />
+          <entry key="project.open.time.105" value="2" />
           <entry key="project.open.time.107" value="2" />
           <entry key="project.open.time.108" value="1" />
+          <entry key="project.open.time.109" value="1" />
           <entry key="project.open.time.111" value="2" />
           <entry key="project.open.time.112" value="1" />
           <entry key="project.open.time.113" value="2" />
@@ -123,7 +93,7 @@
           <entry key="project.open.time.176" value="1" />
           <entry key="project.open.time.186" value="1" />
           <entry key="project.open.time.188" value="1" />
-          <entry key="project.open.time.2" value="2" />
+          <entry key="project.open.time.2" value="3" />
           <entry key="project.open.time.201" value="1" />
           <entry key="project.open.time.3" value="2" />
           <entry key="project.open.time.4" value="1" />
@@ -140,33 +110,33 @@
           <entry key="project.open.time.93" value="3" />
           <entry key="project.open.time.95" value="1" />
           <entry key="project.open.time.96" value="1" />
-          <entry key="project.open.time.97" value="1" />
-          <entry key="project.opened" value="67" />
+          <entry key="project.open.time.97" value="2" />
+          <entry key="project.opened" value="72" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="CLASS" value="83" />
-          <entry key="HTML" value="17" />
-          <entry key="JAVA" value="2535" />
+          <entry key="HTML" value="19" />
+          <entry key="JAVA" value="2567" />
           <entry key="JavaScript" value="2" />
           <entry key="Markdown" value="1" />
           <entry key="Properties" value="10" />
           <entry key="UML" value="1" />
-          <entry key="XML" value="408" />
-          <entry key="YAML" value="240" />
+          <entry key="XML" value="413" />
+          <entry key="YAML" value="242" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="CLASS" value="4" />
-          <entry key="HTML" value="280" />
-          <entry key="JAVA" value="141995" />
+          <entry key="HTML" value="309" />
+          <entry key="JAVA" value="142523" />
           <entry key="PLAIN_TEXT" value="54" />
           <entry key="Properties" value="1" />
           <entry key="SQL" value="180" />
           <entry key="SpEL" value="4" />
-          <entry key="XML" value="6800" />
+          <entry key="XML" value="6806" />
           <entry key="YAML" value="3129" />
         </counts>
       </usages-collector>
@@ -814,101 +784,95 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/mediamanagesys-backend/src/main/java/com/mingkai/mediamanagesysbackend/service/CinemaRpcService.java">
+        <entry file="file://$PROJECT_DIR$/mediamanagesys-portal/src/main/java/com/mingkai/mediamanagesysportal/controller/ApiPayController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="576">
-              <caret line="47" column="19" selection-start-line="47" selection-start-column="19" selection-end-line="47" selection-end-column="19" />
+            <state relative-caret-position="2340">
+              <caret line="154" selection-start-line="154" selection-end-line="154" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/mediamanagesys-portal/src/main/java/com/mingkai/mediamanagesysportal/feign/OrderRpcFeign.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1404">
+              <caret line="89" column="14" selection-start-line="89" selection-start-column="14" selection-end-line="89" selection-end-column="14" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/mediamanagesys-portal/src/main/java/com/mingkai/mediamanagesysportal/controller/MovieController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="792">
+              <caret line="66" column="47" selection-start-line="66" selection-start-column="47" selection-end-line="66" selection-end-column="47" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/mediamanagesys-portal/src/main/java/com/mingkai/mediamanagesysportal/service/MovieRpcService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="324">
+              <caret line="34" column="50" selection-start-line="34" selection-start-column="50" selection-end-line="34" selection-end-column="50" />
               <folding>
-                <element signature="e#1570#1571#0" expanded="true" />
-                <element signature="e#1646#1647#0" expanded="true" />
-                <element signature="e#4739#4740#0" expanded="true" />
-                <element signature="e#4803#4804#0" expanded="true" />
+                <element signature="e#1148#1149#0" expanded="true" />
+                <element signature="e#1221#1222#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/cinema-api/src/main/java/com/mingkai/cinemaapi/controller/CinemaController.java">
+        <entry file="file://$PROJECT_DIR$/order-api/src/main/java/com/mingkai/orderapi/controller/OrderController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1674">
-              <caret line="112" column="44" selection-start-line="112" selection-start-column="44" selection-end-line="112" selection-end-column="44" />
+            <state relative-caret-position="4122">
+              <caret line="243" column="52" selection-start-line="243" selection-start-column="52" selection-end-line="243" selection-end-column="52" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/cinema-api/src/main/java/com/mingkai/cinemaapi/service/CinemaService.java">
+        <entry file="file://$PROJECT_DIR$/order-api/src/main/java/com/mingkai/orderapi/service/OrderService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="211" column="41" selection-start-line="211" selection-start-column="41" selection-end-line="211" selection-end-column="41" />
+            <state relative-caret-position="11358">
+              <caret line="672" selection-start-line="672" selection-end-line="672" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/cinema-api/src/main/resources/bootstrap.yml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="468">
+              <caret line="26" column="11" selection-start-line="26" selection-start-column="11" selection-end-line="26" selection-end-column="11" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/pom.xml">
+        <entry file="file://$PROJECT_DIR$/mediamanagesys-portal/src/main/java/com/mingkai/mediamanagesysportal/feign/MovieRpcFeign.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="19">
-              <caret line="32" selection-start-line="32" selection-end-line="32" />
+            <state relative-caret-position="194">
+              <caret line="58" selection-start-line="58" selection-end-line="58" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/mediamanagesys-uc/src/main/java/com/mingkai/mediamanagesysuc/controller/UserController.java">
+        <entry file="file://$PROJECT_DIR$/order-api/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="756">
-              <caret line="64" column="39" selection-start-line="64" selection-start-column="39" selection-end-line="64" selection-end-column="39" />
+            <state relative-caret-position="1368">
+              <caret line="76" column="21" selection-start-line="67" selection-end-line="76" selection-end-column="21" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/mediamanagesys-uc/src/main/java/com/mingkai/mediamanagesysuc/pojo/po/MessagePo.java">
+        <entry file="file://$PROJECT_DIR$/mediamanagesys-backend/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="324">
-              <caret line="20" column="83" selection-start-line="20" selection-start-column="69" selection-end-line="20" selection-end-column="83" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/mediamanagesys-uc/src/main/java/com/mingkai/mediamanagesysuc/enums/MessageEnum.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="5" column="3" selection-start-line="5" selection-start-column="3" selection-end-line="5" selection-end-column="3" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/mediamanagesys-uc/src/main/java/com/mingkai/mediamanagesysuc/service/UserService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="5634">
-              <caret line="352" column="24" selection-start-line="352" selection-start-column="24" selection-end-line="352" selection-end-column="24" />
-              <folding>
-                <element signature="e#10774#10775#0" expanded="true" />
-                <element signature="e#10831#10832#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/mediamanagesys-uc/src/main/java/com/mingkai/mediamanagesysuc/manager/UserManager.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="666">
-              <caret line="43" column="28" selection-start-line="43" selection-start-column="28" selection-end-line="43" selection-end-column="28" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/mediamanagesys-uc/src/main/java/com/mingkai/mediamanagesysuc/pojo/po/LoginPo.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+            <state relative-caret-position="2124">
+              <caret line="118" selection-start-line="118" selection-end-line="118" />
             </state>
           </provider>
         </entry>
@@ -931,7 +895,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>搜索</find>
       <find>userService</find>
       <find>具体见MessageEnum</find>
       <find>userAdminService</find>
@@ -939,7 +902,6 @@
       <find>areaService</find>
       <find>movie-page</find>
       <find>getloginUser-fromSession</find>
-      <find>bought-counts-arrangeId</find>
       <find>登录</find>
       <find>配置</find>
       <find>订单</find>
@@ -961,6 +923,8 @@
       <find>login</find>
       <find>发送</find>
       <find>add</find>
+      <find>delete-screen-by-id</find>
+      <find>bought-counts-arrangeId</find>
     </findStrings>
     <replaceStrings>
       <replace>writer</replace>
@@ -980,18 +944,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/mediamanagesys-schdule/pom.xml" />
-        <option value="$PROJECT_DIR$/mediamanagesys-schdule/src/main/java/com/mingkai/mediamanagesysschdule/MediamanagesysSchduleApplication.java" />
-        <option value="$PROJECT_DIR$/mediamanagesys-schdule/src/main/java/com/mingkai/mediamanagesysschdule/service/SendDoubanRequestService.java" />
-        <option value="$PROJECT_DIR$/mediamanagesys-uc/src/main/java/com/mingkai/mediamanagesysuc/service/UserService.java" />
-        <option value="$PROJECT_DIR$/mediamanagesys-mapper/src/main/java/com/mingkai/mediamanagesysmapper/model/Do/order/TicketDetailDo.java" />
-        <option value="$PROJECT_DIR$/mediamanagesys-mapper/src/main/resources/application.yml" />
-        <option value="$PROJECT_DIR$/mediamanagesys-uc/src/main/java/com/mingkai/mediamanagesysuc/service/UserAdminService.java" />
-        <option value="$PROJECT_DIR$/mediamanagesys-portal/src/main/java/com/mingkai/mediamanagesysportal/controller/OrderController.java" />
-        <option value="$PROJECT_DIR$/mediamanagesys-portal/src/main/java/com/mingkai/mediamanagesysportal/feign/OrderRpcFeign.java" />
-        <option value="$PROJECT_DIR$/order-api/src/main/java/com/mingkai/orderapi/controller/OrderController.java" />
-        <option value="$PROJECT_DIR$/order-api/src/main/java/com/mingkai/orderapi/service/OrderService.java" />
-        <option value="$PROJECT_DIR$/order-api/src/test/java/com/mingkai/orderapi/OrderApiApplicationTests.java" />
         <option value="$PROJECT_DIR$/order-api/src/main/resources/bootstrap.yml" />
         <option value="$PROJECT_DIR$/movie-api/src/main/resources/bootstrap.yml" />
         <option value="$PROJECT_DIR$/mediamanagesys-uc/src/main/resources/application.yml" />
@@ -1007,14 +959,12 @@
         <option value="$PROJECT_DIR$/cinema-api/src/main/java/com/mingkai/cinemaapi/service/CinemaService.java" />
         <option value="$PROJECT_DIR$/cinema-api/src/main/java/com/mingkai/cinemaapi/controller/CinemaController.java" />
         <option value="$PROJECT_DIR$/mediamanagesys-backend/src/main/java/com/mingkai/mediamanagesysbackend/feign/CinemaRpcFeign.java" />
-        <option value="$PROJECT_DIR$/cinema-api/src/test/java/com/mingkai/cinemaapi/CinemaApiApplicationTests.java" />
         <option value="$PROJECT_DIR$/mediamanagesys-backend/src/main/java/com/mingkai/mediamanagesysbackend/service/CinemaRpcService.java" />
         <option value="$PROJECT_DIR$/movie-api/src/main/java/com/mingkai/movieapi/service/MovieService.java" />
         <option value="$PROJECT_DIR$/mediamanagesys-backend/pom.xml" />
         <option value="$PROJECT_DIR$/mediamanagesys-mapper/src/main/java/com/mingkai/mediamanagesysmapper/model/Vo/PercentPaneVo.java" />
         <option value="$PROJECT_DIR$/mediamanagesys-mapper/src/main/java/com/mingkai/mediamanagesysmapper/mapper/common/AreaMapper.java" />
         <option value="$PROJECT_DIR$/mediamanagesys-backend/src/main/java/com/mingkai/mediamanagesysbackend/controller/cinema/CinemaController.java" />
-        <option value="$PROJECT_DIR$/mediamanagesys-backend/src/main/java/com/mingkai/mediamanagesysbackend/service/cinema/CinemaService.java" />
         <option value="$PROJECT_DIR$/register/src/test/java/com/mingkai/register/RegisterApplicationTests.java" />
         <option value="$PROJECT_DIR$/mediamanagesys-mapper/src/main/java/com/mingkai/mediamanagesysmapper/model/Do/EchartsDo.java" />
         <option value="$PROJECT_DIR$/mediamanagesys-mapper/src/main/java/com/mingkai/mediamanagesysmapper/mapper/MovieDetailMapper.java" />
@@ -1024,13 +974,27 @@
         <option value="$PROJECT_DIR$/mediamanagesys-mapper/src/main/java/com/mingkai/mediamanagesysmapper/mapper/UserMapper.java" />
         <option value="$PROJECT_DIR$/mediamanagesys-mapper/src/main/resources/mapper/UserMapper.xml" />
         <option value="$PROJECT_DIR$/mediamanagesys-mapper/src/main/java/com/mingkai/mediamanagesysmapper/mapper/TicketDetailMapper.java" />
-        <option value="$PROJECT_DIR$/mediamanagesys-mapper/src/main/resources/mapper/TicketDetailMapper.xml" />
         <option value="$PROJECT_DIR$/mediamanagesys-backend/src/main/java/com/mingkai/mediamanagesysbackend/controller/backindex/BackIndexWelcomeController.java" />
         <option value="$PROJECT_DIR$/mediamanagesys-mapper/src/main/java/com/mingkai/mediamanagesysmapper/model/Po/EchartsPo.java" />
         <option value="$PROJECT_DIR$/mediamanagesys-mapper/src/main/java/com/mingkai/mediamanagesysmapper/utils/time/LocalDateTimeUtils.java" />
         <option value="$PROJECT_DIR$/mediamanagesys-backend/src/main/java/com/mingkai/mediamanagesysbackend/service/backindex/BackIndexWelcomeService.java" />
-        <option value="$PROJECT_DIR$/mediamanagesys-portal/src/main/java/com/mingkai/mediamanagesysportal/conf/AlipayConfig.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/mediamanagesys-mapper/src/main/java/com/mingkai/mediamanagesysmapper/model/Do/order/TicketDetailDo.java" />
+        <option value="$PROJECT_DIR$/mediamanagesys-mapper/src/main/resources/mapper/TicketDetailMapper.xml" />
+        <option value="$PROJECT_DIR$/mediamanagesys-backend/src/main/java/com/mingkai/mediamanagesysbackend/service/cinema/CinemaService.java" />
+        <option value="$PROJECT_DIR$/mediamanagesys-backend/src/main/java/com/mingkai/mediamanagesysbackend/controller/screen/ScreenHallController.java" />
+        <option value="$PROJECT_DIR$/cinema-api/src/main/java/com/mingkai/cinemaapi/service/ScreenService.java" />
+        <option value="$PROJECT_DIR$/order-api/src/main/java/com/mingkai/orderapi/controller/OrderController.java" />
+        <option value="$PROJECT_DIR$/cinema-api/src/test/java/com/mingkai/cinemaapi/CinemaApiApplicationTests.java" />
+        <option value="$PROJECT_DIR$/order-api/src/test/java/com/mingkai/orderapi/OrderApiApplicationTests.java" />
+        <option value="$PROJECT_DIR$/order-api/src/main/java/com/mingkai/orderapi/service/OrderService.java" />
+        <option value="$PROJECT_DIR$/register/pom.xml" />
+        <option value="$PROJECT_DIR$/mediamanagesys-portal/src/main/java/com/mingkai/mediamanagesysportal/conf/AlipayConfig.java" />
+        <option value="$PROJECT_DIR$/mediamanagesys-portal/src/main/java/com/mingkai/mediamanagesysportal/controller/ApiPayController.java" />
+        <option value="$PROJECT_DIR$/mediamanagesys-portal/src/main/resources/templates/index.html" />
+        <option value="$PROJECT_DIR$/mediamanagesys-portal/src/main/resources/static/index.html" />
+        <option value="$PROJECT_DIR$/mediamanagesys-portal/src/main/java/com/mingkai/mediamanagesysportal/feign/OrderRpcFeign.java" />
+        <option value="$PROJECT_DIR$/mediamanagesys-portal/src/main/java/com/mingkai/mediamanagesysportal/controller/MovieController.java" />
       </list>
     </option>
   </component>
@@ -1063,10 +1027,10 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="13" />
-    <option name="y" value="5" />
-    <option name="width" value="1368" />
-    <option name="height" value="735" />
+    <option name="x" value="114" />
+    <option name="y" value="79" />
+    <option name="width" value="966" />
+    <option name="height" value="618" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -1475,7 +1439,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -1483,11 +1446,100 @@
               <item name="mediamanagesys-parent" type="b2602c69:ProjectViewProjectNode" />
               <item name="mediamanagesys-parent" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="mediamanagesys-parent" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mediamanagesys-parent" type="462c0819:PsiDirectoryNode" />
+              <item name="mediamanagesys-portal" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="mediamanagesys-parent" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mediamanagesys-parent" type="462c0819:PsiDirectoryNode" />
+              <item name="mediamanagesys-portal" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="mediamanagesys-parent" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mediamanagesys-parent" type="462c0819:PsiDirectoryNode" />
+              <item name="mediamanagesys-portal" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="mediamanagesys-parent" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mediamanagesys-parent" type="462c0819:PsiDirectoryNode" />
+              <item name="mediamanagesys-portal" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="mediamanagesys-parent" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mediamanagesys-parent" type="462c0819:PsiDirectoryNode" />
+              <item name="mediamanagesys-portal" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="mediamanagesys-parent" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mediamanagesys-parent" type="462c0819:PsiDirectoryNode" />
+              <item name="mediamanagesys-portal" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="mingkai" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="mediamanagesys-parent" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mediamanagesys-parent" type="462c0819:PsiDirectoryNode" />
+              <item name="mediamanagesys-portal" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="mingkai" type="462c0819:PsiDirectoryNode" />
+              <item name="mediamanagesysportal" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="mediamanagesys-parent" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mediamanagesys-parent" type="462c0819:PsiDirectoryNode" />
+              <item name="mediamanagesys-portal" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="mingkai" type="462c0819:PsiDirectoryNode" />
+              <item name="mediamanagesysportal" type="462c0819:PsiDirectoryNode" />
+              <item name="controller" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="mediamanagesys-parent" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mediamanagesys-parent" type="462c0819:PsiDirectoryNode" />
+              <item name="mediamanagesys-portal" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="mingkai" type="462c0819:PsiDirectoryNode" />
+              <item name="mediamanagesysportal" type="462c0819:PsiDirectoryNode" />
+              <item name="feign" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="mediamanagesys-parent" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mediamanagesys-parent" type="462c0819:PsiDirectoryNode" />
+              <item name="mediamanagesys-portal" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
       <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -1499,7 +1551,7 @@
     <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file://C:/Users/xq/Downloads/mediamanagesys-parent/mediamanagesys-uc/src/main/java/com/mingkai/mediamanagesysuc/constant/time/TimeConstant.java" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1559094580834" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1559127469583" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/service-center" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -1509,14 +1561,16 @@
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\xq\Downloads\mediamanagesys-parent\mediamanagesys-common\src\main\resources\mapper" />
-      <recent name="C:\Users\xq\Downloads\mediamanagesys-parent\mediamanagesys-common\src\main\resources\com\mingkai\mediamanagesyscommon\mapper" />
-      <recent name="C:\Users\xq\Downloads\mediamanagesys-parent\mediamanagesys-uc\src\main\resources\templates\code" />
-    </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="com.mingkai.orderserviceapi" />
       <recent name="com.mingkai.mediamanagesysbackend" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\xq\Downloads\mediamanagesys-parent\order-api\src\main\resources" />
+      <recent name="C:\Users\xq\Downloads\mediamanagesys-parent\mediamanagesys-mapper\src\main\java\com\mingkai\mediamanagesysmapper\model\Vo" />
+      <recent name="C:\Users\xq\Downloads\mediamanagesys-parent\mediamanagesys-mapper\src\main\java\com\mingkai\mediamanagesysmapper\model\Po\cinema" />
+      <recent name="C:\Users\xq\Downloads\mediamanagesys-parent\cinema-api\src\main\resources" />
+      <recent name="C:\Users\xq\Downloads\mediamanagesys-parent\movie-api\src\main\resources" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.mingkai.orderapi.service" />
@@ -1525,12 +1579,10 @@
       <recent name="com.mingkai.cinemaapi.service" />
       <recent name="com.mingkai.cinemaapi.controller" />
     </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\xq\Downloads\mediamanagesys-parent\order-api\src\main\resources" />
-      <recent name="C:\Users\xq\Downloads\mediamanagesys-parent\mediamanagesys-mapper\src\main\java\com\mingkai\mediamanagesysmapper\model\Vo" />
-      <recent name="C:\Users\xq\Downloads\mediamanagesys-parent\mediamanagesys-mapper\src\main\java\com\mingkai\mediamanagesysmapper\model\Po\cinema" />
-      <recent name="C:\Users\xq\Downloads\mediamanagesys-parent\cinema-api\src\main\resources" />
-      <recent name="C:\Users\xq\Downloads\mediamanagesys-parent\movie-api\src\main\resources" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\xq\Downloads\mediamanagesys-parent\mediamanagesys-common\src\main\resources\mapper" />
+      <recent name="C:\Users\xq\Downloads\mediamanagesys-parent\mediamanagesys-common\src\main\resources\com\mingkai\mediamanagesyscommon\mapper" />
+      <recent name="C:\Users\xq\Downloads\mediamanagesys-parent\mediamanagesys-uc\src\main\resources\templates\code" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -1549,9 +1601,9 @@
         </RuleState>
       </list>
     </option>
-    <option name="contentProportion" value="0.1765625" />
+    <option name="contentProportion" value="0.27666152" />
   </component>
-  <component name="RunManager" selected="JUnit.RegisterApplicationTests.contextLoads">
+  <component name="RunManager" selected="JUnit.OrderApiApplicationTests.contextLoads">
     <configuration name="CinemaApiApplicationTests.contextLoads" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="cinema-api" />
       <extension name="coverage">
@@ -1704,9 +1756,9 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.OrderApiApplicationTests.contextLoads" />
         <item itemvalue="JUnit.RegisterApplicationTests.contextLoads" />
         <item itemvalue="JUnit.CinemaApiApplicationTests.contextLoads" />
-        <item itemvalue="JUnit.OrderApiApplicationTests.contextLoads" />
         <item itemvalue="JUnit.MediamanagesysCommonApplicationTests.contextLoads" />
       </list>
     </recent_temporary>
@@ -1786,20 +1838,16 @@
       <workItem from="1558871970315" duration="6515000" />
       <workItem from="1558920276889" duration="29393000" />
       <workItem from="1559006678930" duration="27062000" />
-      <workItem from="1559093970947" duration="451000" />
+      <workItem from="1559093970947" duration="17649000" />
+      <workItem from="1559129824811" duration="6404000" />
+      <workItem from="1559181195595" duration="747000" />
+      <workItem from="1559182498306" duration="7378000" />
+      <workItem from="1559220507879" duration="3701000" />
+      <workItem from="1559286728840" duration="547000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="CinemaApiApplicationTests_contextLoads - 2019.05.27 at 18h 34m 57s.xml">
-      <configuration name="CinemaApiApplicationTests.contextLoads" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="CinemaApiApplicationTests_contextLoads - 2019.05.27 at 18h 39m 41s.xml">
-      <configuration name="CinemaApiApplicationTests.contextLoads" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="CinemaApiApplicationTests_contextLoads - 2019.05.27 at 18h 41m 15s.xml">
-      <configuration name="CinemaApiApplicationTests.contextLoads" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="CinemaApiApplicationTests_contextLoads - 2019.05.27 at 18h 44m 17s.xml">
       <configuration name="CinemaApiApplicationTests.contextLoads" configurationId="JUnit" />
     </history-entry>
@@ -1821,9 +1869,18 @@
     <history-entry file="RegisterApplicationTests_contextLoads - 2019.05.28 at 11h 33m 56s.xml">
       <configuration name="RegisterApplicationTests.contextLoads" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="OrderApiApplicationTests_contextLoads - 2019.05.29 at 17h 08m 35s.xml">
+      <configuration name="OrderApiApplicationTests.contextLoads" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="OrderApiApplicationTests_contextLoads - 2019.05.29 at 17h 09m 57s.xml">
+      <configuration name="OrderApiApplicationTests.contextLoads" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="OrderApiApplicationTests_contextLoads - 2019.05.29 at 17h 12m 37s.xml">
+      <configuration name="OrderApiApplicationTests.contextLoads" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1031266000" />
+    <option name="totallyTimeSpent" value="1067241000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1835,9 +1892,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <frame x="114" y="79" width="966" height="618" extended-state="1" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.15106383" visible="true" weight="0.31240544" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.15106383" visible="true" weight="0.26490065" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Favorites" order="3" sideWeight="0.50851583" side_tool="true" weight="0.35186723" />
@@ -1849,27 +1907,27 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3289225" />
       <window_info anchor="bottom" id="Run" order="2" sideWeight="0.7701245" weight="0.43055555" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.7496218" weight="0.2888889" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.7496218" weight="0.22905983" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32820514" />
-      <window_info anchor="bottom" id="Messages" order="7" sideWeight="0.5444631" weight="0.4409722" />
+      <window_info anchor="bottom" id="Messages" order="7" sideWeight="0.5444631" weight="0.34358975" />
       <window_info anchor="bottom" id="Spring" order="8" weight="0.31282052" />
-      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.22987552" side_tool="true" weight="0.59546316" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="10" sideWeight="0.8271812" visible="true" weight="0.85811967" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.27293578" side_tool="true" weight="0.1701389" />
+      <window_info anchor="bottom" id="Terminal" order="10" sideWeight="0.8271812" weight="0.3965812" />
       <window_info anchor="bottom" id="Statistic" order="11" sideWeight="0.49924356" weight="0.36410257" />
       <window_info anchor="bottom" id="Database Changes" order="12" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="13" show_stripe_button="false" />
       <window_info anchor="bottom" id="JRebel Executor" order="14" />
-      <window_info anchor="bottom" id="JRebel Console" order="15" sideWeight="0.2708018" side_tool="true" weight="0.52136755" />
-      <window_info anchor="bottom" id="Java Enterprise" order="16" weight="0.32931727" />
-      <window_info anchor="bottom" id="Run Dashboard" order="17" sideWeight="0.72919816" weight="0.3965812" />
+      <window_info anchor="bottom" id="JRebel Console" order="15" sideWeight="0.27293578" side_tool="true" weight="0.33333334" />
+      <window_info anchor="bottom" id="Java Enterprise" order="16" weight="0.3287037" />
+      <window_info anchor="bottom" id="Run Dashboard" order="17" sideWeight="0.7270642" visible="true" weight="0.2735632" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="right" id="Capture Analysis" order="4" />
-      <window_info anchor="right" id="Maven Projects" order="5" visible="true" weight="0.10892587" />
+      <window_info anchor="right" id="Maven Projects" order="5" visible="true" weight="0.08057395" />
       <window_info anchor="right" id="Database" order="6" />
       <window_info anchor="right" id="Palette&#9;" order="7" />
       <window_info anchor="right" id="Theme Preview" order="8" />
@@ -1886,28 +1944,27 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/mediamanagesys-backend/src/main/java/com/mingkai/mediamanagesysbackend/controller/screen/ScreenHallController.java</url>
+          <line>173</line>
+          <properties />
+          <option name="timeStamp" value="32" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/order-api/src/test/java/com/mingkai/orderapi/OrderApiApplicationTests.java</url>
-          <line>26</line>
+          <line>19</line>
           <properties />
-          <option name="timeStamp" value="28" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/order-api/src/main/java/com/mingkai/orderapi/service/OrderService.java</url>
-          <line>152</line>
-          <properties />
-          <option name="timeStamp" value="29" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/order-api/src/main/java/com/mingkai/orderapi/service/OrderService.java</url>
-          <line>205</line>
-          <properties />
-          <option name="timeStamp" value="30" />
+          <option name="timeStamp" value="33" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="evaluateExpression">
+      <expression>
+        <expression-string>screenSeatDo</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
       <expression>
         <expression-string>LocalDateTime.parse(dateTime,dateTimeFormatter)</expression-string>
         <language-id>JAVA</language-id>
@@ -1948,218 +2005,9 @@
         <language-id>JAVA</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
-      <expression>
-        <expression-string>citys</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/movie-api/src/main/java/com/mingkai/movieapi/service/MovieService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="39" column="46" selection-start-line="39" selection-start-column="46" selection-end-line="39" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mediamanagesys-schdule/src/main/java/com/mingkai/mediamanagesysschdule/service/SendDoubanRequestService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="50" column="12" lean-forward="true" selection-start-line="50" selection-start-column="12" selection-end-line="50" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mediamanagesys-backend/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="87">
-          <caret line="80" column="45" selection-start-line="80" selection-start-column="45" selection-end-line="80" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mediamanagesys-uc/src/main/java/com/mingkai/mediamanagesysuc/config/KaptchaConfig.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="23" column="61" lean-forward="true" selection-start-line="23" selection-start-column="61" selection-end-line="23" selection-end-column="61" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mediamanagesys-uc/src/main/java/com/mingkai/mediamanagesysuc/commonUtil/CodeUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="39" column="31" lean-forward="true" selection-start-line="39" selection-start-column="31" selection-end-line="39" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mediamanagesys-uc/src/main/java/com/mingkai/mediamanagesysuc/controller/CodeController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="69">
-          <caret line="32" lean-forward="true" selection-start-line="32" selection-end-line="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mediamanagesys-mapper/src/main/java/com/mingkai/mediamanagesysmapper/model/Vo/PercentPaneVo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="325">
-          <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mediamanagesys-mapper/src/main/java/com/mingkai/mediamanagesysmapper/mapper/common/AreaMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="343">
-          <caret line="45" column="39" selection-start-line="45" selection-start-column="19" selection-end-line="45" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mediamanagesys-mapper/src/main/java/com/mingkai/mediamanagesysmapper/model/common/Province.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mediamanagesys-mapper/src/main/java/com/mingkai/mediamanagesysmapper/manager/TicketDetailManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="13" column="62" lean-forward="true" selection-start-line="13" selection-start-column="62" selection-end-line="13" selection-end-column="62" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mediamanagesys-portal/src/main/java/com/mingkai/mediamanagesysportal/AliPay.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mediamanagesys-portal/src/main/java/com/mingkai/mediamanagesysportal/controller/ApiPayController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="36" column="13" selection-start-line="36" selection-start-column="13" selection-end-line="36" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mediamanagesys-portal/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="57" column="21" lean-forward="true" selection-start-line="57" selection-start-column="21" selection-end-line="57" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mediamanagesys-portal/src/test/java/com/mingkai/mediamanagesysportal/MediamanagesysPortalApplicationTests.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://E:/Coder/Java/jdk1.8.0_171/jre/lib/rt.jar!/sun/util/calendar/CalendarDate.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="124">
-          <caret line="262" column="19" selection-start-line="262" selection-start-column="19" selection-end-line="262" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://E:/Coder/Java/jdk1.8.0_171/src.zip!/java/util/Date.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="134">
-          <caret line="888" column="43" selection-start-line="888" selection-start-column="43" selection-end-line="888" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/register/src/test/java/com/mingkai/register/RegisterApplicationTests.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mediamanagesys-uc/src/main/java/com/mingkai/mediamanagesysuc/controller/UserAdminController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="208">
-          <caret line="127" column="49" lean-forward="true" selection-start-line="127" selection-start-column="49" selection-end-line="127" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mediamanagesys-uc/src/main/java/com/mingkai/mediamanagesysuc/service/UserAdminService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="52">
-          <caret line="211" lean-forward="true" selection-start-line="211" selection-end-line="211" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mediamanagesys-mapper/src/main/java/com/mingkai/mediamanagesysmapper/model/Do/EchartsDo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="278">
-          <caret line="17" column="38" lean-forward="true" selection-start-line="17" selection-start-column="38" selection-end-line="17" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mediamanagesys-mapper/src/main/resources/mapper/MovieDetailMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="47" column="33" lean-forward="true" selection-start-line="42" selection-start-column="8" selection-end-line="47" selection-end-column="33" />
-          <folding>
-            <element signature="e#2059#2063#0" expanded="true" />
-            <element signature="e#2112#2116#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mediamanagesys-mapper/src/main/java/com/mingkai/mediamanagesysmapper/mapper/MovieDetailMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="218">
-          <caret line="41" column="116" lean-forward="true" selection-start-line="41" selection-start-column="3" selection-end-line="41" selection-end-column="116" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mediamanagesys-mapper/src/main/java/com/mingkai/mediamanagesysmapper/mapper/CinemaMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="24" column="117" lean-forward="true" selection-start-line="24" selection-start-column="4" selection-end-line="24" selection-end-column="117" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mediamanagesys-mapper/src/main/resources/mapper/CinemaMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="44" column="8" selection-start-line="44" selection-start-column="8" selection-end-line="49" selection-end-column="33" />
-          <folding>
-            <element signature="e#1940#1944#0" expanded="true" />
-            <element signature="e#1976#1980#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mediamanagesys-portal/src/main/java/com/mingkai/mediamanagesysportal/MediamanagesysPortalApplication.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="202">
-          <caret line="27" column="48" lean-forward="true" selection-start-line="27" selection-start-column="48" selection-end-line="27" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mediamanagesys-mapper/src/main/java/com/mingkai/mediamanagesysmapper/mapper/UserMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="246">
-          <caret line="36" lean-forward="true" selection-start-line="35" selection-start-column="3" selection-end-line="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mediamanagesys-mapper/src/main/java/com/mingkai/mediamanagesysmapper/mapper/TicketDetailMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="28" column="38" selection-start-line="28" selection-start-column="38" selection-end-line="28" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mediamanagesys-mapper/src/main/java/com/mingkai/mediamanagesysmapper/model/Vo/EchartsVo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="10" selection-start-line="10" selection-end-line="10" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/mediamanagesys-mapper/src/main/resources/mapper/UserMapper.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="164">
@@ -2192,28 +2040,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mediamanagesys-backend/src/main/java/com/mingkai/mediamanagesysbackend/service/cinema/CinemaService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="265">
-          <caret line="391" column="98" selection-start-line="391" selection-start-column="98" selection-end-line="391" selection-end-column="98" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/mediamanagesys-mapper/src/main/java/com/mingkai/mediamanagesysmapper/model/Do/screen/ScreenArrangeDo.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="295">
           <caret line="24" column="19" selection-start-line="24" selection-start-column="19" selection-end-line="24" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mediamanagesys-mapper/src/main/resources/mapper/TicketDetailMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="128">
-          <caret line="77" column="39" selection-start-line="77" selection-start-column="16" selection-end-line="77" selection-end-column="39" />
-          <folding>
-            <element signature="e#3267#3271#0" expanded="true" />
-            <element signature="e#3303#3307#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2224,13 +2054,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mediamanagesys-schdule/src/main/java/com/mingkai/mediamanagesysschdule/service/ScheduleService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="131">
-          <caret line="153" column="17" lean-forward="true" selection-start-line="153" selection-start-column="17" selection-end-line="153" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/mediamanagesys-mapper/src/main/java/com/mingkai/mediamanagesysmapper/utils/time/LocalDateTimeUtils.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="179">
@@ -2238,47 +2061,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mediamanagesys-portal/src/main/java/com/mingkai/mediamanagesysportal/conf/AlipayConfig.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-39">
-          <caret line="26" column="11" lean-forward="true" selection-start-line="26" selection-start-column="11" selection-end-line="26" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/mediamanagesys-backend/src/main/java/com/mingkai/mediamanagesysbackend/controller/backindex/BackIndexWelcomeController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="182">
           <caret line="56" lean-forward="true" selection-start-line="56" selection-end-line="56" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mediamanagesys-backend/src/main/java/com/mingkai/mediamanagesysbackend/controller/cinema/CinemaController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1728">
-          <caret line="117" column="45" selection-start-line="117" selection-start-column="45" selection-end-line="117" selection-end-column="45" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mediamanagesys-backend/src/main/java/com/mingkai/mediamanagesysbackend/service/CinemaRpcService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="576">
-          <caret line="47" column="19" selection-start-line="47" selection-start-column="19" selection-end-line="47" selection-end-column="19" />
-          <folding>
-            <element signature="e#1570#1571#0" expanded="true" />
-            <element signature="e#1646#1647#0" expanded="true" />
-            <element signature="e#4739#4740#0" expanded="true" />
-            <element signature="e#4803#4804#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cinema-api/src/main/java/com/mingkai/cinemaapi/controller/CinemaController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1674">
-          <caret line="112" column="44" selection-start-line="112" selection-start-column="44" selection-end-line="112" selection-end-column="44" />
         </state>
       </provider>
     </entry>
@@ -2307,10 +2093,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="5634">
           <caret line="352" column="24" selection-start-line="352" selection-start-column="24" selection-end-line="352" selection-end-column="24" />
-          <folding>
-            <element signature="e#10774#10775#0" expanded="true" />
-            <element signature="e#10831#10832#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2328,17 +2110,262 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/cinema-api/src/main/java/com/mingkai/cinemaapi/service/CinemaService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="211" column="41" selection-start-line="211" selection-start-column="41" selection-end-line="211" selection-end-column="41" />
-        </state>
-      </provider>
+    <entry file="file://$PROJECT_DIR$/mediamanagesys-schdule/src/main/resources/application.yml">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="19">
-          <caret line="32" selection-start-line="32" selection-end-line="32" />
+        <state relative-caret-position="154">
+          <caret line="90" lean-forward="true" selection-start-line="90" selection-end-line="90" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cinema-api/src/main/java/com/mingkai/cinemaapi/service/CinemaService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1548">
+          <caret line="176" column="22" lean-forward="true" selection-start-line="176" selection-start-column="22" selection-end-line="176" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mediamanagesys-mapper/src/main/java/com/mingkai/mediamanagesysmapper/mapper/TicketDetailMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="31" column="25" selection-start-line="31" selection-start-column="25" selection-end-line="31" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mediamanagesys-mapper/src/main/resources/mapper/TicketDetailMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="211">
+          <caret line="72" column="16" lean-forward="true" selection-start-line="68" selection-start-column="8" selection-end-line="72" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mediamanagesys-schdule/src/main/java/com/mingkai/mediamanagesysschdule/service/ScheduleService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="563">
+          <caret line="156" column="42" selection-start-line="156" selection-start-column="42" selection-end-line="156" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cinema-api/src/main/java/com/mingkai/cinemaapi/controller/CinemaController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="203">
+          <caret line="100" selection-start-line="100" selection-end-line="100" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mediamanagesys-mapper/src/main/java/com/mingkai/mediamanagesysmapper/model/Do/order/TicketDetailDo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="259">
+          <caret line="29" selection-start-line="29" selection-end-line="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mediamanagesys-backend/src/main/java/com/mingkai/mediamanagesysbackend/service/cinema/CinemaService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="1549" column="16" lean-forward="true" selection-start-line="1549" selection-start-column="16" selection-end-line="1549" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mediamanagesys-mapper/src/main/java/com/mingkai/mediamanagesysmapper/model/Do/screen/ScreenSeatDo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="130">
+          <caret line="14" column="20" selection-start-line="14" selection-start-column="20" selection-end-line="14" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mediamanagesys-backend/src/main/java/com/mingkai/mediamanagesysbackend/controller/cinema/CinemaController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5868">
+          <caret line="347" column="47" selection-start-line="347" selection-start-column="47" selection-end-line="347" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cinema-api/src/main/java/com/mingkai/cinemaapi/controller/ScreenHallController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2844">
+          <caret line="173" column="46" selection-start-line="173" selection-start-column="46" selection-end-line="173" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cinema-api/src/main/java/com/mingkai/cinemaapi/service/ScreenService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5040">
+          <caret line="304" column="2" selection-start-line="304" selection-start-column="2" selection-end-line="304" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mediamanagesys-portal/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="9" column="41" selection-start-line="9" selection-start-column="41" selection-end-line="9" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mediamanagesys-common/src/main/java/com/mingkai/mediamanagesyscommon/service/FileService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="24" column="44" selection-start-line="24" selection-start-column="44" selection-end-line="24" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mediamanagesys-mapper/src/main/java/com/mingkai/mediamanagesysmapper/utils/file/OSSClientUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1818">
+          <caret line="120" column="33" selection-start-line="120" selection-start-column="33" selection-end-line="120" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/order-api/src/test/java/com/mingkai/orderapi/OrderApiApplicationTests.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="19" column="39" selection-start-line="19" selection-start-column="39" selection-end-line="19" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cinema-api/src/test/java/com/mingkai/cinemaapi/CinemaApiApplicationTests.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="12" selection-start-line="12" selection-end-line="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mediamanagesys-backend/src/main/java/com/mingkai/mediamanagesysbackend/service/CinemaRpcService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2286">
+          <caret line="150" selection-start-line="150" selection-end-line="150" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mediamanagesys-backend/src/main/java/com/mingkai/mediamanagesysbackend/controller/screen/ScreenHallController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2844">
+          <caret line="173" column="47" selection-start-line="173" selection-start-column="47" selection-end-line="173" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mediamanagesys-common/src/main/java/com/mingkai/mediamanagesyscommon/controller/FileController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="172">
+          <caret line="38" column="36" selection-start-line="38" selection-start-column="35" selection-end-line="38" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/register/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="11" column="37" selection-end-line="63" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mediamanagesys-portal/src/main/java/com/mingkai/mediamanagesysportal/conf/AlipayConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="25" selection-start-line="25" selection-end-line="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mediamanagesys-portal/src/main/resources/templates/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="12" column="52" selection-start-line="12" selection-start-column="52" selection-end-line="12" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mediamanagesys-portal/src/main/resources/static/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mediamanagesys-portal/src/main/java/com/mingkai/mediamanagesysportal/controller/OrderController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4122">
+          <caret line="243" column="46" selection-start-line="243" selection-start-column="46" selection-end-line="243" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mediamanagesys-portal/src/main/java/com/mingkai/mediamanagesysportal/service/OrderRpcService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1440">
+          <caret line="101" column="54" selection-start-line="101" selection-start-column="54" selection-end-line="101" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mediamanagesys-portal/src/main/java/com/mingkai/mediamanagesysportal/controller/ApiPayController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2340">
+          <caret line="154" selection-start-line="154" selection-end-line="154" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mediamanagesys-portal/src/main/java/com/mingkai/mediamanagesysportal/feign/OrderRpcFeign.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1404">
+          <caret line="89" column="14" selection-start-line="89" selection-start-column="14" selection-end-line="89" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mediamanagesys-portal/src/main/java/com/mingkai/mediamanagesysportal/controller/MovieController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="792">
+          <caret line="66" column="47" selection-start-line="66" selection-start-column="47" selection-end-line="66" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mediamanagesys-portal/src/main/java/com/mingkai/mediamanagesysportal/service/MovieRpcService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="324">
+          <caret line="34" column="50" selection-start-line="34" selection-start-column="50" selection-end-line="34" selection-end-column="50" />
+          <folding>
+            <element signature="e#1148#1149#0" expanded="true" />
+            <element signature="e#1221#1222#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/order-api/src/main/java/com/mingkai/orderapi/controller/OrderController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4122">
+          <caret line="243" column="52" selection-start-line="243" selection-start-column="52" selection-end-line="243" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/order-api/src/main/java/com/mingkai/orderapi/service/OrderService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="11358">
+          <caret line="672" selection-start-line="672" selection-end-line="672" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cinema-api/src/main/resources/bootstrap.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="468">
+          <caret line="26" column="11" selection-start-line="26" selection-start-column="11" selection-end-line="26" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/order-api/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1368">
+          <caret line="76" column="21" selection-start-line="67" selection-end-line="76" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mediamanagesys-backend/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2124">
+          <caret line="118" selection-start-line="118" selection-end-line="118" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mediamanagesys-portal/src/main/java/com/mingkai/mediamanagesysportal/feign/MovieRpcFeign.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="194">
+          <caret line="58" selection-start-line="58" selection-end-line="58" />
         </state>
       </provider>
     </entry>

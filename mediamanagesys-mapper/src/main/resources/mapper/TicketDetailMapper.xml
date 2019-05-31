@@ -68,7 +68,7 @@
     <select id="percentTen" resultType="com.mingkai.mediamanagesysmapper.model.Do.order.TicketDetailDo">
         select * from mesys_ticket_detail
         where is_deleted = 0 and status = 2
-        group by cinema
+        group by cinema_id
         order by price DESC
         limit 10
     </select>

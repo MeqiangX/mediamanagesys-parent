@@ -18,11 +18,11 @@ public class AlipayConfig {
     // 支付宝公钥,查看地址：https://openhome.alipay.com/platform/keyManage.htm 对应APPID下的支付宝公钥。
     public static String alipay_public_key = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAzGWp8094FIPvTRlgxv7P7Xg1iZb3lK+8JlNMVdAdukqYPkeq3HA6Q4kmiIKSlyKUgfY5zI8ZZXoA4WK1ea1ZB6ToasC9B+QauaXdFiSA0C0ku/oKEtgly30+KAMMgzP0zu5X1A2X8zXA484m4Ff4AkD6auVDOiv0058EhjzHAWtiAbhSmTwY0h6FzaGCVTpFQ4PSix2lu23VA5BSPadkx8CqAw5Q6PBZkNChLBECsOSlkZAnz38hypFutyXLI/8Qe5xGc9ku90eA8yo/KElVCJZ1q/QVdEeUtwmBYBKWftQj6UJH0CEQAUA0odS95BMr6yB0pSPjF+vKDnnm+97sAwIDAQAB";
 
-    // 服务器异步通知页面路径  需http://格式的完整路径，不能加?id=123这类自定义参数，必须外网可以正常访问
-    public static String notify_url = "http://9qqyr7.natappfree.cc/api/protal/alipay/notifyUrl";
-
     // 页面跳转同步通知页面路径 需http://格式的完整路径，不能加?id=123这类自定义参数，必须外网可以正常访问
-    public static String return_url = "http://9qqyr7.natappfree.cc/api/protal/alipay/returnUrl";
+    public static String return_url = "http://mingkai.natapp1.cc/api/protal/alipay/returnUrl";
+
+    // 服务器异步通知页面路径  需http://格式的完整路径，不能加?id=123这类自定义参数，必须外网可以正常访问
+    public static String notify_url = "http://mingkai.natapp1.cc/api/protal/alipay/notifyUrl";
 
     // 签名方式
     public static String sign_type = "RSA2";

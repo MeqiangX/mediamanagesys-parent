@@ -286,6 +286,7 @@ public class ScreenService {
      * @param id
      * @return
      */
+    @Transactional
     public Boolean deleteScreenById(Integer id){
 
         // 是否排片
@@ -293,18 +294,26 @@ public class ScreenService {
             throw new BizException("当前放映厅有排片记录，无法删除");
         }
 
+        // 如果有和影院的绑定记录 要先去影院解除配置
+
+        List<CinemaScreenDo> cinemaScreens = cinemaScreenManager.list(new QueryWrapper<CinemaScreenDo>()
+                .eq("screen_hall_id", id));
+
+        if (Objects.nonNull(cinemaScreens) && cinemaScreens.size() != 0){
+            throw new BizException("该放映厅已经被影院绑定，请先去影院解除配置");
+        }
+/*
+
         // 没有排片 删除放映厅  同时删除和影院的关联记录
         boolean deleteCount = cinemaScreenManager.remove(new QueryWrapper<CinemaScreenDo>()
                 .eq("screen_hall_id", id));
+*/
 
-        return deleteCount;
+
+        return  1 == screenRoomMapper.deleteById(id);
 
     }
 
-    // TODO  选座
-    public Boolean chooseSeat(){
-        return true;
-    }
 
 
 

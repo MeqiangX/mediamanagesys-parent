@@ -1486,7 +1486,7 @@ public class CinemaService {
                 // 订单数
                 List<TicketDetailDo> ticketDetailDoList = ticketDetailManager.list(new QueryWrapper<TicketDetailDo>()
                         .eq("status", 2)
-                        .in("cinema", cinemas.stream().map(CinemaDo::getCinemaName).collect(Collectors.toList())));
+                        .in("cinema_id", cinemas.stream().map(CinemaDo::getId).collect(Collectors.toList())));
 
                 if (Objects.isNull(ticketDetailDoList) || ticketDetailDoList.size() == 0){
                     MapVo emptyMapVo = new MapVo();
@@ -1546,9 +1546,11 @@ public class CinemaService {
         // 获取对应的名字列表
         List<String> cinemaNames = ticketDetailDos.stream().map(TicketDetailDo::getCinema).collect(Collectors.toList());
 
+        List<Integer> cinemaIds = ticketDetailDos.stream().map(TicketDetailDo::getCinemaId).collect(Collectors.toList());
+        //获取id列表
+
         // 获取影院所在的地区省份
-        List<CinemaDo> cinemaDos = cinemaManager.list(new QueryWrapper<CinemaDo>()
-                .in("cinema_name", cinemaNames));
+        List<CinemaDo> cinemaDos = (List<CinemaDo>)cinemaManager.listByIds(cinemaIds);
 
         // 转换成地区 + 影院的 map
 

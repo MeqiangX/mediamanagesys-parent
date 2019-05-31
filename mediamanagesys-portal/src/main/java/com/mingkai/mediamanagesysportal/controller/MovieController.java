@@ -39,7 +39,7 @@ public class MovieController {
 
     @ApiOperation("前台测试")
     @GetMapping("portal-test")
-    public R<Boolean> portalTest(){
+    public R<Boolean> portalTest() {
         return new APITemplate<Boolean>() {
             @Override
             protected void checkParams() throws IllegalArgumentException {
@@ -55,7 +55,7 @@ public class MovieController {
 
     @ApiOperation("电影详情")
     @GetMapping("movie-details/{id}")
-    public R<MovieVo> movieDetailsById(@PathVariable String id){
+    public R<MovieVo> movieDetailsById(@PathVariable String id) {
         return new APITemplate<MovieVo>() {
             @Override
             protected void checkParams() throws IllegalArgumentException {
@@ -72,7 +72,7 @@ public class MovieController {
 
     @ApiOperation("电影榜单")
     @GetMapping("movie-rank")
-    public R<Page<MovieVo>> movieRank(MovieRankPagePo movieRankPagePo){
+    public R<Page<MovieVo>> movieRank(MovieRankPagePo movieRankPagePo) {
         return new APITemplate<Page<MovieVo>>() {
             @Override
             protected void checkParams() throws IllegalArgumentException {
@@ -88,7 +88,7 @@ public class MovieController {
 
     @ApiOperation("电影页")
     @GetMapping("movie-page")
-    public R<Page<MovieVo>> moviePage(MoviePagePo moviePagePo){
+    public R<Page<MovieVo>> moviePage(MoviePagePo moviePagePo) {
         return new APITemplate<Page<MovieVo>>() {
             @Override
             protected void checkParams() throws IllegalArgumentException {
@@ -105,7 +105,7 @@ public class MovieController {
 
     @ApiOperation("得到电影的预告片")
     @GetMapping("movie-trailers/{movieId}")
-    public R<List<MovieTrailerVo>> movieTrailers(@PathVariable String movieId){
+    public R<List<MovieTrailerVo>> movieTrailers(@PathVariable String movieId) {
         return new APITemplate<List<MovieTrailerVo>>() {
             @Override
             protected void checkParams() throws IllegalArgumentException {
@@ -121,7 +121,7 @@ public class MovieController {
 
     @ApiOperation("得到电影的花絮")
     @GetMapping("movie-bloopers/{movieId}")
-    public R<List<MovieBlooperVo>> movieBloopers(@PathVariable String movieId){
+    public R<List<MovieBlooperVo>> movieBloopers(@PathVariable String movieId) {
         return new APITemplate<List<MovieBlooperVo>>() {
             @Override
             protected void checkParams() throws IllegalArgumentException {
@@ -138,7 +138,7 @@ public class MovieController {
 
     @ApiOperation("模糊搜索电影(电影名，演员，导演)")
     @GetMapping("search-movies")
-    public R<Page<MovieVo>> searchMovies(MovieSearchPo movieSearchPo){
+    public R<Page<MovieVo>> searchMovies(MovieSearchPo movieSearchPo) {
         return new APITemplate<Page<MovieVo>>() {
             @Override
             protected void checkParams() throws IllegalArgumentException {

@@ -145,7 +145,7 @@ public class ApiPayController {
             //付款金额
             String total_amount = new String(request.getParameter("total_amount").getBytes("ISO-8859-1"),"UTF-8");
             //付款时间
-            String datePay = new String(request.getParameter("timestamp").getBytes("ISO-8859-1"),"UTF-8");
+            //String datePay = new String(request.getParameter("timestamp").getBytes("ISO-8859-1"),"UTF-8");
 
             log.info("验证进来了");
             //更新订单

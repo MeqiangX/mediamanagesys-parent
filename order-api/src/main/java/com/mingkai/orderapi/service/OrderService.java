@@ -244,6 +244,7 @@ public class OrderService {
         }
 
         ticketDetailDo.setMovie(movie.getMovieName());
+        ticketDetailDo.setCinemaId(cinema.getId());
         ticketDetailDo.setCinema(cinema.getCinemaName());
         ticketDetailDo.setScreen(screen.getScreeningHallName());
         ticketDetailDo.setSeats(String.join(",",seatlist));
@@ -435,7 +436,14 @@ public class OrderService {
             String[] seats = ticketDetailDo.getSeatIds().split(",");
 
             ScreenSeatDo screenSeatDo = screenSeatManager.getById(seats[0]);
-            num += seats.length;
+
+            if (Objects.isNull(screenSeatDo)){
+                continue;
+            }else if (screenSeatDo.getScreenArrangeId().equals(Integer.valueOf(arrangeId))){
+                num += seats.length;
+            }else{
+                continue;
+            }
 
         }
 
